@@ -5,6 +5,10 @@
     },
     "executeCode": {
       "*": "allow"
+    },
+    "bash": {
+      "ls *": "allow",
+      "sort *": "allow"
     }
   }
 }
