@@ -1,0 +1,7 @@
+outcome,analysis,OR_median,OR_lo,OR_hi,P_lt1,tau_median
+OS,Primary (k=10),0.69,0.61,0.78,100,0.56
+OS,Sensitivity (k=11),0.74,0.66,0.83,100,0.57
+aGVHD II-IV,Primary (k=6),0.59,0.42,0.84,99.8,0.27
+aGVHD II-IV,Sensitivity (k=8),0.59,0.45,0.78,100,0.47
+CMV,Primary (k=12),0.77,0.6,0.99,98,0.53
+CMV,Sensitivity (k=14),0.91,0.75,1.12,81.9,0.5

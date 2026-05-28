@@ -1,0 +1,162 @@
+---
+title: "Comparison 2: PTCy vs ATG"
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("_common.R")
+
+post_c2_os      <- load_post("post_c2_os.rds")
+post_c2_m2_os   <- load_post("post_c2_m2_os.rds")
+post_c2_nrm     <- load_post("post_c2_nrm.rds")
+post_c2_m2_nrm  <- load_post("post_c2_m2_nrm.rds")
+post_c2_agvhd   <- load_post("post_c2_agvhd.rds")
+post_c2_cmv     <- load_post("post_c2_cmv.rds")
+post_c2_m2_cmv  <- load_post("post_c2_m2_cmv.rds")
+
+# C1 posteriors for cross-comparison
+post_m1 <- load_post("post_m1.rds")
+post_os <- load_post("post_os.rds")
+```
+
+Comparison 2 evaluates PTCy against ATG-based GVHD prophylaxis — a more deeply T-cell–depleting comparator. This comparison uses 40 paired studies (82 clean arms) after excluding PTCy+ATG combination, mixed, and unpaired arms.
+
+## Overall Survival {#sec-c2-os}
+
+```{r}
+#| label: fig-c2-os
+#| fig-cap: "OS posterior densities for Comparison 2. M2 steroid adjustment attenuates the effect by 35%, paralleling the C1 pattern."
+#| fig-height: 4.5
+
+tibble(
+  M1 = post_c2_os$b_ptcy_binary,
+  M2 = post_c2_m2_os$b_ptcy_binary
+) |>
+  pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
+  ggplot(aes(x = log_or, fill = Model, colour = Model)) +
+  geom_density(alpha = 0.35, linewidth = 0.6) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  scale_fill_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  labs(x = "log-OR (PTCy vs ATG)", y = "Posterior density",
+       title = "Overall Survival — Comparison 2",
+       subtitle = "k = 10, N = 10,624 · M1 OR 0.69 → M2 OR 0.78 (35% attenuation)") +
+  theme_jama()
+```
+
+**M1:** OR 0.69 (95% CrI 0.61–0.78), P(OR < 1) = 100%, τ = 0.56. Consistent OS advantage for PTCy over ATG.
+
+**M2:** OR 0.78 (95% CrI 0.68–0.90), 35% log-OR attenuation. Substantial residual benefit persists, paralleling C1.
+
+## Non-Relapse Mortality {#sec-c2-nrm}
+
+**M1:** OR 0.65 (95% CrI 0.43–0.97), P(OR < 1) = 98%, τ = 0.38. Larger point estimate than C1, but k = 5.
+
+**M2:** OR 0.76 (95% CrI 0.48–1.16), 38% attenuation. CrI crosses null — consistent with substantial steroid mediation, mirroring C1.
+
+## Acute GVHD Grade II–IV {#sec-c2-agvhd}
+
+**M1:** OR 0.59 (95% CrI 0.42–0.84), P(OR < 1) = 99.8%, τ = 0.27. Concordant with C1 (OR 0.63), confirming aGVHD benefit is comparator-independent.
+
+## CMV Reactivation — The Direction Reversal {#sec-c2-cmv}
+
+```{r}
+#| label: fig-c2-cmv-reversal
+#| fig-cap: "CMV posterior densities across comparisons. In C1 (navy), PTCy increases CMV risk (posterior right of null). In C2 (grey), PTCy decreases CMV risk (posterior left of null). This reversal confirms that CMV risk tracks the depth of T-cell depletion."
+#| fig-height: 5
+
+tibble(
+  `C1: vs CNI+MTX` = post_m1$b_ptcy_binary,
+  `C2: vs ATG` = post_c2_cmv$b_ptcy_binary
+) |>
+  pivot_longer(everything(), names_to = "Comparison", values_to = "log_or") |>
+  ggplot(aes(x = log_or, fill = Comparison, colour = Comparison)) +
+  geom_density(alpha = 0.3, linewidth = 0.7) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  annotate("text", x = 0.45, y = 0.05, label = "PTCy\nharmful",
+           colour = jama_steel, size = 3, fontface = "italic") +
+  annotate("text", x = -0.45, y = 0.05, label = "PTCy\nprotective",
+           colour = jama_steel, size = 3, fontface = "italic") +
+  scale_fill_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
+  scale_colour_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
+  labs(x = "log-OR (PTCy vs comparator)", y = "Posterior density",
+       title = "CMV Reactivation — Direction Reversal Across Comparisons",
+       subtitle = "C1 OR 1.41 [1.20\u20131.65] vs C2 OR 0.77 [0.60\u20130.99]") +
+  theme_jama()
+```
+
+::: {.callout-important}
+## Key Finding: CMV Direction Reversal
+PTCy *increases* CMV risk vs CNI+MTX/MMF (OR 1.41) but *decreases* it vs ATG (OR 0.77). This establishes that CMV risk is ordered by depth of T-cell depletion: **CNI-based < PTCy < ATG**. The infection cost of PTCy is not intrinsic to PTCy but relative to the comparator's immunosuppressive depth.
+:::
+
+## BSI Descriptive Supplement {#sec-c2-bsi}
+
+```{r}
+#| label: fig-c2-bsi-forest
+#| fig-cap: "Mantel-Haenszel forest plot for BSI in Comparison 2 (k = 3). Substantial heterogeneity (I² = 69%) driven by definitional differences and a donor-type confound in Meyer 2025."
+#| fig-height: 4
+
+mh_bsi <- readRDS(file.path(model_dir, "c2_mh_bsi.rds"))
+par(family = "sans")
+metafor::forest(mh_bsi, atransf = exp, header = TRUE,
+       xlab = "Odds Ratio (PTCy vs ATG)",
+       mlab = "MH Fixed-Effect",
+       col = jama_navy, border = jama_navy)
+```
+
+MH OR 2.03 (95% CI 1.33–3.09), but driven by definition mismatch (any culture vs ICU/fatal only), timepoint mismatch (D+100 vs 1 year), and donor-type confound (Meyer 2025: 54% haplo vs 100% MUD). Hypothesis-generating only.
+
+## Cross-Comparison Summary {#sec-c2-summary}
+
+```{r}
+#| label: fig-c2-combined
+#| fig-cap: "Combined forest plot comparing Comparison 1 (left) and Comparison 2 (right). The CMV direction reversal is the most striking cross-comparison finding."
+#| fig-height: 7
+#| fig-width: 11
+
+all_pd <- do.call(rbind, list(
+  or_summary(post_os,    "b_ptcy_binary", "OS", "C1: PTCy vs CNI+MTX"),
+  or_summary(load_post("post_m2_os.rds"), "b_eventsn_ptcy_binary", "OS", "C1: PTCy vs CNI+MTX", "M2"),
+  or_summary(load_post("post_nrm.rds"),    "b_ptcy_binary", "NRM", "C1: PTCy vs CNI+MTX"),
+  or_summary(load_post("post_m2_nrm.rds"), "b_eventsn_ptcy_binary", "NRM", "C1: PTCy vs CNI+MTX", "M2"),
+  or_summary(load_post("post_agvhd.rds"), "b_ptcy_binary", "aGVHD II\u2013IV", "C1: PTCy vs CNI+MTX"),
+  or_summary(post_m1, "b_ptcy_binary", "CMV", "C1: PTCy vs CNI+MTX"),
+  or_summary(load_post("post_m2.rds"), "b_eventsn_ptcy_binary", "CMV", "C1: PTCy vs CNI+MTX", "M2"),
+  or_summary(load_post("post_bsi.rds"),   "b_ptcy_binary", "BSI", "C1: PTCy vs CNI+MTX"),
+  or_summary(load_post("post_ifi.rds"),   "b_ptcy_binary", "IFI", "C1: PTCy vs CNI+MTX"),
+  or_summary(post_c2_os,     "b_ptcy_binary", "OS", "C2: PTCy vs ATG"),
+  or_summary(post_c2_m2_os,  "b_ptcy_binary", "OS", "C2: PTCy vs ATG", "M2"),
+  or_summary(post_c2_nrm,    "b_ptcy_binary", "NRM", "C2: PTCy vs ATG"),
+  or_summary(post_c2_agvhd,  "b_ptcy_binary", "aGVHD II\u2013IV", "C2: PTCy vs ATG"),
+  or_summary(post_c2_cmv,    "b_ptcy_binary", "CMV", "C2: PTCy vs ATG"),
+  or_summary(post_c2_m2_cmv, "b_ptcy_binary", "CMV", "C2: PTCy vs ATG", "M2")
+)) |>
+  as_tibble() |>
+  mutate(
+    outcome = factor(outcome, levels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))),
+    comparison = factor(comparison, levels = c("C1: PTCy vs CNI+MTX", "C2: PTCy vs ATG")),
+    label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi),
+    y_num = as.numeric(outcome),
+    y_pos = y_num + ifelse(model == "M2", -0.15, 0.15)
+  )
+
+ggplot(all_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = model)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.45, linewidth = 0.5) +
+  geom_text(aes(x = hi, label = label), hjust = -0.08, size = 2.5,
+            colour = jama_black, show.legend = FALSE) +
+  scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2, 3)) +
+  scale_y_continuous(breaks = 1:6,
+                     labels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))) +
+  scale_shape_manual(values = c("M1" = 16, "M2" = 21)) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  scale_fill_manual(values = c("M1" = jama_navy, "M2" = "white")) +
+  facet_wrap(~ comparison) +
+  coord_cartesian(xlim = c(0.25, 5.5)) +
+  labs(x = "Odds Ratio (log scale)", y = NULL,
+       title = "Bayesian Meta-Analysis: PTCy Effect by Comparator",
+       shape = NULL, colour = NULL, fill = NULL) +
+  theme_jama()
+```

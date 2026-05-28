@@ -61,7 +61,9 @@ attributable to PTCy's T-cell lymphodepleting effect is more fully revealed. Tak
 together, M1, M2, and M3 converge on the same conclusion: PTCy's association with
 increased CMV reactivation is not mediated by either steroid exposure or aGVHD burden,
 and thus reflects a direct consequence of impaired CMV-specific T-cell reconstitution
-during the early post-transplant period.
+during the early post-transplant period. If this interpretation is correct, comparing
+PTCy to a more deeply T-cell–depleting agent should reverse the direction of the CMV
+effect — a prediction tested in Comparison 2 (§3.4.5).
 
 ---
 
@@ -168,7 +170,9 @@ NRM (M2 OR 1.03 vs M1 OR 0.86) and the partial mediation of OS (M2 OR 0.83 vs M1
 OR 0.77), establishing a mechanistic asymmetry that unifies the infection and survival
 findings: PTCy's survival benefit operates through GVHD suppression, while its
 infection risk operates through a separate, GVHD-independent pathway of T-cell
-lymphodepletion.
+lymphodepletion. This framework predicts that the direction of PTCy's infection effects
+should depend on the comparator's own depth of T-cell depletion; Comparison 2 (PTCy vs
+ATG, §3.4) provides an independent test of this prediction.
 
 ---
 

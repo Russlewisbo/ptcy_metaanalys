@@ -1,14 +1,25 @@
 {
   "permission": {
     "edit": {
-      "*.R": "allow"
+      "*.R": "allow",
+      "*.md": "allow",
+      "*.yml": "allow",
+      "*.css": "allow",
+      "*.qmd": "allow"
     },
     "executeCode": {
       "*": "allow"
     },
     "bash": {
       "ls *": "allow",
-      "sort *": "allow"
+      "sort *": "allow",
+      "mkdir *": "allow",
+      "cd *": "allow",
+      "quarto render *": "allow",
+      "tail *": "allow",
+      "head *": "allow",
+      "tr *": "allow",
+      "grep *": "allow"
     }
   }
 }

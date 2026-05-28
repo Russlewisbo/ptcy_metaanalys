@@ -1,0 +1,83 @@
+---
+title: "Methods"
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("_common.R")
+```
+
+## Study Design
+
+This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. Two pre-specified comparisons were analysed:
+
+- **Comparison 1:** PTCy vs CNI+MTX/MMF-based prophylaxis
+- **Comparison 2:** PTCy vs ATG-based prophylaxis
+
+## Outcomes
+
+Six primary outcomes were evaluated:
+
+| Outcome | Definition | Timepoint preference (Strategy C) |
+|---|---|---|
+| Overall survival (OS) | All-cause mortality | 2yr > 1yr > EoF |
+| Non-relapse mortality (NRM) | Death without prior relapse | 2yr > 1yr > EoF |
+| aGVHD grade II–IV | Acute GVHD by consensus criteria | D+100 > D+180 > EoF |
+| CMV any-reactivation | Any CMV reactivation by PCR/antigenemia | D+100 > D+180 > EoF > 1yr |
+| BSI (any pathogen) | Positive blood culture | D+100 > D+180 > EoF |
+| IFI (any) | Proven/probable invasive fungal infection | D+100 > D+180 > EoF > 1yr |
+
+## Statistical Framework
+
+### Bayesian Random-Effects Models
+
+All models were fit using `brms` (v2.23.0) with the `rstan` backend. The general form:
+
+$$
+\text{events}_i \mid \text{trials}_i \sim \text{Binomial}(\pi_i)
+$$
+$$
+\text{logit}(\pi_i) = \beta_0 + \beta_1 \cdot \text{PTCy}_i + \beta_2 \cdot \text{tp\_early}_i + u_{j[i]}
+$$
+$$
+u_j \sim \text{Normal}(0, \tau)
+$$
+
+### Prior Specification
+
+| Parameter | Prior | Rationale |
+|---|---|---|
+| $$\beta_{\text{PTCy}}$$ | Normal(0, 0.82) | Weakly informative; 95% prior mass covers OR 0.20–5.0 |
+| $$\beta_{\text{tp\_early}}$$ | Normal(0, 0.50) | Timepoint adjustment; modest range |
+| Intercept | Normal(0, 1.50) | Baseline event rate |
+| $$\tau$$ | Half-Normal(0, 0.50) | Heterogeneity; calibrated to plausible variation in transplant outcomes |
+
+### Model Hierarchy
+
+- **M1 (Direct effect):** PTCy + timepoint adjustment + random study intercept
+- **M2 (Steroid-adjusted):** M1 + arm-level systemic steroid exposure (% receiving steroids for GVHD). Missing steroid data handled via `mi()` (Bayesian multiple imputation within brms) where needed.
+- **M3 (aGVHD-adjusted, CMV only):** M1 + arm-level aGVHD grade II–IV cumulative incidence
+
+### MCMC Configuration
+
+- 4 chains × 4,000 iterations (1,000 warmup + 3,000 sampling) = 12,000 posterior draws
+- Convergence assessed via R̂ (all ≤ 1.005) and effective sample sizes (bulk ESS, tail ESS)
+- No divergent transitions in any fitted model
+
+### Frequentist Comparison
+
+All Bayesian models were cross-checked with frequentist random-effects models (REML) via `metafor` (v5.0-1) using log-OR as the effect size. BSI in Comparison 2 (k = 3) was pooled using Mantel-Haenszel fixed-effect estimation.
+
+## Arm Classification
+
+### Comparison 1
+Arms were classified as PTCy if `ptcy_used == "Y"` and as control if the primary prophylaxis was CNI+MTX or CNI+MMF without PTCy.
+
+### Comparison 2
+- **Primary analysis:** Clean binary — PTCy-only (`ptcy_used == "Y"`, `atg_used == "N"`) vs ATG-only (`ptcy_used == "N"`, `atg_used == "Y"`)
+- **Sensitivity analysis:** PTCy+ATG combination arms reclassified as PTCy-side; mixed-ATG arms classified by PTCy co-administration; "neither" arms excluded
+
+## GRADE Assessment
+
+Certainty of evidence was assessed per the GRADE Handbook (Schünemann et al.) adapted for Bayesian meta-analyses of observational studies. Starting certainty: LOW. Cross-comparison coherence was considered as a potential upgrade criterion where applicable.

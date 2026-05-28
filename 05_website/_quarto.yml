@@ -1,0 +1,59 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "PTCy Meta-Analysis"
+  repo-url: https://github.com/placeholder/ptcy-meta-analysis
+  navbar:
+    background: "#1a2a3a"
+    foreground: "#ffffff"
+    left:
+      - href: index.qmd
+        text: Overview
+      - href: methods.qmd
+        text: Methods
+      - text: Results
+        menu:
+          - href: results-c1.qmd
+            text: "Comparison 1: PTCy vs CNI+MTX"
+          - href: results-c2.qmd
+            text: "Comparison 2: PTCy vs ATG"
+      - href: sensitivity.qmd
+        text: Sensitivity
+      - href: diagnostics.qmd
+        text: Diagnostics
+      - href: grade.qmd
+        text: GRADE
+      - href: rob.qmd
+        text: Risk of Bias
+      - href: discussion.qmd
+        text: Discussion
+  page-footer:
+    center: "PTCy Meta-Analysis Collaboration · 2026"
+    background: "#1a2a3a"
+
+format:
+  html:
+    theme:
+      light:
+        - cosmo
+        - styles.css
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: true
+    code-summary: "Show code"
+    fig-width: 9
+    fig-height: 6
+    fig-dpi: 300
+    fig-format: svg
+    df-print: kable
+    smooth-scroll: true
+    link-external-newwindow: true
+
+execute:
+  echo: true
+  warning: false
+  message: false
+  freeze: auto

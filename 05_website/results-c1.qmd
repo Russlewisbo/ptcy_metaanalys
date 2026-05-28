@@ -1,0 +1,266 @@
+---
+title: "Comparison 1: PTCy vs CNI+MTX/MMF"
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("_common.R")
+
+# Load C1 posteriors
+post_os      <- load_post("post_os.rds")
+post_m2_os   <- load_post("post_m2_os.rds")
+post_nrm     <- load_post("post_nrm.rds")
+post_m2_nrm  <- load_post("post_m2_nrm.rds")
+post_agvhd   <- load_post("post_agvhd.rds")
+post_m1      <- load_post("post_m1.rds")
+post_m2      <- load_post("post_m2.rds")
+post_m3      <- load_post("post_m3_agvhd.rds")
+post_bsi     <- load_post("post_bsi.rds")
+post_ifi     <- load_post("post_ifi.rds")
+
+# Load analytic datasets
+c1_os    <- readRDS(file.path(model_dir, "os_brms_clean.rds"))
+c1_nrm   <- readRDS(file.path(model_dir, "nrm_brms_clean.rds"))
+c1_agvhd <- readRDS(file.path(model_dir, "agvhd_brms_clean.rds"))
+c1_cmv   <- readRDS(file.path(model_dir, "cmv_brms_clean.rds"))
+c1_bsi   <- readRDS(file.path(model_dir, "bsi_brms_clean.rds"))
+c1_ifi   <- readRDS(file.path(model_dir, "ifi_brms_clean.rds"))
+
+# Load frequentist models
+res_os_freq    <- readRDS(file.path(model_dir, "res_os_freq.rds"))
+res_nrm_freq   <- readRDS(file.path(model_dir, "res_nrm_freq.rds"))
+res_agvhd_freq <- readRDS(file.path(model_dir, "res_agvhd_freq.rds"))
+```
+
+Comparison 1 evaluates PTCy against calcineurin inhibitor–based prophylaxis (CNI+MTX or CNI+MMF) — the most common alternative platform. This comparison draws on the largest evidence base in the meta-analysis.
+
+## Overall Survival {#sec-c1-os}
+
+```{r}
+#| label: fig-c1-os-posterior
+#| fig-cap: "Posterior density for the PTCy log-OR on overall survival (Comparison 1). M1 (direct effect, navy) and M2 (steroid-adjusted, grey). The vertical dashed line marks the null (log-OR = 0). Shaded regions show 95% credible intervals."
+#| fig-height: 4.5
+
+tibble(
+  M1 = post_os$b_ptcy_binary,
+  M2 = post_m2_os$b_eventsn_ptcy_binary
+) |>
+  pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
+  ggplot(aes(x = log_or, fill = Model, colour = Model)) +
+  geom_density(alpha = 0.35, linewidth = 0.6) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  scale_fill_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+       title = "Overall Survival — Posterior Distributions",
+       subtitle = "k = 35 studies, N = 17,661") +
+  theme_jama()
+```
+
+**M1 (Direct effect):** OR 0.77 (95% CrI 0.71–0.83), P(OR < 1) = 100%, τ = 0.59. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.
+
+**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.77 to 0.83 (95% CrI 0.75–0.92), a 29% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.
+
+## Non-Relapse Mortality {#sec-c1-nrm}
+
+```{r}
+#| label: fig-c1-nrm-posterior
+#| fig-cap: "Posterior density for the PTCy log-OR on non-relapse mortality. M2 adjustment abolishes the M1 benefit entirely — the hallmark of complete steroid mediation."
+#| fig-height: 4.5
+
+tibble(
+  M1 = post_nrm$b_ptcy_binary,
+  M2 = post_m2_nrm$b_eventsn_ptcy_binary
+) |>
+  pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
+  ggplot(aes(x = log_or, fill = Model, colour = Model)) +
+  geom_density(alpha = 0.35, linewidth = 0.6) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  scale_fill_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+       title = "Non-Relapse Mortality — Posterior Distributions",
+       subtitle = "k = 15 studies, N = 2,081") +
+  theme_jama()
+```
+
+**M1:** OR 0.86 (95% CrI 0.70–1.08), P(OR < 1) = 90%. Probable but uncertain benefit.
+
+**M2:** OR 1.02 (95% CrI 0.79–1.33), P(OR < 1) = 43%. **Complete mediation**: the NRM benefit vanishes after steroid adjustment, indicating it is entirely downstream of GVHD suppression.
+
+::: {.callout-important}
+## Complete NRM Mediation
+The M1→M2 shift (OR 0.86 → 1.02) is the single most interpretable mediation finding in the analysis. Once the steroid burden differential between arms is accounted for, there is no residual PTCy effect on non-relapse mortality.
+:::
+
+## Mediation Comparison: OS vs NRM {#sec-c1-mediation}
+
+```{r}
+#| label: fig-c1-mediation
+#| fig-cap: "Comparison of M1→M2 attenuation for OS and NRM. For OS, 71% of the log-OR survives steroid adjustment (partial mediation). For NRM, 0% survives (complete mediation). This contrast defines the causal pathway."
+#| fig-height: 4
+
+med_data <- tibble(
+  Outcome = rep(c("OS", "NRM"), each = 2),
+  Model = rep(c("M1", "M2"), 2),
+  or = c(
+    median(exp(post_os$b_ptcy_binary)),
+    median(exp(post_m2_os$b_eventsn_ptcy_binary)),
+    median(exp(post_nrm$b_ptcy_binary)),
+    median(exp(post_m2_nrm$b_eventsn_ptcy_binary))
+  ),
+  lo = c(
+    quantile(exp(post_os$b_ptcy_binary), 0.025),
+    quantile(exp(post_m2_os$b_eventsn_ptcy_binary), 0.025),
+    quantile(exp(post_nrm$b_ptcy_binary), 0.025),
+    quantile(exp(post_m2_nrm$b_eventsn_ptcy_binary), 0.025)
+  ),
+  hi = c(
+    quantile(exp(post_os$b_ptcy_binary), 0.975),
+    quantile(exp(post_m2_os$b_eventsn_ptcy_binary), 0.975),
+    quantile(exp(post_nrm$b_ptcy_binary), 0.975),
+    quantile(exp(post_m2_nrm$b_eventsn_ptcy_binary), 0.975)
+  )
+) |>
+  mutate(label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi))
+
+ggplot(med_data, aes(x = or, y = interaction(Model, Outcome),
+                      colour = Model, shape = Model)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.6, linewidth = 0.6) +
+  geom_text(aes(x = hi, label = label), hjust = -0.1, size = 3,
+            show.legend = FALSE) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  scale_shape_manual(values = c("M1" = 16, "M2" = 21)) +
+  scale_y_discrete(labels = c("M1.NRM" = "NRM — M1", "M2.NRM" = "NRM — M2",
+                               "M1.OS" = "OS — M1", "M2.OS" = "OS — M2")) +
+  coord_cartesian(xlim = c(0.5, 1.6)) +
+  labs(x = "Odds Ratio", y = NULL,
+       title = "Steroid Mediation: OS vs NRM",
+       subtitle = "M2 = adjusted for arm-level systemic steroid exposure",
+       colour = NULL, shape = NULL) +
+  theme_jama()
+```
+
+## Acute GVHD Grade II–IV {#sec-c1-agvhd}
+
+```{r}
+#| label: fig-c1-agvhd
+#| fig-cap: "Posterior density for the PTCy effect on aGVHD grade II–IV. This is the largest treatment effect and the mechanistic linchpin of the causal framework."
+#| fig-height: 4
+
+tibble(log_or = post_agvhd$b_ptcy_binary) |>
+  ggplot(aes(x = log_or)) +
+  geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+       title = "aGVHD Grade II\u2013IV — Posterior Distribution",
+       subtitle = "k = 24 studies, N = 3,837 · OR 0.63 [0.54\u20130.74]") +
+  theme_jama()
+```
+
+**M1:** OR 0.63 (95% CrI 0.54–0.74), P(OR < 1) = 100%, τ = 0.66. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.
+
+## CMV Any-Reactivation {#sec-c1-cmv}
+
+```{r}
+#| label: fig-c1-cmv-posterior
+#| fig-cap: "Posterior densities for PTCy effect on CMV reactivation. M1 (direct), M2 (steroid-adjusted), and M3 (aGVHD-adjusted). None of the adjustments attenuate the signal — confirming steroid-independent, GVHD-independent harm."
+#| fig-height: 4.5
+
+tibble(
+  M1 = post_m1$b_ptcy_binary,
+  `M2 (steroid)` = post_m2$b_eventsn_ptcy_binary,
+  `M3 (aGVHD)` = post_m3$b_eventsn_ptcy_binary
+) |>
+  pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
+  mutate(Model = factor(Model, levels = c("M1", "M2 (steroid)", "M3 (aGVHD)"))) |>
+  ggplot(aes(x = log_or, fill = Model, colour = Model)) +
+  geom_density(alpha = 0.3, linewidth = 0.6) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  scale_fill_manual(values = c("M1" = jama_navy, "M2 (steroid)" = jama_steel,
+                                "M3 (aGVHD)" = jama_light_blue)) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2 (steroid)" = jama_steel,
+                                  "M3 (aGVHD)" = jama_light_blue)) +
+  labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+       title = "CMV Reactivation — Posterior Distributions",
+       subtitle = "k = 18, N = 3,357 · No attenuation with steroid or aGVHD adjustment") +
+  theme_jama()
+```
+
+**M1:** OR 1.41 (95% CrI 1.20–1.65), P(OR > 1) = 100%.
+
+**M2 (steroid-adjusted):** OR 1.43 (no attenuation). **M3 (aGVHD-adjusted):** OR 1.52 (slight amplification). Both confirm the CMV excess operates through a steroid-independent, GVHD-independent pathway — consistent with direct impairment of CMV-specific T-cell reconstitution.
+
+## BSI and IFI {#sec-c1-infections}
+
+```{r}
+#| label: fig-c1-bsi-ifi
+#| fig-cap: "Posterior densities for BSI (any pathogen) and IFI (any). BSI shows a large, consistent excess; IFI shows a probable protective signal with extreme heterogeneity."
+#| fig-height: 4.5
+
+tibble(
+  BSI = post_bsi$b_ptcy_binary,
+  IFI = post_ifi$b_ptcy_binary
+) |>
+  pivot_longer(everything(), names_to = "Outcome", values_to = "log_or") |>
+  ggplot(aes(x = log_or, fill = Outcome, colour = Outcome)) +
+  geom_density(alpha = 0.35, linewidth = 0.6) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  scale_fill_manual(values = c("BSI" = jama_navy, "IFI" = jama_light_blue)) +
+  scale_colour_manual(values = c("BSI" = jama_navy, "IFI" = jama_light_blue)) +
+  labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+       title = "Infection Outcomes — Posterior Distributions",
+       subtitle = "BSI: OR 2.39 [1.85\u20133.10], k = 6  |  IFI: OR 0.73 [0.53\u20131.00], k = 8") +
+  theme_jama()
+```
+
+**BSI (k = 6):** OR 2.39 (95% CrI 1.85–3.10), P(OR > 2) = 91%. The largest infection effect. Seven additional eligible studies had unreported event counts, raising selection concerns.
+
+**IFI (k = 8):** OR 0.73 (95% CrI 0.53–1.00), P(OR < 1) = 97.5%. Probable protection, but driven by heterogeneous antifungal prophylaxis practices rather than a direct PTCy immunological effect. τ = 1.05 is dominated by a single zero-event study (Yanada 2026).
+
+## Summary Forest Plot {#sec-c1-forest}
+
+```{r}
+#| label: fig-c1-forest
+#| fig-cap: "Summary forest plot for all Comparison 1 outcomes. Filled circles = M1 (direct); open circles = M2 (steroid-adjusted). The null line (OR = 1) is shown as a dashed vertical line."
+#| fig-height: 6
+
+c1_pd <- do.call(rbind, list(
+  or_summary(post_os,    "b_ptcy_binary", "OS", "C1", "M1"),
+  or_summary(post_m2_os, "b_eventsn_ptcy_binary", "OS", "C1", "M2"),
+  or_summary(post_nrm,    "b_ptcy_binary", "NRM", "C1", "M1"),
+  or_summary(post_m2_nrm, "b_eventsn_ptcy_binary", "NRM", "C1", "M2"),
+  or_summary(post_agvhd, "b_ptcy_binary", "aGVHD II\u2013IV", "C1", "M1"),
+  or_summary(post_m1,    "b_ptcy_binary", "CMV", "C1", "M1"),
+  or_summary(post_m2,    "b_eventsn_ptcy_binary", "CMV", "C1", "M2"),
+  or_summary(post_bsi,   "b_ptcy_binary", "BSI", "C1", "M1"),
+  or_summary(post_ifi,   "b_ptcy_binary", "IFI", "C1", "M1")
+)) |>
+  as_tibble() |>
+  mutate(
+    outcome = factor(outcome, levels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))),
+    label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi),
+    y_num = as.numeric(outcome),
+    y_pos = y_num + ifelse(model == "M2", -0.15, 0.15)
+  )
+
+ggplot(c1_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = model)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.5, linewidth = 0.5) +
+  geom_text(aes(x = hi, label = label), hjust = -0.08, size = 2.7,
+            colour = jama_black, show.legend = FALSE) +
+  scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2, 3)) +
+  scale_y_continuous(breaks = 1:6,
+                     labels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))) +
+  scale_shape_manual(values = c("M1" = 16, "M2" = 21)) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  scale_fill_manual(values = c("M1" = jama_navy, "M2" = "white")) +
+  coord_cartesian(xlim = c(0.25, 5.5)) +
+  labs(x = "Odds Ratio (log scale)", y = NULL,
+       title = "Comparison 1: PTCy vs CNI+MTX/MMF",
+       subtitle = "Bayesian M1/M2 posterior summaries",
+       shape = NULL, colour = NULL, fill = NULL) +
+  theme_jama()
+```

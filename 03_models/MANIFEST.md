@@ -1,7 +1,7 @@
 # PTCy meta-analysis — 03_models/ manifest
 
-**Last updated:** 2026-05-27  
-**Project:** PTCy vs CNI+MTX/MMF (Comparison 1) — Bayesian meta-analysis  
+**Last updated:** 2026-05-27 (expanded with Comparison 2)  
+**Project:** PTCy meta-analysis — Bayesian random-effects models  
 **Session:** R 4.5.1 · brms 2.23.0 · rstan backend · 4 chains × 3,000 post-warmup draws  
 **Working directory:** `ptcy_metaanalys/`
 
@@ -25,13 +25,45 @@
 | **IFI any** | M1 | 8 | 3,816 | 0.73 | [0.53, 1.00] | P(<1) = 97.5% | 1.05 |
 | | M1 excl. Yanada | 7 | 3,575 | 0.75 | [0.54, 1.02] | P(<1) = 96.5% | 0.38 |
 
-**Key mediation finding:** NRM benefit is completely steroid-mediated (M1 OR 0.86 → M2 OR 1.02); OS benefit is only partially mediated (M1 OR 0.77 → M2 OR 0.83, 29% attenuation); CMV harm is steroid-independent (M1 1.41 → M2 1.43, no attenuation).
+**Key mediation finding (C1):** NRM benefit is completely steroid-mediated (M1 OR 0.86 → M2 OR 1.02); OS benefit is only partially mediated (M1 OR 0.77 → M2 OR 0.83, 29% attenuation); CMV harm is steroid-independent (M1 1.41 → M2 1.43, no attenuation).
+
+### Comparison 2: PTCy vs ATG (k = 40 paired studies)
+
+| Outcome | Model | k | N | OR (median) | 95% CrI | P(directional) | τ |
+|---|---|---|---|---|---|---|---|
+| **Overall survival** | M1 | 10 | 10,624 | 0.69 | [0.61, 0.78] | P(<1) = 100% | 0.56 |
+| | M2 (+steroid) | 10 | 10,624 | 0.78 | [0.68, 0.90] | P(<1) = 99.9% | 0.70 |
+| **Non-relapse mortality** | M1 | 5 | 1,186 | 0.65 | [0.43, 0.97] | P(<1) = 98.2% | 0.38 |
+| | M2 (+steroid, MI) | 5 | 1,186 | 0.76 | [0.48, 1.16] | P(<1) = 90% | 0.21 |
+| **aGVHD grade II–IV** | M1 | 6 | 784 | 0.59 | [0.42, 0.84] | P(<1) = 99.8% | 0.27 |
+| **CMV any-reactivation** | M1 | 12 | 1,267 | 0.77 | [0.60, 0.99] | P(<1) = 98% | 0.53 |
+| | M2 (+steroid) | 12 | 1,267 | 0.82 | [0.64, 1.05] | P(<1) = 93.7% | 0.58 |
+
+**Key mediation finding (C2):** OS benefit partially attenuates (0.69→0.78, ~30%); NRM attenuates and CrI crosses null (0.65→0.76); pattern parallels C1.
+
+**Key cross-comparison finding:** CMV direction reverses — harmful vs CNI+MTX (C1 OR 1.41) but protective vs ATG (C2 OR 0.77). ATG causes deeper T-cell depletion than PTCy, making the comparator's immunosuppressive depth the key determinant.
+
+**Sparse outcomes not modeled (C2):** BSI (k=3) and IFI (k=4) had too few paired studies for random-effects modeling.
+
+### Comparison 2: Sensitivity — expanded arm inclusion
+
+Reclassifies PTCy+ATG combo arms (n=7) as PTCy-side, mixed-ATG arms (n=2) by `ptcy_used`, excludes "neither" arms (n=3). Adds 6 previously unpaired studies.
+
+| Outcome | Primary OR [CrI] | Sensitivity OR [CrI] | k (prim → sens) | Interpretation |
+|---|---|---|---|---|
+| OS | 0.69 [0.61, 0.78] | 0.74 [0.66, 0.83] | 10 → 11 | Robust |
+| aGVHD II–IV | 0.59 [0.42, 0.84] | 0.59 [0.45, 0.78] | 6 → 8 | Robust (CrI narrows) |
+| CMV | 0.77 [0.60, 0.99] | 0.91 [0.75, 1.12] | 12 → 14 | Attenuates; PTCy+ATG combo dilutes signal |
+
+NRM unchanged (no new studies contributed data).
 
 ---
 
 ## Brms Model Objects
 
-### Survival outcomes
+### Comparison 1 (C1): PTCy vs CNI+MTX/MMF
+
+#### Survival outcomes
 
 | File | Size | Outcome | Model | k | N | Formula |
 |---|---|---|---|---|---|---|
@@ -40,13 +72,13 @@
 | `m1_nrm.rds` | 4.1 MB | NRM | M1 direct | 15 | 2,081 | same formula as M1_os |
 | `m2_nrm.rds` | 5.4 MB | NRM | M2 steroid | 15 | 2,081 | adds `mi(steroid_pct_c)`; 3 studies imputed |
 
-### GVHD outcome
+##### GVHD outcome
 
 | File | Size | Outcome | Model | k | N | Notes |
 |---|---|---|---|---|---|---|
 | `m1_agvhd.rds` | 5.1 MB | aGVHD grade II–IV | M1 direct | 24 | 3,837 | D+100 dominant (k=23); 1 D+180 |
 
-### CMV outcome (primary + sensitivity models)
+##### CMV outcome (primary + sensitivity models)
 
 | File | Size | Model | k | N | Notes |
 |---|---|---|---|---|---|
@@ -56,7 +88,7 @@
 | `m1_post2020.rds` | 3.8 MB | M1_sens post-2020 | 13 | 2,685 | pub_year ≥ 2020 |
 | `m1_haplo.rds` | 3.6 MB | M1_haplo haplo-only | 11 | 2,227 | donor_haplo_pct ≥ 50% in PTCy arm |
 
-### Infection outcomes (BSI, IFI)
+##### Infection outcomes (BSI, IFI)
 
 | File | Size | Outcome | Model | k | N | Timepoint strategy |
 |---|---|---|---|---|---|---|
@@ -67,9 +99,64 @@
 
 **Note on IFI:** Yanada 2026 has 0 IFI events in 241 PTCy patients (zero-event arm; ultra-modern prophylaxis era). This single study accounts for essentially all of the IFI τ = 1.05; excluding it collapses τ to 0.38 while barely moving the OR (0.73→0.75). See `loo_ifi.rds`.
 
+### Comparison 2 (C2): PTCy vs ATG
+
+**Arm classification:** 101 arms eligible → 82 clean PTCy-only (ptcy=Y, atg=N) vs ATG-only (ptcy=N, atg=Y) arms in 40 paired studies. Excluded: 7 PTCy+ATG combo, 2 mixed, 3 neither (no PTCy/no ATG), 7 unpaired single-side studies.
+
+**Shared formula:** Same as C1 M1: `events_n | trials(denom_n) ~ ptcy_binary + tp_early + (1|study_id)`. aGVHD drops `tp_early` (all D+100).
+
+#### Primary models
+
+| File | Size | Outcome | Model | k | N | Notes |
+|---|---|---|---|---|---|---|
+| `c2_m1_os.rds` | 3.7 MB | OS | M1 direct | 10 | 10,624 | 2yr (k=7), 1yr (k=2), EoF (k=1) |
+| `c2_m2_os.rds` | 3.8 MB | OS | M2 steroid | 10 | 10,624 | `steroid_pct_c` directly observed (no MI needed) |
+| `c2_m1_nrm.rds` | 3.1 MB | NRM | M1 direct | 5 | 1,186 | 2yr (k=3), D+100 (k=1), EoF (k=1) |
+| `c2_m2_nrm.rds` | 3.9 MB | NRM | M2 steroid (MI) | 5 | 1,186 | `mi(steroid_pct_c)`; 1 study (353) imputed |
+| `c2_m1_agvhd.rds` | 3.1 MB | aGVHD II–IV | M1 direct | 6 | 784 | All D+100; no `tp_early` term |
+| `c2_m1_cmv.rds` | 4.0 MB | CMV | M1 direct | 12 | 1,267 | Strategy C: D+100 (k=3), 1yr (k=3), EoF (k=6) |
+| `c2_m2_cmv.rds` | 4.1 MB | CMV | M2 steroid | 12 | 1,267 | `steroid_pct_c` directly observed (no MI needed) |
+
+#### Sensitivity models — expanded arm inclusion
+
+Reclassifies PTCy+ATG arms as PTCy-side, mixed-ATG by `ptcy_used`. Adds 6 studies.
+
+| File | Size | Outcome | k | N | Notes |
+|---|---|---|---|---|---|
+| `c2_sens_m1_os.rds` | 3.9 MB | OS | 11 | 10,973 | +1 study vs primary |
+| `c2_sens_m1_agvhd.rds` | 3.4 MB | aGVHD II–IV | 8 | 1,117 | +2 studies vs primary |
+| `c2_sens_m1_cmv.rds` | 4.3 MB | CMV | 14 | 2,020 | +2 studies vs primary; OR attenuates 0.77→0.91 |
+
+NRM unchanged (no new studies contributed NRM data).
+
+#### BSI descriptive supplement (Mantel-Haenszel, k=3)
+
+| File | Size | Description |
+|---|---|---|
+| `c2_mh_bsi.rds` | <1 KB | `rma.mh` object; MH fixed-effect OR = 2.03 [1.33, 3.09], p = 0.001 |
+| `Fig_c2_bsi_mh_forest.pdf` | — | Forest plot (3 studies) |
+
+**I² = 69% (Q-p = 0.04) — sources of heterogeneity:**
+
+1. **Outcome definition mismatch (primary driver).** Meyer 2025 and Berro 2021 define BSI as any positive blood culture (standard microbiological definition). Bordat 2026 defines "severe bacterial infections" as fatal sepsis or those requiring ICU admission — a far more restrictive endpoint capturing only the most severe events. The two any-culture studies show PTCy excess (OR 3.27, 1.35); the ICU/fatal-only study does not (OR 0.91).
+
+2. **Timepoint mismatch.** Meyer and Berro report BSI at D+100; Bordat at D+365 (1 year). The longer window dilutes the early post-transplant period where PTCy-related immunosuppression is most relevant to BSI risk.
+
+3. **Donor-type confound in the dominant study.** Meyer 2025 contributes ~60% of the pooled weight. Its PTCy arm is 54% haploidentical while the ATG arm is 100% MUD — a donor-type imbalance that may inflate the apparent PTCy BSI excess independently of GVHD prophylaxis. In contrast, Berro 2021 (matched MRD pairs, MAC) shows a smaller effect (OR 1.35) and Bordat 2026 (all MRD, RIC) shows none (OR 0.91).
+
+| Study | Definition | Timepoint | Donor (PTCy / ATG) | Conditioning | PTCy rate | ATG rate | OR |
+|---|---|---|---|---|---|---|---|
+| Meyer 2025 | Any positive blood culture | D+100 | 54% haplo / 100% MUD | RIC | 44.1% | 19.5% | 3.27 |
+| Berro 2021 | Bacteremia (any culture) | D+100 | MRD / MRD | MAC | 42.9% | 35.7% | 1.35 |
+| Bordat 2026 | Severe BSI (ICU/fatal only) | D+365 | MRD / MRD | RIC | 19.5% | 21.1% | 0.91 |
+
+**Interpretation:** The MH pooled OR should be cited with strong caveats. These three studies are not measuring the same construct. The C2 BSI signal is driven primarily by Meyer 2025, which has the broadest BSI definition and the largest donor-type imbalance.
+
 ---
 
 ## Posterior Draws
+
+### Comparison 1
 
 All draws_df objects: 12,000 rows × model-specific columns (4 chains × 3,000 post-warmup).
 
@@ -88,7 +175,7 @@ All draws_df objects: 12,000 rows × model-specific columns (4 chains × 3,000 p
 | `post_bsi.rds` | 1.1 MB | BSI M1 | `b_ptcy_binary` | `sd_study_id__Intercept` |
 | `post_ifi.rds` | 1.3 MB | IFI M1 | `b_ptcy_binary` | `sd_study_id__Intercept` |
 
-### Additional draws column names for M2/M3 steroid/aGVHD covariates
+### Additional draws column names for M2/M3 steroid/aGVHD covariates (C1)
 
 | Model | Covariate β column |
 |---|---|
@@ -97,9 +184,28 @@ All draws_df objects: 12,000 rows × model-specific columns (4 chains × 3,000 p
 | OS M2 | `bsp_eventsn_misteroid_pct_c` |
 | CMV M3 | `bsp_eventsn_miagvhd_ci_pct_c` |
 
+### Comparison 2
+
+| File | Size | Outcome/model | Key PTCy column | Key τ column |
+|---|---|---|---|---|
+| `post_c2_os.rds` | 1.5 MB | OS M1 | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_m2_os.rds` | 1.6 MB | OS M2 | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_nrm.rds` | 1.1 MB | NRM M1 | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_m2_nrm.rds` | 1.6 MB | NRM M2 | `b_eventsn_ptcy_binary` | `sd_study_id__eventsn_Intercept` |
+| `post_c2_agvhd.rds` | 1.1 MB | aGVHD M1 | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_cmv.rds` | 1.7 MB | CMV M1 | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_m2_cmv.rds` | 1.8 MB | CMV M2 | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_sens_os.rds` | 1.6 MB | OS sens | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_sens_agvhd.rds` | 1.3 MB | aGVHD sens | `b_ptcy_binary` | `sd_study_id__Intercept` |
+| `post_c2_sens_cmv.rds` | 1.9 MB | CMV sens | `b_ptcy_binary` | `sd_study_id__Intercept` |
+
+**Note:** C2 M2 models for OS and CMV use `steroid_pct_c` as a direct covariate (100% observed), so the PTCy column is `b_ptcy_binary` (not `b_eventsn_ptcy_binary`). Only NRM M2 uses `mi()` imputation (1 study missing), giving the multivariate `b_eventsn_ptcy_binary` column name.
+
 ---
 
 ## Analytic Datasets
+
+### Comparison 1
 
 One row per arm (pooled across multi-arm studies within the same study_id × ptcy_binary combination).
 
@@ -116,6 +222,18 @@ One row per arm (pooled across multi-arm studies within the same study_id × ptc
 | `bsi_brms_clean.rds` | 12 | BSI (pooled) | 6 | 1,319 | 3 control arms in Mikulska 2018 pooled to 1 |
 | `ifi_brms_clean.rds` | 16 | IFI (pooled) | 8 | 3,816 | 2 arms in Haebe 2023 pooled |
 | `strat_C.rds` | 18 | CMV Strategy C | 18 | 3,357 | Wide format (PTCy + ctrl per row) — metafor input |
+
+### Comparison 2
+
+| File | Rows | Outcome | k | N | Notes |
+|---|---|---|---|---|---|
+| `c2_os_brms_clean.rds` | 20 | Overall survival | 10 | 10,624 | 2yr (k=7), 1yr (k=2), EoF (k=1) |
+| `c2_nrm_brms_clean.rds` | 10 | NRM | 5 | 1,186 | 2yr (k=3), D+100 (k=1), EoF (k=1) |
+| `c2_agvhd_brms_clean.rds` | 12 | aGVHD II–IV | 6 | 784 | All D+100 |
+| `c2_cmv_brms_clean.rds` | 24 | CMV | 12 | 1,267 | Strategy C: D+100 (k=3), 1yr (k=3), EoF (k=6) |
+| `c2_sens_os_brms_clean.rds` | 22 | OS (sensitivity) | 11 | 10,973 | +1 study |
+| `c2_sens_agvhd_brms_clean.rds` | 16 | aGVHD (sensitivity) | 8 | 1,117 | +2 studies |
+| `c2_sens_cmv_brms_clean.rds` | 28 | CMV (sensitivity) | 14 | 2,020 | +2 studies |
 
 ### Key columns (all datasets)
 
@@ -176,7 +294,7 @@ Yanada 2026 (0/241 IFI in PTCy arm) is entirely responsible for τ inflation; OR
 | `Table2_results.html` | 28 KB | Full styled gt table, all 9 model rows (M1 + M2 for survival/CMV, sensitivity rows). Open in browser. |
 | `Table2_results.csv` | 2.5 KB | Machine-readable version with all raw posterior estimates |
 
-Table 2 rows (in order):
+C1 Table 2 rows (in order):
 1. OS M1
 2. OS M2 (GVHD-adjusted)
 3. NRM M1
@@ -187,14 +305,27 @@ Table 2 rows (in order):
 8. CMV sensitivity: post-2020
 9. CMV sensitivity: haplo-only
 
-### Summary Figure
+### Comparison 2 Results Tables
 
 | File | Size | Description |
 |---|---|---|
-| `Fig_summary_all_outcomes.pdf` | 38 KB | Six-outcome dot-and-interval summary forest plot (M1 primary + M2 open circles for OS/NRM). Publication-ready at 10×7 inches. |
-| `Fig_summary_all_outcomes.png` | 190 KB | Same figure, 300 dpi PNG |
+| `c2_Table2_results.csv` | <1 KB | M1 + M2 results for all 4 C2 outcomes (7 rows) |
+| `c2_sensitivity_comparison.csv` | <1 KB | Primary vs expanded-arm sensitivity comparison (6 rows: 3 outcomes × 2 analyses) |
 
-Figure layout: outcomes on y-axis (BSI, CMV, IFI, aGVHD, NRM, OS top-to-bottom), log OR on x-axis; filled circles = M1; open circles = M2 (OS and NRM only); annotated with OR [95% CrI] and τ. Coloured left-margin bars indicate outcome group (survival, GVHD, infection).
+### Summary Figures
+
+| File | Size | Description |
+|---|---|---|
+| `Fig_summary_all_outcomes.pdf` | 38 KB | C1 six-outcome dot-and-interval summary forest plot (M1 primary + M2 open circles for OS/NRM). Publication-ready at 10×7 inches. |
+| `Fig_summary_all_outcomes.png` | 190 KB | Same figure, 300 dpi PNG |
+| `Fig_c2_summary.pdf` | — | C2 four-outcome summary forest plot (OS, NRM, aGVHD, CMV; M1 + M2). 10×7 inches. |
+| `Fig_c2_summary.png` | — | Same figure, 300 dpi PNG |
+| `Fig_c1_vs_c2_combined.pdf` | — | **Combined forest plot** — C1 and C2 side by side (faceted). All outcomes, M1 + M2. 10×7 inches. |
+| `Fig_c1_vs_c2_combined.png` | — | Same figure, 300 dpi PNG |
+
+C1 figure layout: outcomes on y-axis (BSI, CMV, IFI, aGVHD, NRM, OS top-to-bottom), log OR on x-axis; filled circles = M1; open circles = M2 (OS and NRM only); annotated with OR [95% CrI] and τ. Coloured left-margin bars indicate outcome group (survival, GVHD, infection).
+
+Combined figure layout: two facets (C1: PTCy vs CNI+MTX, C2: PTCy vs ATG); outcomes on y-axis; filled circles = M1, open = M2; annotated with OR [95% CrI]. Highlights the CMV direction reversal.
 
 ---
 
@@ -228,13 +359,23 @@ prior(exponential(1),  class = sigma,                        resp = agvhdcipctc)
 
 ---
 
-## MCMC Diagnostics (All Models)
+## MCMC Diagnostics
+
+### Comparison 1
 
 - All models: max R̂ ≤ 1.001, no R̂ > 1.01
 - All models: Bulk ESS > 2,800 for all population-level parameters
 - IFI M1: min Neff ratio 0.275 (acceptable; driven by imputed rows in LOO variants)
 - BSI M1: min Neff ratio 0.289 (acceptable at k=6)
 - CMV M3: min Neff ratio 0.24 (acceptable; higher adapt_delta = 0.95 used)
+
+### Comparison 2
+
+- All 10 models: max R̂ ≤ 1.005, no R̂ > 1.01
+- All models: Bulk ESS > 1,000; Tail ESS > 400
+- `c2_m1_nrm`: lowest Tail ESS = 405 (k=5; acceptable for small corpus)
+- `c2_m2_nrm`: MI model; lowest Tail ESS = 1,357
+- All other C2 models: min Bulk ESS > 2,200, min Tail ESS > 3,200
 
 ---
 
@@ -307,6 +448,7 @@ loo_tbl <- readRDS("03_models/loo_ifi.rds")
 ### Full model reload (for diagnostics or extending models)
 
 ```r
+# ── Comparison 1 ──
 m1_os   <- readRDS("03_models/m1_os.rds")
 m2_os   <- readRDS("03_models/m2_os.rds")
 m1_nrm  <- readRDS("03_models/m1_nrm.rds")
@@ -317,6 +459,42 @@ m2      <- readRDS("03_models/m2.rds")       # CMV M2
 m3      <- readRDS("03_models/m3_agvhd.rds") # CMV M3
 m1_bsi  <- readRDS("03_models/m1_bsi.rds")
 m1_ifi  <- readRDS("03_models/m1_ifi.rds")
+
+# ── Comparison 2 ──
+c2_m1_os     <- readRDS("03_models/c2_m1_os.rds")
+c2_m2_os     <- readRDS("03_models/c2_m2_os.rds")
+c2_m1_nrm    <- readRDS("03_models/c2_m1_nrm.rds")
+c2_m2_nrm    <- readRDS("03_models/c2_m2_nrm.rds")
+c2_m1_agvhd  <- readRDS("03_models/c2_m1_agvhd.rds")
+c2_m1_cmv    <- readRDS("03_models/c2_m1_cmv.rds")
+c2_m2_cmv    <- readRDS("03_models/c2_m2_cmv.rds")
+c2_s_m1_os   <- readRDS("03_models/c2_sens_m1_os.rds")
+c2_s_m1_agvhd<- readRDS("03_models/c2_sens_m1_agvhd.rds")
+c2_s_m1_cmv  <- readRDS("03_models/c2_sens_m1_cmv.rds")
+```
+
+---
+
+### Comparison 2 posteriors reload
+
+```r
+# ── Comparison 2 posteriors ──
+post_c2_os     <- readRDS("03_models/post_c2_os.rds")
+post_c2_m2_os  <- readRDS("03_models/post_c2_m2_os.rds")
+post_c2_nrm    <- readRDS("03_models/post_c2_nrm.rds")
+post_c2_m2_nrm <- readRDS("03_models/post_c2_m2_nrm.rds")
+post_c2_agvhd  <- readRDS("03_models/post_c2_agvhd.rds")
+post_c2_cmv    <- readRDS("03_models/post_c2_cmv.rds")
+post_c2_m2_cmv <- readRDS("03_models/post_c2_m2_cmv.rds")
+
+# Sensitivity
+post_c2_sens_os    <- readRDS("03_models/post_c2_sens_os.rds")
+post_c2_sens_agvhd <- readRDS("03_models/post_c2_sens_agvhd.rds")
+post_c2_sens_cmv   <- readRDS("03_models/post_c2_sens_cmv.rds")
+
+# C2 results tables
+c2_results   <- read.csv("03_models/c2_Table2_results.csv")
+c2_sens_comp <- read.csv("03_models/c2_sensitivity_comparison.csv")
 ```
 
 ---
@@ -326,11 +504,15 @@ m1_ifi  <- readRDS("03_models/m1_ifi.rds")
 The following analyses were planned but not yet completed as of 2026-05-27:
 
 - [ ] **§3.2 aGVHD Results text** — write to `04_writing/Results_aGVHD.md`
-- [ ] **Comparison 2 analyses** — PTCy vs ATG-based (101 arms eligible)
+- [x] **Comparison 2 analyses** — PTCy vs ATG: M1/M2 for OS, NRM, aGVHD, CMV (completed 2026-05-27)
+- [x] **Comparison 2 sensitivity** — expanded arm inclusion (PTCy+ATG, mixed) (completed 2026-05-27)
+- [ ] **§3.4 Comparison 2 Results text** — write to `04_writing/Results_C2.md`
 - [ ] **Publication bias assessment** — `RoBMA` or Egger's test for outcomes with k ≥ 10
+- [ ] **Frequentist sanity checks for C2** — metafor RE models paralleling C1 pipeline
 - [ ] **Co-reviewer ROB verification** — BMTD review of `rob` sheet pending
 - [ ] **GRADE: confidence intervals in absolute risk terms** — compute risk differences for Table 2
+- [ ] **GRADE assessment for C2 outcomes**
 
 ---
 
-*Total 03_models/ disk usage: ~75 MB (RDS + figures + tables)*
+*Total 03_models/ disk usage: ~151 MB (RDS + figures + tables)*

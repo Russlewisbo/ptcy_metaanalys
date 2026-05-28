@@ -1,0 +1,165 @@
+---
+title: "Sensitivity Analyses"
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("_common.R")
+
+# C1 sensitivity models
+post_m1_post2020 <- load_post("post_m1_post2020.rds")
+post_m1_haplo    <- load_post("post_m1_haplo.rds")
+
+# C1 CMV primary
+post_m1 <- load_post("post_m1.rds")
+
+# C2 primary and sensitivity
+post_c2_os     <- load_post("post_c2_os.rds")
+post_c2_agvhd  <- load_post("post_c2_agvhd.rds")
+post_c2_cmv    <- load_post("post_c2_cmv.rds")
+post_c2_sens_os     <- load_post("post_c2_sens_os.rds")
+post_c2_sens_agvhd  <- load_post("post_c2_sens_agvhd.rds")
+post_c2_sens_cmv    <- load_post("post_c2_sens_cmv.rds")
+
+# IFI LOO
+loo_tbl <- tryCatch(
+  readRDS(file.path(model_dir, "loo_tbl.rds")),
+  error = function(e) tryCatch(
+    readRDS(file.path(model_dir, "loo_ifi.rds")),
+    error = function(e2) NULL
+  )
+)
+```
+
+## Comparison 1: CMV Sensitivity Analyses {#sec-sens-c1-cmv}
+
+Two pre-specified sensitivity analyses were conducted for CMV to address era effects and donor-type heterogeneity.
+
+```{r}
+#| label: fig-sens-c1-cmv
+#| fig-cap: "CMV sensitivity analyses (C1). Both restrictions strengthen the effect, consistent with (a) post-2020 letermovir-era prophylaxis widening the gap, and (b) haploidentical donor settings amplifying PTCy's T-cell depletion effect."
+#| fig-height: 5
+
+sens_cmv <- do.call(rbind, list(
+  or_summary(post_m1, "b_ptcy_binary", "Full corpus", model = "Primary (k=18)"),
+  or_summary(post_m1_post2020, "b_ptcy_binary", "Post-2020", model = "Post-2020 (k=13)"),
+  or_summary(post_m1_haplo, "b_ptcy_binary", "Haplo-only", model = "Haplo \u226550% (k=11)")
+)) |>
+  as_tibble() |>
+  mutate(
+    model = factor(model, levels = rev(c("Primary (k=18)", "Post-2020 (k=13)", "Haplo \u226550% (k=11)"))),
+    label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi)
+  )
+
+ggplot(sens_cmv, aes(x = or, y = model)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), colour = jama_navy, fill = jama_navy,
+                  shape = 16, size = 0.6, linewidth = 0.6) +
+  geom_text(aes(x = hi, label = label), hjust = -0.1, size = 3.2, colour = jama_black) +
+  coord_cartesian(xlim = c(0.8, 3)) +
+  scale_x_log10(breaks = c(1, 1.5, 2, 2.5)) +
+  labs(x = "Odds Ratio (log scale)", y = NULL,
+       title = "CMV Sensitivity — Comparison 1",
+       subtitle = "Restricting to post-2020 or haplo-dominant studies strengthens the signal") +
+  theme_jama()
+```
+
+| Analysis | k | OR [95% CrI] | P(OR > 1.5) |
+|---|---|---|---|
+| Full corpus | 18 | 1.41 [1.20–1.65] | 22% |
+| Post-2020 only | 13 | 1.80 [1.49–2.18] | 97% |
+| Haplo ≥50% | 11 | 1.70 [1.39–2.10] | 89% |
+
+## Comparison 1: IFI Leave-One-Out {#sec-sens-c1-ifi}
+
+```{r}
+#| label: fig-sens-ifi-loo
+#| fig-cap: "Leave-one-out analysis for IFI (C1). Excluding Yanada 2026 (zero-event structural outlier) collapses τ from 1.05 to 0.38 while barely moving the OR. No other single study produces a comparable influence."
+#| fig-height: 5
+
+if (is.data.frame(loo_tbl)) {
+  loo_plot <- loo_tbl |>
+    mutate(fmt_label = sprintf("%.2f [%.2f, %.2f]", or_median, or_lo, or_hi),
+           study = fct_reorder(label, or_median))
+
+  ggplot(loo_plot, aes(x = or_median, y = study)) +
+    geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+    geom_pointrange(aes(xmin = or_lo, xmax = or_hi), colour = jama_navy,
+                    size = 0.5, linewidth = 0.5) +
+    geom_text(aes(x = or_hi + 0.05, label = sprintf("\u03c4=%.2f", tau_median)),
+              hjust = -0.1, size = 2.8, colour = jama_steel) +
+    labs(x = "OR (IFI, PTCy vs CNI+MTX/MMF)", y = "Excluded study",
+         title = "IFI Leave-One-Out — Comparison 1",
+         subtitle = "\u03c4 values annotated; Yanada 2026 drives nearly all heterogeneity") +
+    theme_jama()
+} else {
+  cat("LOO table not available.")
+}
+```
+
+## Comparison 2: Expanded Arm Inclusion {#sec-sens-c2-arms}
+
+The primary C2 analysis excluded 12 arms (PTCy+ATG combo, mixed, neither). The sensitivity reclassifies PTCy+ATG as PTCy-side and mixed-ATG arms by PTCy co-administration status, adding 6 previously unpaired studies.
+
+```{r}
+#| label: fig-sens-c2-arms
+#| fig-cap: "Sensitivity analysis — expanded arm inclusion (C2). OS and aGVHD are robust; CMV attenuates notably (OR 0.77 → 0.91) because PTCy+ATG combination arms (reclassified as PTCy-side) carry higher CMV reactivation risk."
+#| fig-height: 5
+
+sens_c2 <- do.call(rbind, list(
+  or_summary(post_c2_os, "b_ptcy_binary", "OS", model = "Primary (k=10)"),
+  or_summary(post_c2_sens_os, "b_ptcy_binary", "OS", model = "Sensitivity (k=11)"),
+  or_summary(post_c2_agvhd, "b_ptcy_binary", "aGVHD", model = "Primary (k=6)"),
+  or_summary(post_c2_sens_agvhd, "b_ptcy_binary", "aGVHD", model = "Sensitivity (k=8)"),
+  or_summary(post_c2_cmv, "b_ptcy_binary", "CMV", model = "Primary (k=12)"),
+  or_summary(post_c2_sens_cmv, "b_ptcy_binary", "CMV", model = "Sensitivity (k=14)")
+)) |>
+  as_tibble() |>
+  mutate(
+    outcome = factor(outcome, levels = c("OS", "aGVHD", "CMV")),
+    analysis = ifelse(grepl("Primary", model), "Primary", "Sensitivity"),
+    label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi)
+  )
+
+ggplot(sens_c2, aes(x = or, y = interaction(analysis, outcome),
+                     colour = analysis, shape = analysis)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.5, linewidth = 0.5) +
+  geom_text(aes(x = hi, label = label), hjust = -0.1, size = 2.8,
+            colour = jama_black, show.legend = FALSE) +
+  scale_colour_manual(values = c("Primary" = jama_navy, "Sensitivity" = jama_steel)) +
+  scale_shape_manual(values = c("Primary" = 16, "Sensitivity" = 17)) +
+  scale_y_discrete(labels = c(
+    "Primary.OS" = "OS — Primary", "Sensitivity.OS" = "OS — Sensitivity",
+    "Primary.aGVHD" = "aGVHD — Primary", "Sensitivity.aGVHD" = "aGVHD — Sensitivity",
+    "Primary.CMV" = "CMV — Primary", "Sensitivity.CMV" = "CMV — Sensitivity"
+  )) +
+  coord_cartesian(xlim = c(0.3, 1.5)) +
+  labs(x = "Odds Ratio", y = NULL,
+       title = "Comparison 2 — Expanded Arm Sensitivity",
+       colour = NULL, shape = NULL) +
+  theme_jama()
+```
+
+## Bayesian vs Frequentist Concordance {#sec-sens-freq}
+
+```{r}
+#| label: tbl-freq-concordance
+#| tbl-cap: "Bayesian vs frequentist estimates across both comparisons. Agreement is generally good; OS C2 diverges due to small-study outliers regularised by the Bayesian τ prior."
+
+tibble::tribble(
+  ~Outcome, ~Comparison, ~`Bayes OR`, ~`Freq OR`, ~I2, ~Concordance,
+  "OS",   "C1", "0.77 [0.71-0.83]", "0.75 [0.63-0.89]", "68%", "Good",
+  "OS",   "C2", "0.69 [0.61-0.78]", "0.53 [0.29-0.96]", "90%", "Divergent*",
+  "NRM",  "C1", "0.86 [0.70-1.08]", "0.78 [0.56-1.09]", "39%", "Good",
+  "NRM",  "C2", "0.65 [0.43-0.97]", "0.61 [0.39-0.95]", "0%",  "Good",
+  "aGVHD","C1", "0.63 [0.54-0.74]", "0.55 [0.40-0.76]", "63%", "Good",
+  "aGVHD","C2", "0.59 [0.42-0.84]", "0.44 [0.22-0.88]", "67%", "Moderate",
+  "CMV",  "C1", "1.41 [1.20-1.65]", "1.22 [0.87-1.71]", "69%", "Good",
+  "CMV",  "C2", "0.77 [0.60-0.99]", "0.67 [0.41-1.09]", "67%", "Good"
+) |>
+  kable(align = c("l","c","c","c","c","c")) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) |>
+  footnote(symbol = "Driven by Dybko 2024 (OR 0.07) and Nykolyszyn 2020 (OR 0.17); Bayesian tau prior regularises these outliers.")
+```

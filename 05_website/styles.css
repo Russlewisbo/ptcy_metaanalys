@@ -1,0 +1,107 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+/* ── JAMA-inspired muted blue/grey/black theme ── */
+
+:root {
+  --jama-navy: #2b5c8a;
+  --jama-blue: #4a8cc2;
+  --jama-light-blue: #a3c1d4;
+  --jama-steel: #6b7d8d;
+  --jama-grey: #808080;
+  --jama-light-grey: #d4d8dc;
+  --jama-dark: #1a2a3a;
+  --jama-black: #2d2d2d;
+  --jama-bg: #f8f9fa;
+}
+
+/* Body text */
+body {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  color: var(--jama-black);
+  line-height: 1.65;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  color: var(--jama-dark);
+  font-weight: 600;
+}
+
+h1 { border-bottom: 2px solid var(--jama-navy); padding-bottom: 0.3em; }
+h2 { border-bottom: 1px solid var(--jama-light-grey); padding-bottom: 0.2em; }
+
+/* Navbar override */
+.navbar {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Table styling — JAMA uses minimal lines */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92em;
+}
+
+thead th {
+  border-top: 2px solid var(--jama-dark);
+  border-bottom: 1px solid var(--jama-dark);
+  padding: 6px 10px;
+  font-weight: 600;
+  color: var(--jama-dark);
+  background-color: transparent;
+}
+
+tbody td {
+  padding: 5px 10px;
+  border-bottom: none;
+}
+
+tbody tr:last-child td {
+  border-bottom: 2px solid var(--jama-dark);
+}
+
+/* Callout customization */
+.callout-note {
+  border-left-color: var(--jama-navy) !important;
+}
+
+.callout-important {
+  border-left-color: var(--jama-blue) !important;
+}
+
+/* Figure captions */
+figcaption, .figure-caption {
+  font-size: 0.88em;
+  color: var(--jama-steel);
+  font-style: italic;
+  margin-top: 0.4em;
+}
+
+/* Code blocks */
+pre.sourceCode {
+  background-color: var(--jama-bg);
+  border: 1px solid var(--jama-light-grey);
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* GRADE symbols */
+.grade-low { color: #e67e22; font-weight: bold; }
+.grade-very-low { color: #c0392b; font-weight: bold; }
+.grade-moderate { color: #27ae60; font-weight: bold; }
+
+/* Key finding callout */
+.key-finding {
+  background-color: #eef3f8;
+  border-left: 4px solid var(--jama-navy);
+  padding: 1em 1.2em;
+  margin: 1.2em 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Footer */
+.quarto-footer { font-size: 0.85em; }

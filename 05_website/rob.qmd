@@ -1,0 +1,125 @@
+---
+title: "Risk of Bias"
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("_common.R")
+
+rob <- tryCatch(
+  read_csv(file.path(extract_dir, "rob.csv"), show_col_types = FALSE),
+  error = function(e) NULL
+)
+```
+
+## Assessment Framework {#sec-rob-framework}
+
+Risk of bias (ROB) was assessed using the ROBINS-I tool (Risk Of Bias In Non-randomised Studies – of Interventions), adapted for comparative observational studies in transplant medicine. Seven domains were evaluated:
+
+1. **Confounding** — baseline differences between PTCy and comparator arms
+2. **Selection** — participant selection into study or comparison group
+3. **Classification** — misclassification of the intervention (GVHD prophylaxis)
+4. **Deviations** — departures from intended interventions
+5. **Missing data** — incomplete outcome data
+6. **Measurement** — outcome measurement bias
+7. **Reporting** — selective reporting of outcomes
+
+Each domain was rated as **Low**, **Moderate**, **Serious**, or **Critical** risk of bias.
+
+## ROB Summary {#sec-rob-summary}
+
+```{r}
+#| label: fig-rob-summary
+#| fig-cap: "Risk-of-bias summary across all included studies. Most studies carry moderate or serious risk of bias, primarily in the confounding and selection domains — consistent with the observational study design."
+#| fig-height: 6
+
+if (!is.null(rob)) {
+  domain_labels <- c(
+    d1 = "Confounding", d2 = "Selection", d3 = "Classification",
+    d4 = "Deviations", d5 = "Missing data", d6 = "Measurement", d7 = "Reporting"
+  )
+
+  rob_long <- rob |>
+    select(study_id, d1:d7) |>
+    pivot_longer(-study_id, names_to = "domain", values_to = "judgment") |>
+    mutate(
+      domain = domain_labels[domain],
+      judgment = factor(judgment,
+                        levels = c("Low", "Moderate", "Serious", "Critical", "NR"),
+                        labels = c("Low", "Moderate", "Serious", "Critical", "Not reported"))
+    ) |>
+    filter(!is.na(judgment))
+
+  rob_counts <- rob_long |>
+    count(domain, judgment) |>
+    group_by(domain) |>
+    mutate(pct = n / sum(n) * 100)
+
+  ggplot(rob_counts, aes(x = pct, y = reorder(domain, pct), fill = judgment)) +
+    geom_col(width = 0.7) +
+    scale_fill_manual(values = c(
+      "Low" = "#a3c1d4",
+      "Moderate" = jama_light_grey,
+      "Serious" = jama_steel,
+      "Critical" = jama_dark,
+      "Not reported" = "white"
+    ), drop = FALSE) +
+    labs(x = "Percentage of studies", y = NULL, fill = "Judgment",
+         title = "Risk-of-Bias Summary by Domain") +
+    theme_jama() +
+    theme(legend.position = "bottom")
+} else {
+  cat("ROB data not found in extraction directory. This page will be populated when rob.csv is available.")
+}
+```
+
+## Key ROB Considerations by Outcome {#sec-rob-outcomes}
+
+### Overall Survival
+
+| Concern | Assessment |
+|---|---|
+| **Confounding** | Moderate–Serious. PTCy arms enriched for haploidentical donors (younger, fitter recipients). M2 steroid adjustment partially addresses GVHD-mediated confounding but cannot eliminate all baseline imbalances. |
+| **Selection** | Moderate. Registry-based studies reduce individual selection bias but introduce centre-level selection. |
+| **Measurement** | Low. OS is an objective endpoint not subject to ascertainment bias. |
+
+### CMV Reactivation
+
+| Concern | Assessment |
+|---|---|
+| **Confounding** | Serious. Donor CMV serostatus, letermovir prophylaxis, and monitoring intensity vary by arm and era. |
+| **Measurement** | Moderate. CMV monitoring frequency may differ between PTCy and comparator arms (awareness bias). More intensive surveillance in PTCy arms could inflate ascertainment. |
+| **Reporting** | Low. CMV reactivation is routinely reported in transplant cohorts. |
+
+### BSI
+
+| Concern | Assessment |
+|---|---|
+| **Missing data** | Very serious (C1). 7 of 13 eligible studies had non-reported event counts, creating substantial attrition bias. |
+| **Classification** | Moderate (C2). Outcome definitions varied (any positive culture vs ICU/fatal only). |
+| **Confounding** | Serious (C2). Donor-type imbalance in the dominant study (Meyer 2025). |
+
+### IFI
+
+| Concern | Assessment |
+|---|---|
+| **Confounding** | Serious. Antifungal prophylaxis regimens are heterogeneous and non-randomly distributed. PTCy centres disproportionately use prolonged mold-active azole prophylaxis. |
+| **Measurement** | Moderate. IFI diagnosis requires invasive procedures (bronchoscopy/biopsy); investigation intensity may differ between arms. |
+
+## Co-Reviewer Verification {#sec-rob-verification}
+
+::: {.callout-warning}
+## Pending
+Second-pass ROB verification by BMTD collaborator is pending for all 155 rows in the ROB assessment. This page will be updated upon completion.
+:::
+
+## Impact on Interpretation
+
+Risk of bias is a consistent limitation across all outcomes, reflecting the almost exclusively observational evidence base. The mediation models (M2, M3) partially address confounding by adjusting for GVHD-driven steroid exposure, but residual confounding from baseline characteristics (age, disease risk, donor type, conditioning intensity) cannot be excluded.
+
+The most robust findings are those where:
+
+- The effect survives covariate adjustment (OS, CMV in C1)
+- The direction is consistent across comparators with different confounding structures (OS, aGVHD)
+- Plausible bias would oppose rather than inflate the observed effect (aGVHD)

@@ -1,0 +1,139 @@
+---
+title: "GRADE Certainty Assessment"
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("_common.R")
+```
+
+GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence).
+
+## Summary {#sec-grade-summary}
+
+```{r}
+#| label: tbl-grade-summary
+#| tbl-cap: "GRADE certainty of evidence — all outcomes, both comparisons."
+
+tibble::tribble(
+  ~Outcome, ~Comp, ~k, ~N, ~`OR [95% CrI]`, ~Certainty, ~`Key Limitation`,
+  "OS",            "C1", 35, 17661, "0.77 [0.71\u20130.83]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 68%; obs only",
+  "OS",            "C2", 10, 10624, "0.69 [0.61\u20130.78]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 90% (freq); one registry dominant",
+  "NRM",           "C1", 15,  2081, "0.86 [0.70\u20131.08]", "\u2295\u2296\u2296\u2296 V.LOW",     "Complete M2 mediation; CrI crosses null",
+  "NRM",           "C2",  5,  1186, "0.65 [0.43\u20130.97]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 5; M2 attenuation; CrI fragile",
+  "aGVHD II\u2013IV", "C1", 24,  3837, "0.63 [0.54\u20130.74]", "\u2295\u2295\u2296\u2296 LOW",   "I\u00B2 = 63%; obs only",
+  "aGVHD II\u2013IV", "C2",  6,   784, "0.59 [0.42\u20130.84]", "\u2295\u2295\u2296\u2296 LOW",   "k = 6; \u03c4 poorly estimated",
+  "CMV",           "C1", 18,  3357, "1.41 [1.20\u20131.65]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 69%; obs only",
+  "CMV",           "C2", 12,  1267, "0.77 [0.60\u20130.99]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI fragile; direction reversal is key",
+  "BSI",           "C1",  6,  1319, "2.39 [1.85\u20133.10]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 6; 7 studies NR excluded",
+  "BSI",           "C2",  3,   613, "2.03 [1.33\u20133.09]\u2020", "(\u2295\u2296\u2296\u2296)",   "k = 3; definitional heterogeneity",
+  "IFI",           "C1",  8,  3816, "0.73 [0.53\u20131.00]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.05 (Yanada); CrI \u2248 null",
+  "IFI",           "C2", NA,    NA, "\u2014",                 "\u2014",                              "Insufficient data"
+) |>
+  kable(align = c("l","c","r","r","c","c","l")) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) |>
+  footnote(symbol = c("Mantel-Haenszel fixed-effect; formal GRADE not performed at k = 3."))
+```
+
+## Domain-Level Assessments {#sec-grade-domains}
+
+### Overall Survival
+
+```{r}
+#| label: tbl-grade-os
+#| tbl-cap: "GRADE domain assessment — Overall Survival."
+
+tibble::tribble(
+  ~Domain, ~C1, ~C2,
+  "Study design", "34 retro/registry + 1 RCT; start LOW", "All retro/registry; start LOW",
+  "Risk of bias", "No downgrade (effect survives M2)", "No downgrade (same reasoning)",
+  "Inconsistency", "\u22121 (I\u00B2 = 68%)", "\u22121 (I\u00B2 = 90%, two extreme outliers)",
+  "Indirectness", "0", "0",
+  "Imprecision", "0 (CrI below null; N = 17,661)", "0 (CrI below null; N = 10,624)",
+  "Pub. bias", "0", "0",
+  "Upgrade", "0", "+1 (cross-comparison coherence)",
+  "Net", "\u22121", "0",
+  "CERTAINTY", "\u2295\u2295\u2296\u2296 LOW", "\u2295\u2295\u2296\u2296 LOW"
+) |>
+  kable() |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
+```
+
+### Non-Relapse Mortality
+
+```{r}
+#| label: tbl-grade-nrm
+#| tbl-cap: "GRADE domain assessment — NRM."
+
+tibble::tribble(
+  ~Domain, ~C1, ~C2,
+  "Study design", "All retro/registry; start LOW", "All retro/registry; start LOW",
+  "Risk of bias", "\u22121 (complete M2 mediation = confounding signal)", "\u22121 (M2 attenuation, CrI crosses null)",
+  "Inconsistency", "0 (I\u00B2 = 39%)", "0 (I\u00B2 = 0%)",
+  "Indirectness", "0", "0",
+  "Imprecision", "\u22121 (CrI crosses null; M2 CrI fully crosses)", "\u22121 (k = 5; M2 CrI crosses null)",
+  "Pub. bias", "0", "0",
+  "Net", "\u22122", "\u22122",
+  "CERTAINTY", "\u2295\u2296\u2296\u2296 V.LOW", "\u2295\u2296\u2296\u2296 V.LOW"
+) |>
+  kable() |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
+```
+
+### aGVHD Grade II–IV
+
+```{r}
+#| label: tbl-grade-agvhd
+#| tbl-cap: "GRADE domain assessment — aGVHD."
+
+tibble::tribble(
+  ~Domain, ~C1, ~C2,
+  "Study design", "All retro/registry; start LOW", "All retro/registry; start LOW",
+  "Risk of bias", "0 (bias opposes effect)", "0 (same reasoning)",
+  "Inconsistency", "\u22121 (I\u00B2 = 63%, \u03c4 = 0.66)", "\u22121 (I\u00B2 = 67%; \u03c4 poorly estimated)",
+  "Indirectness", "0", "0",
+  "Imprecision", "0 (CrI below null)", "0 (CrI below null)",
+  "Upgrade", "+1 (confounders oppose)", "+1 (confounders oppose + cross-comparison)",
+  "Net", "0", "0",
+  "CERTAINTY", "\u2295\u2295\u2296\u2296 LOW", "\u2295\u2295\u2296\u2296 LOW"
+) |>
+  kable() |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
+```
+
+### CMV Reactivation
+
+```{r}
+#| label: tbl-grade-cmv
+#| tbl-cap: "GRADE domain assessment — CMV."
+
+tibble::tribble(
+  ~Domain, ~C1, ~C2,
+  "Study design", "All retrospective; start LOW", "All retrospective; start LOW",
+  "Risk of bias", "0 (ascertainment bias noted)", "0 (direction uncertain)",
+  "Inconsistency", "\u22121 (I\u00B2 = 69%)", "\u22121 (I\u00B2 = 67%)",
+  "Indirectness", "0", "0",
+  "Imprecision", "0 (CrI excludes null)", "\u22121 (CrI fragile; crosses null in M2 and sensitivity)",
+  "Upgrade", "+1 (steroid-independence confirmed)", "+1 (mechanistic coherence with C1 reversal)",
+  "Net", "0", "\u22121",
+  "CERTAINTY", "\u2295\u2295\u2296\u2296 LOW", "\u2295\u2296\u2296\u2296 V.LOW"
+) |>
+  kable() |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
+```
+
+::: {.callout-important}
+## CMV: The Reversal Is More Informative Than Either Estimate
+Neither the C1 CMV estimate (OR 1.41, LOW certainty) nor the C2 estimate (OR 0.77, VERY LOW certainty) alone provides high confidence. However, the *contrast* between them — PTCy harmful vs CNI+MTX/MMF but protective vs ATG — provides **moderate-certainty evidence** that CMV risk is ordered by T-cell depletion depth. This cross-comparison finding has higher certainty than either component.
+:::
+
+## Narrative Summary {#sec-grade-narrative}
+
+Across both comparisons, certainty does not exceed LOW — a predictable consequence of an almost entirely observational evidence base.
+
+**Cross-comparison coherence** is the strongest methodological asset. OS and aGVHD show consistent effects across two fundamentally different comparators, reducing the probability that findings are artefacts of comparator-specific confounding. The mediation pattern also replicates (OS: partial; NRM: substantial/complete).
+
+**The CMV direction reversal** provides moderate-certainty mechanistic evidence. Any C2 value below ~1.0 confirms a qualitative direction shift, making this finding robust to the specific C2 point estimate.
+
+**Infection outcomes remain the principal evidence gap.** BSI and IFI carry VERY LOW certainty in both comparisons. Dedicated prospective studies with standardised endpoint definitions are needed.
