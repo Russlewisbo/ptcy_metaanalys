@@ -90,7 +90,7 @@ All models show R̂ ≤ 1.005 (threshold: 1.01) and zero divergent transitions. 
 ```{r}
 #| label: fig-diag-trace-os
 #| fig-cap: "Trace plots for the PTCy coefficient (b_ptcy_binary) in the OS M1 model (C1, k = 35). All four chains mix well with no visible trends or sticky regions."
-#| fig-height: 3.5
+#| fig-height: 4
 
 m1_os <- readRDS(file.path(model_dir, "m1_os.rds"))
 bayesplot::color_scheme_set(c(jama_navy, jama_blue, jama_steel, jama_light_blue,
@@ -103,7 +103,7 @@ bayesplot::mcmc_trace(m1_os, pars = "b_ptcy_binary") +
 ```{r}
 #| label: fig-diag-trace-cmv
 #| fig-cap: "Trace plots for the PTCy coefficient in the CMV M1 model (C1, k = 18)."
-#| fig-height: 3.5
+#| fig-height: 4
 
 m1_cmv <- readRDS(file.path(model_dir, "m1.rds"))
 bayesplot::mcmc_trace(m1_cmv, pars = "b_ptcy_binary") +

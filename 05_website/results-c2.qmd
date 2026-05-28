@@ -95,15 +95,44 @@ PTCy *increases* CMV risk vs CNI+MTX/MMF (OR 1.41) but *decreases* it vs ATG (OR
 
 ```{r}
 #| label: fig-c2-bsi-forest
-#| fig-cap: "Mantel-Haenszel forest plot for BSI in Comparison 2 (k = 3). Substantial heterogeneity (I² = 69%) driven by definitional differences and a donor-type confound in Meyer 2025."
+#| fig-cap: "BSI forest plot for Comparison 2 (k = 3). Substantial heterogeneity (I² = 69%) driven by definitional differences and a donor-type confound in Meyer 2025. The diamond represents the Mantel-Haenszel fixed-effect pooled estimate."
 #| fig-height: 4
 
 mh_bsi <- readRDS(file.path(model_dir, "c2_mh_bsi.rds"))
-par(family = "sans")
-metafor::forest(mh_bsi, atransf = exp, header = TRUE,
-       xlab = "Odds Ratio (PTCy vs ATG)",
-       mlab = "MH Fixed-Effect",
-       col = jama_navy, border = jama_navy)
+
+bsi_studies <- tibble(
+  study = c("Meyer 2025", "Berro 2021", "Bordat 2026"),
+  or = exp(mh_bsi$yi),
+  lo = exp(mh_bsi$yi - 1.96 * sqrt(mh_bsi$vi)),
+  hi = exp(mh_bsi$yi + 1.96 * sqrt(mh_bsi$vi)),
+  weight = round((1/mh_bsi$vi) / sum(1/mh_bsi$vi) * 100, 1)
+) |>
+  mutate(label = sprintf("%.2f [%.2f, %.2f]  (%s%%)", or, lo, hi, weight))
+
+pooled <- tibble(
+  study = "MH Pooled", or = exp(mh_bsi$beta),
+  lo = exp(mh_bsi$ci.lb), hi = exp(mh_bsi$ci.ub),
+  weight = 100, label = sprintf("%.2f [%.2f, %.2f]", exp(mh_bsi$beta),
+                                 exp(mh_bsi$ci.lb), exp(mh_bsi$ci.ub))
+)
+
+bsi_all <- bind_rows(bsi_studies, pooled) |>
+  mutate(study = factor(study, levels = rev(c("Meyer 2025", "Berro 2021", "Bordat 2026", "MH Pooled"))),
+         is_pooled = study == "MH Pooled")
+
+ggplot(bsi_all, aes(x = or, y = study)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi, shape = is_pooled, size = is_pooled),
+                  colour = jama_navy, fill = jama_navy) +
+  geom_text(aes(x = hi, label = label), hjust = -0.08, size = 3, colour = jama_black) +
+  scale_shape_manual(values = c("FALSE" = 16, "TRUE" = 18), guide = "none") +
+  scale_size_manual(values = c("FALSE" = 0.5, "TRUE" = 0.8), guide = "none") +
+  scale_x_log10(breaks = c(0.5, 1, 2, 4)) +
+  coord_cartesian(xlim = c(0.3, 8)) +
+  labs(x = "Odds Ratio (log scale)", y = NULL,
+       title = "BSI \u2014 Mantel-Haenszel Forest Plot (C2)",
+       subtitle = sprintf("MH OR 2.03, I\u00B2 = 69%%, k = 3")) +
+  theme_jama()
 ```
 
 MH OR 2.03 (95% CI 1.33–3.09), but driven by definition mismatch (any culture vs ICU/fatal only), timepoint mismatch (D+100 vs 1 year), and donor-type confound (Meyer 2025: 54% haplo vs 100% MUD). Hypothesis-generating only.
@@ -145,8 +174,8 @@ all_pd <- do.call(rbind, list(
 ggplot(all_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = model)) +
   geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
   geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.45, linewidth = 0.5) +
-  geom_text(aes(x = hi, label = label), hjust = -0.08, size = 2.5,
-            colour = jama_black, show.legend = FALSE) +
+  geom_text(aes(x = hi, label = label), hjust = -0.05, size = 2.5,
+            colour = jama_black, show.legend = FALSE, nudge_y = 0.25) +
   scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2, 3)) +
   scale_y_continuous(breaks = 1:6,
                      labels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))) +

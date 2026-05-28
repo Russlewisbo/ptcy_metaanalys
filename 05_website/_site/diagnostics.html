@@ -1150,7 +1150,7 @@ Figure&nbsp;3: Posterior densities of the between-study standard deviation (τ) 
 <span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-diag-trace-os</span></span>
 <span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Trace plots for the PTCy coefficient (b_ptcy_binary) in the OS M1 model (C1, k = 35). All four chains mix well with no visible trends or sticky regions."</span></span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3.5</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
 <span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>m1_os <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"m1_os.rds"</span>))</span>
 <span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">color_scheme_set</span>(<span class="fu">c</span>(jama_navy, jama_blue, jama_steel, jama_light_blue,</span>
@@ -1163,7 +1163,7 @@ Figure&nbsp;3: Posterior densities of the between-study standard deviation (τ) 
 <span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-diag-trace-cmv</span></span>
 <span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Trace plots for the PTCy coefficient in the CMV M1 model (C1, k = 18)."</span></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3.5</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
 <span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>m1_cmv <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"m1.rds"</span>))</span>
 <span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_trace</span>(m1_cmv, <span class="at">pars =</span> <span class="st">"b_ptcy_binary"</span>) <span class="sc">+</span></span>
