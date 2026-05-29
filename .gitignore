@@ -1,5 +1,32 @@
+# R / RStudio
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 .positai
+
+# PDFs
+*.pdf
+
+# Paperpile / reference manager exports
+paperpile-files*
+*.ris
+*.bib
+*.enl
+*.nbib
+
+# Large archives
+*.zip
+*.tar.gz
+*.7z
+
+# Excel workbooks (keep CSVs as the canonical extracted data)
+*.xlsx
+
+# Large model objects — keep posteriors and Table2, skip full brms fits
+# Uncomment the next line to also exclude model .rds files:
+# 03_models/**/*.rds
+
+# OS metadata
+.DS_Store
+Thumbs.db
