@@ -62,7 +62,7 @@ pub_egger <- readRDS("03_models/post_block9/pub_bias_egger.rds")
 pub_tf    <- readRDS("03_models/post_block9/pub_bias_trimfill.rds")
 
 # Helper
-fmt_or <- function(or, lo, hi) sprintf("%.2f [%.2f\u2013%.2f]", or, lo, hi)
+fmt_or <- function(or, lo, hi) sprintf("%.2f [%.2f–%.2f]", or, lo, hi)
 
 # Database counts
 n_studies <- nrow(studies)
@@ -138,9 +138,9 @@ Three Block-9 studies had arm classification errors affecting C2 eligibility:
 
 tibble::tribble(
   ~Study, ~`Arm IDs`, ~Problem, ~Action,
-  "Sayin 2024 [348]",   "387, 388", "Comparator is CNI+MTX (MRD), not ATG", "C2 \u2192 N",
-  "Xu ZL 2025 [396]",   "442, 443", "PTCy arm = PTCy+ATG(low) combo",       "C2 \u2192 N",
-  "Zu Y 2022 [464]",    "522, 523", "PTCy arm = low-dose PTCy+ATG combo",   "C2 \u2192 N"
+  "Sayin 2024 [348]",   "387, 388", "Comparator is CNI+MTX (MRD), not ATG", "C2 → N",
+  "Xu ZL 2025 [396]",   "442, 443", "PTCy arm = PTCy+ATG(low) combo",       "C2 → N",
+  "Zu Y 2022 [464]",    "522, 523", "PTCy arm = low-dose PTCy+ATG combo",   "C2 → N"
 ) |>
   kable() |>
   kable_styling(latex_options = c("hold_position", "scale_down"))
@@ -160,16 +160,16 @@ c1_display <- c1 |>
     Outcome = case_when(
       slug == "c1_os" ~ "OS",
       slug == "c1_nrm" ~ "NRM",
-      slug == "c1_agvhd" ~ "aGVHD II\u2013IV",
+      slug == "c1_agvhd" ~ "aGVHD II–IV",
       slug == "c1_cmv" ~ "CMV",
       slug == "c1_bsi" ~ "BSI",
       slug == "c1_ifi_any" ~ "IFI"
     ),
     Model = ifelse(model == "m1", "M1", "M2"),
     `OR [95% CrI]` = fmt_or(or_median, ci_low, ci_high),
-    `\u03c4` = round(tau, 2)
+    `τ` = round(tau, 2)
   ) |>
-  select(Outcome, Model, k, N = n_total, `OR [95% CrI]`, `\u03c4`)
+  select(Outcome, Model, k, N = n_total, `OR [95% CrI]`, `τ`)
 
 c1_display |>
   kable(align = c("l", "c", "r", "r", "c", "r")) |>
@@ -217,12 +217,12 @@ ggplot(c1_plot, aes(x = or_median, y = y, shape = mdl)) +
 # Pre-Block-9 values (from original Table2 / MANIFEST)
 pre_c1 <- tibble::tribble(
   ~Outcome,    ~k_pre, ~OR_pre, ~CrI_pre,
-  "OS",        35,     0.77,    "0.71\u20130.83",
-  "NRM",       15,     0.86,    "0.70\u20131.08",
-  "aGVHD",     24,     0.63,    "0.54\u20130.74",
-  "CMV",       18,     1.41,    "1.20\u20131.65",
-  "BSI",        6,     2.39,    "1.85\u20133.10",
-  "IFI",        8,     0.73,    "0.53\u20131.00"
+  "OS",        35,     0.77,    "0.71–0.83",
+  "NRM",       15,     0.86,    "0.70–1.08",
+  "aGVHD",     24,     0.63,    "0.54–0.74",
+  "CMV",       18,     1.41,    "1.20–1.65",
+  "BSI",        6,     2.39,    "1.85–3.10",
+  "IFI",        8,     0.73,    "0.53–1.00"
 )
 
 post_c1 <- t2 |>
@@ -257,13 +257,13 @@ c2 |>
   mutate(
     Outcome = case_when(
       slug == "c2_os" ~ "OS", slug == "c2_nrm" ~ "NRM",
-      slug == "c2_agvhd" ~ "aGVHD II\u2013IV", slug == "c2_cmv" ~ "CMV"
+      slug == "c2_agvhd" ~ "aGVHD II–IV", slug == "c2_cmv" ~ "CMV"
     ),
     Model = ifelse(model == "m1", "M1", "M2"),
     `OR [95% CrI]` = fmt_or(or_median, ci_low, ci_high),
-    `\u03c4` = round(tau, 2)
+    `τ` = round(tau, 2)
   ) |>
-  select(Outcome, Model, k, N = n_total, `OR [95% CrI]`, `\u03c4`) |>
+  select(Outcome, Model, k, N = n_total, `OR [95% CrI]`, `τ`) |>
   kable(align = c("l","c","r","r","c","r")) |>
   kable_styling(latex_options = "hold_position") |>
   footnote(general = "C2 NRM dropped below k = 3 after arm reclassification.")
@@ -321,12 +321,12 @@ c3 |>
   mutate(
     Outcome = case_when(
       slug == "c3_os" ~ "OS", slug == "c3_nrm" ~ "NRM",
-      slug == "c3_agvhd" ~ "aGVHD II\u2013IV", slug == "c3_cgvhd" ~ "cGVHD mod/sev"
+      slug == "c3_agvhd" ~ "aGVHD II–IV", slug == "c3_cgvhd" ~ "cGVHD mod/sev"
     ),
     `OR [95% CrI]` = fmt_or(or_median, ci_low, ci_high),
-    `\u03c4` = round(tau, 2)
+    `τ` = round(tau, 2)
   ) |>
-  select(Outcome, k, N = n_total, `OR [95% CrI]`, `\u03c4`) |>
+  select(Outcome, k, N = n_total, `OR [95% CrI]`, `τ`) |>
   kable(align = c("l","r","r","c","r")) |>
   kable_styling(latex_options = "hold_position")
 ```
@@ -347,9 +347,9 @@ c1_cmv <- t2 |> filter(slug == "c1_cmv", model == "m1")
 
 tibble::tribble(
   ~Analysis,          ~`Arms compared`,      ~k,       ~OR,                                                                    ~Interpretation,
-  "C1 primary",       "PTCy vs CNI",         c1_cmv$k, fmt_or(c1_cmv$or_median, c1_cmv$ci_low, c1_cmv$ci_high),                "PTCy depletes more \u2192 more CMV",
+  "C1 primary",       "PTCy vs CNI",         c1_cmv$k, fmt_or(c1_cmv$or_median, c1_cmv$ci_low, c1_cmv$ci_high),                "PTCy depletes more → more CMV",
   "C2 primary",       "PTCy vs ATG",         c2_prim$k[3], fmt_or(c2_prim$or_median[3], c2_prim$ci_low[3], c2_prim$ci_high[3]), "Near-parity",
-  "C2 sensitivity",   "PTCy+ATG vs ATG",     s_cm_r$k, fmt_or(s_cm_r$or, s_cm_r$lo, s_cm_r$hi),                                "Equal depletion \u2192 equal CMV"
+  "C2 sensitivity",   "PTCy+ATG vs ATG",     s_cm_r$k, fmt_or(s_cm_r$or, s_cm_r$lo, s_cm_r$hi),                                "Equal depletion → equal CMV"
 ) |>
   kable(align = c("l","l","r","c","l")) |>
   kable_styling(latex_options = c("hold_position", "scale_down"))
@@ -366,10 +366,10 @@ Three studies reported CMV reactivation stratified by donor/recipient serostatus
 tibble::tribble(
   ~`D/R stratum`, ~Source,           ~`PTCy %`, ~`Comp %`, ~OR,
   "D+/R+",        "Chorao 2024",     "47",      "40",      "1.34",
-  "D\u2212/R+",   "Chorao 2024",     "67",      "69",      "0.91",
-  "D+/R\u2212",   "Goldsmith 2021",  "20",      "11",      "2.06",
-  "D\u2212/R\u2212", "Goldsmith 2021", "2",      "1",       "1.89",
-  "R+ (pooled)",  "Goldsmith + Steiner", "51\u201368", "29\u201348", "2.4\u20132.6"
+  "D−/R+",   "Chorao 2024",     "67",      "69",      "0.91",
+  "D+/R−",   "Goldsmith 2021",  "20",      "11",      "2.06",
+  "D−/R−", "Goldsmith 2021", "2",      "1",       "1.89",
+  "R+ (pooled)",  "Goldsmith + Steiner", "51–68", "29–48", "2.4–2.6"
 ) |>
   kable(align = c("l","l","r","r","r")) |>
   kable_styling(latex_options = "hold_position")
@@ -389,9 +389,9 @@ Neither recipient seropositivity (k = 11, p = 0.72) nor D+/R+ prevalence (k = 8,
 
 tibble::tribble(
   ~Outcome, ~k, ~`Egger z`, ~`Egger p`, ~`T&F imputed`, ~`Original OR`, ~`Adjusted OR`,
-  "OS",     40,  -1.02,      0.314,       7,  "0.77 [0.66\u20130.90]", "0.86 [0.73\u20131.02]",
-  "aGVHD",  28,  -2.15,      0.041,       8,  "0.61 [0.47\u20130.79]", "0.83 [0.61\u20131.13]",
-  "CMV",    22,  -0.21,      0.835,       0,  "1.25 [0.94\u20131.66]", "1.25 [0.94\u20131.66]"
+  "OS",     40,  -1.02,      0.314,       7,  "0.77 [0.66–0.90]", "0.86 [0.73–1.02]",
+  "aGVHD",  28,  -2.15,      0.041,       8,  "0.61 [0.47–0.79]", "0.83 [0.61–1.13]",
+  "CMV",    22,  -0.21,      0.835,       0,  "1.25 [0.94–1.66]", "1.25 [0.94–1.66]"
 ) |>
   mutate(`Egger p` = ifelse(`Egger p` < 0.05,
                              paste0("**", sprintf("%.3f", `Egger p`), "**"),
@@ -452,16 +452,16 @@ library(patchwork)
 
 tibble::tribble(
   ~Outcome,              ~Comp, ~k,  ~`OR [95% CrI]`,             ~Certainty,     ~`Key limitation`,
-  "OS",                  "C1",  40,  "0.79 [0.73\u20130.85]",     "LOW",           "I\u00B2 = 64%; obs only",
-  "OS",                  "C2",  10,  "0.81 [0.74\u20130.90]",     "LOW",           "I\u00B2 = 95%; attenuated from pre-B9",
-  "NRM",                 "C1",  12,  "0.88 [0.66\u20131.18]",     "VERY LOW",      "M2 mediation; CrI crosses null",
+  "OS",                  "C1",  40,  "0.79 [0.73–0.85]",     "LOW",           "I² = 64%; obs only",
+  "OS",                  "C2",  10,  "0.81 [0.74–0.90]",     "LOW",           "I² = 95%; attenuated from pre-B9",
+  "NRM",                 "C1",  12,  "0.88 [0.66–1.18]",     "VERY LOW",      "M2 mediation; CrI crosses null",
   "NRM",                 "C2",  NA,  "\u2014 (k = 2)",            "\u2014",        "Below minimum k",
-  "aGVHD II\u2013IV",    "C1",  28,  "0.67 [0.59\u20130.78]",     "VERY LOW",      "Egger p = 0.04; T&F adj 0.83",
-  "aGVHD II\u2013IV",    "C2",   9,  "0.58 [0.44\u20130.77]",     "LOW",           "I\u00B2 = 73%",
-  "CMV",                 "C1",  22,  "1.26 [1.07\u20131.47]",     "LOW",           "I\u00B2 = 62%",
-  "CMV",                 "C2",  13,  "0.92 [0.73\u20131.15]",     "VERY LOW",      "CrI crosses null",
-  "BSI",                 "C1",   6,  "1.87 [1.33\u20132.62]",     "VERY LOW",      "k = 6; freq CrI crosses null",
-  "IFI",                 "C1",   6,  "0.43 [0.29\u20130.63]",     "VERY LOW",      "\u03c4 = 1.64; extreme heterogeneity"
+  "aGVHD II–IV",    "C1",  28,  "0.67 [0.59–0.78]",     "VERY LOW",      "Egger p = 0.04; T&F adj 0.83",
+  "aGVHD II–IV",    "C2",   9,  "0.58 [0.44–0.77]",     "LOW",           "I² = 73%",
+  "CMV",                 "C1",  22,  "1.26 [1.07–1.47]",     "LOW",           "I² = 62%",
+  "CMV",                 "C2",  13,  "0.92 [0.73–1.15]",     "VERY LOW",      "CrI crosses null",
+  "BSI",                 "C1",   6,  "1.87 [1.33–2.62]",     "VERY LOW",      "k = 6; freq CrI crosses null",
+  "IFI",                 "C1",   6,  "0.43 [0.29–0.63]",     "VERY LOW",      "τ = 1.64; extreme heterogeneity"
 ) |>
   kable(align = c("l","c","r","c","c","l")) |>
   kable_styling(latex_options = c("hold_position", "scale_down"))
