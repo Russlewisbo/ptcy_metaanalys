@@ -158,6 +158,31 @@ if (!is.null(post_c2_sens_cmv)) {
 
 The primary C2 CMV estimate alone no longer demonstrates a statistically credible direction reversal. However, the three-way pattern across the primary and sensitivity analyses — C1 harmful, C2-primary near-null, C2-sensitivity null — traces a dose–response curve along the depletion axis. The framework is better supported by this graded pattern than it was by the pre-Block-9 binary reversal, even though the individual C2 CMV CrI is wider.
 
+### CMV and donor/recipient serostatus {#sec-disc-cmv-serostatus}
+
+The depletion hierarchy predicts that PTCy should increase CMV reactivation most when CMV-specific T-cell reconstitution matters most — i.e., when the recipient carries latent virus (R+). We assessed this in two ways.
+
+**Meta-regression.** Neither recipient seropositivity (k = 11, p = 0.72) nor D+/R+ prevalence (k = 8, p = 0.43) significantly moderated the PTCy effect on CMV when used as study-level ecological covariates. Both analyses were severely underpowered (only 8–11 of 22 C1 CMV studies report arm-level serostatus data).
+
+**Subgroup tabulation.** Three studies (Chorao 2024, Goldsmith 2021, Steiner 2024) reported CMV reactivation stratified by donor/recipient serostatus, contributing one study per D/R combination:
+
+| D/R stratum | PTCy % | Comparator % | OR | Source |
+|---|---|---|---|---|
+| D+/R+ | 47% | 40% | 1.34 | Chorao 2024 |
+| D−/R+ | 67% | 69% | **0.91** | Chorao 2024 |
+| D+/R− | 20% | 11% | 2.06 | Goldsmith 2021 |
+| D−/R− | 2% | 1% | 1.89 | Goldsmith 2021 |
+| R+ (pooled) | 51–68% | 29–48% | 2.4–2.6 | Goldsmith 2021, Steiner 2024 |
+
+The **D−/R+ stratum** is the only one where PTCy did not increase CMV risk. In this configuration, the recipient carries CMV-specific memory T cells from prior infection (R+) but the donor does not (D−). Post-transplant immune reconstitution against CMV therefore relies on surviving recipient memory cells. PTCy's preferential depletion of alloreactive (recently activated) T cells may spare these quiescent, CMV-specific memory cells, whereas CNI-based regimens continuously suppress all T-cell function including memory responses. This is consistent with the mechanistic selectivity of cyclophosphamide for dividing cells.
+
+In contrast, when the donor is seropositive (D+/R+ and D+/R−), the comparator arm benefits from donor-derived CMV-specific T cells during immune reconstitution — a pathway that PTCy disrupts by depleting the incoming donor graft during the early post-transplant window.
+
+::: {.callout-warning}
+## Hypothesis-Generating Only
+All D/R stratum-specific estimates are based on k = 1 study each. The ecological meta-regressions lack power (k = 8–11 with restricted ranges). Testing whether PTCy's CMV effect genuinely differs by D/R serostatus requires individual patient data (IPD) meta-analysis, where within-study D/R interactions can be estimated without ecological bias.
+:::
+
 ## Practical Implications {#sec-disc-practical}
 
 The mechanistic architecture carries direct clinical implications:

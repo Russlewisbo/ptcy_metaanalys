@@ -196,6 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#primary-analysis" id="toc-primary-analysis" class="nav-link" data-scroll-target="#primary-analysis">Primary analysis</a></li>
   <li><a href="#sensitivity-expanded-arm-inclusion-as-a-confirmatory-test" id="toc-sensitivity-expanded-arm-inclusion-as-a-confirmatory-test" class="nav-link" data-scroll-target="#sensitivity-expanded-arm-inclusion-as-a-confirmatory-test">Sensitivity: expanded arm inclusion as a confirmatory test</a></li>
   <li><a href="#synthesis" id="toc-synthesis" class="nav-link" data-scroll-target="#synthesis">Synthesis</a></li>
+  <li><a href="#sec-disc-cmv-serostatus" id="toc-sec-disc-cmv-serostatus" class="nav-link" data-scroll-target="#sec-disc-cmv-serostatus">CMV and donor/recipient serostatus</a></li>
   </ul></li>
   <li><a href="#sec-disc-practical" id="toc-sec-disc-practical" class="nav-link" data-scroll-target="#sec-disc-practical">Practical Implications</a></li>
   <li><a href="#sec-disc-limitations" id="toc-sec-disc-limitations" class="nav-link" data-scroll-target="#sec-disc-limitations">Limitations</a></li>
@@ -393,6 +394,82 @@ Figure&nbsp;3: C2 primary vs sensitivity (expanded arm inclusion). CMV converges
 <section id="synthesis" class="level3">
 <h3 class="anchored" data-anchor-id="synthesis">Synthesis</h3>
 <p>The primary C2 CMV estimate alone no longer demonstrates a statistically credible direction reversal. However, the three-way pattern across the primary and sensitivity analyses — C1 harmful, C2-primary near-null, C2-sensitivity null — traces a dose–response curve along the depletion axis. The framework is better supported by this graded pattern than it was by the pre-Block-9 binary reversal, even though the individual C2 CMV CrI is wider.</p>
+</section>
+<section id="sec-disc-cmv-serostatus" class="level3">
+<h3 class="anchored" data-anchor-id="sec-disc-cmv-serostatus">CMV and donor/recipient serostatus</h3>
+<p>The depletion hierarchy predicts that PTCy should increase CMV reactivation most when CMV-specific T-cell reconstitution matters most — i.e., when the recipient carries latent virus (R+). We assessed this in two ways.</p>
+<p><strong>Meta-regression.</strong> Neither recipient seropositivity (k = 11, p = 0.72) nor D+/R+ prevalence (k = 8, p = 0.43) significantly moderated the PTCy effect on CMV when used as study-level ecological covariates. Both analyses were severely underpowered (only 8–11 of 22 C1 CMV studies report arm-level serostatus data).</p>
+<p><strong>Subgroup tabulation.</strong> Three studies (Chorao 2024, Goldsmith 2021, Steiner 2024) reported CMV reactivation stratified by donor/recipient serostatus, contributing one study per D/R combination:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>D/R stratum</th>
+<th>PTCy %</th>
+<th>Comparator %</th>
+<th>OR</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>D+/R+</td>
+<td>47%</td>
+<td>40%</td>
+<td>1.34</td>
+<td>Chorao 2024</td>
+</tr>
+<tr class="even">
+<td>D−/R+</td>
+<td>67%</td>
+<td>69%</td>
+<td><strong>0.91</strong></td>
+<td>Chorao 2024</td>
+</tr>
+<tr class="odd">
+<td>D+/R−</td>
+<td>20%</td>
+<td>11%</td>
+<td>2.06</td>
+<td>Goldsmith 2021</td>
+</tr>
+<tr class="even">
+<td>D−/R−</td>
+<td>2%</td>
+<td>1%</td>
+<td>1.89</td>
+<td>Goldsmith 2021</td>
+</tr>
+<tr class="odd">
+<td>R+ (pooled)</td>
+<td>51–68%</td>
+<td>29–48%</td>
+<td>2.4–2.6</td>
+<td>Goldsmith 2021, Steiner 2024</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>D−/R+ stratum</strong> is the only one where PTCy did not increase CMV risk. In this configuration, the recipient carries CMV-specific memory T cells from prior infection (R+) but the donor does not (D−). Post-transplant immune reconstitution against CMV therefore relies on surviving recipient memory cells. PTCy’s preferential depletion of alloreactive (recently activated) T cells may spare these quiescent, CMV-specific memory cells, whereas CNI-based regimens continuously suppress all T-cell function including memory responses. This is consistent with the mechanistic selectivity of cyclophosphamide for dividing cells.</p>
+<p>In contrast, when the donor is seropositive (D+/R+ and D+/R−), the comparator arm benefits from donor-derived CMV-specific T cells during immune reconstitution — a pathway that PTCy disrupts by depleting the incoming donor graft during the early post-transplant window.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Hypothesis-Generating Only
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All D/R stratum-specific estimates are based on k = 1 study each. The ecological meta-regressions lack power (k = 8–11 with restricted ranges). Testing whether PTCy’s CMV effect genuinely differs by D/R serostatus requires individual patient data (IPD) meta-analysis, where within-study D/R interactions can be estimated without ecological bias.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="sec-disc-practical" class="level2">
@@ -1077,30 +1154,55 @@ Figure&nbsp;3: C2 primary vs sensitivity (expanded arm inclusion). CMV converges
 <span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a>The primary C2 CMV estimate alone no longer demonstrates a statistically credible direction reversal. However, the three-way pattern across the primary and sensitivity analyses — C1 harmful, C2-primary near-null, C2-sensitivity null — traces a dose–response curve along the depletion axis. The framework is better supported by this graded pattern than it was by the pre-Block-9 binary reversal, even though the individual C2 CMV CrI is wider.</span>
 <span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Implications {#sec-disc-practical}</span></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### CMV and donor/recipient serostatus {#sec-disc-cmv-serostatus}</span></span>
 <span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>The mechanistic architecture carries direct clinical implications:</span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>The depletion hierarchy predicts that PTCy should increase CMV reactivation most when CMV-specific T-cell reconstitution matters most — i.e., when the recipient carries latent virus (R+). We assessed this in two ways.</span>
 <span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Domain <span class="pp">|</span> Intervention target <span class="pp">|</span> Rationale <span class="pp">|</span></span>
-<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
-<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **CMV / BSI** <span class="pp">|</span> T-cell reconstitution (adoptive therapy, early IS tapering) <span class="pp">|</span> Infection risk is GVHD-independent; steroid avoidance will not help <span class="pp">|</span></span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **NRM** <span class="pp">|</span> GVHD control and steroid minimisation <span class="pp">|</span> NRM benefit is steroid-mediated <span class="pp">|</span></span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **OS** <span class="pp">|</span> Both GVHD control + relapse prevention <span class="pp">|</span> Partial mediation suggests dual contribution <span class="pp">|</span></span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## ATG Is Not the Solution</span></span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a>The C2 data — and especially the sensitivity analysis — show that ATG-based regimens carry at least as great a T-cell reconstitution liability as PTCy. Adding ATG to PTCy does not worsen CMV; it merely saturates the depletion effect. The infection costs of PTCy are best understood as a general consequence of T-cell–depleting prophylaxis, not a PTCy-specific limitation.</span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limitations {#sec-disc-limitations}</span></span>
-<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Observational evidence.** All findings derive from retrospective cohort and registry studies. Residual confounding cannot be excluded despite mediation modelling.</span>
-<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Sparse infection data.** BSI (k = 6) and IFI (k = 6) are data-poor. Dedicated prospective studies are needed.</span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Relapse data not analysed.** The residual OS benefit (surviving steroid adjustment) is hypothesised to reflect graft-versus-leukaemia preservation, but relapse data were not extracted.</span>
-<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Publication bias.** Formally assessed for C1 outcomes with k ≥ 10; not assessable for most C2 outcomes.</span>
-<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Observational dominance.** Only 14 of 251 studies are RCTs; the remaining are retrospective cohort or registry analyses.</span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>**M2 complete-case analysis.** Post-Block-9 M2 models use complete-case analysis for steroid adjustment (dropping arms with missing steroid data), differing from the pre-Block-9 <span class="in">`mi()`</span> imputation approach due to a brms API change.</span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>**C2 CMV sensitivity caveats.** The expanded-arm sensitivity conflates PTCy+ATG combination arms (which test a different clinical question — whether adding PTCy to ATG changes outcomes) with pure PTCy vs ATG comparisons. The convergence pattern is mechanistically interpretable but should not be taken as evidence that PTCy+ATG combinations are clinically equivalent to ATG alone.</span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a>**Meta-regression.** Neither recipient seropositivity (k = 11, p = 0.72) nor D+/R+ prevalence (k = 8, p = 0.43) significantly moderated the PTCy effect on CMV when used as study-level ecological covariates. Both analyses were severely underpowered (only 8–11 of 22 C1 CMV studies report arm-level serostatus data).</span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>**Subgroup tabulation.** Three studies (Chorao 2024, Goldsmith 2021, Steiner 2024) reported CMV reactivation stratified by donor/recipient serostatus, contributing one study per D/R combination:</span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> D/R stratum <span class="pp">|</span> PTCy % <span class="pp">|</span> Comparator % <span class="pp">|</span> OR <span class="pp">|</span> Source <span class="pp">|</span></span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|---|---|</span></span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> D+/R+ <span class="pp">|</span> 47% <span class="pp">|</span> 40% <span class="pp">|</span> 1.34 <span class="pp">|</span> Chorao 2024 <span class="pp">|</span></span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> D−/R+ <span class="pp">|</span> 67% <span class="pp">|</span> 69% <span class="pp">|</span> **0.91** <span class="pp">|</span> Chorao 2024 <span class="pp">|</span></span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> D+/R− <span class="pp">|</span> 20% <span class="pp">|</span> 11% <span class="pp">|</span> 2.06 <span class="pp">|</span> Goldsmith 2021 <span class="pp">|</span></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> D−/R− <span class="pp">|</span> 2% <span class="pp">|</span> 1% <span class="pp">|</span> 1.89 <span class="pp">|</span> Goldsmith 2021 <span class="pp">|</span></span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> R+ (pooled) <span class="pp">|</span> 51–68% <span class="pp">|</span> 29–48% <span class="pp">|</span> 2.4–2.6 <span class="pp">|</span> Goldsmith 2021, Steiner 2024 <span class="pp">|</span></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>The **D−/R+ stratum** is the only one where PTCy did not increase CMV risk. In this configuration, the recipient carries CMV-specific memory T cells from prior infection (R+) but the donor does not (D−). Post-transplant immune reconstitution against CMV therefore relies on surviving recipient memory cells. PTCy's preferential depletion of alloreactive (recently activated) T cells may spare these quiescent, CMV-specific memory cells, whereas CNI-based regimens continuously suppress all T-cell function including memory responses. This is consistent with the mechanistic selectivity of cyclophosphamide for dividing cells.</span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a>In contrast, when the donor is seropositive (D+/R+ and D+/R−), the comparator arm benefits from donor-derived CMV-specific T cells during immune reconstitution — a pathway that PTCy disrupts by depleting the incoming donor graft during the early post-transplant window.</span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hypothesis-Generating Only</span></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>All D/R stratum-specific estimates are based on k = 1 study each. The ecological meta-regressions lack power (k = 8–11 with restricted ranges). Testing whether PTCy's CMV effect genuinely differs by D/R serostatus requires individual patient data (IPD) meta-analysis, where within-study D/R interactions can be estimated without ecological bias.</span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Implications {#sec-disc-practical}</span></span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a>The mechanistic architecture carries direct clinical implications:</span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Domain <span class="pp">|</span> Intervention target <span class="pp">|</span> Rationale <span class="pp">|</span></span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **CMV / BSI** <span class="pp">|</span> T-cell reconstitution (adoptive therapy, early IS tapering) <span class="pp">|</span> Infection risk is GVHD-independent; steroid avoidance will not help <span class="pp">|</span></span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **NRM** <span class="pp">|</span> GVHD control and steroid minimisation <span class="pp">|</span> NRM benefit is steroid-mediated <span class="pp">|</span></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **OS** <span class="pp">|</span> Both GVHD control + relapse prevention <span class="pp">|</span> Partial mediation suggests dual contribution <span class="pp">|</span></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a><span class="fu">## ATG Is Not the Solution</span></span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a>The C2 data — and especially the sensitivity analysis — show that ATG-based regimens carry at least as great a T-cell reconstitution liability as PTCy. Adding ATG to PTCy does not worsen CMV; it merely saturates the depletion effect. The infection costs of PTCy are best understood as a general consequence of T-cell–depleting prophylaxis, not a PTCy-specific limitation.</span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limitations {#sec-disc-limitations}</span></span>
+<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Observational evidence.** All findings derive from retrospective cohort and registry studies. Residual confounding cannot be excluded despite mediation modelling.</span>
+<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Sparse infection data.** BSI (k = 6) and IFI (k = 6) are data-poor. Dedicated prospective studies are needed.</span>
+<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Relapse data not analysed.** The residual OS benefit (surviving steroid adjustment) is hypothesised to reflect graft-versus-leukaemia preservation, but relapse data were not extracted.</span>
+<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Publication bias.** Formally assessed for C1 outcomes with k ≥ 10; not assessable for most C2 outcomes.</span>
+<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Observational dominance.** Only 14 of 251 studies are RCTs; the remaining are retrospective cohort or registry analyses.</span>
+<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>**M2 complete-case analysis.** Post-Block-9 M2 models use complete-case analysis for steroid adjustment (dropping arms with missing steroid data), differing from the pre-Block-9 <span class="in">`mi()`</span> imputation approach due to a brms API change.</span>
+<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>**C2 CMV sensitivity caveats.** The expanded-arm sensitivity conflates PTCy+ATG combination arms (which test a different clinical question — whether adding PTCy to ATG changes outcomes) with pure PTCy vs ATG comparisons. The convergence pattern is mechanistically interpretable but should not be taken as evidence that PTCy+ATG combinations are clinically equivalent to ATG alone.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
