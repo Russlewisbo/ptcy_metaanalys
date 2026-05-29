@@ -158,6 +158,77 @@ if (!is.null(post_c2_sens_cmv)) {
 
 The primary C2 CMV estimate alone no longer demonstrates a statistically credible direction reversal. However, the three-way pattern across the primary and sensitivity analyses — C1 harmful, C2-primary near-null, C2-sensitivity null — traces a dose–response curve along the depletion axis. The framework is better supported by this graded pattern than it was by the pre-Block-9 binary reversal, even though the individual C2 CMV CrI is wider.
 
+### Comparator ATG use moderates the C1 CMV effect {#sec-disc-cmv-comp-atg}
+
+A further test of the depletion hierarchy exists *within* the C1 data itself. Although C1 comparator arms are defined as "CNI+MTX/MMF," many also received ATG — and when they did, the CMV effect changes direction.
+
+```{r}
+#| label: setup-comp-atg
+#| include: false
+
+studies_tbl <- read_csv(file.path(extract_dir, "studies.csv"), show_col_types = FALSE)
+arms_tbl    <- read_csv(file.path(extract_dir, "arms.csv"), show_col_types = FALSE)
+
+c1_cmv_comp <- read.csv(file.path(model_dir, "data_c1_cmv.csv")) |>
+  left_join(arms_tbl |> select(arm_id, study_id, atg_used),
+            by = c("comp_arm_id" = "arm_id", "study_id")) |>
+  left_join(studies_tbl |> select(study_id, first_author, pub_year), by = "study_id") |>
+  mutate(comp_atg = case_when(
+    atg_used == "Y" ~ "ATG",
+    atg_used == "N" ~ "No ATG",
+    TRUE ~ NA_character_
+  )) |>
+  filter(!is.na(comp_atg))
+
+es_cmv_comp <- escalc(measure = "OR", ai = ptcy_e, n1i = ptcy_n,
+                       ci = comp_e, n2i = comp_n, data = c1_cmv_comp)
+
+fit_atg_sub <- list(
+  atg    = rma(yi, vi, data = es_cmv_comp[es_cmv_comp$comp_atg == "ATG", ],    method = "REML"),
+  no_atg = rma(yi, vi, data = es_cmv_comp[es_cmv_comp$comp_atg == "No ATG", ], method = "REML")
+)
+
+fit_atg_mod <- rma(yi, vi, mods = ~ I(comp_atg == "No ATG"), data = es_cmv_comp, method = "REML")
+```
+
+```{r}
+#| label: fig-disc-comp-atg
+#| fig-cap: "C1 CMV effect stratified by comparator-arm ATG use. When the comparator also uses ATG (i.e. both arms deplete T cells), the CMV excess vanishes — the same convergence seen in the C2 sensitivity analysis."
+#| fig-height: 3.5
+#| fig-width: 8
+
+comp_atg_pd <- tibble(
+  subgroup = c(
+    sprintf("Comparator uses ATG (k = %d)", fit_atg_sub$atg$k),
+    sprintf("Comparator: no ATG (k = %d)", fit_atg_sub$no_atg$k),
+    sprintf("All C1 CMV (k = %d)", fit_atg_sub$atg$k + fit_atg_sub$no_atg$k)
+  ),
+  or = c(exp(coef(fit_atg_sub$atg)), exp(coef(fit_atg_sub$no_atg)),
+         exp(coef(rma(yi, vi, data = es_cmv_comp, method = "REML")))),
+  lo = c(exp(fit_atg_sub$atg$ci.lb), exp(fit_atg_sub$no_atg$ci.lb),
+         exp(rma(yi, vi, data = es_cmv_comp, method = "REML")$ci.lb)),
+  hi = c(exp(fit_atg_sub$atg$ci.ub), exp(fit_atg_sub$no_atg$ci.ub),
+         exp(rma(yi, vi, data = es_cmv_comp, method = "REML")$ci.ub))
+) |>
+  mutate(subgroup = factor(subgroup, levels = rev(subgroup)),
+         label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi))
+
+ggplot(comp_atg_pd, aes(x = or, y = subgroup)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), colour = jama_navy,
+                  size = 0.5, linewidth = 0.5) +
+  geom_text(aes(x = hi, label = label), hjust = -0.1, size = 3.2, colour = jama_black) +
+  scale_x_log10() +
+  coord_cartesian(xlim = c(0.4, 3.5)) +
+  labs(x = "Odds Ratio (log scale)", y = NULL,
+       title = "C1 CMV: Stratified by Comparator-Arm ATG Use") +
+  theme_jama()
+```
+
+When the comparator arm uses ATG (k = `r fit_atg_sub$atg$k`), the pooled OR is `r sprintf("%.2f", exp(coef(fit_atg_sub$atg)))` — essentially null, identical to the C2 pattern. When the comparator has no ATG (k = `r fit_atg_sub$no_atg$k`), the OR is `r sprintf("%.2f", exp(coef(fit_atg_sub$no_atg)))`, showing a PTCy-associated CMV excess. The moderator test is borderline (p = `r sprintf("%.3f", fit_atg_mod$QMp)`, R² = `r sprintf("%.0f%%", fit_atg_mod$R2)`).
+
+This is the depletion hierarchy operating *within* a single comparison. The CMV excess attributed to PTCy is not an intrinsic PTCy effect — it is a *relative* effect that depends on how much T-cell depletion the comparator carries. This pattern was independently confirmed in the C2 expanded-arm sensitivity analysis (above), where adding ATG to the PTCy arm similarly converged CMV toward null.
+
 ### CMV and donor/recipient serostatus {#sec-disc-cmv-serostatus}
 
 The depletion hierarchy predicts that PTCy should increase CMV reactivation most when CMV-specific T-cell reconstitution matters most — i.e., when the recipient carries latent virus (R+). We assessed this in two ways.
