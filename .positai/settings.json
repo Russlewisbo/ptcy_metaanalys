@@ -20,7 +20,9 @@
       "head *": "allow",
       "tr *": "allow",
       "grep *": "allow",
-      "wc *": "allow"
+      "wc *": "allow",
+      "git commit *": "allow",
+      "git push *": "allow"
     }
   }
 }
