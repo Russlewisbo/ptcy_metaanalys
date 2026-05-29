@@ -1,10 +1,10 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: docs
 
 website:
   title: "PTCy Meta-Analysis"
-  repo-url: https://github.com/placeholder/ptcy-meta-analysis
+  repo-url: https://github.com/YOUR_USERNAME/ptcy_metaanalys
   navbar:
     background: "#1a2a3a"
     foreground: "#ffffff"
