@@ -10,7 +10,7 @@ source("_common.R")
 post_c2_os      <- load_post("post_c2_os.rds")
 post_c2_m2_os   <- load_post("post_c2_m2_os.rds")
 post_c2_nrm     <- load_post("post_c2_nrm.rds")
-post_c2_m2_nrm  <- load_post("post_c2_m2_nrm.rds")
+post_c2_m2_nrm  <- tryCatch(load_post("post_c2_m2_nrm.rds"), error = function(e) NULL)
 post_c2_agvhd   <- load_post("post_c2_agvhd.rds")
 post_c2_cmv     <- load_post("post_c2_cmv.rds")
 post_c2_m2_cmv  <- load_post("post_c2_m2_cmv.rds")
@@ -31,7 +31,7 @@ Comparison 2 evaluates PTCy against ATG-based GVHD prophylaxis — a more deeply
 
 tibble(
   M1 = post_c2_os$b_ptcy_binary,
-  M2 = post_c2_m2_os$b_ptcy_binary
+  M2 = if ("b_ptcy_binary" %in% names(post_c2_m2_os)) post_c2_m2_os$b_ptcy_binary else post_c2_m2_os$b_eventsn_ptcy_binary
 ) |>
   pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
   ggplot(aes(x = log_or, fill = Model, colour = Model)) +
@@ -86,9 +86,9 @@ tibble(
   theme_jama()
 ```
 
-::: {.callout-important}
-## Key Finding: CMV Direction Reversal
-PTCy *increases* CMV risk vs CNI+MTX/MMF (OR 1.41) but *decreases* it vs ATG (OR 0.77). This establishes that CMV risk is ordered by depth of T-cell depletion: **CNI-based < PTCy < ATG**. The infection cost of PTCy is not intrinsic to PTCy but relative to the comparator's immunosuppressive depth.
+::: {.callout-note}
+## CMV Across Comparisons — Updated
+In the pre-Block-9 analysis, a direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77). With the expanded post-Block-9 corpus, C1 CMV remains harmful but C2 CMV has shifted toward null. The T-cell depletion depth hierarchy remains plausible, but the evidence for a qualitative reversal is now weaker. See the [Discussion](discussion.qmd) for details.
 :::
 
 ## BSI Descriptive Supplement {#sec-c2-bsi}
@@ -98,7 +98,7 @@ PTCy *increases* CMV risk vs CNI+MTX/MMF (OR 1.41) but *decreases* it vs ATG (OR
 #| fig-cap: "BSI forest plot for Comparison 2 (k = 3). Substantial heterogeneity (I² = 69%) driven by definitional differences and a donor-type confound in Meyer 2025. The diamond represents the Mantel-Haenszel fixed-effect pooled estimate."
 #| fig-height: 4
 
-mh_bsi <- readRDS(file.path(model_dir, "c2_mh_bsi.rds"))
+mh_bsi <- load_model("c2_mh_bsi.rds")
 
 bsi_studies <- tibble(
   study = c("Meyer 2025", "Berro 2021", "Bordat 2026"),
@@ -145,22 +145,29 @@ MH OR 2.03 (95% CI 1.33–3.09), but driven by definition mismatch (any culture 
 #| fig-height: 7
 #| fig-width: 11
 
+# Helper to find the ptcy_binary column in a posterior (handles both old mi() and new complete-case naming)
+get_ptcy_col <- function(post) {
+  if ("b_ptcy_binary" %in% names(post)) return("b_ptcy_binary")
+  if ("b_eventsn_ptcy_binary" %in% names(post)) return("b_eventsn_ptcy_binary")
+  stop("Cannot find ptcy_binary column in posterior")
+}
+
 all_pd <- do.call(rbind, list(
   or_summary(post_os,    "b_ptcy_binary", "OS", "C1: PTCy vs CNI+MTX"),
-  or_summary(load_post("post_m2_os.rds"), "b_eventsn_ptcy_binary", "OS", "C1: PTCy vs CNI+MTX", "M2"),
+  or_summary(load_post("post_m2_os.rds"), get_ptcy_col(load_post("post_m2_os.rds")), "OS", "C1: PTCy vs CNI+MTX", "M2"),
   or_summary(load_post("post_nrm.rds"),    "b_ptcy_binary", "NRM", "C1: PTCy vs CNI+MTX"),
-  or_summary(load_post("post_m2_nrm.rds"), "b_eventsn_ptcy_binary", "NRM", "C1: PTCy vs CNI+MTX", "M2"),
+  or_summary(load_post("post_m2_nrm.rds"), get_ptcy_col(load_post("post_m2_nrm.rds")), "NRM", "C1: PTCy vs CNI+MTX", "M2"),
   or_summary(load_post("post_agvhd.rds"), "b_ptcy_binary", "aGVHD II\u2013IV", "C1: PTCy vs CNI+MTX"),
   or_summary(post_m1, "b_ptcy_binary", "CMV", "C1: PTCy vs CNI+MTX"),
-  or_summary(load_post("post_m2.rds"), "b_eventsn_ptcy_binary", "CMV", "C1: PTCy vs CNI+MTX", "M2"),
+  or_summary(load_post("post_m2.rds"), get_ptcy_col(load_post("post_m2.rds")), "CMV", "C1: PTCy vs CNI+MTX", "M2"),
   or_summary(load_post("post_bsi.rds"),   "b_ptcy_binary", "BSI", "C1: PTCy vs CNI+MTX"),
   or_summary(load_post("post_ifi.rds"),   "b_ptcy_binary", "IFI", "C1: PTCy vs CNI+MTX"),
   or_summary(post_c2_os,     "b_ptcy_binary", "OS", "C2: PTCy vs ATG"),
-  or_summary(post_c2_m2_os,  "b_ptcy_binary", "OS", "C2: PTCy vs ATG", "M2"),
+  or_summary(load_post("post_c2_m2_os.rds"), get_ptcy_col(load_post("post_c2_m2_os.rds")), "OS", "C2: PTCy vs ATG", "M2"),
   or_summary(post_c2_nrm,    "b_ptcy_binary", "NRM", "C2: PTCy vs ATG"),
   or_summary(post_c2_agvhd,  "b_ptcy_binary", "aGVHD II\u2013IV", "C2: PTCy vs ATG"),
   or_summary(post_c2_cmv,    "b_ptcy_binary", "CMV", "C2: PTCy vs ATG"),
-  or_summary(post_c2_m2_cmv, "b_ptcy_binary", "CMV", "C2: PTCy vs ATG", "M2")
+  or_summary(load_post("post_c2_m2_cmv.rds"), get_ptcy_col(load_post("post_c2_m2_cmv.rds")), "CMV", "C2: PTCy vs ATG", "M2")
 )) |>
   as_tibble() |>
   mutate(

@@ -71,11 +71,35 @@ theme_jama <- function(base_size = 11) {
 theme_set(theme_jama())
 
 # ── Data paths (relative to 05_website/) ──
-model_dir <- "../03_models"
+# Post-Block-9 models take priority if they exist
+post_block9_dir <- "../03_models/post_block9"
+model_dir <- if (dir.exists(post_block9_dir) && length(list.files(post_block9_dir, "post_.*\\.rds$")) > 0) {
+  post_block9_dir
+} else {
+  "../03_models"
+}
 extract_dir <- "../02_extraction"
 
-# ── Helper: load model posteriors ──
-load_post <- function(file) readRDS(file.path(model_dir, file))
+# ── Helper: load model posteriors (checks post_block9 first) ──
+load_post <- function(file) {
+  pb9 <- file.path(post_block9_dir, file)
+  pre <- file.path("../03_models", file)
+  if (file.exists(pb9)) readRDS(pb9) else readRDS(pre)
+}
+
+# ── Helper: load brms model object ──
+load_model <- function(file) {
+  pb9 <- file.path(post_block9_dir, file)
+  pre <- file.path("../03_models", file)
+  if (file.exists(pb9)) readRDS(pb9) else readRDS(pre)
+}
+
+# ── Helper: find ptcy_binary column (handles both old mi() and new naming) ──
+ptcy_col <- function(post) {
+  if ("b_ptcy_binary" %in% names(post)) return("b_ptcy_binary")
+  if ("b_eventsn_ptcy_binary" %in% names(post)) return("b_eventsn_ptcy_binary")
+  stop("Cannot find ptcy_binary column in posterior")
+}
 
 # ── Helper: OR summary from posterior draws ──
 or_summary <- function(post, col, label = "", comparison = "", model = "M1") {

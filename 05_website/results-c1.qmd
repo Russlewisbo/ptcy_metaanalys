@@ -15,22 +15,22 @@ post_m2_nrm  <- load_post("post_m2_nrm.rds")
 post_agvhd   <- load_post("post_agvhd.rds")
 post_m1      <- load_post("post_m1.rds")
 post_m2      <- load_post("post_m2.rds")
-post_m3      <- load_post("post_m3_agvhd.rds")
+post_m3      <- tryCatch(load_post("post_m3_agvhd.rds"), error = function(e) NULL)
 post_bsi     <- load_post("post_bsi.rds")
 post_ifi     <- load_post("post_ifi.rds")
 
-# Load analytic datasets
-c1_os    <- readRDS(file.path(model_dir, "os_brms_clean.rds"))
-c1_nrm   <- readRDS(file.path(model_dir, "nrm_brms_clean.rds"))
-c1_agvhd <- readRDS(file.path(model_dir, "agvhd_brms_clean.rds"))
-c1_cmv   <- readRDS(file.path(model_dir, "cmv_brms_clean.rds"))
-c1_bsi   <- readRDS(file.path(model_dir, "bsi_brms_clean.rds"))
-c1_ifi   <- readRDS(file.path(model_dir, "ifi_brms_clean.rds"))
+# Load analytic datasets (post-Block-9 preferred, fallback to pre)
+c1_os    <- load_model("os_brms_clean.rds")
+c1_nrm   <- load_model("nrm_brms_clean.rds")
+c1_agvhd <- load_model("agvhd_brms_clean.rds")
+c1_cmv   <- load_model("cmv_brms_clean.rds")
+c1_bsi   <- load_model("bsi_brms_clean.rds")
+c1_ifi   <- load_model("ifi_brms_clean.rds")
 
 # Load frequentist models
-res_os_freq    <- readRDS(file.path(model_dir, "res_os_freq.rds"))
-res_nrm_freq   <- readRDS(file.path(model_dir, "res_nrm_freq.rds"))
-res_agvhd_freq <- readRDS(file.path(model_dir, "res_agvhd_freq.rds"))
+res_os_freq    <- load_model("res_os_freq.rds")
+res_nrm_freq   <- load_model("res_nrm_freq.rds")
+res_agvhd_freq <- load_model("res_agvhd_freq.rds")
 ```
 
 Comparison 1 evaluates PTCy against calcineurin inhibitor–based prophylaxis (CNI+MTX or CNI+MMF) — the most common alternative platform. This comparison draws on the largest evidence base in the meta-analysis.
@@ -44,7 +44,7 @@ Comparison 1 evaluates PTCy against calcineurin inhibitor–based prophylaxis (C
 
 tibble(
   M1 = post_os$b_ptcy_binary,
-  M2 = post_m2_os$b_eventsn_ptcy_binary
+  M2 = post_m2_os[[ptcy_col(post_m2_os)]]
 ) |>
   pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
   ggplot(aes(x = log_or, fill = Model, colour = Model)) +
@@ -53,8 +53,7 @@ tibble(
   scale_fill_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
-       title = "Overall Survival — Posterior Distributions",
-       subtitle = "k = 35 studies, N = 17,661") +
+       title = "Overall Survival — Posterior Distributions") +
   theme_jama()
 ```
 
@@ -71,7 +70,7 @@ tibble(
 
 tibble(
   M1 = post_nrm$b_ptcy_binary,
-  M2 = post_m2_nrm$b_eventsn_ptcy_binary
+  M2 = post_m2_nrm[[ptcy_col(post_m2_nrm)]]
 ) |>
   pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
   ggplot(aes(x = log_or, fill = Model, colour = Model)) +
@@ -80,8 +79,7 @@ tibble(
   scale_fill_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
-       title = "Non-Relapse Mortality — Posterior Distributions",
-       subtitle = "k = 15 studies, N = 2,081") +
+       title = "Non-Relapse Mortality — Posterior Distributions") +
   theme_jama()
 ```
 
@@ -106,21 +104,21 @@ med_data <- tibble(
   Model = rep(c("M1", "M2"), 2),
   or = c(
     median(exp(post_os$b_ptcy_binary)),
-    median(exp(post_m2_os$b_eventsn_ptcy_binary)),
+    median(exp(post_m2_os[[ptcy_col(post_m2_os)]])),
     median(exp(post_nrm$b_ptcy_binary)),
-    median(exp(post_m2_nrm$b_eventsn_ptcy_binary))
+    median(exp(post_m2_nrm[[ptcy_col(post_m2_nrm)]]))
   ),
   lo = c(
     quantile(exp(post_os$b_ptcy_binary), 0.025),
-    quantile(exp(post_m2_os$b_eventsn_ptcy_binary), 0.025),
+    quantile(exp(post_m2_os[[ptcy_col(post_m2_os)]]), 0.025),
     quantile(exp(post_nrm$b_ptcy_binary), 0.025),
-    quantile(exp(post_m2_nrm$b_eventsn_ptcy_binary), 0.025)
+    quantile(exp(post_m2_nrm[[ptcy_col(post_m2_nrm)]]), 0.025)
   ),
   hi = c(
     quantile(exp(post_os$b_ptcy_binary), 0.975),
-    quantile(exp(post_m2_os$b_eventsn_ptcy_binary), 0.975),
+    quantile(exp(post_m2_os[[ptcy_col(post_m2_os)]]), 0.975),
     quantile(exp(post_nrm$b_ptcy_binary), 0.975),
-    quantile(exp(post_m2_nrm$b_eventsn_ptcy_binary), 0.975)
+    quantile(exp(post_m2_nrm[[ptcy_col(post_m2_nrm)]]), 0.975)
   )
 ) |>
   mutate(label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi))
@@ -169,11 +167,15 @@ tibble(log_or = post_agvhd$b_ptcy_binary) |>
 #| fig-cap: "Posterior densities for PTCy effect on CMV reactivation. M1 (direct), M2 (steroid-adjusted), and M3 (aGVHD-adjusted). None of the adjustments attenuate the signal — confirming steroid-independent, GVHD-independent harm."
 #| fig-height: 4.5
 
-tibble(
+cmv_draws <- tibble(
   M1 = post_m1$b_ptcy_binary,
-  `M2 (steroid)` = post_m2$b_eventsn_ptcy_binary,
-  `M3 (aGVHD)` = post_m3$b_eventsn_ptcy_binary
-) |>
+  `M2 (steroid)` = if ("b_ptcy_binary" %in% names(post_m2)) post_m2$b_ptcy_binary else post_m2$b_eventsn_ptcy_binary
+)
+if (!is.null(post_m3)) {
+  m3_col <- if ("b_ptcy_binary" %in% names(post_m3)) "b_ptcy_binary" else "b_eventsn_ptcy_binary"
+  cmv_draws$`M3 (aGVHD)` <- post_m3[[m3_col]]
+}
+cmv_draws |>
   pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
   mutate(Model = factor(Model, levels = c("M1", "M2 (steroid)", "M3 (aGVHD)"))) |>
   ggplot(aes(x = log_or, fill = Model, colour = Model)) +
@@ -229,12 +231,12 @@ tibble(
 
 c1_pd <- do.call(rbind, list(
   or_summary(post_os,    "b_ptcy_binary", "OS", "C1", "M1"),
-  or_summary(post_m2_os, "b_eventsn_ptcy_binary", "OS", "C1", "M2"),
+  or_summary(post_m2_os, ptcy_col(post_m2_os), "OS", "C1", "M2"),
   or_summary(post_nrm,    "b_ptcy_binary", "NRM", "C1", "M1"),
-  or_summary(post_m2_nrm, "b_eventsn_ptcy_binary", "NRM", "C1", "M2"),
+  or_summary(post_m2_nrm, ptcy_col(post_m2_nrm), "NRM", "C1", "M2"),
   or_summary(post_agvhd, "b_ptcy_binary", "aGVHD II\u2013IV", "C1", "M1"),
   or_summary(post_m1,    "b_ptcy_binary", "CMV", "C1", "M1"),
-  or_summary(post_m2,    "b_eventsn_ptcy_binary", "CMV", "C1", "M2"),
+  or_summary(post_m2,    ptcy_col(post_m2), "CMV", "C1", "M2"),
   or_summary(post_bsi,   "b_ptcy_binary", "BSI", "C1", "M1"),
   or_summary(post_ifi,   "b_ptcy_binary", "IFI", "C1", "M1")
 )) |>

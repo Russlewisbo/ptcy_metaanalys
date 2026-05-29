@@ -1,0 +1,45 @@
+Warning messages:
+1: package ‘readr’ was built under R version 4.5.2 
+2: package ‘dplyr’ was built under R version 4.5.2 
+3: package ‘tidyr’ was built under R version 4.5.2 
+4: package ‘Rcpp’ was built under R version 4.5.2 
+5: package ‘posterior’ was built under R version 4.5.2 
+6: package ‘bayesplot’ was built under R version 4.5.2 
+Loading tidy CSVs ...
+  arms: 525 | outcomes: 3604 | studies: 251
+
+==== c1_os ====
+
+[m1] c1_os — fitting on k=40 ...
+Compiling Stan program...
+Start sampling
+  m1 OR = 0.79 [0.73, 0.85]  τ = 0.61
+
+[m2_steroid] c1_os — k=32 studies (16 arms dropped for missing steroid)
+Compiling Stan program...
+Start sampling
+  m2_steroid OR = 0.86 [0.77, 0.96]  τ = 0.58
+
+==== c1_nrm ====
+
+[m1] c1_nrm — fitting on k=12 ...
+Compiling Stan program...
+Start sampling
+  m1 OR = 0.88 [0.66, 1.18]  τ = 0.72
+
+[m2_steroid] c1_nrm — k=9 studies (6 arms dropped for missing steroid)
+Compiling Stan program...
+Start sampling
+  m2_steroid OR = 0.90 [0.59, 1.36]  τ = 0.60
+
+==== c1_agvhd ====
+
+[m1] c1_agvhd — fitting on k=28 ...
+Compiling Stan program...
+Start sampling
+  m1 OR = 0.67 [0.59, 0.78]  τ = 0.68
+
+==== c1_cmv ====
+
+[m1] c1_cmv — fitting on k=22 ...
+Compiling Stan program...

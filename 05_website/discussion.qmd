@@ -10,26 +10,29 @@ source("_common.R")
 post_os     <- load_post("post_os.rds")
 post_m1     <- load_post("post_m1.rds")
 post_c2_cmv <- load_post("post_c2_cmv.rds")
+
+or_c1_cmv <- or_summary(post_m1, "b_ptcy_binary", "CMV")
+or_c2_cmv <- or_summary(post_c2_cmv, "b_ptcy_binary", "CMV")
 ```
 
-## The Mechanistic Asymmetry {#sec-disc-asymmetry}
+## The Mechanistic Framework {#sec-disc-asymmetry}
 
-The totality of findings across six pre-specified outcomes and two independent comparisons resolves into a single, internally consistent mechanistic framework built on the distinction between two immunological consequences of PTCy.
+The totality of findings across six pre-specified outcomes and two independent comparisons informs a mechanistic framework built on the distinction between two immunological consequences of PTCy.
 
 ### Pathway 1: GVHD Suppression (Intended)
 
-PTCy eliminates alloreactive T cells during the critical window of allorecognition, reducing acute GVHD grade II–IV by an estimated OR of 0.63 (C1) and 0.59 (C2). This propagates downstream:
+PTCy eliminates alloreactive T cells during the critical window of allorecognition, reducing acute GVHD grade II–IV across both comparisons. This propagates downstream:
 
-- **NRM** benefit is completely steroid-mediated in C1 (M1 OR 0.86 → M2 OR 1.02) and substantially mediated in C2 (M1 OR 0.65 → M2 OR 0.76)
-- **OS** benefit is only partially mediated (C1: 29% attenuation; C2: 35% attenuation), suggesting an additional direct contribution — most plausibly graft-versus-leukaemia preservation
+- **NRM** benefit shows steroid mediation in both comparisons
+- **OS** benefit is only partially mediated, suggesting an additional direct contribution — most plausibly graft-versus-leukaemia preservation
 
 ### Pathway 2: T-Cell Lymphodepletion (Unintended)
 
-The same cyclophosphamide pulse depletes the nascent CMV- and bacterial-specific T-cell repertoire. This manifests as elevated infection risk — but the direction depends on the comparator's own depletion depth.
+The same cyclophosphamide pulse depletes the nascent CMV- and bacterial-specific T-cell repertoire. This manifests as elevated infection risk — but the magnitude and direction depend on the comparator's own depletion depth.
 
 ```{r}
 #| label: fig-disc-cmv-hierarchy
-#| fig-cap: "T-cell depletion depth hierarchy. CNI-based regimens preserve T cells most; ATG depletes most deeply; PTCy falls between. CMV risk tracks this ordering."
+#| fig-cap: "T-cell depletion depth hierarchy. CNI-based regimens preserve T cells most; ATG depletes most deeply; PTCy falls between."
 #| fig-height: 4
 #| fig-width: 8
 
@@ -56,16 +59,11 @@ ggplot(hierarchy, aes(x = Regimen, y = depletion)) +
         panel.grid.major.x = element_blank())
 ```
 
-### The Natural Experiment
-
-Comparison 2 provides a natural test of the framework. If PTCy's CMV excess is driven by depth of depletion (not intrinsic to cyclophosphamide), then comparing PTCy to a deeper depleter should reverse the CMV direction. This is exactly what was observed:
-
-- **C1 (vs CNI+MTX/MMF):** OR 1.41 [1.20–1.65] — PTCy harmful
-- **C2 (vs ATG):** OR 0.77 [0.60–0.99] — PTCy protective
+### CMV Across Comparisons — Updated Assessment
 
 ```{r}
 #| label: fig-disc-overlay
-#| fig-cap: "Posterior overlap plot for the CMV effect across comparisons. The distributions are almost entirely non-overlapping, confirming a qualitative direction reversal rather than sampling noise."
+#| fig-cap: "Posterior overlap plot for the CMV effect across comparisons."
 #| fig-height: 4
 
 tibble(
@@ -79,9 +77,17 @@ tibble(
   scale_fill_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
   scale_colour_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
   labs(x = "log-OR (PTCy vs comparator)", y = "Posterior density",
-       title = "CMV Direction Reversal — Posterior Overlap") +
+       title = "CMV Reactivation — Comparison Across Contexts",
+       subtitle = sprintf("C1 OR %s vs C2 OR %s",
+                           fmt_or(or_c1_cmv$or, or_c1_cmv$lo, or_c1_cmv$hi),
+                           fmt_or(or_c2_cmv$or, or_c2_cmv$lo, or_c2_cmv$hi))) +
   theme_jama()
 ```
+
+::: {.callout-warning}
+## CMV Direction Reversal — Attenuated in Post-Block-9 Analysis
+The pre-Block-9 analysis found a qualitative direction reversal: PTCy increased CMV risk vs CNI+MTX (OR 1.41) but decreased it vs ATG (OR 0.77). In the post-Block-9 corpus, C1 CMV remains harmful (OR `r round(or_c1_cmv$or, 2)` [`r round(or_c1_cmv$lo, 2)`–`r round(or_c1_cmv$hi, 2)`]) but C2 CMV has shifted toward null (OR `r round(or_c2_cmv$or, 2)` [`r round(or_c2_cmv$lo, 2)`–`r round(or_c2_cmv$hi, 2)`]). The T-cell depletion depth hierarchy remains a plausible framework, but the evidence for a qualitative reversal is now weaker. The C2 CMV 95% CrI spans both harmful and protective directions.
+:::
 
 ## Practical Implications {#sec-disc-practical}
 
@@ -90,18 +96,14 @@ The mechanistic architecture carries direct clinical implications:
 | Domain | Intervention target | Rationale |
 |---|---|---|
 | **CMV / BSI** | T-cell reconstitution (adoptive therapy, early IS tapering) | Infection risk is GVHD-independent; steroid avoidance will not help |
-| **NRM** | GVHD control and steroid minimisation | NRM benefit is fully steroid-mediated |
+| **NRM** | GVHD control and steroid minimisation | NRM benefit is steroid-mediated |
 | **OS** | Both GVHD control + relapse prevention | Partial mediation suggests dual contribution |
-
-::: {.callout-note}
-## ATG Is Not the Solution
-The C2 data show that ATG-based regimens carry at least as great a T-cell reconstitution liability as PTCy. The infection costs of PTCy are best understood as a general consequence of T-cell–depleting prophylaxis, not a PTCy-specific limitation.
-:::
 
 ## Limitations {#sec-disc-limitations}
 
 1. **Observational evidence.** All findings derive from retrospective cohort and registry studies. Residual confounding cannot be excluded despite mediation modelling.
-2. **Sparse infection data.** BSI (k = 3–6) and IFI (k = 4–8) are data-poor. Dedicated prospective studies are needed.
+2. **Sparse infection data.** BSI (k = 3–6) and IFI (k = 4–6) are data-poor. Dedicated prospective studies are needed.
 3. **Relapse data not analysed.** The residual OS benefit (surviving steroid adjustment) is hypothesised to reflect graft-versus-leukaemia preservation, but relapse data were not extracted.
 4. **Publication bias.** Formally assessed for C1 outcomes with k ≥ 10; not assessable for most C2 outcomes.
-5. **Extraction incomplete.** Blocks 7–8 (99 papers) remain unextracted; the final corpus may shift some estimates.
+5. **Observational dominance.** Only 14 of 251 studies are RCTs; the remaining are retrospective cohort or registry analyses. Block 9 added 4 new RCTs (Koura 2025, Zhang 2023, Zu 2022, Zu 2023), but the evidence base remains predominantly observational.
+6. **M2 complete-case analysis.** Post-Block-9 M2 models use complete-case analysis for steroid adjustment (dropping arms with missing steroid data), differing from the pre-Block-9 `mi()` imputation approach due to a brms API change.

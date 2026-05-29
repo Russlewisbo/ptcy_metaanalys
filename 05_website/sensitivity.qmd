@@ -7,9 +7,9 @@ title: "Sensitivity Analyses"
 #| include: false
 source("_common.R")
 
-# C1 sensitivity models
-post_m1_post2020 <- load_post("post_m1_post2020.rds")
-post_m1_haplo    <- load_post("post_m1_haplo.rds")
+# C1 sensitivity models (may not exist in post-Block-9)
+post_m1_post2020 <- tryCatch(load_post("post_m1_post2020.rds"), error = function(e) NULL)
+post_m1_haplo    <- tryCatch(load_post("post_m1_haplo.rds"), error = function(e) NULL)
 
 # C1 CMV primary
 post_m1 <- load_post("post_m1.rds")
@@ -18,9 +18,9 @@ post_m1 <- load_post("post_m1.rds")
 post_c2_os     <- load_post("post_c2_os.rds")
 post_c2_agvhd  <- load_post("post_c2_agvhd.rds")
 post_c2_cmv    <- load_post("post_c2_cmv.rds")
-post_c2_sens_os     <- load_post("post_c2_sens_os.rds")
-post_c2_sens_agvhd  <- load_post("post_c2_sens_agvhd.rds")
-post_c2_sens_cmv    <- load_post("post_c2_sens_cmv.rds")
+post_c2_sens_os     <- tryCatch(load_post("post_c2_sens_os.rds"), error = function(e) NULL)
+post_c2_sens_agvhd  <- tryCatch(load_post("post_c2_sens_agvhd.rds"), error = function(e) NULL)
+post_c2_sens_cmv    <- tryCatch(load_post("post_c2_sens_cmv.rds"), error = function(e) NULL)
 
 # IFI LOO
 loo_tbl <- tryCatch(
@@ -41,11 +41,16 @@ Two pre-specified sensitivity analyses were conducted for CMV to address era eff
 #| fig-cap: "CMV sensitivity analyses (C1). Both restrictions strengthen the effect, consistent with (a) post-2020 letermovir-era prophylaxis widening the gap, and (b) haploidentical donor settings amplifying PTCy's T-cell depletion effect."
 #| fig-height: 5
 
-sens_cmv <- do.call(rbind, list(
-  or_summary(post_m1, "b_ptcy_binary", "Full corpus", model = "Primary (k=18)"),
-  or_summary(post_m1_post2020, "b_ptcy_binary", "Post-2020", model = "Post-2020 (k=13)"),
-  or_summary(post_m1_haplo, "b_ptcy_binary", "Haplo-only", model = "Haplo \u226550% (k=11)")
-)) |>
+sens_list <- list(
+  or_summary(post_m1, "b_ptcy_binary", "Full corpus", model = "Primary")
+)
+if (!is.null(post_m1_post2020)) {
+  sens_list[[length(sens_list)+1]] <- or_summary(post_m1_post2020, "b_ptcy_binary", "Post-2020", model = "Post-2020")
+}
+if (!is.null(post_m1_haplo)) {
+  sens_list[[length(sens_list)+1]] <- or_summary(post_m1_haplo, "b_ptcy_binary", "Haplo-only", model = "Haplo \u226550%")
+}
+sens_cmv <- do.call(rbind, sens_list) |>
   as_tibble() |>
   mutate(
     model = factor(model, levels = rev(c("Primary (k=18)", "Post-2020 (k=13)", "Haplo \u226550% (k=11)"))),
@@ -107,14 +112,21 @@ The primary C2 analysis excluded 12 arms (PTCy+ATG combo, mixed, neither). The s
 #| fig-cap: "Sensitivity analysis — expanded arm inclusion (C2). OS and aGVHD are robust; CMV attenuates notably (OR 0.77 → 0.91) because PTCy+ATG combination arms (reclassified as PTCy-side) carry higher CMV reactivation risk."
 #| fig-height: 5
 
-sens_c2 <- do.call(rbind, list(
-  or_summary(post_c2_os, "b_ptcy_binary", "OS", model = "Primary (k=10)"),
-  or_summary(post_c2_sens_os, "b_ptcy_binary", "OS", model = "Sensitivity (k=11)"),
-  or_summary(post_c2_agvhd, "b_ptcy_binary", "aGVHD", model = "Primary (k=6)"),
-  or_summary(post_c2_sens_agvhd, "b_ptcy_binary", "aGVHD", model = "Sensitivity (k=8)"),
-  or_summary(post_c2_cmv, "b_ptcy_binary", "CMV", model = "Primary (k=12)"),
-  or_summary(post_c2_sens_cmv, "b_ptcy_binary", "CMV", model = "Sensitivity (k=14)")
-)) |>
+sens_c2_list <- list(
+  or_summary(post_c2_os, "b_ptcy_binary", "OS", model = "Primary")
+)
+if (!is.null(post_c2_sens_os)) {
+  sens_c2_list[[length(sens_c2_list)+1]] <- or_summary(post_c2_sens_os, "b_ptcy_binary", "OS", model = "Sensitivity")
+}
+sens_c2_list[[length(sens_c2_list)+1]] <- or_summary(post_c2_agvhd, "b_ptcy_binary", "aGVHD", model = "Primary")
+if (!is.null(post_c2_sens_agvhd)) {
+  sens_c2_list[[length(sens_c2_list)+1]] <- or_summary(post_c2_sens_agvhd, "b_ptcy_binary", "aGVHD", model = "Sensitivity")
+}
+sens_c2_list[[length(sens_c2_list)+1]] <- or_summary(post_c2_cmv, "b_ptcy_binary", "CMV", model = "Primary")
+if (!is.null(post_c2_sens_cmv)) {
+  sens_c2_list[[length(sens_c2_list)+1]] <- or_summary(post_c2_sens_cmv, "b_ptcy_binary", "CMV", model = "Sensitivity")
+}
+sens_c2 <- do.call(rbind, sens_c2_list) |>
   as_tibble() |>
   mutate(
     outcome = factor(outcome, levels = c("OS", "aGVHD", "CMV")),

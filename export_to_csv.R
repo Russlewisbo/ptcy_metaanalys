@@ -19,7 +19,7 @@ suppressPackageStartupMessages({
   library(purrr)
 })
 
-XLSX <- "PTCy_MA_extraction_template_v1.2.xlsx"
+XLSX <- "PTCy_MA_extraction_template_v1.2_post_block9.xlsx"
 OUT_DIR <- file.path("02_extraction")
 if (!dir.exists(OUT_DIR)) dir.create(OUT_DIR, recursive = TRUE)
 

@@ -1,0 +1,1072 @@
+[
+  {
+    "study_id": 1,
+    "reason": "conference_abstract",
+    "paper_label": "Ara 2023"
+  },
+  {
+    "study_id": 3,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 13,
+    "reason": "conference_abstract",
+    "paper_label": "Abedin 2024 (ASH abstract)"
+  },
+  {
+    "study_id": 15,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "Adhikari 2017"
+  },
+  {
+    "study_id": 17,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 18,
+    "reason": "conference_abstract",
+    "paper_label": "Ahmad I 2023"
+  },
+  {
+    "study_id": 21,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 22,
+    "reason": "letermovir_focused_no_PTCy_contrast",
+    "paper_label": "Akahoshi 2025"
+  },
+  {
+    "study_id": 23,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 25,
+    "reason": "duplicate_of_study_id_26",
+    "paper_label": ""
+  },
+  {
+    "study_id": 27,
+    "reason": "conference_abstract_and_duplicate_of_study_id_28",
+    "paper_label": ""
+  },
+  {
+    "study_id": 28,
+    "reason": "conference_abstract",
+    "paper_label": "Altareb 2024"
+  },
+  {
+    "study_id": 29,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 30,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 31,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 33,
+    "reason": "conference_abstract",
+    "paper_label": "Arslan 2023"
+  },
+  {
+    "study_id": 34,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 36,
+    "reason": "conference_abstract",
+    "paper_label": "Asano-Mori 2014"
+  },
+  {
+    "study_id": 38,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 40,
+    "reason": "conference_abstract",
+    "paper_label": "Aydin 2022"
+  },
+  {
+    "study_id": 41,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "Bacigalupo 2016"
+  },
+  {
+    "study_id": 42,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 53,
+    "reason": "conference_abstract",
+    "paper_label": "Baron F 2023"
+  },
+  {
+    "study_id": 54,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "Barriga 2025"
+  },
+  {
+    "study_id": 56,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Baskett 2020"
+  },
+  {
+    "study_id": 58,
+    "reason": "conference_abstract",
+    "paper_label": "Battipaglia 2024"
+  },
+  {
+    "study_id": 59,
+    "reason": "conference_abstract",
+    "paper_label": "Battipaglia 2024"
+  },
+  {
+    "study_id": 64,
+    "reason": "conference_abstract",
+    "paper_label": "Bento 2025"
+  },
+  {
+    "study_id": 68,
+    "reason": "conference_abstract",
+    "paper_label": "Bhatia 2024"
+  },
+  {
+    "study_id": 69,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Bi 2022"
+  },
+  {
+    "study_id": 70,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 73,
+    "reason": "duplicate_of_study_id_2",
+    "paper_label": ""
+  },
+  {
+    "study_id": 74,
+    "reason": "pediatric_population_outside_protocol",
+    "paper_label": ""
+  },
+  {
+    "study_id": 76,
+    "reason": "conference_abstract",
+    "paper_label": "Bothara 2025"
+  },
+  {
+    "study_id": 81,
+    "reason": "conference_abstract",
+    "paper_label": "Bu 2023"
+  },
+  {
+    "study_id": 82,
+    "reason": "no_PTCy_contrast_mixed_cohort",
+    "paper_label": "Bueno 2021"
+  },
+  {
+    "study_id": 84,
+    "reason": "duplicate_of_study_id_83",
+    "paper_label": "Bykova 2018"
+  },
+  {
+    "study_id": 85,
+    "reason": "conference_abstract",
+    "paper_label": "Camargo 2021 (TCT abstract #426)"
+  },
+  {
+    "study_id": 87,
+    "reason": "duplicate_of_study_id_88",
+    "paper_label": "Cao J 2023"
+  },
+  {
+    "study_id": 90,
+    "reason": "protocol_only_no_results",
+    "paper_label": "Chakraverty 2025"
+  },
+  {
+    "study_id": 91,
+    "reason": "protocol_or_design_paper_not_results",
+    "paper_label": ""
+  },
+  {
+    "study_id": 92,
+    "reason": "conference_abstract",
+    "paper_label": "Chalandon 2023"
+  },
+  {
+    "study_id": 93,
+    "reason": "conference_abstract",
+    "paper_label": "Chalandon 2024"
+  },
+  {
+    "study_id": 95,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Chen 2021"
+  },
+  {
+    "study_id": 96,
+    "reason": "duplicate_of_study_id_95",
+    "paper_label": ""
+  },
+  {
+    "study_id": 98,
+    "reason": "duplicate_of_study_id_99",
+    "paper_label": ""
+  },
+  {
+    "study_id": 102,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Cibich 2026"
+  },
+  {
+    "study_id": 103,
+    "reason": "conference_abstract",
+    "paper_label": "Cioccio 2021"
+  },
+  {
+    "study_id": 106,
+    "reason": "conference_abstract",
+    "paper_label": "Dachy 2022"
+  },
+  {
+    "study_id": 113,
+    "reason": "non_eligible_population_hemoglobinopathy",
+    "paper_label": ""
+  },
+  {
+    "study_id": 114,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 115,
+    "reason": "conference_abstract",
+    "paper_label": "Desai N 2025 (ASCO abstract 6508)"
+  },
+  {
+    "study_id": 116,
+    "reason": "duplicate_of_study_id_115",
+    "paper_label": ""
+  },
+  {
+    "study_id": 117,
+    "reason": "conference_abstract",
+    "paper_label": "Devine 2019"
+  },
+  {
+    "study_id": 121,
+    "reason": "duplicate_of_study_id_120",
+    "paper_label": "Dreger 2019"
+  },
+  {
+    "study_id": 125,
+    "reason": "conference_abstract",
+    "paper_label": "Dykes 2025"
+  },
+  {
+    "study_id": 126,
+    "reason": "conference_abstract",
+    "paper_label": "Eissa 2023"
+  },
+  {
+    "study_id": 127,
+    "reason": "conference_abstract",
+    "paper_label": "El Cheikh 2015"
+  },
+  {
+    "study_id": 128,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 129,
+    "reason": "conference_abstract",
+    "paper_label": "Elcheikh 2014"
+  },
+  {
+    "study_id": 130,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 131,
+    "reason": "conference_abstract",
+    "paper_label": "Elshamy 2020"
+  },
+  {
+    "study_id": 132,
+    "reason": "pediatric_population_outside_protocol",
+    "paper_label": ""
+  },
+  {
+    "study_id": 135,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 138,
+    "reason": "no_PTCy_contrast_both_arms_PTCy_letermovir_vs_valacyclovir_comparison",
+    "paper_label": "Freyer 2022"
+  },
+  {
+    "study_id": 139,
+    "reason": null,
+    "paper_label": ""
+  },
+  {
+    "study_id": 143,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 145,
+    "reason": "conference_abstract",
+    "paper_label": "Gao 2025 ASH abstract"
+  },
+  {
+    "study_id": 148,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 149,
+    "reason": "conference_abstract",
+    "paper_label": "Giebel S 2022 (EBMT abstract O005)"
+  },
+  {
+    "study_id": 150,
+    "reason": "duplicate_of_study_id_151",
+    "paper_label": ""
+  },
+  {
+    "study_id": 153,
+    "reason": "single_arm_descriptive_no_PTCy_contrast",
+    "paper_label": "Gimenez 2025"
+  },
+  {
+    "study_id": 154,
+    "reason": "conference_abstract",
+    "paper_label": "Girard 2020"
+  },
+  {
+    "study_id": 156,
+    "reason": "single_arm_descriptive_excluded_no_PTCy_contrast",
+    "paper_label": "Gjaerde 2022"
+  },
+  {
+    "study_id": 157,
+    "reason": "conference_abstract",
+    "paper_label": "Glass 2023"
+  },
+  {
+    "study_id": 159,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 160,
+    "reason": "conference_abstract",
+    "paper_label": "Gooptu 2025"
+  },
+  {
+    "study_id": 161,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 164,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": "Gu Z 2017"
+  },
+  {
+    "study_id": 165,
+    "reason": "conference_abstract",
+    "paper_label": "Guare 2024"
+  },
+  {
+    "study_id": 169,
+    "reason": null,
+    "paper_label": ""
+  },
+  {
+    "study_id": 171,
+    "reason": null,
+    "paper_label": ""
+  },
+  {
+    "study_id": 172,
+    "reason": "conference_abstract",
+    "paper_label": "Harbi 2022"
+  },
+  {
+    "study_id": 173,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 174,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 175,
+    "reason": "conference_abstract",
+    "paper_label": "Holtan 2023"
+  },
+  {
+    "study_id": 176,
+    "reason": "conference_abstract",
+    "paper_label": "Hong J 2023"
+  },
+  {
+    "study_id": 177,
+    "reason": "no_PTCy_vs_comparator_contrast_at_protocol_level",
+    "paper_label": "Hubmann 2016"
+  },
+  {
+    "study_id": 179,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 181,
+    "reason": "duplicate_of_study_id_182",
+    "paper_label": ""
+  },
+  {
+    "study_id": 182,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 186,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": "Jin 2025"
+  },
+  {
+    "study_id": 188,
+    "reason": "conference_abstract",
+    "paper_label": "Jo 2023"
+  },
+  {
+    "study_id": 189,
+    "reason": "pre_PTCy_era_no_PTCy_contrast",
+    "paper_label": ""
+  },
+  {
+    "study_id": 190,
+    "reason": "conference_abstract",
+    "paper_label": "Justino 2024"
+  },
+  {
+    "study_id": 191,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Kachur 2021"
+  },
+  {
+    "study_id": 194,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 195,
+    "reason": "conference_abstract",
+    "paper_label": "Kanakry 2019 (Abstract 614)"
+  },
+  {
+    "study_id": 199,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 200,
+    "reason": "conference_abstract",
+    "paper_label": "Kerbauy 2023"
+  },
+  {
+    "study_id": 202,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 204,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 205,
+    "reason": "pre_PTCy_era_no_PTCy_contrast",
+    "paper_label": ""
+  },
+  {
+    "study_id": 206,
+    "reason": "conference_abstract",
+    "paper_label": "Koura D 2023"
+  },
+  {
+    "study_id": 210,
+    "reason": "non_eligible_population_thalassemia",
+    "paper_label": ""
+  },
+  {
+    "study_id": 212,
+    "reason": "single_arm_descriptive_no_PTCy_stratification",
+    "paper_label": "Larue 2024"
+  },
+  {
+    "study_id": 213,
+    "reason": "conference_abstract",
+    "paper_label": "Lazana 2025"
+  },
+  {
+    "study_id": 214,
+    "reason": "conference_abstract",
+    "paper_label": "Li C 2024"
+  },
+  {
+    "study_id": 215,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 218,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 222,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 223,
+    "reason": "no_PTCy_contrast_pre_PTCy_era",
+    "paper_label": "Lunde 2015"
+  },
+  {
+    "study_id": 224,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "Luo XH 2021"
+  },
+  {
+    "study_id": 225,
+    "reason": "systematic_review_meta_analysis_not_primary_study",
+    "paper_label": "Luo C 2025"
+  },
+  {
+    "study_id": 227,
+    "reason": "conference_abstract",
+    "paper_label": "Luznik 2021"
+  },
+  {
+    "study_id": 228,
+    "reason": "duplicate_of_study_id_226",
+    "paper_label": ""
+  },
+  {
+    "study_id": 229,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "Ma 2025"
+  },
+  {
+    "study_id": 230,
+    "reason": "no_PTCy_contrast_protocol_excluded",
+    "paper_label": "Ma Y-R 2021"
+  },
+  {
+    "study_id": 233,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "Mariotti 2020"
+  },
+  {
+    "study_id": 234,
+    "reason": "survey_no_patient_outcomes",
+    "paper_label": ""
+  },
+  {
+    "study_id": 235,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 237,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "Matsui_Ogimi_2023"
+  },
+  {
+    "study_id": 239,
+    "reason": "conference_abstract",
+    "paper_label": "Mayo 2025"
+  },
+  {
+    "study_id": 240,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": "McCurdy 2015"
+  },
+  {
+    "study_id": 247,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 249,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 251,
+    "reason": "narrative_review",
+    "paper_label": "Mikulska 2023"
+  },
+  {
+    "study_id": 252,
+    "reason": "pre_PTCy_era_no_PTCy_contrast",
+    "paper_label": ""
+  },
+  {
+    "study_id": 255,
+    "reason": "conference_abstract",
+    "paper_label": "Mohsen A 2024"
+  },
+  {
+    "study_id": 259,
+    "reason": "conference_abstract",
+    "paper_label": "Moiseev 2016 update"
+  },
+  {
+    "study_id": 265,
+    "reason": "conference_abstract",
+    "paper_label": "Moukalled 2024"
+  },
+  {
+    "study_id": 266,
+    "reason": "duplicate_of_study_id_267",
+    "paper_label": ""
+  },
+  {
+    "study_id": 267,
+    "reason": "conference_abstract",
+    "paper_label": "Mukherjee 2019"
+  },
+  {
+    "study_id": 269,
+    "reason": "conference_abstract",
+    "paper_label": "Munshi 2025"
+  },
+  {
+    "study_id": 274,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 275,
+    "reason": "narrative_review_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 283,
+    "reason": "conference_abstract",
+    "paper_label": "Nagler 2023 ASH"
+  },
+  {
+    "study_id": 284,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 285,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 286,
+    "reason": "conference_abstract",
+    "paper_label": "Nagler 2024"
+  },
+  {
+    "study_id": 288,
+    "reason": "conference_abstract",
+    "paper_label": "Nagler 2024 TCT abstract #54"
+  },
+  {
+    "study_id": 294,
+    "reason": "conference_abstract",
+    "paper_label": "Niederwieser C 2022"
+  },
+  {
+    "study_id": 295,
+    "reason": "conference_abstract",
+    "paper_label": "Nishikubo M 2023"
+  },
+  {
+    "study_id": 298,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 303,
+    "reason": "no_PTCy_arm",
+    "paper_label": "Park S.-S. 2021"
+  },
+  {
+    "study_id": 309,
+    "reason": "conference_abstract",
+    "paper_label": "Penack 2023"
+  },
+  {
+    "study_id": 310,
+    "reason": "conference_abstract",
+    "paper_label": "Penack 2023 (ASH abstract)"
+  },
+  {
+    "study_id": 313,
+    "reason": "survey_no_patient_outcomes",
+    "paper_label": "Polverelli 2026"
+  },
+  {
+    "study_id": 314,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": ""
+  },
+  {
+    "study_id": 315,
+    "reason": "conference_abstract",
+    "paper_label": "Popat 2020"
+  },
+  {
+    "study_id": 316,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 317,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 319,
+    "reason": "conference_abstract",
+    "paper_label": "Ranspach 2020"
+  },
+  {
+    "study_id": 322,
+    "reason": "pre_PTCy_era_no_PTCy_contrast",
+    "paper_label": ""
+  },
+  {
+    "study_id": 329,
+    "reason": "single_arm_descriptive_excluded_immunology_focus_no_PTCy_contrast",
+    "paper_label": "Sadowska-Klasa 2026"
+  },
+  {
+    "study_id": 330,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 331,
+    "reason": "conference_abstract",
+    "paper_label": "Saha 2024"
+  },
+  {
+    "study_id": 333,
+    "reason": "conference_abstract",
+    "paper_label": "Salas 2023"
+  },
+  {
+    "study_id": 339,
+    "reason": "conference_abstract",
+    "paper_label": "Saliba RM 2020"
+  },
+  {
+    "study_id": 342,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 349,
+    "reason": "duplicate_of_348",
+    "paper_label": "Sayin 2024"
+  },
+  {
+    "study_id": 350,
+    "reason": "single_arm_descriptive_no_PTCy_contrast",
+    "paper_label": "Schmitz 2025"
+  },
+  {
+    "study_id": 351,
+    "reason": "conference_abstract",
+    "paper_label": "Schriber 2016"
+  },
+  {
+    "study_id": 354,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 355,
+    "reason": "conference_abstract",
+    "paper_label": "Shahzad 2024"
+  },
+  {
+    "study_id": 356,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 362,
+    "reason": "conference_abstract",
+    "paper_label": "Singh AK 2020"
+  },
+  {
+    "study_id": 365,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 367,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 369,
+    "reason": "conference_abstract",
+    "paper_label": "Surana 2025"
+  },
+  {
+    "study_id": 370,
+    "reason": "conference_abstract",
+    "paper_label": "Taborda 2025"
+  },
+  {
+    "study_id": 372,
+    "reason": "reference_MA_not_primary_study",
+    "paper_label": "Tang L 2023"
+  },
+  {
+    "study_id": 373,
+    "reason": "conference_abstract",
+    "paper_label": "Taplitz 2020"
+  },
+  {
+    "study_id": 376,
+    "reason": "conference_abstract",
+    "paper_label": "Tischer 2015 (Acute Leukemias XV symposium)"
+  },
+  {
+    "study_id": 377,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 378,
+    "reason": "conference_abstract",
+    "paper_label": "Tolosa-Ridao 2023"
+  },
+  {
+    "study_id": 381,
+    "reason": "systematic_review_meta_analysis_not_primary_study",
+    "paper_label": "Ullah 2026"
+  },
+  {
+    "study_id": 385,
+    "reason": "conference_abstract",
+    "paper_label": "Vydra J 2024"
+  },
+  {
+    "study_id": 387,
+    "reason": "conference_abstract",
+    "paper_label": "Wagner 2020"
+  },
+  {
+    "study_id": 388,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 392,
+    "reason": "narrative_review",
+    "paper_label": "Williams 2020"
+  },
+  {
+    "study_id": 393,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 394,
+    "reason": "no_PTCy_arm",
+    "paper_label": "Wu L 2023"
+  },
+  {
+    "study_id": 398,
+    "reason": "conference_abstract",
+    "paper_label": "Yahia 2024"
+  },
+  {
+    "study_id": 400,
+    "reason": "conference_abstract",
+    "paper_label": "Yanez San Segundo 2016"
+  },
+  {
+    "study_id": 402,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 403,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 404,
+    "reason": "conference_abstract",
+    "paper_label": ""
+  },
+  {
+    "study_id": 406,
+    "reason": "pre_PTCy_era_no_PTCy_contrast",
+    "paper_label": ""
+  },
+  {
+    "study_id": 409,
+    "reason": "conference_abstract",
+    "paper_label": "de Almeida 2025"
+  },
+  {
+    "study_id": 411,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Al Malki 2021"
+  },
+  {
+    "study_id": 412,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Bejanyan 2021"
+  },
+  {
+    "study_id": 413,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Le Bourgeois 2023"
+  },
+  {
+    "study_id": 414,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Carnevale-Schianca 2021"
+  },
+  {
+    "study_id": 415,
+    "reason": "conference_abstract",
+    "paper_label": "Desai N 2025"
+  },
+  {
+    "study_id": 420,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Elmariah 2021"
+  },
+  {
+    "study_id": 423,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Garc\u00eda-Cadenas 2020"
+  },
+  {
+    "study_id": 427,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Jiang 2021"
+  },
+  {
+    "study_id": 428,
+    "reason": "systematic_review_not_primary_study",
+    "paper_label": "John 2025"
+  },
+  {
+    "study_id": 429,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Joyce 2025"
+  },
+  {
+    "study_id": 434,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Lazzari 2022"
+  },
+  {
+    "study_id": 435,
+    "reason": "narrative_review",
+    "paper_label": "Lazzari 2025"
+  },
+  {
+    "study_id": 439,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Moiseev IS 2020"
+  },
+  {
+    "study_id": 440,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Montoro 2020"
+  },
+  {
+    "study_id": 441,
+    "reason": "narrative_review",
+    "paper_label": "Mussetti 2021"
+  },
+  {
+    "study_id": 443,
+    "reason": "non_eligible_population",
+    "paper_label": "Parta 2020"
+  },
+  {
+    "study_id": 444,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Prem 2019"
+  },
+  {
+    "study_id": 448,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Salas 2020"
+  },
+  {
+    "study_id": 449,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Salas 2020"
+  },
+  {
+    "study_id": 451,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Shimomura 2024"
+  },
+  {
+    "study_id": 452,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Slade 2017"
+  },
+  {
+    "study_id": 458,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Wieczorek 2023"
+  },
+  {
+    "study_id": 459,
+    "reason": "narrative_review",
+    "paper_label": "Williams 2020"
+  },
+  {
+    "study_id": 463,
+    "reason": "single_arm_descriptive_excluded",
+    "paper_label": "Zhao 2022"
+  }
+]

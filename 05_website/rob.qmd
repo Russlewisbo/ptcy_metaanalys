@@ -111,7 +111,7 @@ if (!is.null(rob)) {
 
 ::: {.callout-warning}
 ## Pending
-Second-pass ROB verification by BMTD collaborator is pending for all 155 rows in the ROB assessment. This page will be updated upon completion.
+Second-pass ROB verification by BMTD collaborator is pending for all 241 rows in the ROB assessment. This page will be updated upon completion.
 :::
 
 ## Impact on Interpretation

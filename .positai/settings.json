@@ -19,7 +19,8 @@
       "tail *": "allow",
       "head *": "allow",
       "tr *": "allow",
-      "grep *": "allow"
+      "grep *": "allow",
+      "wc *": "allow"
     }
   }
 }
