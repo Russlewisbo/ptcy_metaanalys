@@ -26,7 +26,7 @@ tibble::tribble(
   "OS",            "C2", 10, 12851, "0.81 [0.74\u20130.90]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 95% (freq); attenuated from pre-B9",
   "NRM",           "C1", 12,  1309, "0.88 [0.66\u20131.18]", "\u2295\u2296\u2296\u2296 V.LOW",     "Complete M2 mediation; CrI crosses null",
   "NRM",           "C2", NA,    NA, "\u2014 (k = 2)",         "\u2014",                              "Below minimum k for modelling",
-  "aGVHD II\u2013IV", "C1", 28,  4197, "0.67 [0.59\u20130.78]", "\u2295\u2295\u2296\u2296 LOW",   "I\u00B2 = 62%; obs only",
+  "aGVHD II\u2013IV", "C1", 28,  4197, "0.67 [0.59\u20130.78]", "\u2295\u2296\u2296\u2296 V.LOW", "Egger p = 0.04; T&F adj OR 0.83",
   "aGVHD II\u2013IV", "C2",  9,  1099, "0.58 [0.44\u20130.77]", "\u2295\u2295\u2296\u2296 LOW",   "I\u00B2 = 73%; k = 9",
   "CMV",           "C1", 22,  3328, "1.26 [1.07\u20131.47]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 62%; obs only",
   "CMV",           "C2", 13,  1571, "0.92 [0.73\u20131.15]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; sensitivity convergence",
@@ -103,15 +103,16 @@ tibble::tribble(
   "Inconsistency", "\u22121 (I\u00B2 = 62%; \u03c4 = 0.68)", "\u22121 (I\u00B2 = 73%; \u03c4 = 0.55)",
   "Indirectness", "0", "0",
   "Imprecision", "0 (CrI excludes null; k = 28)", "0 (CrI excludes null; k = 9)",
+  "Pub. bias", "\u22121 (Egger p = 0.041; T&F: 0.61 \u2192 0.83)", "0 (not assessable, k = 9)",
   "Upgrade", "+1 (confounders oppose effect; cross-comparison)", "+1 (confounders oppose; cross-comparison; sens k=14 consistent)",
-  "Net", "0", "0",
-  "CERTAINTY", "\u2295\u2295\u2296\u2296 LOW", "\u2295\u2295\u2296\u2296 LOW"
+  "Net", "\u22121", "0",
+  "CERTAINTY", "\u2295\u2296\u2296\u2296 V.LOW", "\u2295\u2295\u2296\u2296 LOW"
 ) |>
   kable() |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
 ```
 
-aGVHD is the most stable finding in the analysis. The C2 sensitivity (k = 14) attenuated the effect (OR 0.78) but the CrI still excluded null — consistent with partial convergence when combo PTCy+ATG arms are included.
+C1 aGVHD shows significant funnel plot asymmetry (Egger's p = 0.041), with small studies disproportionately favouring PTCy. Trim-and-fill imputes 8 studies, shifting the frequentist OR from 0.61 to 0.83 [0.61–1.13]. The Bayesian estimate (OR 0.67 [0.59–0.78]) is less susceptible to small-study effects due to shrinkage but does not fully address selective publication. C1 aGVHD is accordingly downgraded to **VERY LOW**. The C2 aGVHD estimate (OR 0.58, k = 9) is too small for formal bias assessment but remains consistent.
 
 ### CMV Reactivation
 
@@ -176,11 +177,39 @@ BSI: The Bayesian OR of 1.87 [1.33–2.62] suggests elevated risk, but the frequ
 
 IFI: The post-Block-9 estimate (OR 0.43 [0.29–0.63]) is substantially stronger than pre-Block-9 (0.73 [0.53–1.00]), but τ = 1.64 indicates extreme between-study heterogeneity. The frequentist CrI (0.21–1.74) again crosses null. With only k = 6 studies and this level of heterogeneity, the strong protective signal should be interpreted cautiously.
 
+## Publication Bias {#sec-grade-pubbias}
+
+Formal assessment was conducted for C1 outcomes with k ≥ 10 using Egger's regression test and trim-and-fill.
+
+```{r}
+#| label: tbl-grade-pubbias
+#| tbl-cap: "Publication bias assessment — C1 outcomes with k ≥ 10."
+
+tibble::tribble(
+  ~Outcome, ~k, ~`Egger z`, ~`Egger p`, ~`T&F imputed`, ~`Original OR`, ~`Adjusted OR`,
+  "OS",      40, -1.02, 0.314, 7, "0.77 [0.66\u20130.90]", "0.86 [0.73\u20131.02]",
+  "aGVHD",   28, -2.15, 0.041, 8, "0.61 [0.47\u20130.79]", "0.83 [0.61\u20131.13]",
+  "CMV",     22, -0.21, 0.835, 0, "1.25 [0.94\u20131.66]", "1.25 [0.94\u20131.66]"
+) |>
+  mutate(`Egger p` = ifelse(`Egger p` < 0.05,
+                             paste0("**", sprintf("%.3f", `Egger p`), "**"),
+                             sprintf("%.3f", `Egger p`))) |>
+  kable(align = c("l","r","r","r","r","c","c")) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
+```
+
+::: {.callout-warning}
+## C1 aGVHD: Significant Funnel Asymmetry
+Egger's test detects significant small-study bias (p = 0.041). After trim-and-fill imputation, the adjusted OR shifts from 0.61 to 0.83 and the CI crosses null. The Bayesian pooled estimate (OR 0.67 [0.59–0.78]) is less extreme than the frequentist 0.61, reflecting shrinkage, but does not account for selective non-publication. C1 aGVHD certainty is downgraded from LOW to VERY LOW.
+
+C1 OS shows borderline concern: 7 studies imputed with adjusted OR touching null (0.86 [0.73–1.02]), though Egger's test is non-significant (p = 0.31). C1 CMV is symmetric with no imputed studies.
+:::
+
 ## Narrative Summary {#sec-grade-narrative}
 
 Across both comparisons, certainty does not exceed LOW — a predictable consequence of an almost entirely observational evidence base.
 
-**The most robust findings** are C1 OS (OR 0.79, k = 40), C1 aGVHD (OR 0.67, k = 28), and C2 aGVHD (OR 0.58, k = 9). These three estimates have been stable across the pre-Block-9 and post-Block-9 analyses, are consistent across comparators, and have CrIs that exclude null. **Cross-comparison coherence** remains the strongest methodological asset.
+**The most robust finding** is C1 OS (OR 0.79, k = 40, LOW certainty), which has been stable across the pre-Block-9 and post-Block-9 analyses, is consistent across comparators (C2 OR 0.81), and has CrIs that exclude null. C1 aGVHD (OR 0.67, k = 28) is consistent across comparators (C2 OR 0.58, k = 9) and directionally stable, but is downgraded to VERY LOW due to significant funnel asymmetry (Egger p = 0.041). The trim-and-fill adjusted estimate (OR 0.83) crosses null, suggesting the effect size may be inflated by selective reporting of small positive studies. **Cross-comparison coherence** remains the strongest methodological asset.
 
 **The CMV depletion hierarchy** is supported not by a single direction reversal but by a three-point gradient across the primary and sensitivity analyses. This gradient pattern carries greater evidential weight than any one estimate. Certainty for the mechanistic conclusion (that CMV risk tracks depletion depth) is LOW when integrating the full pattern.
 
