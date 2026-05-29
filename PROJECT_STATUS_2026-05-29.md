@@ -63,12 +63,12 @@
 | C1 CMV M2 | 22 | 1.25 [1.01–1.54] | 0.76 | Consistent attenuation |
 | C1 BSI M1 | 6 | 1.87 [1.33–2.62] | 0.96 | Attenuated (was 2.39), still harmful |
 | C1 IFI M1 | 6 | 0.43 [0.29–0.63] | 1.64 | k−2; STRONGER protection (was 0.73) |
-| C2 OS M1 | 12 | 0.84 [0.76–0.93] | 0.57 | k+2; attenuated (was 0.69) |
-| C2 OS M2 | 12 | 0.88 [0.77–1.00] | 0.72 | CrI touches null |
-| C2 NRM M1 | 3 | 0.63 [0.30–1.31] | 0.36 | k−2; wider CrI, same direction |
+| C2 OS M1 | 10 | 0.81 [0.74–0.90] | 0.51 | OR attenuated from 0.69; still protective |
+| C2 OS M2 | 10 | 0.82 [0.71–0.94] | 0.70 | Partial mediation preserved |
+| C2 NRM M1 | — | (skipped, k=2 < 3) | — | Sayin removal dropped below minimum |
 | C2 aGVHD M1 | 9 | 0.58 [0.44–0.77] | 0.55 | k+3; very consistent (was 0.59) |
-| **C2 CMV M1** | **16** | **0.96 [0.80–1.16]** | **0.55** | **k+4; attenuated from 0.77 — CrI now crosses null** |
-| C2 CMV M2 | 16 | 1.01 [0.82–1.24] | 0.65 | Null after steroid adjustment |
+| C2 CMV M1 | 13 | 0.92 [0.73–1.15] | 0.64 | k+1; attenuated from 0.77 — CrI crosses null |
+| C2 CMV M2 | 13 | 0.98 [0.78–1.24] | 0.74 | Null after steroid adjustment |
 | C3 OS M1 | 6 | 1.11 [0.95–1.30] | 0.92 | **NEW** — null |
 | C3 NRM M1 | 5 | 0.96 [0.74–1.24] | 1.22 | **NEW** — null |
 | C3 aGVHD M1 | 7 | 1.00 [0.80–1.25] | 0.82 | **NEW** — null |
@@ -76,7 +76,11 @@
 
 ### ⚠ Critical findings from refit
 
-1. **C2 CMV direction reversal attenuated.** Pre-Block-9: OR 0.77 [0.60–0.99] (PTCy protective vs ATG, k=12). Post-Block-9: OR 0.96 [0.80–1.16] (null, k=16). An earlier run with a missing `D+365_1yr` fallback timepoint had incorrectly shown OR 1.04 by dropping 3 protective studies; this was fixed. Even with the correction, the 4 new Block-9 studies (Xu 2025 OR 1.05, Sayin 2024 OR 1.10, Zu 2022 OR 1.17, Kerbauy 2025 OR 1.29) genuinely attenuate the signal. The CrI now crosses null, weakening the direction reversal narrative.
+1. **C2 CMV direction reversal attenuated.** Pre-Block-9: OR 0.77 [0.60–0.99] (k=12). Post-Block-9 (clean): OR 0.92 [0.73–1.15] (k=13). Three of the four new Block-9 C2 CMV studies were found to have arm classification problems during audit: Sayin [348] comparator was CNI+MTX not ATG; Xu [396] and Zu [464] had PTCy+ATG combination arms. These were removed from C2 eligibility. Only Kerbauy [430] (OR 1.29) was a valid clean addition. Despite correction, the CrI now crosses null.
+
+2. **C2 OS attenuated.** Pre: OR 0.69 → Post: OR 0.81 (k=10). Still significantly protective.
+
+3. **C2 NRM dropped below minimum.** Removing Sayin [348] reduced C2 NRM to k=2, below the k≥3 fitting threshold. This outcome can no longer be estimated for C2.
 
 2. **C2 OS attenuated.** Pre: OR 0.69 → Post: OR 0.84. Still significantly protective, but the magnitude is smaller.
 

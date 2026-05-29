@@ -195,6 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#non-relapse-mortality" id="toc-non-relapse-mortality" class="nav-link" data-scroll-target="#non-relapse-mortality">Non-Relapse Mortality</a></li>
   <li><a href="#agvhd-grade-iiiv" id="toc-agvhd-grade-iiiv" class="nav-link" data-scroll-target="#agvhd-grade-iiiv">aGVHD Grade II–IV</a></li>
   <li><a href="#cmv-reactivation" id="toc-cmv-reactivation" class="nav-link" data-scroll-target="#cmv-reactivation">CMV Reactivation</a></li>
+  <li><a href="#bsi-and-ifi" id="toc-bsi-and-ifi" class="nav-link" data-scroll-target="#bsi-and-ifi">BSI and IFI</a></li>
   </ul></li>
   <li><a href="#sec-grade-narrative" id="toc-sec-grade-narrative" class="nav-link" data-scroll-target="#sec-grade-narrative">Narrative Summary</a></li>
   </ul>
@@ -222,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is <strong>LOW</strong> (observational evidence).</p>
+<p>GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is <strong>LOW</strong> (observational evidence). Post-Block-9 corpus: 251 studies (14 RCTs), 525 arms.</p>
 <section id="sec-grade-summary" class="level2">
 <h2 class="anchored" data-anchor-id="sec-grade-summary">Summary</h2>
 <div class="cell">
@@ -230,27 +231,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Outcome, <span class="sc">~</span>Comp, <span class="sc">~</span>k, <span class="sc">~</span>N, <span class="sc">~</span><span class="st">`</span><span class="at">OR [95% CrI]</span><span class="st">`</span>, <span class="sc">~</span>Certainty, <span class="sc">~</span><span class="st">`</span><span class="at">Key Limitation</span><span class="st">`</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C1"</span>, <span class="dv">35</span>, <span class="dv">17661</span>, <span class="st">"0.77 [0.71\u20130.83]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 68%; obs only"</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C2"</span>, <span class="dv">10</span>, <span class="dv">10624</span>, <span class="st">"0.69 [0.61\u20130.78]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 90% (freq); one registry dominant"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C1"</span>, <span class="dv">15</span>,  <span class="dv">2081</span>, <span class="st">"0.86 [0.70\u20131.08]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"Complete M2 mediation; CrI crosses null"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C2"</span>,  <span class="dv">5</span>,  <span class="dv">1186</span>, <span class="st">"0.65 [0.43\u20130.97]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"k = 5; M2 attenuation; CrI fragile"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="dv">24</span>,  <span class="dv">3837</span>, <span class="st">"0.63 [0.54\u20130.74]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"I\u00B2 = 63%; obs only"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C2"</span>,  <span class="dv">6</span>,   <span class="dv">784</span>, <span class="st">"0.59 [0.42\u20130.84]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"k = 6; \u03c4 poorly estimated"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C1"</span>, <span class="dv">18</span>,  <span class="dv">3357</span>, <span class="st">"1.41 [1.20\u20131.65]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 69%; obs only"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C2"</span>, <span class="dv">12</span>,  <span class="dv">1267</span>, <span class="st">"0.77 [0.60\u20130.99]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"CrI fragile; direction reversal is key"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"BSI"</span>,           <span class="st">"C1"</span>,  <span class="dv">6</span>,  <span class="dv">1319</span>, <span class="st">"2.39 [1.85\u20133.10]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"k = 6; 7 studies NR excluded"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"BSI"</span>,           <span class="st">"C2"</span>,  <span class="dv">3</span>,   <span class="dv">613</span>, <span class="st">"2.03 [1.33\u20133.09]\u2020"</span>, <span class="st">"(\u2295\u2296\u2296\u2296)"</span>,   <span class="st">"k = 3; definitional heterogeneity"</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IFI"</span>,           <span class="st">"C1"</span>,  <span class="dv">8</span>,  <span class="dv">3816</span>, <span class="st">"0.73 [0.53\u20131.00]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"\u03c4 = 1.05 (Yanada); CrI \u2248 null"</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IFI"</span>,           <span class="st">"C2"</span>, <span class="cn">NA</span>,    <span class="cn">NA</span>, <span class="st">"\u2014"</span>,                 <span class="st">"\u2014"</span>,                              <span class="st">"Insufficient data"</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"r"</span>,<span class="st">"r"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"l"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="fu">c</span>(<span class="st">"Mantel-Haenszel fixed-effect; formal GRADE not performed at k = 3."</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C1"</span>, <span class="dv">40</span>, <span class="dv">19724</span>, <span class="st">"0.79 [0.73\u20130.85]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 64%; obs only"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C2"</span>, <span class="dv">10</span>, <span class="dv">12851</span>, <span class="st">"0.81 [0.74\u20130.90]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 95% (freq); attenuated from pre-B9"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C1"</span>, <span class="dv">12</span>,  <span class="dv">1309</span>, <span class="st">"0.88 [0.66\u20131.18]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"Complete M2 mediation; CrI crosses null"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C2"</span>, <span class="cn">NA</span>,    <span class="cn">NA</span>, <span class="st">"\u2014 (k = 2)"</span>,         <span class="st">"\u2014"</span>,                              <span class="st">"Below minimum k for modelling"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="dv">28</span>,  <span class="dv">4197</span>, <span class="st">"0.67 [0.59\u20130.78]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"I\u00B2 = 62%; obs only"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C2"</span>,  <span class="dv">9</span>,  <span class="dv">1099</span>, <span class="st">"0.58 [0.44\u20130.77]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"I\u00B2 = 73%; k = 9"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C1"</span>, <span class="dv">22</span>,  <span class="dv">3328</span>, <span class="st">"1.26 [1.07\u20131.47]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 62%; obs only"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C2"</span>, <span class="dv">13</span>,  <span class="dv">1571</span>, <span class="st">"0.92 [0.73\u20131.15]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"CrI crosses null; sensitivity convergence"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"BSI"</span>,           <span class="st">"C1"</span>,  <span class="dv">6</span>,   <span class="dv">806</span>, <span class="st">"1.87 [1.33\u20132.62]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"k = 6; freq CrI crosses null"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IFI"</span>,           <span class="st">"C1"</span>,  <span class="dv">6</span>,  <span class="dv">2243</span>, <span class="st">"0.43 [0.29\u20130.63]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"\u03c4 = 1.64; extreme heterogeneity"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"r"</span>,<span class="st">"r"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"l"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="tbl-grade-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-grade-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: GRADE certainty of evidence — all outcomes, both comparisons.
+Table&nbsp;1: GRADE certainty of evidence — all outcomes, both comparisons. Updated for post-Block-9 results (May 2026).
 </figcaption>
 <div aria-describedby="tbl-grade-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -270,127 +268,108 @@ Table&nbsp;1: GRADE certainty of evidence — all outcomes, both comparisons.
 <tr class="odd">
 <td style="text-align: left;">OS</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">17661</td>
-<td style="text-align: center;">0.77 [0.71–0.83]</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">19724</td>
+<td style="text-align: center;">0.79 [0.73–0.85]</td>
 <td style="text-align: center;">⊕⊕⊖⊖ LOW</td>
-<td style="text-align: left;">I² = 68%; obs only</td>
+<td style="text-align: left;">I² = 64%; obs only</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">OS</td>
 <td style="text-align: center;">C2</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">10624</td>
-<td style="text-align: center;">0.69 [0.61–0.78]</td>
+<td style="text-align: right;">12851</td>
+<td style="text-align: center;">0.81 [0.74–0.90]</td>
 <td style="text-align: center;">⊕⊕⊖⊖ LOW</td>
-<td style="text-align: left;">I² = 90% (freq); one registry dominant</td>
+<td style="text-align: left;">I² = 95% (freq); attenuated from pre-B9</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">NRM</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">2081</td>
-<td style="text-align: center;">0.86 [0.70–1.08]</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1309</td>
+<td style="text-align: center;">0.88 [0.66–1.18]</td>
 <td style="text-align: center;">⊕⊖⊖⊖ V.LOW</td>
 <td style="text-align: left;">Complete M2 mediation; CrI crosses null</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">NRM</td>
 <td style="text-align: center;">C2</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1186</td>
-<td style="text-align: center;">0.65 [0.43–0.97]</td>
-<td style="text-align: center;">⊕⊖⊖⊖ V.LOW</td>
-<td style="text-align: left;">k = 5; M2 attenuation; CrI fragile</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: center;">— (k = 2)</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: left;">Below minimum k for modelling</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">aGVHD II–IV</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">3837</td>
-<td style="text-align: center;">0.63 [0.54–0.74]</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">4197</td>
+<td style="text-align: center;">0.67 [0.59–0.78]</td>
 <td style="text-align: center;">⊕⊕⊖⊖ LOW</td>
-<td style="text-align: left;">I² = 63%; obs only</td>
+<td style="text-align: left;">I² = 62%; obs only</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">aGVHD II–IV</td>
 <td style="text-align: center;">C2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">784</td>
-<td style="text-align: center;">0.59 [0.42–0.84]</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1099</td>
+<td style="text-align: center;">0.58 [0.44–0.77]</td>
 <td style="text-align: center;">⊕⊕⊖⊖ LOW</td>
-<td style="text-align: left;">k = 6; τ poorly estimated</td>
+<td style="text-align: left;">I² = 73%; k = 9</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CMV</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">3357</td>
-<td style="text-align: center;">1.41 [1.20–1.65]</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">3328</td>
+<td style="text-align: center;">1.26 [1.07–1.47]</td>
 <td style="text-align: center;">⊕⊕⊖⊖ LOW</td>
-<td style="text-align: left;">I² = 69%; obs only</td>
+<td style="text-align: left;">I² = 62%; obs only</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CMV</td>
 <td style="text-align: center;">C2</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">1267</td>
-<td style="text-align: center;">0.77 [0.60–0.99]</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">1571</td>
+<td style="text-align: center;">0.92 [0.73–1.15]</td>
 <td style="text-align: center;">⊕⊖⊖⊖ V.LOW</td>
-<td style="text-align: left;">CrI fragile; direction reversal is key</td>
+<td style="text-align: left;">CrI crosses null; sensitivity convergence</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">BSI</td>
 <td style="text-align: center;">C1</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">1319</td>
-<td style="text-align: center;">2.39 [1.85–3.10]</td>
+<td style="text-align: right;">806</td>
+<td style="text-align: center;">1.87 [1.33–2.62]</td>
 <td style="text-align: center;">⊕⊖⊖⊖ V.LOW</td>
-<td style="text-align: left;">k = 6; 7 studies NR excluded</td>
+<td style="text-align: left;">k = 6; freq CrI crosses null</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">BSI</td>
-<td style="text-align: center;">C2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">613</td>
-<td style="text-align: center;">2.03 [1.33–3.09]†</td>
-<td style="text-align: center;">(⊕⊖⊖⊖)</td>
-<td style="text-align: left;">k = 3; definitional heterogeneity</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">IFI</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">3816</td>
-<td style="text-align: center;">0.73 [0.53–1.00]</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2243</td>
+<td style="text-align: center;">0.43 [0.29–0.63]</td>
 <td style="text-align: center;">⊕⊖⊖⊖ V.LOW</td>
-<td style="text-align: left;">τ = 1.05 (Yanada); CrI ≈ null</td>
+<td style="text-align: left;">τ = 1.64; extreme heterogeneity</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">IFI</td>
-<td style="text-align: center;">C2</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: center;">—</td>
-<td style="text-align: center;">—</td>
-<td style="text-align: left;">Insufficient data</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup>*</sup> Mantel-Haenszel fixed-effect; formal GRADE not performed at k = 3.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: left;"></td>
-</tr>
-</tfoot>
-
+</tbody>
 </table>
 </div>
 </div>
 </figure>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Changes from pre-Block-9.</strong> C2 NRM can no longer be graded (k = 2 after arm classification corrections). C2 CMV moved from borderline significant (OR 0.77 [0.60–0.99]) to null-crossing (OR 0.92 [0.73–1.15]). C2 BSI removed (k = 3 Mantel-Haenszel estimate was not formally gradeable). All C1 outcomes stable in direction and certainty.</p>
+</div>
 </div>
 </div>
 </section>
@@ -403,13 +382,13 @@ Table&nbsp;1: GRADE certainty of evidence — all outcomes, both comparisons.
 <summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"34 retro/registry + 1 RCT; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"No downgrade (effect survives M2)"</span>, <span class="st">"No downgrade (same reasoning)"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 68%)"</span>, <span class="st">"\u22121 (I\u00B2 = 90%, two extreme outliers)"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"39 retro/registry + 1 RCT; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"No downgrade (effect survives M2)"</span>, <span class="st">"No downgrade (M2 OR 0.82 still protective)"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 64%; \u03c4 = 0.61)"</span>, <span class="st">"\u22121 (I\u00B2 = 95%; one registry dominant)"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI below null; N = 17,661)"</span>, <span class="st">"0 (CrI below null; N = 10,624)"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null; N = 19,724)"</span>, <span class="st">"0 (CrI excludes null; N = 12,851)"</span>,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pub. bias"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"0"</span>, <span class="st">"+1 (cross-comparison coherence)"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"0"</span>, <span class="st">"+1 (cross-comparison coherence; sensitivity k=21 strengthens)"</span>,</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22121"</span>, <span class="st">"0"</span>,</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
@@ -434,18 +413,18 @@ Table&nbsp;2: GRADE domain assessment — Overall Survival.
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Study design</td>
-<td style="text-align: left;">34 retro/registry + 1 RCT; start LOW</td>
+<td style="text-align: left;">39 retro/registry + 1 RCT; start LOW</td>
 <td style="text-align: left;">All retro/registry; start LOW</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Risk of bias</td>
 <td style="text-align: left;">No downgrade (effect survives M2)</td>
-<td style="text-align: left;">No downgrade (same reasoning)</td>
+<td style="text-align: left;">No downgrade (M2 OR 0.82 still protective)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Inconsistency</td>
-<td style="text-align: left;">−1 (I² = 68%)</td>
-<td style="text-align: left;">−1 (I² = 90%, two extreme outliers)</td>
+<td style="text-align: left;">−1 (I² = 64%; τ = 0.61)</td>
+<td style="text-align: left;">−1 (I² = 95%; one registry dominant)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Indirectness</td>
@@ -454,8 +433,8 @@ Table&nbsp;2: GRADE domain assessment — Overall Survival.
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Imprecision</td>
-<td style="text-align: left;">0 (CrI below null; N = 17,661)</td>
-<td style="text-align: left;">0 (CrI below null; N = 10,624)</td>
+<td style="text-align: left;">0 (CrI excludes null; N = 19,724)</td>
+<td style="text-align: left;">0 (CrI excludes null; N = 12,851)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Pub. bias</td>
@@ -465,7 +444,7 @@ Table&nbsp;2: GRADE domain assessment — Overall Survival.
 <tr class="odd">
 <td style="text-align: left;">Upgrade</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">+1 (cross-comparison coherence)</td>
+<td style="text-align: left;">+1 (cross-comparison coherence; sensitivity k=21 strengthens)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Net</td>
@@ -484,6 +463,7 @@ Table&nbsp;2: GRADE domain assessment — Overall Survival.
 </figure>
 </div>
 </div>
+<p>The C2 OS sensitivity (expanded arm inclusion, k = 21) strengthened the effect from OR 0.81 to 0.74 [0.66–0.83], supporting the upgrade for cross-comparison coherence.</p>
 </section>
 <section id="non-relapse-mortality" class="level3">
 <h3 class="anchored" data-anchor-id="non-relapse-mortality">Non-Relapse Mortality</h3>
@@ -492,14 +472,14 @@ Table&nbsp;2: GRADE domain assessment — Overall Survival.
 <summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"\u22121 (complete M2 mediation = confounding signal)"</span>, <span class="st">"\u22121 (M2 attenuation, CrI crosses null)"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"0 (I\u00B2 = 39%)"</span>, <span class="st">"0 (I\u00B2 = 0%)"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"\u22121 (CrI crosses null; M2 CrI fully crosses)"</span>, <span class="st">"\u22121 (k = 5; M2 CrI crosses null)"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pub. bias"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22122"</span>, <span class="st">"\u22122"</span>,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"\u22121 (M2 shows steroid mediation \u2192 confounding signal)"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"0 (I\u00B2 = 0%)"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"\u22121 (CrI crosses null; k = 12)"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pub. bias"</span>, <span class="st">"0"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22122"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>, <span class="st">"\u2014 (k = 2; not gradeable)"</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -523,42 +503,42 @@ Table&nbsp;3: GRADE domain assessment — NRM.
 <tr class="odd">
 <td style="text-align: left;">Study design</td>
 <td style="text-align: left;">All retro/registry; start LOW</td>
-<td style="text-align: left;">All retro/registry; start LOW</td>
+<td style="text-align: left;">—</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Risk of bias</td>
-<td style="text-align: left;">−1 (complete M2 mediation = confounding signal)</td>
-<td style="text-align: left;">−1 (M2 attenuation, CrI crosses null)</td>
+<td style="text-align: left;">−1 (M2 shows steroid mediation → confounding signal)</td>
+<td style="text-align: left;">—</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Inconsistency</td>
-<td style="text-align: left;">0 (I² = 39%)</td>
 <td style="text-align: left;">0 (I² = 0%)</td>
+<td style="text-align: left;">—</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Indirectness</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: left;">—</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Imprecision</td>
-<td style="text-align: left;">−1 (CrI crosses null; M2 CrI fully crosses)</td>
-<td style="text-align: left;">−1 (k = 5; M2 CrI crosses null)</td>
+<td style="text-align: left;">−1 (CrI crosses null; k = 12)</td>
+<td style="text-align: left;">—</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Pub. bias</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: left;">—</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Net</td>
 <td style="text-align: left;">−2</td>
-<td style="text-align: left;">−2</td>
+<td style="text-align: left;">—</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CERTAINTY</td>
 <td style="text-align: left;">⊕⊖⊖⊖ V.LOW</td>
-<td style="text-align: left;">⊕⊖⊖⊖ V.LOW</td>
+<td style="text-align: left;">— (k = 2; not gradeable)</td>
 </tr>
 </tbody>
 </table>
@@ -567,6 +547,7 @@ Table&nbsp;3: GRADE domain assessment — NRM.
 </figure>
 </div>
 </div>
+<p>C2 NRM dropped below the modelling threshold (k = 2) after removing Sayin 2024 (misclassified comparator). The pre-Block-9 C2 NRM estimate (k = 5, OR 0.65 [0.43–0.97]) should be interpreted with caution given the arm classification issues that reduced k.</p>
 </section>
 <section id="agvhd-grade-iiiv" class="level3">
 <h3 class="anchored" data-anchor-id="agvhd-grade-iiiv">aGVHD Grade II–IV</h3>
@@ -576,11 +557,11 @@ Table&nbsp;3: GRADE domain assessment — NRM.
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (bias opposes effect)"</span>, <span class="st">"0 (same reasoning)"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 63%, \u03c4 = 0.66)"</span>, <span class="st">"\u22121 (I\u00B2 = 67%; \u03c4 poorly estimated)"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (ascertainment bias opposes effect)"</span>, <span class="st">"0 (same reasoning)"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 62%; \u03c4 = 0.68)"</span>, <span class="st">"\u22121 (I\u00B2 = 73%; \u03c4 = 0.55)"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI below null)"</span>, <span class="st">"0 (CrI below null)"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (confounders oppose)"</span>, <span class="st">"+1 (confounders oppose + cross-comparison)"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null; k = 28)"</span>, <span class="st">"0 (CrI excludes null; k = 9)"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (confounders oppose effect; cross-comparison)"</span>, <span class="st">"+1 (confounders oppose; cross-comparison; sens k=14 consistent)"</span>,</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
@@ -610,13 +591,13 @@ Table&nbsp;4: GRADE domain assessment — aGVHD.
 </tr>
 <tr class="even">
 <td style="text-align: left;">Risk of bias</td>
-<td style="text-align: left;">0 (bias opposes effect)</td>
+<td style="text-align: left;">0 (ascertainment bias opposes effect)</td>
 <td style="text-align: left;">0 (same reasoning)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Inconsistency</td>
-<td style="text-align: left;">−1 (I² = 63%, τ = 0.66)</td>
-<td style="text-align: left;">−1 (I² = 67%; τ poorly estimated)</td>
+<td style="text-align: left;">−1 (I² = 62%; τ = 0.68)</td>
+<td style="text-align: left;">−1 (I² = 73%; τ = 0.55)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Indirectness</td>
@@ -625,13 +606,13 @@ Table&nbsp;4: GRADE domain assessment — aGVHD.
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Imprecision</td>
-<td style="text-align: left;">0 (CrI below null)</td>
-<td style="text-align: left;">0 (CrI below null)</td>
+<td style="text-align: left;">0 (CrI excludes null; k = 28)</td>
+<td style="text-align: left;">0 (CrI excludes null; k = 9)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Upgrade</td>
-<td style="text-align: left;">+1 (confounders oppose)</td>
-<td style="text-align: left;">+1 (confounders oppose + cross-comparison)</td>
+<td style="text-align: left;">+1 (confounders oppose effect; cross-comparison)</td>
+<td style="text-align: left;">+1 (confounders oppose; cross-comparison; sens k=14 consistent)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Net</td>
@@ -650,6 +631,7 @@ Table&nbsp;4: GRADE domain assessment — aGVHD.
 </figure>
 </div>
 </div>
+<p>aGVHD is the most stable finding in the analysis. The C2 sensitivity (k = 14) attenuated the effect (OR 0.78) but the CrI still excluded null — consistent with partial convergence when combo PTCy+ATG arms are included.</p>
 </section>
 <section id="cmv-reactivation" class="level3">
 <h3 class="anchored" data-anchor-id="cmv-reactivation">CMV Reactivation</h3>
@@ -658,13 +640,13 @@ Table&nbsp;4: GRADE domain assessment — aGVHD.
 <summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retrospective; start LOW"</span>, <span class="st">"All retrospective; start LOW"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (ascertainment bias noted)"</span>, <span class="st">"0 (direction uncertain)"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 69%)"</span>, <span class="st">"\u22121 (I\u00B2 = 67%)"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"1 RCT + 21 retro; start LOW"</span>, <span class="st">"All retrospective; start LOW"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (monitoring protocol heterogeneity noted)"</span>, <span class="st">"0 (direction uncertain)"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 62%)"</span>, <span class="st">"\u22121 (I\u00B2 = 71%)"</span>,</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null)"</span>, <span class="st">"\u22121 (CrI fragile; crosses null in M2 and sensitivity)"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (steroid-independence confirmed)"</span>, <span class="st">"+1 (mechanistic coherence with C1 reversal)"</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"0"</span>, <span class="st">"\u22121"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null [1.07\u20131.47])"</span>, <span class="st">"\u22121 (CrI crosses null [0.73\u20131.15])"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (steroid-independence; sensitivity convergence pattern)"</span>, <span class="st">"0 (see below)"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"0"</span>, <span class="st">"\u22122"</span>,</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
@@ -688,18 +670,18 @@ Table&nbsp;5: GRADE domain assessment — CMV.
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Study design</td>
-<td style="text-align: left;">All retrospective; start LOW</td>
+<td style="text-align: left;">1 RCT + 21 retro; start LOW</td>
 <td style="text-align: left;">All retrospective; start LOW</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Risk of bias</td>
-<td style="text-align: left;">0 (ascertainment bias noted)</td>
+<td style="text-align: left;">0 (monitoring protocol heterogeneity noted)</td>
 <td style="text-align: left;">0 (direction uncertain)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Inconsistency</td>
-<td style="text-align: left;">−1 (I² = 69%)</td>
-<td style="text-align: left;">−1 (I² = 67%)</td>
+<td style="text-align: left;">−1 (I² = 62%)</td>
+<td style="text-align: left;">−1 (I² = 71%)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Indirectness</td>
@@ -708,18 +690,18 @@ Table&nbsp;5: GRADE domain assessment — CMV.
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Imprecision</td>
-<td style="text-align: left;">0 (CrI excludes null)</td>
-<td style="text-align: left;">−1 (CrI fragile; crosses null in M2 and sensitivity)</td>
+<td style="text-align: left;">0 (CrI excludes null [1.07–1.47])</td>
+<td style="text-align: left;">−1 (CrI crosses null [0.73–1.15])</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Upgrade</td>
-<td style="text-align: left;">+1 (steroid-independence confirmed)</td>
-<td style="text-align: left;">+1 (mechanistic coherence with C1 reversal)</td>
+<td style="text-align: left;">+1 (steroid-independence; sensitivity convergence pattern)</td>
+<td style="text-align: left;">0 (see below)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Net</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">−1</td>
+<td style="text-align: left;">−2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CERTAINTY</td>
@@ -739,21 +721,159 @@ Table&nbsp;5: GRADE domain assessment — CMV.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>CMV: The Reversal Is More Informative Than Either Estimate
+<span class="screen-reader-only">Important</span>CMV: From Direction Reversal to Depletion Gradient
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Neither the C1 CMV estimate (OR 1.41, LOW certainty) nor the C2 estimate (OR 0.77, VERY LOW certainty) alone provides high confidence. However, the <em>contrast</em> between them — PTCy harmful vs CNI+MTX/MMF but protective vs ATG — provides <strong>moderate-certainty evidence</strong> that CMV risk is ordered by T-cell depletion depth. This cross-comparison finding has higher certainty than either component.</p>
+<p>The pre-Block-9 analysis reported a qualitative direction reversal: PTCy increased CMV vs CNI+MTX (OR 1.41) but decreased it vs ATG (OR 0.77 [0.60–0.99]). In the post-Block-9 corpus, C2 CMV has shifted to OR 0.92 [0.73–1.15], and the CrI crosses null. The binary reversal is no longer statistically credible.</p>
+<p>However, the <strong>C2 sensitivity analysis</strong> provides a different — and arguably stronger — form of evidence. When PTCy+ATG combination arms are reclassified as “PTCy-side” (k = 22), the CMV estimate converges to OR 1.00 [0.85–1.18]. This convergence is predicted by the depletion hierarchy: when both arms have deep T-cell depletion, CMV rates should equalise.</p>
+<p>The three estimates trace a gradient:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Analysis</th>
+<th>Arms compared</th>
+<th>OR</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C1 primary</td>
+<td>PTCy vs CNI</td>
+<td>1.26</td>
+<td>PTCy depletes more → more CMV</td>
+</tr>
+<tr class="even">
+<td>C2 primary</td>
+<td>PTCy vs ATG</td>
+<td>0.92</td>
+<td>Near-parity; slight PTCy advantage</td>
+</tr>
+<tr class="odd">
+<td>C2 sensitivity</td>
+<td>PTCy+ATG vs ATG</td>
+<td>1.00</td>
+<td>Equal depletion → equal CMV</td>
+</tr>
+</tbody>
+</table>
+<p>This gradient is more consistent with the depletion hierarchy than the pre-Block-9 binary reversal. The mechanistic conclusion — that CMV risk tracks T-cell depletion depth, not any PTCy-specific property — carries <strong>LOW certainty</strong> when assessed across the full evidence pattern, despite the individual C2 estimate being VERY LOW.</p>
 </div>
 </div>
+</section>
+<section id="bsi-and-ifi" class="level3">
+<h3 class="anchored" data-anchor-id="bsi-and-ifi">BSI and IFI</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span><span class="st">`</span><span class="at">C1 BSI</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">C1 IFI</span><span class="st">`</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"\u22121 (definitions heterogeneous)"</span>, <span class="st">"0"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 71%; freq CrI crosses null)"</span>, <span class="st">"\u22121 (\u03c4 = 1.64; I\u00B2 = 80%)"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (Bayes CrI excludes null)"</span>, <span class="st">"0 (CrI excludes null [0.29\u20130.63])"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22122"</span>, <span class="st">"\u22121"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="tbl-grade-infection" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-grade-infection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: GRADE domain assessment — BSI and IFI.
+</figcaption>
+<div aria-describedby="tbl-grade-infection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-hover cell caption-top table-sm small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Domain</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">C1 BSI</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">C1 IFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Study design</td>
+<td style="text-align: left;">All retro/registry; start LOW</td>
+<td style="text-align: left;">All retro/registry; start LOW</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Risk of bias</td>
+<td style="text-align: left;">−1 (definitions heterogeneous)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inconsistency</td>
+<td style="text-align: left;">−1 (I² = 71%; freq CrI crosses null)</td>
+<td style="text-align: left;">−1 (τ = 1.64; I² = 80%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indirectness</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Imprecision</td>
+<td style="text-align: left;">0 (Bayes CrI excludes null)</td>
+<td style="text-align: left;">0 (CrI excludes null [0.29–0.63])</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Net</td>
+<td style="text-align: left;">−2</td>
+<td style="text-align: left;">−1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CERTAINTY</td>
+<td style="text-align: left;">⊕⊖⊖⊖ V.LOW</td>
+<td style="text-align: left;">⊕⊖⊖⊖ V.LOW</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>BSI: The Bayesian OR of 1.87 [1.33–2.62] suggests elevated risk, but the frequentist estimate (OR 1.29 [0.61–2.73]) crosses null substantially. Both k = 6. The Bayesian shrinkage prior and the frequentist random-effects model disagree, reducing confidence.</p>
+<p>IFI: The post-Block-9 estimate (OR 0.43 [0.29–0.63]) is substantially stronger than pre-Block-9 (0.73 [0.53–1.00]), but τ = 1.64 indicates extreme between-study heterogeneity. The frequentist CrI (0.21–1.74) again crosses null. With only k = 6 studies and this level of heterogeneity, the strong protective signal should be interpreted cautiously.</p>
 </section>
 </section>
 <section id="sec-grade-narrative" class="level2">
 <h2 class="anchored" data-anchor-id="sec-grade-narrative">Narrative Summary</h2>
 <p>Across both comparisons, certainty does not exceed LOW — a predictable consequence of an almost entirely observational evidence base.</p>
-<p><strong>Cross-comparison coherence</strong> is the strongest methodological asset. OS and aGVHD show consistent effects across two fundamentally different comparators, reducing the probability that findings are artefacts of comparator-specific confounding. The mediation pattern also replicates (OS: partial; NRM: substantial/complete).</p>
-<p><strong>The CMV direction reversal</strong> provides moderate-certainty mechanistic evidence. Any C2 value below ~1.0 confirms a qualitative direction shift, making this finding robust to the specific C2 point estimate.</p>
-<p><strong>Infection outcomes remain the principal evidence gap.</strong> BSI and IFI carry VERY LOW certainty in both comparisons. Dedicated prospective studies with standardised endpoint definitions are needed.</p>
+<p><strong>The most robust findings</strong> are C1 OS (OR 0.79, k = 40), C1 aGVHD (OR 0.67, k = 28), and C2 aGVHD (OR 0.58, k = 9). These three estimates have been stable across the pre-Block-9 and post-Block-9 analyses, are consistent across comparators, and have CrIs that exclude null. <strong>Cross-comparison coherence</strong> remains the strongest methodological asset.</p>
+<p><strong>The CMV depletion hierarchy</strong> is supported not by a single direction reversal but by a three-point gradient across the primary and sensitivity analyses. This gradient pattern carries greater evidential weight than any one estimate. Certainty for the mechanistic conclusion (that CMV risk tracks depletion depth) is LOW when integrating the full pattern.</p>
+<p><strong>Infection outcomes remain the principal evidence gap.</strong> BSI and IFI carry VERY LOW certainty. Both show substantial discordance between Bayesian and frequentist estimators, and both have extreme heterogeneity. Dedicated prospective studies with standardised endpoint definitions are needed.</p>
+<p><strong>C2 NRM is no longer gradeable.</strong> Arm classification corrections reduced k to 2. The steroid mediation pattern observed in C1 NRM (OR 0.88 → M2 OR 0.90) remains the best available evidence for the GVHD→steroid→NRM causal chain.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Post-Block-9 GRADE Changes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>C2 NRM: removed (k = 2 after arm reclassification)</li>
+<li>C2 BSI: removed (k = 3 Mantel-Haenszel was not formally gradeable)</li>
+<li>C2 CMV: still VERY LOW; reasoning revised from “direction reversal” to “gradient pattern”</li>
+<li>C1 IFI: k decreased (8 → 6), but CrI now excludes null; τ = 1.64 warrants extreme caution</li>
+<li>All other outcomes: certainty unchanged</li>
+</ul>
+</div>
+</div>
 
 
 <!-- -->
@@ -1217,145 +1337,204 @@ Table&nbsp;5: GRADE domain assessment — CMV.
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "GRADE Certainty Assessment"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence).</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary {#sec-grade-summary}</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-summary</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE certainty of evidence — all outcomes, both comparisons."</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Outcome, <span class="sc">~</span>Comp, <span class="sc">~</span>k, <span class="sc">~</span>N, <span class="sc">~</span><span class="st">`</span><span class="at">OR [95% CrI]</span><span class="st">`</span>, <span class="sc">~</span>Certainty, <span class="sc">~</span><span class="st">`</span><span class="at">Key Limitation</span><span class="st">`</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C1"</span>, <span class="dv">35</span>, <span class="dv">17661</span>, <span class="st">"0.77 [0.71\u20130.83]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 68%; obs only"</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C2"</span>, <span class="dv">10</span>, <span class="dv">10624</span>, <span class="st">"0.69 [0.61\u20130.78]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 90% (freq); one registry dominant"</span>,</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C1"</span>, <span class="dv">15</span>,  <span class="dv">2081</span>, <span class="st">"0.86 [0.70\u20131.08]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"Complete M2 mediation; CrI crosses null"</span>,</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C2"</span>,  <span class="dv">5</span>,  <span class="dv">1186</span>, <span class="st">"0.65 [0.43\u20130.97]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"k = 5; M2 attenuation; CrI fragile"</span>,</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="dv">24</span>,  <span class="dv">3837</span>, <span class="st">"0.63 [0.54\u20130.74]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"I\u00B2 = 63%; obs only"</span>,</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C2"</span>,  <span class="dv">6</span>,   <span class="dv">784</span>, <span class="st">"0.59 [0.42\u20130.84]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"k = 6; \u03c4 poorly estimated"</span>,</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C1"</span>, <span class="dv">18</span>,  <span class="dv">3357</span>, <span class="st">"1.41 [1.20\u20131.65]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 69%; obs only"</span>,</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C2"</span>, <span class="dv">12</span>,  <span class="dv">1267</span>, <span class="st">"0.77 [0.60\u20130.99]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"CrI fragile; direction reversal is key"</span>,</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"BSI"</span>,           <span class="st">"C1"</span>,  <span class="dv">6</span>,  <span class="dv">1319</span>, <span class="st">"2.39 [1.85\u20133.10]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"k = 6; 7 studies NR excluded"</span>,</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">"BSI"</span>,           <span class="st">"C2"</span>,  <span class="dv">3</span>,   <span class="dv">613</span>, <span class="st">"2.03 [1.33\u20133.09]\u2020"</span>, <span class="st">"(\u2295\u2296\u2296\u2296)"</span>,   <span class="st">"k = 3; definitional heterogeneity"</span>,</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IFI"</span>,           <span class="st">"C1"</span>,  <span class="dv">8</span>,  <span class="dv">3816</span>, <span class="st">"0.73 [0.53\u20131.00]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"\u03c4 = 1.05 (Yanada); CrI \u2248 null"</span>,</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IFI"</span>,           <span class="st">"C2"</span>, <span class="cn">NA</span>,    <span class="cn">NA</span>, <span class="st">"\u2014"</span>,                 <span class="st">"\u2014"</span>,                              <span class="st">"Insufficient data"</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"r"</span>,<span class="st">"r"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"l"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="fu">c</span>(<span class="st">"Mantel-Haenszel fixed-effect; formal GRADE not performed at k = 3."</span>))</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Domain-Level Assessments {#sec-grade-domains}</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Overall Survival</span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-os</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — Overall Survival."</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"34 retro/registry + 1 RCT; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"No downgrade (effect survives M2)"</span>, <span class="st">"No downgrade (same reasoning)"</span>,</span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 68%)"</span>, <span class="st">"\u22121 (I\u00B2 = 90%, two extreme outliers)"</span>,</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI below null; N = 17,661)"</span>, <span class="st">"0 (CrI below null; N = 10,624)"</span>,</span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pub. bias"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"0"</span>, <span class="st">"+1 (cross-comparison coherence)"</span>,</span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22121"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### Non-Relapse Mortality</span></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-nrm</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — NRM."</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"\u22121 (complete M2 mediation = confounding signal)"</span>, <span class="st">"\u22121 (M2 attenuation, CrI crosses null)"</span>,</span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"0 (I\u00B2 = 39%)"</span>, <span class="st">"0 (I\u00B2 = 0%)"</span>,</span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"\u22121 (CrI crosses null; M2 CrI fully crosses)"</span>, <span class="st">"\u22121 (k = 5; M2 CrI crosses null)"</span>,</span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pub. bias"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22122"</span>, <span class="st">"\u22122"</span>,</span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### aGVHD Grade II–IV</span></span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-agvhd</span></span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — aGVHD."</span></span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (bias opposes effect)"</span>, <span class="st">"0 (same reasoning)"</span>,</span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 63%, \u03c4 = 0.66)"</span>, <span class="st">"\u22121 (I\u00B2 = 67%; \u03c4 poorly estimated)"</span>,</span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI below null)"</span>, <span class="st">"0 (CrI below null)"</span>,</span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (confounders oppose)"</span>, <span class="st">"+1 (confounders oppose + cross-comparison)"</span>,</span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span></span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="fu">### CMV Reactivation</span></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-cmv</span></span>
-<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — CMV."</span></span>
-<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
-<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retrospective; start LOW"</span>, <span class="st">"All retrospective; start LOW"</span>,</span>
-<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (ascertainment bias noted)"</span>, <span class="st">"0 (direction uncertain)"</span>,</span>
-<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 69%)"</span>, <span class="st">"\u22121 (I\u00B2 = 67%)"</span>,</span>
-<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
-<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null)"</span>, <span class="st">"\u22121 (CrI fragile; crosses null in M2 and sensitivity)"</span>,</span>
-<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (steroid-independence confirmed)"</span>, <span class="st">"+1 (mechanistic coherence with C1 reversal)"</span>,</span>
-<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"0"</span>, <span class="st">"\u22121"</span>,</span>
-<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span></span>
-<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## CMV: The Reversal Is More Informative Than Either Estimate</span></span>
-<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>Neither the C1 CMV estimate (OR 1.41, LOW certainty) nor the C2 estimate (OR 0.77, VERY LOW certainty) alone provides high confidence. However, the *contrast* between them — PTCy harmful vs CNI+MTX/MMF but protective vs ATG — provides **moderate-certainty evidence** that CMV risk is ordered by T-cell depletion depth. This cross-comparison finding has higher certainty than either component.</span>
-<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a><span class="fu">## Narrative Summary {#sec-grade-narrative}</span></span>
-<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a>Across both comparisons, certainty does not exceed LOW — a predictable consequence of an almost entirely observational evidence base.</span>
-<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a>**Cross-comparison coherence** is the strongest methodological asset. OS and aGVHD show consistent effects across two fundamentally different comparators, reducing the probability that findings are artefacts of comparator-specific confounding. The mediation pattern also replicates (OS: partial; NRM: substantial/complete).</span>
-<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>**The CMV direction reversal** provides moderate-certainty mechanistic evidence. Any C2 value below ~1.0 confirms a qualitative direction shift, making this finding robust to the specific C2 point estimate.</span>
-<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a>**Infection outcomes remain the principal evidence gap.** BSI and IFI carry VERY LOW certainty in both comparisons. Dedicated prospective studies with standardised endpoint definitions are needed.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "GRADE Certainty Assessment"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Table2 for dynamic values</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"Table2_post_block9.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"freq_results.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence). Post-Block-9 corpus: 251 studies (14 RCTs), 525 arms.</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary {#sec-grade-summary}</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-summary</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE certainty of evidence — all outcomes, both comparisons. Updated for post-Block-9 results (May 2026)."</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Outcome, <span class="sc">~</span>Comp, <span class="sc">~</span>k, <span class="sc">~</span>N, <span class="sc">~</span><span class="st">`</span><span class="at">OR [95% CrI]</span><span class="st">`</span>, <span class="sc">~</span>Certainty, <span class="sc">~</span><span class="st">`</span><span class="at">Key Limitation</span><span class="st">`</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C1"</span>, <span class="dv">40</span>, <span class="dv">19724</span>, <span class="st">"0.79 [0.73\u20130.85]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 64%; obs only"</span>,</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,            <span class="st">"C2"</span>, <span class="dv">10</span>, <span class="dv">12851</span>, <span class="st">"0.81 [0.74\u20130.90]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 95% (freq); attenuated from pre-B9"</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C1"</span>, <span class="dv">12</span>,  <span class="dv">1309</span>, <span class="st">"0.88 [0.66\u20131.18]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"Complete M2 mediation; CrI crosses null"</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,           <span class="st">"C2"</span>, <span class="cn">NA</span>,    <span class="cn">NA</span>, <span class="st">"\u2014 (k = 2)"</span>,         <span class="st">"\u2014"</span>,                              <span class="st">"Below minimum k for modelling"</span>,</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="dv">28</span>,  <span class="dv">4197</span>, <span class="st">"0.67 [0.59\u20130.78]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"I\u00B2 = 62%; obs only"</span>,</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C2"</span>,  <span class="dv">9</span>,  <span class="dv">1099</span>, <span class="st">"0.58 [0.44\u20130.77]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,   <span class="st">"I\u00B2 = 73%; k = 9"</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C1"</span>, <span class="dv">22</span>,  <span class="dv">3328</span>, <span class="st">"1.26 [1.07\u20131.47]"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>,       <span class="st">"I\u00B2 = 62%; obs only"</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,           <span class="st">"C2"</span>, <span class="dv">13</span>,  <span class="dv">1571</span>, <span class="st">"0.92 [0.73\u20131.15]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"CrI crosses null; sensitivity convergence"</span>,</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"BSI"</span>,           <span class="st">"C1"</span>,  <span class="dv">6</span>,   <span class="dv">806</span>, <span class="st">"1.87 [1.33\u20132.62]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"k = 6; freq CrI crosses null"</span>,</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IFI"</span>,           <span class="st">"C1"</span>,  <span class="dv">6</span>,  <span class="dv">2243</span>, <span class="st">"0.43 [0.29\u20130.63]"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>,     <span class="st">"\u03c4 = 1.64; extreme heterogeneity"</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"r"</span>,<span class="st">"r"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"l"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>::: {.callout-note appearance="simple"}</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>**Changes from pre-Block-9.** C2 NRM can no longer be graded (k = 2 after arm classification corrections). C2 CMV moved from borderline significant (OR 0.77 <span class="co">[</span><span class="ot">0.60–0.99</span><span class="co">]</span>) to null-crossing (OR 0.92 <span class="co">[</span><span class="ot">0.73–1.15</span><span class="co">]</span>). C2 BSI removed (k = 3 Mantel-Haenszel estimate was not formally gradeable). All C1 outcomes stable in direction and certainty.</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Domain-Level Assessments {#sec-grade-domains}</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### Overall Survival</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-os</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — Overall Survival."</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"39 retro/registry + 1 RCT; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"No downgrade (effect survives M2)"</span>, <span class="st">"No downgrade (M2 OR 0.82 still protective)"</span>,</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 64%; \u03c4 = 0.61)"</span>, <span class="st">"\u22121 (I\u00B2 = 95%; one registry dominant)"</span>,</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null; N = 19,724)"</span>, <span class="st">"0 (CrI excludes null; N = 12,851)"</span>,</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pub. bias"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"0"</span>, <span class="st">"+1 (cross-comparison coherence; sensitivity k=21 strengthens)"</span>,</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22121"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>The C2 OS sensitivity (expanded arm inclusion, k = 21) strengthened the effect from OR 0.81 to 0.74 <span class="co">[</span><span class="ot">0.66–0.83</span><span class="co">]</span>, supporting the upgrade for cross-comparison coherence.</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Non-Relapse Mortality</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-nrm</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — NRM."</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"\u22121 (M2 shows steroid mediation \u2192 confounding signal)"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"0 (I\u00B2 = 0%)"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"\u22121 (CrI crosses null; k = 12)"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pub. bias"</span>, <span class="st">"0"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22122"</span>, <span class="st">"\u2014"</span>,</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>, <span class="st">"\u2014 (k = 2; not gradeable)"</span></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>C2 NRM dropped below the modelling threshold (k = 2) after removing Sayin 2024 (misclassified comparator). The pre-Block-9 C2 NRM estimate (k = 5, OR 0.65 <span class="co">[</span><span class="ot">0.43–0.97</span><span class="co">]</span>) should be interpreted with caution given the arm classification issues that reduced k.</span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### aGVHD Grade II–IV</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-agvhd</span></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — aGVHD."</span></span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (ascertainment bias opposes effect)"</span>, <span class="st">"0 (same reasoning)"</span>,</span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 62%; \u03c4 = 0.68)"</span>, <span class="st">"\u22121 (I\u00B2 = 73%; \u03c4 = 0.55)"</span>,</span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null; k = 28)"</span>, <span class="st">"0 (CrI excludes null; k = 9)"</span>,</span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (confounders oppose effect; cross-comparison)"</span>, <span class="st">"+1 (confounders oppose; cross-comparison; sens k=14 consistent)"</span>,</span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span></span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>aGVHD is the most stable finding in the analysis. The C2 sensitivity (k = 14) attenuated the effect (OR 0.78) but the CrI still excluded null — consistent with partial convergence when combo PTCy+ATG arms are included.</span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### CMV Reactivation</span></span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-cmv</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — CMV."</span></span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span>C1, <span class="sc">~</span>C2,</span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"1 RCT + 21 retro; start LOW"</span>, <span class="st">"All retrospective; start LOW"</span>,</span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"0 (monitoring protocol heterogeneity noted)"</span>, <span class="st">"0 (direction uncertain)"</span>,</span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 62%)"</span>, <span class="st">"\u22121 (I\u00B2 = 71%)"</span>,</span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (CrI excludes null [1.07\u20131.47])"</span>, <span class="st">"\u22121 (CrI crosses null [0.73\u20131.15])"</span>,</span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Upgrade"</span>, <span class="st">"+1 (steroid-independence; sensitivity convergence pattern)"</span>, <span class="st">"0 (see below)"</span>,</span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"0"</span>, <span class="st">"\u22122"</span>,</span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2295\u2296\u2296 LOW"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span></span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a><span class="fu">## CMV: From Direction Reversal to Depletion Gradient</span></span>
+<span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a>The pre-Block-9 analysis reported a qualitative direction reversal: PTCy increased CMV vs CNI+MTX (OR 1.41) but decreased it vs ATG (OR 0.77 <span class="co">[</span><span class="ot">0.60–0.99</span><span class="co">]</span>). In the post-Block-9 corpus, C2 CMV has shifted to OR 0.92 <span class="co">[</span><span class="ot">0.73–1.15</span><span class="co">]</span>, and the CrI crosses null. The binary reversal is no longer statistically credible.</span>
+<span id="cb7-153"><a href="#cb7-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-154"><a href="#cb7-154" aria-hidden="true" tabindex="-1"></a>However, the **C2 sensitivity analysis** provides a different — and arguably stronger — form of evidence. When PTCy+ATG combination arms are reclassified as "PTCy-side" (k = 22), the CMV estimate converges to OR 1.00 <span class="co">[</span><span class="ot">0.85–1.18</span><span class="co">]</span>. This convergence is predicted by the depletion hierarchy: when both arms have deep T-cell depletion, CMV rates should equalise.</span>
+<span id="cb7-155"><a href="#cb7-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-156"><a href="#cb7-156" aria-hidden="true" tabindex="-1"></a>The three estimates trace a gradient:</span>
+<span id="cb7-157"><a href="#cb7-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-158"><a href="#cb7-158" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Analysis <span class="pp">|</span> Arms compared <span class="pp">|</span> OR <span class="pp">|</span> Interpretation <span class="pp">|</span></span>
+<span id="cb7-159"><a href="#cb7-159" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|---|</span></span>
+<span id="cb7-160"><a href="#cb7-160" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> C1 primary <span class="pp">|</span> PTCy vs CNI <span class="pp">|</span> 1.26 <span class="pp">|</span> PTCy depletes more → more CMV <span class="pp">|</span></span>
+<span id="cb7-161"><a href="#cb7-161" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> C2 primary <span class="pp">|</span> PTCy vs ATG <span class="pp">|</span> 0.92 <span class="pp">|</span> Near-parity; slight PTCy advantage <span class="pp">|</span></span>
+<span id="cb7-162"><a href="#cb7-162" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> C2 sensitivity <span class="pp">|</span> PTCy+ATG vs ATG <span class="pp">|</span> 1.00 <span class="pp">|</span> Equal depletion → equal CMV <span class="pp">|</span></span>
+<span id="cb7-163"><a href="#cb7-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-164"><a href="#cb7-164" aria-hidden="true" tabindex="-1"></a>This gradient is more consistent with the depletion hierarchy than the pre-Block-9 binary reversal. The mechanistic conclusion — that CMV risk tracks T-cell depletion depth, not any PTCy-specific property — carries **LOW certainty** when assessed across the full evidence pattern, despite the individual C2 estimate being VERY LOW.</span>
+<span id="cb7-165"><a href="#cb7-165" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-166"><a href="#cb7-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-167"><a href="#cb7-167" aria-hidden="true" tabindex="-1"></a><span class="fu">### BSI and IFI</span></span>
+<span id="cb7-168"><a href="#cb7-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-171"><a href="#cb7-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-172"><a href="#cb7-172" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-grade-infection</span></span>
+<span id="cb7-173"><a href="#cb7-173" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "GRADE domain assessment — BSI and IFI."</span></span>
+<span id="cb7-174"><a href="#cb7-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-175"><a href="#cb7-175" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb7-176"><a href="#cb7-176" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Domain, <span class="sc">~</span><span class="st">`</span><span class="at">C1 BSI</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">C1 IFI</span><span class="st">`</span>,</span>
+<span id="cb7-177"><a href="#cb7-177" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Study design"</span>, <span class="st">"All retro/registry; start LOW"</span>, <span class="st">"All retro/registry; start LOW"</span>,</span>
+<span id="cb7-178"><a href="#cb7-178" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Risk of bias"</span>, <span class="st">"\u22121 (definitions heterogeneous)"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-179"><a href="#cb7-179" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Inconsistency"</span>, <span class="st">"\u22121 (I\u00B2 = 71%; freq CrI crosses null)"</span>, <span class="st">"\u22121 (\u03c4 = 1.64; I\u00B2 = 80%)"</span>,</span>
+<span id="cb7-180"><a href="#cb7-180" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indirectness"</span>, <span class="st">"0"</span>, <span class="st">"0"</span>,</span>
+<span id="cb7-181"><a href="#cb7-181" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Imprecision"</span>, <span class="st">"0 (Bayes CrI excludes null)"</span>, <span class="st">"0 (CrI excludes null [0.29\u20130.63])"</span>,</span>
+<span id="cb7-182"><a href="#cb7-182" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Net"</span>, <span class="st">"\u22122"</span>, <span class="st">"\u22121"</span>,</span>
+<span id="cb7-183"><a href="#cb7-183" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CERTAINTY"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span>, <span class="st">"\u2295\u2296\u2296\u2296 V.LOW"</span></span>
+<span id="cb7-184"><a href="#cb7-184" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-185"><a href="#cb7-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-186"><a href="#cb7-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-187"><a href="#cb7-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-188"><a href="#cb7-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-189"><a href="#cb7-189" aria-hidden="true" tabindex="-1"></a>BSI: The Bayesian OR of 1.87 <span class="co">[</span><span class="ot">1.33–2.62</span><span class="co">]</span> suggests elevated risk, but the frequentist estimate (OR 1.29 <span class="co">[</span><span class="ot">0.61–2.73</span><span class="co">]</span>) crosses null substantially. Both k = 6. The Bayesian shrinkage prior and the frequentist random-effects model disagree, reducing confidence.</span>
+<span id="cb7-190"><a href="#cb7-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-191"><a href="#cb7-191" aria-hidden="true" tabindex="-1"></a>IFI: The post-Block-9 estimate (OR 0.43 <span class="co">[</span><span class="ot">0.29–0.63</span><span class="co">]</span>) is substantially stronger than pre-Block-9 (0.73 <span class="co">[</span><span class="ot">0.53–1.00</span><span class="co">]</span>), but τ = 1.64 indicates extreme between-study heterogeneity. The frequentist CrI (0.21–1.74) again crosses null. With only k = 6 studies and this level of heterogeneity, the strong protective signal should be interpreted cautiously.</span>
+<span id="cb7-192"><a href="#cb7-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a><span class="fu">## Narrative Summary {#sec-grade-narrative}</span></span>
+<span id="cb7-194"><a href="#cb7-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-195"><a href="#cb7-195" aria-hidden="true" tabindex="-1"></a>Across both comparisons, certainty does not exceed LOW — a predictable consequence of an almost entirely observational evidence base.</span>
+<span id="cb7-196"><a href="#cb7-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-197"><a href="#cb7-197" aria-hidden="true" tabindex="-1"></a>**The most robust findings** are C1 OS (OR 0.79, k = 40), C1 aGVHD (OR 0.67, k = 28), and C2 aGVHD (OR 0.58, k = 9). These three estimates have been stable across the pre-Block-9 and post-Block-9 analyses, are consistent across comparators, and have CrIs that exclude null. **Cross-comparison coherence** remains the strongest methodological asset.</span>
+<span id="cb7-198"><a href="#cb7-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-199"><a href="#cb7-199" aria-hidden="true" tabindex="-1"></a>**The CMV depletion hierarchy** is supported not by a single direction reversal but by a three-point gradient across the primary and sensitivity analyses. This gradient pattern carries greater evidential weight than any one estimate. Certainty for the mechanistic conclusion (that CMV risk tracks depletion depth) is LOW when integrating the full pattern.</span>
+<span id="cb7-200"><a href="#cb7-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-201"><a href="#cb7-201" aria-hidden="true" tabindex="-1"></a>**Infection outcomes remain the principal evidence gap.** BSI and IFI carry VERY LOW certainty. Both show substantial discordance between Bayesian and frequentist estimators, and both have extreme heterogeneity. Dedicated prospective studies with standardised endpoint definitions are needed.</span>
+<span id="cb7-202"><a href="#cb7-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-203"><a href="#cb7-203" aria-hidden="true" tabindex="-1"></a>**C2 NRM is no longer gradeable.** Arm classification corrections reduced k to 2. The steroid mediation pattern observed in C1 NRM (OR 0.88 → M2 OR 0.90) remains the best available evidence for the GVHD→steroid→NRM causal chain.</span>
+<span id="cb7-204"><a href="#cb7-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-205"><a href="#cb7-205" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb7-206"><a href="#cb7-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Post-Block-9 GRADE Changes</span></span>
+<span id="cb7-207"><a href="#cb7-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>C2 NRM: removed (k = 2 after arm reclassification)</span>
+<span id="cb7-208"><a href="#cb7-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>C2 BSI: removed (k = 3 Mantel-Haenszel was not formally gradeable)</span>
+<span id="cb7-209"><a href="#cb7-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>C2 CMV: still VERY LOW; reasoning revised from "direction reversal" to "gradient pattern"</span>
+<span id="cb7-210"><a href="#cb7-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>C1 IFI: k decreased (8 → 6), but CrI now excludes null; τ = 1.64 warrants extreme caution</span>
+<span id="cb7-211"><a href="#cb7-211" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>All other outcomes: certainty unchanged</span>
+<span id="cb7-212"><a href="#cb7-212" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

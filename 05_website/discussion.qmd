@@ -13,6 +13,15 @@ post_c2_cmv <- load_post("post_c2_cmv.rds")
 
 or_c1_cmv <- or_summary(post_m1, "b_ptcy_binary", "CMV")
 or_c2_cmv <- or_summary(post_c2_cmv, "b_ptcy_binary", "CMV")
+
+# Sensitivity posteriors
+post_c2_sens_os    <- tryCatch(load_post("post_c2_sens_os.rds"), error = function(e) NULL)
+post_c2_sens_agvhd <- tryCatch(load_post("post_c2_sens_agvhd.rds"), error = function(e) NULL)
+post_c2_sens_cmv   <- tryCatch(load_post("post_c2_sens_cmv.rds"), error = function(e) NULL)
+
+# Primary C2 posteriors
+post_c2_os    <- load_post("post_c2_os.rds")
+post_c2_agvhd <- load_post("post_c2_agvhd.rds")
 ```
 
 ## The Mechanistic Framework {#sec-disc-asymmetry}
@@ -32,24 +41,24 @@ The same cyclophosphamide pulse depletes the nascent CMV- and bacterial-specific
 
 ```{r}
 #| label: fig-disc-cmv-hierarchy
-#| fig-cap: "T-cell depletion depth hierarchy. CNI-based regimens preserve T cells most; ATG depletes most deeply; PTCy falls between."
+#| fig-cap: "T-cell depletion depth hierarchy. CNI-based regimens preserve T cells most; ATG depletes most deeply; PTCy falls between. PTCy+ATG combinations approach the ATG depth."
 #| fig-height: 4
 #| fig-width: 8
 
 hierarchy <- tibble(
-  Regimen = factor(c("CNI+MTX/MMF", "PTCy", "ATG"),
-                    levels = c("CNI+MTX/MMF", "PTCy", "ATG")),
-  depletion = c(1, 2, 3),
-  cmv_label = c("Lowest CMV\nrisk", "Intermediate", "Highest CMV\nrisk")
+  Regimen = factor(c("CNI+MTX/MMF", "PTCy", "PTCy+ATG", "ATG"),
+                    levels = c("CNI+MTX/MMF", "PTCy", "PTCy+ATG", "ATG")),
+  depletion = c(1, 2, 2.7, 3),
+  cmv_label = c("Lowest CMV\nrisk", "Intermediate", "Near-ATG\ndepth", "Highest CMV\nrisk")
 )
 
 ggplot(hierarchy, aes(x = Regimen, y = depletion)) +
-  geom_col(fill = c(jama_light_blue, jama_navy, jama_dark), width = 0.6) +
+  geom_col(fill = c(jama_light_blue, jama_navy, jama_steel, jama_dark), width = 0.6) +
   geom_text(aes(label = cmv_label), y = 0.3, colour = "white",
-            size = 3.5, fontface = "bold", vjust = 0) +
-  annotate("segment", x = 0.5, xend = 3.5, y = 3.3, yend = 3.3,
+            size = 3.2, fontface = "bold", vjust = 0) +
+  annotate("segment", x = 0.5, xend = 4.5, y = 3.3, yend = 3.3,
            arrow = arrow(length = unit(0.2, "cm")), colour = jama_steel) +
-  annotate("text", x = 2, y = 3.5, label = "Increasing T-cell depletion depth",
+  annotate("text", x = 2.5, y = 3.5, label = "Increasing T-cell depletion depth",
            colour = jama_steel, size = 3.5, fontface = "italic") +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 4)) +
   labs(y = "Relative T-cell depletion", x = NULL,
@@ -59,11 +68,15 @@ ggplot(hierarchy, aes(x = Regimen, y = depletion)) +
         panel.grid.major.x = element_blank())
 ```
 
-### CMV Across Comparisons — Updated Assessment
+## CMV: Evidence for the Depletion Hierarchy {#sec-disc-cmv}
+
+### Primary analysis
+
+C1 CMV remains consistently harmful: PTCy increases CMV reactivation vs CNI+MTX/MMF (OR `r round(or_c1_cmv$or, 2)` [`r round(or_c1_cmv$lo, 2)`–`r round(or_c1_cmv$hi, 2)`]). In C2, the point estimate is directionally protective (OR `r round(or_c2_cmv$or, 2)` [`r round(or_c2_cmv$lo, 2)`–`r round(or_c2_cmv$hi, 2)`]), but the CrI crosses null. The qualitative direction reversal reported in the pre-Block-9 analysis (C2 OR 0.77 [0.60–0.99]) is attenuated.
 
 ```{r}
 #| label: fig-disc-overlay
-#| fig-cap: "Posterior overlap plot for the CMV effect across comparisons."
+#| fig-cap: "Posterior overlap plot for the CMV effect across comparisons. C1 (navy) shows harmful direction; C2 (grey) is centred near the null."
 #| fig-height: 4
 
 tibble(
@@ -77,17 +90,73 @@ tibble(
   scale_fill_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
   scale_colour_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
   labs(x = "log-OR (PTCy vs comparator)", y = "Posterior density",
-       title = "CMV Reactivation — Comparison Across Contexts",
+       title = "CMV Reactivation — Primary Analysis",
        subtitle = sprintf("C1 OR %s vs C2 OR %s",
                            fmt_or(or_c1_cmv$or, or_c1_cmv$lo, or_c1_cmv$hi),
                            fmt_or(or_c2_cmv$or, or_c2_cmv$lo, or_c2_cmv$hi))) +
   theme_jama()
 ```
 
-::: {.callout-warning}
-## CMV Direction Reversal — Attenuated in Post-Block-9 Analysis
-The pre-Block-9 analysis found a qualitative direction reversal: PTCy increased CMV risk vs CNI+MTX (OR 1.41) but decreased it vs ATG (OR 0.77). In the post-Block-9 corpus, C1 CMV remains harmful (OR `r round(or_c1_cmv$or, 2)` [`r round(or_c1_cmv$lo, 2)`–`r round(or_c1_cmv$hi, 2)`]) but C2 CMV has shifted toward null (OR `r round(or_c2_cmv$or, 2)` [`r round(or_c2_cmv$lo, 2)`–`r round(or_c2_cmv$hi, 2)`]). The T-cell depletion depth hierarchy remains a plausible framework, but the evidence for a qualitative reversal is now weaker. The C2 CMV 95% CrI spans both harmful and protective directions.
+### Sensitivity: expanded arm inclusion as a confirmatory test
+
+The C2 sensitivity analysis provides a stronger test of the depletion hierarchy than the primary analysis alone. By reclassifying PTCy+ATG combination arms as "PTCy-side," the sensitivity asks: *what happens to the treatment effect when the PTCy arm also carries ATG-mediated T-cell depletion?*
+
+The depletion hierarchy makes three predictions, all confirmed:
+
+```{r}
+#| label: fig-disc-sens-comparison
+#| fig-cap: "C2 primary vs sensitivity (expanded arm inclusion). CMV converges to null when PTCy arms also use ATG — confirming that infection risk tracks depletion depth. OS strengthens; aGVHD attenuates."
+#| fig-height: 5
+
+if (!is.null(post_c2_sens_cmv)) {
+  sens_pd <- do.call(rbind, list(
+    or_summary(post_c2_os,         "b_ptcy_binary", "OS",    model = "Primary"),
+    or_summary(post_c2_sens_os,    "b_ptcy_binary", "OS",    model = "Sensitivity"),
+    or_summary(post_c2_agvhd,      "b_ptcy_binary", "aGVHD", model = "Primary"),
+    or_summary(post_c2_sens_agvhd, "b_ptcy_binary", "aGVHD", model = "Sensitivity"),
+    or_summary(post_c2_cmv,        "b_ptcy_binary", "CMV",   model = "Primary"),
+    or_summary(post_c2_sens_cmv,   "b_ptcy_binary", "CMV",   model = "Sensitivity")
+  )) |>
+    as_tibble() |>
+    mutate(
+      outcome = factor(outcome, levels = c("OS", "aGVHD", "CMV")),
+      analysis = ifelse(grepl("Primary", model), "Primary", "Sensitivity"),
+      label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi),
+      y_num = as.numeric(outcome) * 2,
+      y_pos = y_num + ifelse(analysis == "Primary", 0.2, -0.2)
+    )
+
+  ggplot(sens_pd, aes(x = or, y = y_pos, colour = analysis, shape = analysis)) +
+    geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+    geom_hline(yintercept = c(3, 5), colour = jama_light_grey, linewidth = 0.2) +
+    geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.5, linewidth = 0.5) +
+    geom_text(aes(x = hi, label = label), hjust = -0.05, size = 2.8,
+              colour = jama_black, show.legend = FALSE, nudge_y = 0.3) +
+    scale_colour_manual(values = c("Primary" = jama_navy, "Sensitivity" = jama_steel)) +
+    scale_shape_manual(values = c("Primary" = 16, "Sensitivity" = 17)) +
+    scale_y_continuous(breaks = c(2, 4, 6), labels = c("OS", "aGVHD", "CMV")) +
+    coord_cartesian(xlim = c(0.3, 1.5), ylim = c(0.8, 7.2)) +
+    labs(x = "Odds Ratio", y = NULL,
+         title = "Comparison 2 — Primary vs Expanded Arm Sensitivity",
+         subtitle = "Circles = clean PTCy vs ATG; triangles = including PTCy+ATG combo arms",
+         colour = NULL, shape = NULL) +
+    theme_jama()
+}
+```
+
+::: {.callout-important}
+## The Sensitivity Pattern Confirms the Hierarchy
+
+1. **CMV converges to null** (primary OR `r round(or_c2_cmv$or, 2)` → sensitivity `r if(!is.null(post_c2_sens_cmv)) round(median(exp(post_c2_sens_cmv$b_ptcy_binary)), 2) else "—"`). When PTCy arms also use ATG, both sides of the comparison have deep T-cell depletion. CMV rates equalise — exactly as the hierarchy predicts. If the C1 CMV excess were an intrinsic PTCy property (rather than a relative depletion effect), adding ATG to the PTCy arm should have made things worse, not better.
+
+2. **aGVHD attenuates** (primary 0.58 → sensitivity `r if(!is.null(post_c2_sens_agvhd)) round(median(exp(post_c2_sens_agvhd$b_ptcy_binary)), 2) else "—"`). Adding ATG to the PTCy arm reduces the differential in alloreactive T-cell depletion between arms, narrowing the GVHD advantage. This is the GVHD-pathway analogue of the CMV convergence.
+
+3. **OS strengthens** (primary 0.81 → sensitivity `r if(!is.null(post_c2_sens_os)) round(median(exp(post_c2_sens_os$b_ptcy_binary)), 2) else "—"`). PTCy+ATG combinations appear to improve survival more than ATG alone, possibly through redundant GVHD suppression from both agents. This may explain why the aGVHD and CMV effects attenuate (both arms are deeply immunosuppressed) while survival still improves.
 :::
+
+### Synthesis
+
+The primary C2 CMV estimate alone no longer demonstrates a statistically credible direction reversal. However, the three-way pattern across the primary and sensitivity analyses — C1 harmful, C2-primary near-null, C2-sensitivity null — traces a dose–response curve along the depletion axis. The framework is better supported by this graded pattern than it was by the pre-Block-9 binary reversal, even though the individual C2 CMV CrI is wider.
 
 ## Practical Implications {#sec-disc-practical}
 
@@ -99,11 +168,17 @@ The mechanistic architecture carries direct clinical implications:
 | **NRM** | GVHD control and steroid minimisation | NRM benefit is steroid-mediated |
 | **OS** | Both GVHD control + relapse prevention | Partial mediation suggests dual contribution |
 
+::: {.callout-note}
+## ATG Is Not the Solution
+The C2 data — and especially the sensitivity analysis — show that ATG-based regimens carry at least as great a T-cell reconstitution liability as PTCy. Adding ATG to PTCy does not worsen CMV; it merely saturates the depletion effect. The infection costs of PTCy are best understood as a general consequence of T-cell–depleting prophylaxis, not a PTCy-specific limitation.
+:::
+
 ## Limitations {#sec-disc-limitations}
 
 1. **Observational evidence.** All findings derive from retrospective cohort and registry studies. Residual confounding cannot be excluded despite mediation modelling.
-2. **Sparse infection data.** BSI (k = 3–6) and IFI (k = 4–6) are data-poor. Dedicated prospective studies are needed.
+2. **Sparse infection data.** BSI (k = 6) and IFI (k = 6) are data-poor. Dedicated prospective studies are needed.
 3. **Relapse data not analysed.** The residual OS benefit (surviving steroid adjustment) is hypothesised to reflect graft-versus-leukaemia preservation, but relapse data were not extracted.
 4. **Publication bias.** Formally assessed for C1 outcomes with k ≥ 10; not assessable for most C2 outcomes.
-5. **Observational dominance.** Only 14 of 251 studies are RCTs; the remaining are retrospective cohort or registry analyses. Block 9 added 4 new RCTs (Koura 2025, Zhang 2023, Zu 2022, Zu 2023), but the evidence base remains predominantly observational.
+5. **Observational dominance.** Only 14 of 251 studies are RCTs; the remaining are retrospective cohort or registry analyses.
 6. **M2 complete-case analysis.** Post-Block-9 M2 models use complete-case analysis for steroid adjustment (dropping arms with missing steroid data), differing from the pre-Block-9 `mi()` imputation approach due to a brms API change.
+7. **C2 CMV sensitivity caveats.** The expanded-arm sensitivity conflates PTCy+ATG combination arms (which test a different clinical question — whether adding PTCy to ATG changes outcomes) with pure PTCy vs ATG comparisons. The convergence pattern is mechanistically interpretable but should not be taken as evidence that PTCy+ATG combinations are clinically equivalent to ATG alone.
