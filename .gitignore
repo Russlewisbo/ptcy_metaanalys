@@ -27,6 +27,9 @@ paperpile-files*
 # Uncomment the next line to also exclude model .rds files:
 # 03_models/**/*.rds
 
+# Old Quarto output location (now using repo-root docs/)
+05_website/docs/
+
 # OS metadata
 .DS_Store
 Thumbs.db
