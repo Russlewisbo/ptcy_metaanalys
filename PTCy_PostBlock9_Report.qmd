@@ -1,0 +1,487 @@
+---
+title: "PTCy Meta-Analysis: Post-Block-9 Reanalysis Summary"
+subtitle: "251 Studies · 18 Bayesian Models · 3 Sensitivity Analyses"
+author: "R. Lewis (UniPD)"
+date: 2026-05-29
+format:
+  pdf:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    colorlinks: true
+    geometry:
+      - margin=2.5cm
+    fontsize: 11pt
+    fig-pos: "H"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+::: {.callout-note}
+This report was generated using AI under general human direction. At the time of generation, the contents have not been comprehensively reviewed by a human analyst.
+
+<!--
+To indicate human review: Delete the line above about contents not being reviewed, and replace this comment with:
+The contents have been reviewed and validated by [Your Name], [Your Role] on [Date].
+-->
+:::
+
+```{r}
+#| label: load-packages
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(metafor)
+library(brms)
+library(posterior)
+```
+
+```{r}
+#| label: load-data
+# Extraction CSVs
+arms     <- read_csv("02_extraction/arms.csv", show_col_types = FALSE)
+studies  <- read_csv("02_extraction/studies.csv", show_col_types = FALSE)
+outcomes <- read_csv("02_extraction/outcomes.csv", show_col_types = FALSE)
+
+to_num <- function(x) suppressWarnings(as.numeric(x))
+arms     <- arms |> mutate(across(c(arm_id, study_id, n_patients), to_num))
+studies  <- studies |> mutate(across(c(study_id, pub_year), to_num))
+outcomes <- outcomes |> mutate(across(c(arm_id, study_id, event_count, denominator_n), to_num))
+
+# Post-Block-9 model results
+t2 <- read_csv("03_models/post_block9/Table2_post_block9.csv", show_col_types = FALSE)
+freq <- read_csv("03_models/post_block9/freq_results.csv", show_col_types = FALSE)
+
+# Pre-Block-9 baseline results
+t2_pre <- read_csv("03_models/Table2_results.csv", show_col_types = FALSE)
+
+# Publication bias objects
+pub_egger <- readRDS("03_models/post_block9/pub_bias_egger.rds")
+pub_tf    <- readRDS("03_models/post_block9/pub_bias_trimfill.rds")
+
+# Helper
+fmt_or <- function(or, lo, hi) sprintf("%.2f [%.2f\u2013%.2f]", or, lo, hi)
+
+# Database counts
+n_studies <- nrow(studies)
+n_arms    <- nrow(arms)
+n_rcts    <- sum(studies$study_design == "RCT", na.rm = TRUE)
+n_outcomes <- nrow(outcomes)
+c1_arms <- sum(arms$comparison_1_eligible == "Y", na.rm = TRUE)
+c2_arms <- sum(arms$comparison_2_eligible == "Y", na.rm = TRUE)
+c3_arms <- sum(arms$comparison_3_eligible == "Y", na.rm = TRUE)
+```
+
+# Executive summary
+
+This report summarises the post-Block-9 reanalysis of the PTCy meta-analysis, expanding the corpus from 220 to `r n_studies` studies (`r n_arms` arms, `r n_rcts` RCTs). Eighteen Bayesian random-effects models were fitted across three comparisons and six outcome domains, plus three C2 sensitivity models with expanded arm inclusion.
+
+**Key findings:**
+
+- **C1 OS** and **C1 CMV** are stable: OR 0.79 [0.73--0.85] and 1.26 [1.07--1.47] respectively, consistent with pre-Block-9.
+- **C1 aGVHD** (OR 0.67 [0.59--0.78]) shows significant funnel asymmetry (Egger p = 0.041); trim-and-fill adjusted OR crosses null. GRADE downgraded to VERY LOW.
+- **C2 CMV** shifted from OR 0.77 [0.60--0.99] to 0.92 [0.73--1.15] — CrI now crosses null. However, the C2 sensitivity (PTCy+ATG combo arms included, k = 22) shows CMV converging to OR 1.00, confirming the T-cell depletion hierarchy.
+- **Arm classification errors** were identified in three Block-9 studies (Sayin, Xu, Zu); these were corrected in the workbook.
+- **C3 models** (within-PTCy dose/schedule) are all null at current sample sizes.
+- **CMV serostatus** analysis found no significant moderating effect of recipient seropositivity or D+/R+ prevalence; the D−/R+ stratum was the only one showing a neutral PTCy effect (k = 1, hypothesis-generating).
+
+# Database expansion
+
+```{r}
+#| label: tbl-expansion
+#| tbl-cap: "Database expansion from pre-Block-9 (220 studies) to post-Block-9 (251 studies)."
+
+tibble::tribble(
+  ~Sheet,              ~`Pre-Block-9`, ~`Post-Block-9`, ~Delta,
+  "Studies",           220,             251,             "+31",
+  "Arms",              457,             525,             "+68",
+  "Outcomes",          3050,            3604,            "+554",
+  "Outcomes (subgroup)", 116,           126,             "+10",
+  "ROB assessments",   210,             241,             "+31",
+  "RCTs",              10,              14,              "+4",
+  "C1 eligible arms",  301,             313,             "+12",
+  "C2 eligible arms",  101,             103,             "+2*",
+  "C3 eligible arms",  29,              68,              "+39"
+) |>
+  kable(align = c("l", "r", "r", "r")) |>
+  kable_styling(latex_options = "hold_position") |>
+  footnote(symbol = "C2 arms net of 6 reclassified arms (Sayin, Xu, Zu).")
+```
+
+New RCTs from Block 9 include Koura 2025 (PTCy + abatacept), Zhang 2023 (reduced-dose PTCy + low-dose ATG), Zu 2022 and Zu 2023 (low-dose PTCy + ATG RCTs).
+
+# Methodological notes
+
+## Build-analytic corrections
+
+The original `build_analytic()` function back-calculated event counts from cumulative incidence percentages when `event_count` was missing. This inflated k by 3--4× for some outcomes (e.g., C1 aGVHD: k = 81 instead of k = 28). The corrected function **requires actual `event_count`**, matching the pre-Block-9 methodology.
+
+## Model specification
+
+All models include a `tp_early` covariate (0 = preferred timepoint, 1 = fallback) matching the pre-Block-9 specification. The general model form is:
+
+$$\text{events}_i \mid \text{trials}(n_i) \sim \text{Binomial}(\pi_i)$$
+$$\text{logit}(\pi_i) = \beta_0 + \beta_1 \cdot \text{ptcy}_i + \beta_2 \cdot \text{tp\_early}_i + u_{s[i]}$$
+$$u_s \sim \mathcal{N}(0, \tau^2)$$
+
+M2 models add a steroid-exposure covariate using **complete-case analysis** (arms with missing `steroid_pct` dropped), replacing the pre-Block-9 `brms::mi()` approach that is no longer supported in brms v2.23+.
+
+## Arm reclassification
+
+Three Block-9 studies had arm classification errors affecting C2 eligibility:
+
+```{r}
+#| label: tbl-reclass
+#| tbl-cap: "Arm reclassification corrections."
+
+tibble::tribble(
+  ~Study, ~`Arm IDs`, ~Problem, ~Action,
+  "Sayin 2024 [348]",   "387, 388", "Comparator is CNI+MTX (MRD), not ATG", "C2 \u2192 N",
+  "Xu ZL 2025 [396]",   "442, 443", "PTCy arm = PTCy+ATG(low) combo",       "C2 \u2192 N",
+  "Zu Y 2022 [464]",    "522, 523", "PTCy arm = low-dose PTCy+ATG combo",   "C2 \u2192 N"
+) |>
+  kable() |>
+  kable_styling(latex_options = c("hold_position", "scale_down"))
+```
+
+# C1 results: PTCy vs CNI+MTX/MMF
+
+```{r}
+#| label: tbl-c1-results
+#| tbl-cap: "Comparison 1 primary results (post-Block-9). M2 = steroid-adjusted model."
+
+c1 <- t2 |> filter(grepl("^c1_", slug))
+
+# Map to readable names
+c1_display <- c1 |>
+  mutate(
+    Outcome = case_when(
+      slug == "c1_os" ~ "OS",
+      slug == "c1_nrm" ~ "NRM",
+      slug == "c1_agvhd" ~ "aGVHD II\u2013IV",
+      slug == "c1_cmv" ~ "CMV",
+      slug == "c1_bsi" ~ "BSI",
+      slug == "c1_ifi_any" ~ "IFI"
+    ),
+    Model = ifelse(model == "m1", "M1", "M2"),
+    `OR [95% CrI]` = fmt_or(or_median, ci_low, ci_high),
+    `\u03c4` = round(tau, 2)
+  ) |>
+  select(Outcome, Model, k, N = n_total, `OR [95% CrI]`, `\u03c4`)
+
+c1_display |>
+  kable(align = c("l", "c", "r", "r", "c", "r")) |>
+  kable_styling(latex_options = "hold_position")
+```
+
+```{r}
+#| label: fig-c1-forest
+#| fig-cap: "C1 Bayesian forest plot. Filled = M1 (direct); open = M2 (steroid-adjusted)."
+#| fig-height: 4
+#| fig-width: 7
+
+c1_plot <- c1 |>
+  mutate(
+    outcome = case_when(
+      slug == "c1_os" ~ "OS", slug == "c1_nrm" ~ "NRM",
+      slug == "c1_agvhd" ~ "aGVHD", slug == "c1_cmv" ~ "CMV",
+      slug == "c1_bsi" ~ "BSI", slug == "c1_ifi_any" ~ "IFI"
+    ),
+    outcome = factor(outcome, levels = rev(c("OS","NRM","aGVHD","CMV","BSI","IFI"))),
+    mdl = ifelse(model == "m1", "M1", "M2"),
+    y = as.numeric(outcome) + ifelse(mdl == "M1", 0.12, -0.12)
+  )
+
+ggplot(c1_plot, aes(x = or_median, y = y, shape = mdl)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = "grey60") +
+  geom_pointrange(aes(xmin = ci_low, xmax = ci_high, colour = mdl), linewidth = 0.5) +
+  geom_text(aes(x = ci_high, label = sprintf("%.2f", or_median)),
+            hjust = -0.2, size = 2.8, show.legend = FALSE) +
+  scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2, 3)) +
+  scale_y_continuous(breaks = 1:6, labels = rev(c("OS","NRM","aGVHD","CMV","BSI","IFI"))) +
+  scale_shape_manual(values = c("M1" = 16, "M2" = 21)) +
+  scale_colour_manual(values = c("M1" = "#2b5c8a", "M2" = "#6b7d8d")) +
+  labs(x = "Odds Ratio (log scale)", y = NULL, shape = NULL, colour = NULL) +
+  theme_minimal(base_size = 11) +
+  theme(legend.position = "bottom")
+```
+
+## Pre vs post Block-9 comparison
+
+```{r}
+#| label: tbl-c1-comparison
+#| tbl-cap: "C1 M1 model comparison: pre-Block-9 vs post-Block-9."
+
+# Pre-Block-9 values (from original Table2 / MANIFEST)
+pre_c1 <- tibble::tribble(
+  ~Outcome,    ~k_pre, ~OR_pre, ~CrI_pre,
+  "OS",        35,     0.77,    "0.71\u20130.83",
+  "NRM",       15,     0.86,    "0.70\u20131.08",
+  "aGVHD",     24,     0.63,    "0.54\u20130.74",
+  "CMV",       18,     1.41,    "1.20\u20131.65",
+  "BSI",        6,     2.39,    "1.85\u20133.10",
+  "IFI",        8,     0.73,    "0.53\u20131.00"
+)
+
+post_c1 <- t2 |>
+  filter(grepl("^c1_", slug), model == "m1") |>
+  mutate(Outcome = c("OS","NRM","aGVHD","CMV","BSI","IFI")) |>
+  select(Outcome, k_post = k, OR_post = or_median, ci_low, ci_high) |>
+  mutate(CrI_post = fmt_or(OR_post, ci_low, ci_high),
+         OR_post = round(OR_post, 2))
+
+comp <- pre_c1 |>
+  left_join(post_c1 |> select(Outcome, k_post, OR_post, CrI_post), by = "Outcome") |>
+  mutate(Shift = sprintf("%+.02f", OR_post - OR_pre))
+
+comp |>
+  select(Outcome, `k (pre)` = k_pre, `OR (pre)` = CrI_pre,
+         `k (post)` = k_post, `OR (post)` = CrI_post, Shift) |>
+  kable(align = c("l","r","c","r","c","r")) |>
+  kable_styling(latex_options = "hold_position")
+```
+
+C1 OS, NRM, and aGVHD are directionally stable (shifts ≤ 0.04). C1 CMV attenuated from 1.41 to 1.26 but CrI still excludes null. BSI attenuated (2.39 → 1.87) and IFI strengthened substantially (0.73 → 0.43, though τ = 1.64 indicates extreme heterogeneity).
+
+# C2 results: PTCy vs ATG
+
+```{r}
+#| label: tbl-c2-results
+#| tbl-cap: "Comparison 2 primary results (post-Block-9)."
+
+c2 <- t2 |> filter(grepl("^c2_", slug))
+
+c2 |>
+  mutate(
+    Outcome = case_when(
+      slug == "c2_os" ~ "OS", slug == "c2_nrm" ~ "NRM",
+      slug == "c2_agvhd" ~ "aGVHD II\u2013IV", slug == "c2_cmv" ~ "CMV"
+    ),
+    Model = ifelse(model == "m1", "M1", "M2"),
+    `OR [95% CrI]` = fmt_or(or_median, ci_low, ci_high),
+    `\u03c4` = round(tau, 2)
+  ) |>
+  select(Outcome, Model, k, N = n_total, `OR [95% CrI]`, `\u03c4`) |>
+  kable(align = c("l","c","r","r","c","r")) |>
+  kable_styling(latex_options = "hold_position") |>
+  footnote(general = "C2 NRM dropped below k = 3 after arm reclassification.")
+```
+
+## C2 sensitivity: expanded arm inclusion
+
+The sensitivity reclassifies PTCy+ATG combination arms as "PTCy-side," adding studies where the PTCy arm also used ATG.
+
+```{r}
+#| label: tbl-c2-sens
+#| tbl-cap: "C2 primary vs sensitivity (expanded arm inclusion)."
+
+# Load sensitivity models
+s_os    <- readRDS("03_models/post_block9/c2_sens_m1_os.rds")
+s_agvhd <- readRDS("03_models/post_block9/c2_sens_m1_agvhd.rds")
+s_cmv   <- readRDS("03_models/post_block9/c2_sens_m1_cmv.rds")
+
+get_or <- function(m) {
+  s <- summary(m)$fixed
+  list(or = exp(s["ptcy_binary","Estimate"]),
+       lo = exp(s["ptcy_binary","l-95% CI"]),
+       hi = exp(s["ptcy_binary","u-95% CI"]),
+       k = n_distinct(m$data$study_id))
+}
+
+s_os_r <- get_or(s_os); s_ag_r <- get_or(s_agvhd); s_cm_r <- get_or(s_cmv)
+
+c2_prim <- t2 |> filter(slug %in% c("c2_os","c2_agvhd","c2_cmv"), model == "m1")
+
+tibble::tribble(
+  ~Outcome, ~`Primary k`, ~`Primary OR`,                            ~`Sens k`, ~`Sens OR`,                                  ~Direction,
+  "OS",     c2_prim$k[1], fmt_or(c2_prim$or_median[1], c2_prim$ci_low[1], c2_prim$ci_high[1]),
+            s_os_r$k,     fmt_or(s_os_r$or, s_os_r$lo, s_os_r$hi), "Strengthened",
+  "aGVHD",  c2_prim$k[2], fmt_or(c2_prim$or_median[2], c2_prim$ci_low[2], c2_prim$ci_high[2]),
+            s_ag_r$k,     fmt_or(s_ag_r$or, s_ag_r$lo, s_ag_r$hi), "Attenuated",
+  "CMV",    c2_prim$k[3], fmt_or(c2_prim$or_median[3], c2_prim$ci_low[3], c2_prim$ci_high[3]),
+            s_cm_r$k,     fmt_or(s_cm_r$or, s_cm_r$lo, s_cm_r$hi), "Converged to null"
+) |>
+  kable(align = c("l","r","c","r","c","l")) |>
+  kable_styling(latex_options = "hold_position")
+```
+
+When PTCy arms also use ATG, both sides have deep T-cell depletion. CMV rates equalise (OR → 1.00), aGVHD differential narrows (both arms depleting alloreactive T cells), and OS strengthens (redundant GVHD suppression benefits survival). This three-way pattern confirms the T-cell depletion hierarchy.
+
+# C3 results: within-PTCy dose/schedule variants
+
+```{r}
+#| label: tbl-c3-results
+#| tbl-cap: "Comparison 3 results (new). All CrIs cross null."
+
+c3 <- t2 |> filter(grepl("^c3_", slug))
+
+c3 |>
+  mutate(
+    Outcome = case_when(
+      slug == "c3_os" ~ "OS", slug == "c3_nrm" ~ "NRM",
+      slug == "c3_agvhd" ~ "aGVHD II\u2013IV", slug == "c3_cgvhd" ~ "cGVHD mod/sev"
+    ),
+    `OR [95% CrI]` = fmt_or(or_median, ci_low, ci_high),
+    `\u03c4` = round(tau, 2)
+  ) |>
+  select(Outcome, k, N = n_total, `OR [95% CrI]`, `\u03c4`) |>
+  kable(align = c("l","r","r","c","r")) |>
+  kable_styling(latex_options = "hold_position")
+```
+
+All C3 models show null effects. The cGVHD estimate (OR 0.67 [0.39--1.14]) shows a trend but k = 4 is insufficient. These comparisons (e.g., PTCy D+3/+4 vs D+3 only, reduced-dose vs standard-dose) require substantially more data.
+
+# CMV deep dive
+
+## Depletion gradient
+
+The three-point gradient across primary and sensitivity analyses supports the depletion hierarchy more robustly than the pre-Block-9 binary reversal:
+
+```{r}
+#| label: tbl-cmv-gradient
+#| tbl-cap: "CMV depletion gradient across analyses."
+
+c1_cmv <- t2 |> filter(slug == "c1_cmv", model == "m1")
+
+tibble::tribble(
+  ~Analysis,          ~`Arms compared`,      ~k,       ~OR,                                                                    ~Interpretation,
+  "C1 primary",       "PTCy vs CNI",         c1_cmv$k, fmt_or(c1_cmv$or_median, c1_cmv$ci_low, c1_cmv$ci_high),                "PTCy depletes more \u2192 more CMV",
+  "C2 primary",       "PTCy vs ATG",         c2_prim$k[3], fmt_or(c2_prim$or_median[3], c2_prim$ci_low[3], c2_prim$ci_high[3]), "Near-parity",
+  "C2 sensitivity",   "PTCy+ATG vs ATG",     s_cm_r$k, fmt_or(s_cm_r$or, s_cm_r$lo, s_cm_r$hi),                                "Equal depletion \u2192 equal CMV"
+) |>
+  kable(align = c("l","l","r","c","l")) |>
+  kable_styling(latex_options = c("hold_position", "scale_down"))
+```
+
+## Serostatus subgroup analysis
+
+Three studies reported CMV reactivation stratified by donor/recipient serostatus (k = 1 per D/R combination):
+
+```{r}
+#| label: tbl-cmv-serostatus
+#| tbl-cap: "CMV reactivation by D/R serostatus. All estimates are single-study (hypothesis-generating only)."
+
+tibble::tribble(
+  ~`D/R stratum`, ~Source,           ~`PTCy %`, ~`Comp %`, ~OR,
+  "D+/R+",        "Chorao 2024",     "47",      "40",      "1.34",
+  "D\u2212/R+",   "Chorao 2024",     "67",      "69",      "0.91",
+  "D+/R\u2212",   "Goldsmith 2021",  "20",      "11",      "2.06",
+  "D\u2212/R\u2212", "Goldsmith 2021", "2",      "1",       "1.89",
+  "R+ (pooled)",  "Goldsmith + Steiner", "51\u201368", "29\u201348", "2.4\u20132.6"
+) |>
+  kable(align = c("l","l","r","r","r")) |>
+  kable_styling(latex_options = "hold_position")
+```
+
+The D−/R+ stratum is the only one where PTCy did not increase CMV risk. In this configuration, the recipient has CMV-specific memory T cells (R+) but the donor does not (D−). PTCy's selectivity for dividing cells may spare quiescent recipient-derived memory T cells while CNI-based regimens continuously suppress them.
+
+## Meta-regression
+
+Neither recipient seropositivity (k = 11, p = 0.72) nor D+/R+ prevalence (k = 8, p = 0.43) significantly moderated the PTCy CMV effect as ecological study-level covariates. Both analyses were severely underpowered and restricted in range. Testing whether PTCy's CMV effect truly differs by D/R serostatus requires **individual patient data** meta-analysis.
+
+# Publication bias
+
+```{r}
+#| label: tbl-pubbias
+#| tbl-cap: "Publication bias assessment for C1 outcomes with k \\geq 10."
+
+tibble::tribble(
+  ~Outcome, ~k, ~`Egger z`, ~`Egger p`, ~`T&F imputed`, ~`Original OR`, ~`Adjusted OR`,
+  "OS",     40,  -1.02,      0.314,       7,  "0.77 [0.66\u20130.90]", "0.86 [0.73\u20131.02]",
+  "aGVHD",  28,  -2.15,      0.041,       8,  "0.61 [0.47\u20130.79]", "0.83 [0.61\u20131.13]",
+  "CMV",    22,  -0.21,      0.835,       0,  "1.25 [0.94\u20131.66]", "1.25 [0.94\u20131.66]"
+) |>
+  mutate(`Egger p` = ifelse(`Egger p` < 0.05,
+                             paste0("**", sprintf("%.3f", `Egger p`), "**"),
+                             sprintf("%.3f", `Egger p`))) |>
+  kable(align = c("l","r","r","r","r","c","c")) |>
+  kable_styling(latex_options = "hold_position")
+```
+
+```{r}
+#| label: fig-funnel
+#| fig-cap: "Funnel plots with trim-and-fill. Filled = observed; open red = imputed."
+#| fig-height: 3.5
+#| fig-width: 9
+
+make_funnel <- function(tf_obj, title, egger_p) {
+  yi_tf <- tf_obj$yi
+  sei_tf <- sqrt(tf_obj$vi)
+  filled <- tf_obj$fill
+  est <- as.numeric(tf_obj$beta)
+  se_max <- max(sei_tf) * 1.1
+
+  df <- tibble(yi = yi_tf, sei = sei_tf,
+               type = ifelse(filled, "Imputed", "Observed"))
+  tri <- tibble(x = c(est, est - 1.96*se_max, est + 1.96*se_max, est),
+                y = c(0, se_max, se_max, 0))
+
+  ggplot(df, aes(x = yi, y = sei)) +
+    geom_path(data = tri, aes(x = x, y = y), inherit.aes = FALSE, colour = "grey70", linewidth = 0.3) +
+    geom_vline(xintercept = est, linetype = "dashed", colour = "#2b5c8a", linewidth = 0.4) +
+    geom_point(aes(colour = type, shape = type), size = 1.8, alpha = 0.8) +
+    scale_shape_manual(values = c("Observed" = 16, "Imputed" = 1)) +
+    scale_colour_manual(values = c("Observed" = "#2b5c8a", "Imputed" = "red3")) +
+    scale_y_reverse(expand = expansion(mult = c(0.02, 0.05))) +
+    labs(x = "log-OR", y = "SE", title = title,
+         subtitle = sprintf("Egger p=%.3f, %d imputed", egger_p, sum(filled)),
+         colour = NULL, shape = NULL) +
+    theme_minimal(base_size = 9) +
+    theme(legend.position = "bottom", plot.title = element_text(face = "bold", size = 10))
+}
+
+library(patchwork)
+(make_funnel(pub_tf$os, "C1 OS", pub_egger$os$pval) +
+ make_funnel(pub_tf$agvhd, "C1 aGVHD", pub_egger$agvhd$pval) +
+ make_funnel(pub_tf$cmv, "C1 CMV", pub_egger$cmv$pval)) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
+```
+
+**C1 aGVHD** shows significant funnel asymmetry (Egger p = 0.041). Small studies disproportionately favour PTCy. The trim-and-fill adjusted OR (0.83 [0.61--1.13]) crosses null, suggesting the effect size may be partially inflated by selective reporting. The Bayesian estimate (OR 0.67) is less extreme than the frequentist 0.61 due to shrinkage but does not address selective non-publication.
+
+**C1 OS** shows borderline concern: 7 studies imputed, adjusted OR 0.86 [0.73--1.02] touches null. Egger's test is non-significant (p = 0.31). **C1 CMV** is symmetric with no imputed studies.
+
+# GRADE certainty summary
+
+```{r}
+#| label: tbl-grade
+#| tbl-cap: "GRADE certainty of evidence. Updated for post-Block-9 results."
+
+tibble::tribble(
+  ~Outcome,              ~Comp, ~k,  ~`OR [95% CrI]`,             ~Certainty,     ~`Key limitation`,
+  "OS",                  "C1",  40,  "0.79 [0.73\u20130.85]",     "LOW",           "I\u00B2 = 64%; obs only",
+  "OS",                  "C2",  10,  "0.81 [0.74\u20130.90]",     "LOW",           "I\u00B2 = 95%; attenuated from pre-B9",
+  "NRM",                 "C1",  12,  "0.88 [0.66\u20131.18]",     "VERY LOW",      "M2 mediation; CrI crosses null",
+  "NRM",                 "C2",  NA,  "\u2014 (k = 2)",            "\u2014",        "Below minimum k",
+  "aGVHD II\u2013IV",    "C1",  28,  "0.67 [0.59\u20130.78]",     "VERY LOW",      "Egger p = 0.04; T&F adj 0.83",
+  "aGVHD II\u2013IV",    "C2",   9,  "0.58 [0.44\u20130.77]",     "LOW",           "I\u00B2 = 73%",
+  "CMV",                 "C1",  22,  "1.26 [1.07\u20131.47]",     "LOW",           "I\u00B2 = 62%",
+  "CMV",                 "C2",  13,  "0.92 [0.73\u20131.15]",     "VERY LOW",      "CrI crosses null",
+  "BSI",                 "C1",   6,  "1.87 [1.33\u20132.62]",     "VERY LOW",      "k = 6; freq CrI crosses null",
+  "IFI",                 "C1",   6,  "0.43 [0.29\u20130.63]",     "VERY LOW",      "\u03c4 = 1.64; extreme heterogeneity"
+) |>
+  kable(align = c("l","c","r","c","c","l")) |>
+  kable_styling(latex_options = c("hold_position", "scale_down"))
+```
+
+**Changes from pre-Block-9:**
+
+- C1 aGVHD: **LOW → VERY LOW** (publication bias detected)
+- C2 NRM: **removed** (k = 2 after arm reclassification)
+- C2 CMV: reasoning revised from "direction reversal" to "depletion gradient"
+- C1 IFI: CrI now excludes null but τ = 1.64 warrants extreme caution
+
+# Remaining work
+
+| Task | Status |
+|---|---|
+| BMT director second-pass ROB spot-check | Not started |
+| C3 website page and interpretation | Models fitted; no write-up |
+| C1/C2 sensitivity (post-2020, haplo-only) | Pre-Block-9 models exist; not refit |
+| RoBMA (Bayesian publication bias model) | Not attempted |
+| Forest plots (study-level) for main outcomes | Not on website |
+| cGVHD analysis for C1/C2 | Not fitted |
+| IPD meta-analysis for CMV × serostatus | Requires multi-centre collaboration |
