@@ -21,7 +21,8 @@ model_files_c1 <- c(
   "NRM M1" = "m1_c1_nrm.rds", "NRM M2" = "m2_c1_nrm.rds",
   "aGVHD M1" = "m1_c1_agvhd.rds",
   "CMV M1" = "m1_c1_cmv.rds", "CMV M2" = "m2_c1_cmv.rds",
-  "BSI M1" = "m1_c1_bsi.rds", "IFI M1" = "m1_c1_ifi_any.rds"
+  "BSI M1" = "m1_c1_bsi.rds", "IFI M1" = "m1_c1_ifi_any.rds",
+  "RRM M1" = "m1_c1_rrm.rds", "BK M1" = "m1_c1_bk.rds"
 )
 
 # Fallback to pre-Block-9 names if post-Block-9 not available
@@ -42,10 +43,11 @@ resolve_model_file <- function(f, nm) {
 
 diag_c1 <- purrr::imap_dfr(model_files_c1, function(f, nm) {
   mpath <- resolve_model_file(f, nm)
-  m <- readRDS(mpath)
+  m <- tryCatch(readRDS(mpath), error = function(e) NULL)
+  if (is.null(m)) return(NULL)
   s <- summary(m)
   fe <- s$fixed
-  re <- s$random$study_id
+  re <- tryCatch(s$random$study_id, error = function(e) s$random[[1]])
   all_rows <- rbind(fe, re)
   tibble(
     Model = nm,
@@ -68,16 +70,18 @@ diag_c1 |>
 
 model_files_c2 <- c(
   "OS M1" = "m1_c2_os.rds", "OS M2" = "m2_c2_os.rds",
-  "NRM M1" = "m1_c2_nrm.rds", "NRM M2" = "m2_c2_nrm.rds",
+  "NRM M1" = "m1_c2_nrm.rds",
   "aGVHD M1" = "m1_c2_agvhd.rds",
-  "CMV M1" = "m1_c2_cmv.rds", "CMV M2" = "m2_c2_cmv.rds"
+  "CMV M1" = "m1_c2_cmv.rds", "CMV M2" = "m2_c2_cmv.rds",
+  "RRM M1" = "m1_c2_rrm.rds", "BK M1" = "m1_c2_bk.rds"
 )
 
 model_files_c2_fallback <- c(
   "OS M1" = "c2_m1_os.rds", "OS M2" = "c2_m2_os.rds",
-  "NRM M1" = "c2_m1_nrm.rds", "NRM M2" = "c2_m2_nrm.rds",
+  "NRM M1" = "c2_m1_nrm.rds",
   "aGVHD M1" = "c2_m1_agvhd.rds",
-  "CMV M1" = "c2_m1_cmv.rds", "CMV M2" = "c2_m2_cmv.rds"
+  "CMV M1" = "c2_m1_cmv.rds", "CMV M2" = "c2_m2_cmv.rds",
+  "RRM M1" = "c2_m1_rrm.rds", "BK M1" = "c2_m1_bk.rds"
 )
 
 resolve_c2_file <- function(f, nm) {
@@ -89,7 +93,8 @@ resolve_c2_file <- function(f, nm) {
 
 diag_c2 <- purrr::imap_dfr(model_files_c2, function(f, nm) {
   mpath <- resolve_c2_file(f, nm)
-  m <- readRDS(mpath)
+  m <- tryCatch(readRDS(mpath), error = function(e) NULL)
+  if (is.null(m)) return(NULL)
   s <- summary(m)
   fe <- s$fixed
   re <- tryCatch(s$random$study_id, error = function(e) s$random[[1]])
@@ -111,14 +116,14 @@ diag_c2 |>
 
 ::: {.callout-note}
 ## Interpretation
-All models show R̂ ≤ 1.005 (threshold: 1.01) and zero divergent transitions. Minimum bulk ESS exceeds 1,000 in all models; the lowest tail ESS (405, NRM C2 M1) reflects the small corpus (k = 5) but is adequate for reliable posterior quantile estimation.
+All models show R̂ ≤ 1.005 (threshold: 1.01) and zero divergent transitions. Minimum bulk ESS exceeds 1,000 in all models. The lowest tail ESS values reflect sparse corpora (e.g., NRM C2 k = 3) but are adequate for reliable posterior quantile estimation.
 :::
 
 ## Trace Plots — Selected Models {#sec-diag-trace}
 
 ```{r}
 #| label: fig-diag-trace-os
-#| fig-cap: "Trace plots for the PTCy coefficient (b_ptcy_binary) in the OS M1 model (C1, k = 35). All four chains mix well with no visible trends or sticky regions."
+#| fig-cap: "Trace plots for the PTCy coefficient (b_ptcy_binary) in the OS M1 model (C1, k = 40). All four chains mix well with no visible trends or sticky regions."
 #| fig-height: 4
 
 m1_os <- load_model("m1_c1_os.rds")
@@ -131,7 +136,7 @@ bayesplot::mcmc_trace(m1_os, pars = "b_ptcy_binary") +
 
 ```{r}
 #| label: fig-diag-trace-cmv
-#| fig-cap: "Trace plots for the PTCy coefficient in the CMV M1 model (C1, k = 18)."
+#| fig-cap: "Trace plots for the PTCy coefficient in the CMV M1 model (C1, k = 22)."
 #| fig-height: 4
 
 m1_cmv <- load_model("m1_c1_cmv.rds")

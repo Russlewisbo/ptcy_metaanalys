@@ -12,7 +12,7 @@ t2 <- read_csv(file.path(model_dir, "Table2_post_block9.csv"), show_col_types = 
 freq <- read_csv(file.path(model_dir, "freq_results.csv"), show_col_types = FALSE)
 ```
 
-GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence). Post-Block-9 corpus: 251 studies (14 RCTs), 525 arms.
+GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence). Post-Block-9 corpus: 220 studies (10 RCTs), 457 arms.
 
 ## Summary {#sec-grade-summary}
 
@@ -31,7 +31,11 @@ tibble::tribble(
   "CMV",           "C1", 22,  3328, "1.26 [1.07\u20131.47]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 62%; obs only",
   "CMV",           "C2", 13,  1571, "0.92 [0.73\u20131.15]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; sensitivity convergence",
   "BSI",           "C1",  6,   806, "1.87 [1.33\u20132.62]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 6; freq CrI crosses null",
-  "IFI",           "C1",  6,  2243, "0.43 [0.29\u20130.63]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.64; extreme heterogeneity"
+  "IFI",           "C1",  6,  2243, "0.43 [0.29\u20130.63]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.64; extreme heterogeneity",
+  "RRM",           "C1", 38, 19225, "0.84 [0.76\u20130.93]", "\u2295\u2295\u2296\u2296 LOW",       "Consistent; no steroid mediation",
+  "RRM",           "C2", 10, 17182, "0.79 [0.69\u20130.89]", "\u2295\u2295\u2296\u2296 LOW",       "\u03c4 = 0.16; highly consistent",
+  "BK Virus",      "C1", 11,  1333, "2.48 [1.82\u20133.38]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.06; dual mechanism",
+  "BK Virus",      "C2",  3,   313, "2.44 [1.40\u20134.26]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 3; hypothesis-generating"
 ) |>
   kable(align = c("l","c","r","r","c","c","l")) |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)

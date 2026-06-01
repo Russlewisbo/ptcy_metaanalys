@@ -1,0 +1,123 @@
+---
+title: "Comparison 3: Within-PTCy Regimen Variants"
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("_common.R")
+
+post_c3_os    <- tryCatch(load_post("post_c3_os.rds"), error = function(e) NULL)
+post_c3_nrm   <- tryCatch(load_post("post_c3_nrm.rds"), error = function(e) NULL)
+post_c3_agvhd <- tryCatch(load_post("post_c3_agvhd.rds"), error = function(e) NULL)
+post_c3_cgvhd <- tryCatch(load_post("post_c3_cgvhd.rds"), error = function(e) NULL)
+post_c3_rrm   <- tryCatch(load_post("post_c3_rrm.rds"), error = function(e) NULL)
+
+# Load C1/C2 posteriors for context
+post_os    <- load_post("post_os.rds")
+post_c2_os <- load_post("post_c2_os.rds")
+```
+
+Comparison 3 evaluates **within-PTCy regimen variants** — comparing different PTCy-based platforms (e.g., PTCy + tacrolimus/MMF vs PTCy + sirolimus, or PTCy alone vs PTCy + CNI). Unlike C1 and C2, this comparison tests whether the choice of *backbone immunosuppression* alongside PTCy matters, rather than whether PTCy itself is beneficial.
+
+::: {.callout-note appearance="simple"}
+**Interpretation.** All C3 ORs should be interpreted as "variant A vs variant B within PTCy users." OR near 1.0 indicates no meaningful difference between PTCy regimen variants for that outcome. The reference arm varies across studies depending on the specific comparison.
+:::
+
+## Overall Survival {#sec-c3-os}
+
+```{r}
+#| label: fig-c3-os
+#| fig-cap: "Posterior density for within-PTCy OS comparison."
+#| fig-height: 4
+
+
+if (!is.null(post_c3_os)) {
+  tibble(log_or = post_c3_os$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy variant A vs variant B)", y = "Posterior density",
+         title = "Overall Survival — Within-PTCy Comparison",
+         subtitle = "k = 6, N = 4,746 · OR 1.11 [0.95\u20131.30]") +
+    theme_jama()
+}
+```
+
+**M1:** OR 1.11 (95% CrI 0.95–1.30), P(OR > 1) = 90%, τ = 0.92, k = 6. No significant OS difference between PTCy regimen variants. The wide τ indicates substantial heterogeneity, likely reflecting the diversity of within-PTCy comparisons (e.g., Tac/MMF vs sirolimus vs CNI-free).
+
+## Non-Relapse Mortality {#sec-c3-nrm}
+
+**M1:** OR 0.96 (95% CrI 0.74–1.24), k = 5, τ = 1.22. No signal; CrI spans null symmetrically.
+
+## Acute GVHD Grade II–IV {#sec-c3-agvhd}
+
+**M1:** OR 1.00 (95% CrI 0.80–1.25), k = 7, τ = 0.82. No meaningful difference in aGVHD between PTCy-based regimen variants.
+
+## Chronic GVHD {#sec-c3-cgvhd}
+
+```{r}
+#| label: fig-c3-cgvhd
+#| fig-cap: "Posterior density for within-PTCy chronic GVHD comparison."
+#| fig-height: 4
+
+
+if (!is.null(post_c3_cgvhd)) {
+  tibble(log_or = post_c3_cgvhd$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy variant A vs variant B)", y = "Posterior density",
+         title = "Chronic GVHD — Within-PTCy Comparison",
+         subtitle = "k = 4, N = 383 · OR 0.67 [0.39\u20131.14]") +
+    theme_jama()
+}
+```
+
+**M1:** OR 0.67 (95% CrI 0.39–1.14), P(OR < 1) = 93%, k = 4, τ = 0.41. A suggestive but non-significant reduction in chronic GVHD. This is the only C3 outcome with a directional trend, but the small k and wide CrI preclude definitive interpretation.
+
+## Relapse-Related Mortality {#sec-c3-rrm}
+
+**M1:** OR 0.80 (95% CrI 0.50–1.27), k = 6, τ = 0.39. No significant difference in relapse-related mortality between PTCy variants.
+
+## Summary {#sec-c3-summary}
+
+```{r}
+#| label: fig-c3-forest
+#| fig-cap: "Summary forest plot for all Comparison 3 outcomes. All CrIs cross the null, indicating no significant differences between PTCy regimen variants."
+#| fig-height: 5
+
+c3_summaries <- list()
+if (!is.null(post_c3_os))    c3_summaries <- c(c3_summaries, list(or_summary(post_c3_os,    "b_ptcy_binary", "OS",      "C3", "M1")))
+if (!is.null(post_c3_nrm))   c3_summaries <- c(c3_summaries, list(or_summary(post_c3_nrm,   "b_ptcy_binary", "NRM",     "C3", "M1")))
+if (!is.null(post_c3_rrm))   c3_summaries <- c(c3_summaries, list(or_summary(post_c3_rrm,   "b_ptcy_binary", "RRM",     "C3", "M1")))
+if (!is.null(post_c3_agvhd)) c3_summaries <- c(c3_summaries, list(or_summary(post_c3_agvhd, "b_ptcy_binary", "aGVHD",   "C3", "M1")))
+if (!is.null(post_c3_cgvhd)) c3_summaries <- c(c3_summaries, list(or_summary(post_c3_cgvhd, "b_ptcy_binary", "cGVHD",   "C3", "M1")))
+
+if (length(c3_summaries) > 0) {
+  c3_pd <- do.call(rbind, c3_summaries) |>
+    as_tibble() |>
+    mutate(
+      outcome = factor(outcome, levels = rev(c("OS", "NRM", "RRM", "aGVHD", "cGVHD"))),
+      label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi)
+    )
+
+  ggplot(c3_pd, aes(x = or, y = outcome)) +
+    geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+    geom_pointrange(aes(xmin = lo, xmax = hi), colour = jama_navy, size = 0.5, linewidth = 0.5) +
+    geom_text(aes(x = hi, label = label), hjust = -0.1, size = 3, colour = jama_black) +
+    scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2)) +
+    coord_cartesian(xlim = c(0.25, 2.5)) +
+    labs(x = "Odds Ratio (log scale)", y = NULL,
+         title = "Comparison 3: Within-PTCy Regimen Variants",
+         subtitle = "All outcomes null — choice of backbone IS does not significantly alter PTCy benefit") +
+    theme_jama()
+}
+```
+
+::: {.callout-tip}
+## Clinical Interpretation
+The null findings across all C3 outcomes suggest that the **PTCy component dominates the regimen effect**, regardless of whether the backbone immunosuppression uses tacrolimus/MMF, sirolimus, or other combinations. This supports the concept that PTCy's alloreactive T-cell depletion is the primary driver of GVHD prophylaxis efficacy, with the choice of co-administered agents playing a secondary role.
+
+The only suggestive signal is for chronic GVHD (OR 0.67, P(OR < 1) = 93%), which may warrant further investigation in larger datasets.
+:::

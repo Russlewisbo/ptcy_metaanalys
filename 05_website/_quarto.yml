@@ -19,6 +19,8 @@ website:
             text: "Comparison 1: PTCy vs CNI+MTX"
           - href: results-c2.qmd
             text: "Comparison 2: PTCy vs ATG"
+          - href: results-c3.qmd
+            text: "Comparison 3: Within-PTCy Variants"
       - href: forest-plots.qmd
         text: Forest Plots
       - href: sensitivity.qmd

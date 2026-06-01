@@ -225,18 +225,82 @@ tibble(
   theme_jama()
 ```
 
-**BSI (k = 6):** OR 2.39 (95% CrI 1.85–3.10), P(OR > 2) = 91%. The largest infection effect. Seven additional eligible studies had unreported event counts, raising selection concerns.
+**BSI (k = 6):** OR 1.87 (95% CrI 1.33–2.62), τ = 0.96. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 [0.61–2.73]) crosses null, reflecting sensitivity to the REML τ² estimate.
 
-**IFI (k = 8):** OR 0.73 (95% CrI 0.53–1.00), P(OR < 1) = 97.5%. Probable protection, but driven by heterogeneous antifungal prophylaxis practices rather than a direct PTCy immunological effect. τ = 1.05 is dominated by a single zero-event study (Yanada 2026).
+**IFI (k = 6):** OR 0.43 (95% CrI 0.29–0.63), P(OR < 1) > 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.64 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.
+
+## Relapse-Related Mortality {#sec-c1-rrm}
+
+```{r}
+#| label: fig-c1-rrm
+#| fig-cap: "Posterior density for the PTCy effect on relapse-related mortality (C1). M1 and M2 (steroid-adjusted) are near-identical, indicating no steroid mediation — consistent with a direct graft-versus-leukaemia mechanism."
+#| fig-height: 4
+
+
+if (is.null(post_rrm)) { cat("RRM posteriors not available.") } else {
+rrm_draws <- tibble(M1 = post_rrm$b_ptcy_binary)
+if (!is.null(post_m2_rrm)) {
+  rrm_col <- if ("b_ptcy_binary" %in% names(post_m2_rrm)) "b_ptcy_binary" else "b_eventsn_ptcy_binary"
+  rrm_draws$M2 <- post_m2_rrm[[rrm_col]]
+}
+rrm_draws |>
+  pivot_longer(everything(), names_to = "Model", values_to = "log_or") |>
+  ggplot(aes(x = log_or, fill = Model, colour = Model)) +
+  geom_density(alpha = 0.35, linewidth = 0.6) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+  scale_fill_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
+  labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+       title = "Relapse-Related Mortality — Posterior Distributions",
+       subtitle = "k = 38, N = 19,225") +
+  theme_jama()
+}
+```
+
+**M1:** OR 0.84 (95% CrI 0.76–0.93), P(OR < 1) > 99%, k = 38. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.
+
+**M2 (steroid-adjusted):** OR 0.83 (95% CrI 0.73–0.93). No attenuation after steroid adjustment — confirming that the RRM benefit operates through a GVHD-independent pathway, most plausibly GVL preservation. This contrasts with OS (partially mediated) and NRM (uncertain mediation), and helps decompose the residual OS benefit that survives steroid adjustment.
+
+::: {.callout-note}
+## RRM Completes the Causal Picture
+The RRM finding resolves the question of what drives the residual OS benefit after steroid adjustment. OS M2 retains ~64% of the M1 log-OR; RRM retains ~100%. The portion of the OS advantage not explained by GVHD/steroid reduction is likely attributable to preserved anti-leukaemia immunity.
+:::
+
+## BK Virus Reactivation {#sec-c1-bk}
+
+```{r}
+#| label: fig-c1-bk
+#| fig-cap: "Posterior density for the PTCy effect on BK virus reactivation (C1)."
+#| fig-height: 4
+
+
+if (!is.null(post_bk)) {
+  tibble(log_or = post_bk$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+         title = "BK Virus Reactivation — Posterior Distribution",
+         subtitle = "k = 11, N = 1,333 · OR 2.48 [1.82\u20133.38]") +
+    theme_jama()
+}
+```
+
+**M1:** OR 2.48 (95% CrI 1.82–3.38), P(OR > 1) > 99%, k = 11, τ = 1.06. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.
+
+::: {.callout-important}
+## BK Virus: Dual Mechanism
+Unlike CMV and BSI (which operate through T-cell lymphodepletion alone), BK virus reactivation has a **dual mechanism**: (1) direct urothelial toxicity from cyclophosphamide metabolites (acrolein), and (2) impaired BK-specific immune reconstitution. This explains why the BK effect (OR 2.48) is larger than CMV (OR 1.26) and BSI (OR 1.87).
+:::
 
 ## Summary Forest Plot {#sec-c1-forest}
 
 ```{r}
 #| label: fig-c1-forest
 #| fig-cap: "Summary forest plot for all Comparison 1 outcomes. Filled circles = M1 (direct); open circles = M2 (steroid-adjusted). The null line (OR = 1) is shown as a dashed vertical line."
-#| fig-height: 6
+#| fig-height: 8
 
-c1_pd <- do.call(rbind, list(
+c1_summaries <- list(
   or_summary(post_os,    "b_ptcy_binary", "OS", "C1", "M1"),
   or_summary(post_m2_os, ptcy_col(post_m2_os), "OS", "C1", "M2"),
   or_summary(post_nrm,    "b_ptcy_binary", "NRM", "C1", "M1"),
@@ -246,14 +310,30 @@ c1_pd <- do.call(rbind, list(
   or_summary(post_m2,    ptcy_col(post_m2), "CMV", "C1", "M2"),
   or_summary(post_bsi,   "b_ptcy_binary", "BSI", "C1", "M1"),
   or_summary(post_ifi,   "b_ptcy_binary", "IFI", "C1", "M1")
-)) |>
+)
+if (!is.null(post_rrm)) {
+  c1_summaries <- c(c1_summaries, list(
+    or_summary(post_rrm, "b_ptcy_binary", "RRM", "C1", "M1")
+  ))
+}
+if (!is.null(post_bk)) {
+  c1_summaries <- c(c1_summaries, list(
+    or_summary(post_bk, "b_ptcy_binary", "BK Virus", "C1", "M1")
+  ))
+}
+
+outcome_levels <- rev(c("OS", "NRM", "RRM", "aGVHD II\u2013IV", "CMV", "BK Virus", "BSI", "IFI"))
+
+c1_pd <- do.call(rbind, c1_summaries) |>
   as_tibble() |>
   mutate(
-    outcome = factor(outcome, levels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))),
+    outcome = factor(outcome, levels = outcome_levels),
     label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi),
     y_num = as.numeric(outcome),
     y_pos = y_num + ifelse(model == "M2", -0.15, 0.15)
   )
+
+n_outcomes <- length(unique(c1_pd$outcome))
 
 ggplot(c1_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = model)) +
   geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
@@ -261,15 +341,15 @@ ggplot(c1_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = model
   geom_text(aes(x = hi, label = label), hjust = -0.05, size = 2.6,
             colour = jama_black, show.legend = FALSE, nudge_y = 0.25) +
   scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2, 3)) +
-  scale_y_continuous(breaks = 1:6,
-                     labels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))) +
+  scale_y_continuous(breaks = seq_len(n_outcomes),
+                     labels = outcome_levels[seq_len(n_outcomes)]) +
   scale_shape_manual(values = c("M1" = 16, "M2" = 21)) +
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   scale_fill_manual(values = c("M1" = jama_navy, "M2" = "white")) +
   coord_cartesian(xlim = c(0.25, 5.5)) +
   labs(x = "Odds Ratio (log scale)", y = NULL,
        title = "Comparison 1: PTCy vs CNI+MTX/MMF",
-       subtitle = "Bayesian M1/M2 posterior summaries",
+       subtitle = "Bayesian M1/M2 posterior summaries — post-Block-9",
        shape = NULL, colour = NULL, fill = NULL) +
   theme_jama()
 ```

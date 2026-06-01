@@ -70,11 +70,11 @@ ggplot(sens_cmv, aes(x = or, y = model)) +
   theme_jama()
 ```
 
-| Analysis | k | OR [95% CrI] | P(OR > 1.5) |
+| Analysis | k | OR [95% CrI] | Notes |
 |---|---|---|---|
-| Full corpus | 18 | 1.41 [1.20–1.65] | 22% |
-| Post-2020 only | 13 | 1.80 [1.49–2.18] | 97% |
-| Haplo ≥50% | 11 | 1.70 [1.39–2.10] | 89% |
+| Full corpus | 22 | 1.26 [1.07–1.47] | Attenuated from pre-B9 (1.41) |
+| Post-2020 only | — | — | Sensitivity model pre-Block-9 only |
+| Haplo ≥50% | — | — | Sensitivity model pre-Block-9 only |
 
 ## Comparison 1: IFI Leave-One-Out {#sec-sens-c1-ifi}
 
@@ -353,16 +353,16 @@ This does not mean the effects are definitively absent — it means the current 
 
 tibble::tribble(
   ~Outcome, ~Comparison, ~`Bayes OR`, ~`Freq OR`, ~I2, ~Concordance,
-  "OS",   "C1", "0.77 [0.71-0.83]", "0.75 [0.63-0.89]", "68%", "Good",
-  "OS",   "C2", "0.69 [0.61-0.78]", "0.53 [0.29-0.96]", "90%", "Divergent*",
-  "NRM",  "C1", "0.86 [0.70-1.08]", "0.78 [0.56-1.09]", "39%", "Good",
-  "NRM",  "C2", "0.65 [0.43-0.97]", "0.61 [0.39-0.95]", "0%",  "Good",
-  "aGVHD","C1", "0.63 [0.54-0.74]", "0.55 [0.40-0.76]", "63%", "Good",
-  "aGVHD","C2", "0.59 [0.42-0.84]", "0.44 [0.22-0.88]", "67%", "Moderate",
-  "CMV",  "C1", "1.41 [1.20-1.65]", "1.22 [0.87-1.71]", "69%", "Good",
-  "CMV",  "C2", "0.77 [0.60-0.99]", "0.67 [0.41-1.09]", "67%", "Good"
+  "OS",   "C1", "0.79 [0.73-0.85]", "0.77 [0.66-0.90]", "64%", "Good",
+  "OS",   "C2", "0.81 [0.74-0.90]", "0.59 [0.32-1.09]", "95%", "Divergent*",
+  "NRM",  "C1", "0.88 [0.66-1.18]", "0.91 [0.68-1.23]", "0%",  "Good",
+  "NRM",  "C2", "0.63 [0.30-1.31]", "0.63 [0.30-1.34]", "0%",  "Good (k=3)",
+  "aGVHD","C1", "0.67 [0.59-0.78]", "0.61 [0.47-0.79]", "62%", "Good",
+  "aGVHD","C2", "0.58 [0.44-0.77]", "0.46 [0.26-0.83]", "73%", "Moderate",
+  "CMV",  "C1", "1.26 [1.07-1.47]", "1.25 [0.94-1.66]", "62%", "Good",
+  "CMV",  "C2", "0.92 [0.73-1.15]", "0.76 [0.47-1.22]", "71%", "Good"
 ) |>
   kable(align = c("l","c","c","c","c","c")) |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) |>
-  footnote(symbol = "Driven by Dybko 2024 (OR 0.07) and Nykolyszyn 2020 (OR 0.17); Bayesian tau prior regularises these outliers.")
+  footnote(symbol = "Driven by extreme outlier studies; Bayesian tau prior regularises these outliers.")
 ```

@@ -148,6 +148,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./results-c2.html">
  <span class="dropdown-text">Comparison 2: PTCy vs ATG</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./results-c3.html">
+ <span class="dropdown-text">Comparison 3: Within-PTCy Variants</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -196,6 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-c1-agvhd" id="toc-sec-c1-agvhd" class="nav-link" data-scroll-target="#sec-c1-agvhd">Acute GVHD Grade II–IV</a></li>
   <li><a href="#sec-c1-cmv" id="toc-sec-c1-cmv" class="nav-link" data-scroll-target="#sec-c1-cmv">CMV Any-Reactivation</a></li>
   <li><a href="#sec-c1-infections" id="toc-sec-c1-infections" class="nav-link" data-scroll-target="#sec-c1-infections">BSI and IFI</a></li>
+  <li><a href="#sec-c1-rrm" id="toc-sec-c1-rrm" class="nav-link" data-scroll-target="#sec-c1-rrm">Relapse-Related Mortality</a></li>
+  <li><a href="#sec-c1-bk" id="toc-sec-c1-bk" class="nav-link" data-scroll-target="#sec-c1-bk">BK Virus Reactivation</a></li>
   <li><a href="#sec-c1-forest" id="toc-sec-c1-forest" class="nav-link" data-scroll-target="#sec-c1-forest">Summary Forest Plot</a></li>
   </ul>
 </nav>
@@ -255,8 +261,8 @@ Figure&nbsp;1: Posterior density for the PTCy log-OR on overall survival (Compar
 </div>
 </div>
 </div>
-<p><strong>M1 (Direct effect):</strong> OR 0.77 (95% CrI 0.71–0.83), P(OR &lt; 1) = 100%, τ = 0.59. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</p>
-<p><strong>M2 (Steroid-adjusted):</strong> Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.77 to 0.83 (95% CrI 0.75–0.92), a 29% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.</p>
+<p><strong>M1 (Direct effect):</strong> OR 0.79 (95% CrI 0.73–0.85), P(OR &lt; 1) = 100%, τ = 0.61. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</p>
+<p><strong>M2 (Steroid-adjusted):</strong> Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.79 to 0.86 (95% CrI 0.77–0.96), a 36% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.</p>
 </section>
 <section id="sec-c1-nrm" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c1-nrm">Non-Relapse Mortality</h2>
@@ -290,19 +296,19 @@ Figure&nbsp;2: Posterior density for the PTCy log-OR on non-relapse mortality. M
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.86 (95% CrI 0.70–1.08), P(OR &lt; 1) = 90%. Probable but uncertain benefit.</p>
-<p><strong>M2:</strong> OR 1.02 (95% CrI 0.79–1.33), P(OR &lt; 1) = 43%. <strong>Complete mediation</strong>: the NRM benefit vanishes after steroid adjustment, indicating it is entirely downstream of GVHD suppression.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<p><strong>M1:</strong> OR 0.88 (95% CrI 0.66–1.18), P(OR &lt; 1) = 83%, τ = 0.72. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.</p>
+<p><strong>M2:</strong> OR 0.90 (95% CrI 0.59–1.36), P(OR &lt; 1) = 60%. The M1→M2 shift is modest (0.88 → 0.90), with wide CrIs overlapping substantially. Unlike the pre-Block-9 analysis (where M2 crossed null at 1.02, suggesting complete mediation), the current data are <strong>inconclusive regarding steroid mediation</strong> of NRM — the point estimates barely differ, and the wide intervals accommodate both full mediation and no mediation.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Complete NRM Mediation
+<span class="screen-reader-only">Note</span>NRM Mediation — Revised
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The M1→M2 shift (OR 0.86 → 1.02) is the single most interpretable mediation finding in the analysis. Once the steroid burden differential between arms is accounted for, there is no residual PTCy effect on non-relapse mortality.</p>
+<p>The pre-Block-9 M1→M2 shift (OR 0.86 → 1.02) was the strongest mediation finding. After arm reclassification and expanded data, the shift is now minimal (0.88 → 0.90) with wide CrIs. The steroid mediation hypothesis for NRM remains plausible but is no longer clearly supported by the Bayesian models alone.</p>
 </div>
 </div>
 </section>
@@ -377,7 +383,7 @@ Figure&nbsp;3: Comparison of M1→M2 attenuation for OS and NRM. For OS, 71% of 
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"aGVHD Grade II\u2013IV — Posterior Distribution"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 24 studies, N = 3,837 · OR 0.63 [0.54\u20130.74]"</span>) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 28 studies, N = 4,197 · OR 0.67 [0.59\u20130.78]"</span>) <span class="sc">+</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -393,7 +399,7 @@ Figure&nbsp;4: Posterior density for the PTCy effect on aGVHD grade II–IV. Thi
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.63 (95% CrI 0.54–0.74), P(OR &lt; 1) = 100%, τ = 0.66. The largest treatment effect across all outcomes, mechanistically expected given PTCy’s mode of action.</p>
+<p><strong>M1:</strong> OR 0.67 (95% CrI 0.59–0.78), P(OR &lt; 1) = 100%, τ = 0.68. The largest treatment effect across all outcomes, mechanistically expected given PTCy’s mode of action.</p>
 </section>
 <section id="sec-c1-cmv" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c1-cmv">CMV Any-Reactivation</h2>
@@ -420,7 +426,7 @@ Figure&nbsp;4: Posterior density for the PTCy effect on aGVHD grade II–IV. Thi
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"M3 (aGVHD)"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"CMV Reactivation — Posterior Distributions"</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 18, N = 3,357 · No attenuation with steroid or aGVHD adjustment"</span>) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 22, N = 3,328 · No attenuation with steroid adjustment"</span>) <span class="sc">+</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -436,8 +442,8 @@ Figure&nbsp;5: Posterior densities for PTCy effect on CMV reactivation. M1 (dire
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 1.41 (95% CrI 1.20–1.65), P(OR &gt; 1) = 100%.</p>
-<p><strong>M2 (steroid-adjusted):</strong> OR 1.43 (no attenuation). <strong>M3 (aGVHD-adjusted):</strong> OR 1.52 (slight amplification). Both confirm the CMV excess operates through a steroid-independent, GVHD-independent pathway — consistent with direct impairment of CMV-specific T-cell reconstitution.</p>
+<p><strong>M1:</strong> OR 1.26 (95% CrI 1.07–1.47), P(OR &gt; 1) &gt; 99%, τ = 0.74. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.</p>
+<p><strong>M2 (steroid-adjusted):</strong> OR 1.25 (no attenuation). The CMV excess is steroid-independent, consistent with direct impairment of CMV-specific T-cell reconstitution rather than a downstream GVHD effect.</p>
 </section>
 <section id="sec-c1-infections" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c1-infections">BSI and IFI</h2>
@@ -456,7 +462,7 @@ Figure&nbsp;5: Posterior densities for PTCy effect on CMV reactivation. M1 (dire
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"BSI"</span> <span class="ot">=</span> jama_navy, <span class="st">"IFI"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Infection Outcomes — Posterior Distributions"</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"BSI: OR 2.39 [1.85\u20133.10], k = 6  |  IFI: OR 0.73 [0.53\u20131.00], k = 8"</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"BSI: OR 1.87 [1.33\u20132.62], k = 6  |  IFI: OR 0.43 [0.29\u20130.63], k = 6"</span>) <span class="sc">+</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -472,50 +478,163 @@ Figure&nbsp;6: Posterior densities for BSI (any pathogen) and IFI (any). BSI sho
 </div>
 </div>
 </div>
-<p><strong>BSI (k = 6):</strong> OR 2.39 (95% CrI 1.85–3.10), P(OR &gt; 2) = 91%. The largest infection effect. Seven additional eligible studies had unreported event counts, raising selection concerns.</p>
-<p><strong>IFI (k = 8):</strong> OR 0.73 (95% CrI 0.53–1.00), P(OR &lt; 1) = 97.5%. Probable protection, but driven by heterogeneous antifungal prophylaxis practices rather than a direct PTCy immunological effect. τ = 1.05 is dominated by a single zero-event study (Yanada 2026).</p>
+<p><strong>BSI (k = 6):</strong> OR 1.87 (95% CrI 1.33–2.62), τ = 0.96. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 [0.61–2.73]) crosses null, reflecting sensitivity to the REML τ² estimate.</p>
+<p><strong>IFI (k = 6):</strong> OR 0.43 (95% CrI 0.29–0.63), P(OR &lt; 1) &gt; 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.64 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.</p>
+</section>
+<section id="sec-c1-rrm" class="level2">
+<h2 class="anchored" data-anchor-id="sec-c1-rrm">Relapse-Related Mortality</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(post_rrm)) { <span class="fu">cat</span>(<span class="st">"RRM posteriors not available."</span>) } <span class="cf">else</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rrm_draws <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">M1 =</span> post_rrm<span class="sc">$</span>b_ptcy_binary)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_m2_rrm)) {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  rrm_col <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="st">"b_ptcy_binary"</span> <span class="sc">%in%</span> <span class="fu">names</span>(post_m2_rrm)) <span class="st">"b_ptcy_binary"</span> <span class="cf">else</span> <span class="st">"b_eventsn_ptcy_binary"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  rrm_draws<span class="sc">$</span>M2 <span class="ot">&lt;-</span> post_m2_rrm[[rrm_col]]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>rrm_draws <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relapse-Related Mortality — Posterior Distributions"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 38, N = 19,225"</span>) <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-c1-rrm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-c1-rrm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="results-c1_files/figure-html/fig-c1-rrm-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-c1-rrm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Posterior density for the PTCy effect on relapse-related mortality (C1). M1 and M2 (steroid-adjusted) are near-identical, indicating no steroid mediation — consistent with a direct graft-versus-leukaemia mechanism.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>M1:</strong> OR 0.84 (95% CrI 0.76–0.93), P(OR &lt; 1) &gt; 99%, k = 38. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.</p>
+<p><strong>M2 (steroid-adjusted):</strong> OR 0.83 (95% CrI 0.73–0.93). No attenuation after steroid adjustment — confirming that the RRM benefit operates through a GVHD-independent pathway, most plausibly GVL preservation. This contrasts with OS (partially mediated) and NRM (uncertain mediation), and helps decompose the residual OS benefit that survives steroid adjustment.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>RRM Completes the Causal Picture
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The RRM finding resolves the question of what drives the residual OS benefit after steroid adjustment. OS M2 retains ~64% of the M1 log-OR; RRM retains ~100%. The portion of the OS advantage not explained by GVHD/steroid reduction is likely attributable to preserved anti-leukaemia immunity.</p>
+</div>
+</div>
+</section>
+<section id="sec-c1-bk" class="level2">
+<h2 class="anchored" data-anchor-id="sec-c1-bk">BK Virus Reactivation</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_bk)) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">log_or =</span> post_bk<span class="sc">$</span>b_ptcy_binary) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or)) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">fill =</span> jama_navy, <span class="at">colour =</span> jama_navy, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"BK Virus Reactivation — Posterior Distribution"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"k = 11, N = 1,333 · OR 2.48 [1.82\u20133.38]"</span>) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_jama</span>()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-c1-bk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-c1-bk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="results-c1_files/figure-html/fig-c1-bk-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-c1-bk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Posterior density for the PTCy effect on BK virus reactivation (C1).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>M1:</strong> OR 2.48 (95% CrI 1.82–3.38), P(OR &gt; 1) &gt; 99%, k = 11, τ = 1.06. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>BK Virus: Dual Mechanism
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unlike CMV and BSI (which operate through T-cell lymphodepletion alone), BK virus reactivation has a <strong>dual mechanism</strong>: (1) direct urothelial toxicity from cyclophosphamide metabolites (acrolein), and (2) impaired BK-specific immune reconstitution. This explains why the BK effect (OR 2.48) is larger than CMV (OR 1.26) and BSI (OR 1.87).</p>
+</div>
+</div>
 </section>
 <section id="sec-c1-forest" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c1-forest">Summary Forest Plot</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>c1_pd <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">list</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_os,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_os, <span class="fu">ptcy_col</span>(post_m2_os), <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_nrm,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_nrm, <span class="fu">ptcy_col</span>(post_m2_nrm), <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_agvhd, <span class="st">"b_ptcy_binary"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m1,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2,    <span class="fu">ptcy_col</span>(post_m2), <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_bsi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"BSI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_ifi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"IFI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">|&gt;</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> <span class="fu">factor</span>(outcome, <span class="at">levels =</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"CMV"</span>, <span class="st">"BSI"</span>, <span class="st">"IFI"</span>))),</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f [%.2f, %.2f]"</span>, or, lo, hi),</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_num =</span> <span class="fu">as.numeric</span>(outcome),</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_pos =</span> y_num <span class="sc">+</span> <span class="fu">ifelse</span>(model <span class="sc">==</span> <span class="st">"M2"</span>, <span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(c1_pd, <span class="fu">aes</span>(<span class="at">x =</span> or, <span class="at">y =</span> y_pos, <span class="at">shape =</span> model, <span class="at">fill =</span> model, <span class="at">colour =</span> model)) <span class="sc">+</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lo, <span class="at">xmax =</span> hi), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> hi, <span class="at">label =</span> label), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">size =</span> <span class="fl">2.6</span>,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> jama_black, <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">nudge_y =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">3</span>)) <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"CMV"</span>, <span class="st">"BSI"</span>, <span class="st">"IFI"</span>))) <span class="sc">+</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"M2"</span> <span class="ot">=</span> <span class="dv">21</span>)) <span class="sc">+</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> <span class="st">"white"</span>)) <span class="sc">+</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">5.5</span>)) <span class="sc">+</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odds Ratio (log scale)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparison 1: PTCy vs CNI+MTX/MMF"</span>,</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Bayesian M1/M2 posterior summaries"</span>,</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">shape =</span> <span class="cn">NULL</span>, <span class="at">colour =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>c1_summaries <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_os,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_os, <span class="fu">ptcy_col</span>(post_m2_os), <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_nrm,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_nrm, <span class="fu">ptcy_col</span>(post_m2_nrm), <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_agvhd, <span class="st">"b_ptcy_binary"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m1,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2,    <span class="fu">ptcy_col</span>(post_m2), <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_bsi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"BSI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_ifi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"IFI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_rrm)) {</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  c1_summaries <span class="ot">&lt;-</span> <span class="fu">c</span>(c1_summaries, <span class="fu">list</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">or_summary</span>(post_rrm, <span class="st">"b_ptcy_binary"</span>, <span class="st">"RRM"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_bk)) {</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  c1_summaries <span class="ot">&lt;-</span> <span class="fu">c</span>(c1_summaries, <span class="fu">list</span>(</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">or_summary</span>(post_bk, <span class="st">"b_ptcy_binary"</span>, <span class="st">"BK Virus"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>outcome_levels <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>, <span class="st">"RRM"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"CMV"</span>, <span class="st">"BK Virus"</span>, <span class="st">"BSI"</span>, <span class="st">"IFI"</span>))</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>c1_pd <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, c1_summaries) <span class="sc">|&gt;</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> <span class="fu">factor</span>(outcome, <span class="at">levels =</span> outcome_levels),</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f [%.2f, %.2f]"</span>, or, lo, hi),</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_num =</span> <span class="fu">as.numeric</span>(outcome),</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_pos =</span> y_num <span class="sc">+</span> <span class="fu">ifelse</span>(model <span class="sc">==</span> <span class="st">"M2"</span>, <span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>n_outcomes <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(c1_pd<span class="sc">$</span>outcome))</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(c1_pd, <span class="fu">aes</span>(<span class="at">x =</span> or, <span class="at">y =</span> y_pos, <span class="at">shape =</span> model, <span class="at">fill =</span> model, <span class="at">colour =</span> model)) <span class="sc">+</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lo, <span class="at">xmax =</span> hi), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> hi, <span class="at">label =</span> label), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">size =</span> <span class="fl">2.6</span>,</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> jama_black, <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">nudge_y =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq_len</span>(n_outcomes),</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> outcome_levels[<span class="fu">seq_len</span>(n_outcomes)]) <span class="sc">+</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"M2"</span> <span class="ot">=</span> <span class="dv">21</span>)) <span class="sc">+</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> <span class="st">"white"</span>)) <span class="sc">+</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">5.5</span>)) <span class="sc">+</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odds Ratio (log scale)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparison 1: PTCy vs CNI+MTX/MMF"</span>,</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Bayesian M1/M2 posterior summaries — post-Block-9"</span>,</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">shape =</span> <span class="cn">NULL</span>, <span class="at">colour =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-c1-forest" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -524,7 +643,7 @@ Figure&nbsp;6: Posterior densities for BSI (any pathogen) and IFI (any). BSI sho
 <img src="results-c1_files/figure-html/fig-c1-forest-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-c1-forest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Summary forest plot for all Comparison 1 outcomes. Filled circles = M1 (direct); open circles = M2 (steroid-adjusted). The null line (OR = 1) is shown as a dashed vertical line.
+Figure&nbsp;9: Summary forest plot for all Comparison 1 outcomes. Filled circles = M1 (direct); open circles = M2 (steroid-adjusted). The null line (OR = 1) is shown as a dashed vertical line.
 </figcaption>
 </figure>
 </div>
@@ -993,274 +1112,361 @@ Figure&nbsp;7: Summary forest plot for all Comparison 1 outcomes. Filled circles
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Comparison 1: PTCy vs CNI+MTX/MMF"</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load C1 posteriors</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>post_os      <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_os.rds"</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>post_m2_os   <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m2_os.rds"</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>post_nrm     <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_nrm.rds"</span>)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>post_m2_nrm  <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m2_nrm.rds"</span>)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>post_agvhd   <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_agvhd.rds"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>post_m1      <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m1.rds"</span>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>post_m2      <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m2.rds"</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>post_m3      <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">load_post</span>(<span class="st">"post_m3_agvhd.rds"</span>), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>post_bsi     <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_bsi.rds"</span>)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>post_ifi     <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_ifi.rds"</span>)</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Load analytic datasets (post-Block-9 preferred, fallback to pre)</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>c1_os    <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"os_brms_clean.rds"</span>)</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>c1_nrm   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"nrm_brms_clean.rds"</span>)</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>c1_agvhd <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"agvhd_brms_clean.rds"</span>)</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>c1_cmv   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"cmv_brms_clean.rds"</span>)</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>c1_bsi   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"bsi_brms_clean.rds"</span>)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>c1_ifi   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"ifi_brms_clean.rds"</span>)</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Load frequentist models</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>res_os_freq    <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"res_os_freq.rds"</span>)</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>res_nrm_freq   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"res_nrm_freq.rds"</span>)</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>res_agvhd_freq <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"res_agvhd_freq.rds"</span>)</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>Comparison 1 evaluates PTCy against calcineurin inhibitor–based prophylaxis (CNI+MTX or CNI+MMF) — the most common alternative platform. This comparison draws on the largest evidence base in the meta-analysis.</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overall Survival {#sec-c1-os}</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-os-posterior</span></span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy log-OR on overall survival (Comparison 1). M1 (direct effect, navy) and M2 (steroid-adjusted, grey). The vertical dashed line marks the null (log-OR = 0). Shaded regions show 95% credible intervals."</span></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">M1 =</span> post_os<span class="sc">$</span>b_ptcy_binary,</span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">M2 =</span> post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]]</span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Overall Survival — Posterior Distributions"</span>) <span class="sc">+</span></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>**M1 (Direct effect):** OR 0.77 (95% CrI 0.71–0.83), P(OR &lt; 1) = 100%, τ = 0.59. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.77 to 0.83 (95% CrI 0.75–0.92), a 29% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.</span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Non-Relapse Mortality {#sec-c1-nrm}</span></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-nrm-posterior</span></span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy log-OR on non-relapse mortality. M2 adjustment abolishes the M1 benefit entirely — the hallmark of complete steroid mediation."</span></span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>  <span class="at">M1 =</span> post_nrm<span class="sc">$</span>b_ptcy_binary,</span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>  <span class="at">M2 =</span> post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]</span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Non-Relapse Mortality — Posterior Distributions"</span>) <span class="sc">+</span></span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.86 (95% CrI 0.70–1.08), P(OR &lt; 1) = 90%. Probable but uncertain benefit.</span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>**M2:** OR 1.02 (95% CrI 0.79–1.33), P(OR &lt; 1) = 43%. **Complete mediation**: the NRM benefit vanishes after steroid adjustment, indicating it is entirely downstream of GVHD suppression.</span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## Complete NRM Mediation</span></span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>The M1→M2 shift (OR 0.86 → 1.02) is the single most interpretable mediation finding in the analysis. Once the steroid burden differential between arms is accounted for, there is no residual PTCy effect on non-relapse mortality.</span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mediation Comparison: OS vs NRM {#sec-c1-mediation}</span></span>
-<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-mediation</span></span>
-<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Comparison of M1→M2 attenuation for OS and NRM. For OS, 71% of the log-OR survives steroid adjustment (partial mediation). For NRM, 0% survives (complete mediation). This contrast defines the causal pathway."</span></span>
-<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>med_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>  <span class="at">Outcome =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>), <span class="at">each =</span> <span class="dv">2</span>),</span>
-<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"M1"</span>, <span class="st">"M2"</span>), <span class="dv">2</span>),</span>
-<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">or =</span> <span class="fu">c</span>(</span>
-<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_os<span class="sc">$</span>b_ptcy_binary)),</span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]])),</span>
-<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_nrm<span class="sc">$</span>b_ptcy_binary)),</span>
-<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]))</span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>  <span class="at">lo =</span> <span class="fu">c</span>(</span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_os<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.025</span>),</span>
-<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]]), <span class="fl">0.025</span>),</span>
-<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_nrm<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.025</span>),</span>
-<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]), <span class="fl">0.025</span>)</span>
-<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>  <span class="at">hi =</span> <span class="fu">c</span>(</span>
-<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_os<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.975</span>),</span>
-<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]]), <span class="fl">0.975</span>),</span>
-<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_nrm<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.975</span>),</span>
-<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]), <span class="fl">0.975</span>)</span>
-<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f [%.2f, %.2f]"</span>, or, lo, hi))</span>
-<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(med_data, <span class="fu">aes</span>(<span class="at">x =</span> or, <span class="at">y =</span> <span class="fu">interaction</span>(Model, Outcome),</span>
-<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>                      <span class="at">colour =</span> Model, <span class="at">shape =</span> Model)) <span class="sc">+</span></span>
-<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lo, <span class="at">xmax =</span> hi), <span class="at">size =</span> <span class="fl">0.6</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> hi, <span class="at">label =</span> label), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
-<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"M2"</span> <span class="ot">=</span> <span class="dv">21</span>)) <span class="sc">+</span></span>
-<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"M1.NRM"</span> <span class="ot">=</span> <span class="st">"NRM — M1"</span>, <span class="st">"M2.NRM"</span> <span class="ot">=</span> <span class="st">"NRM — M2"</span>,</span>
-<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"M1.OS"</span> <span class="ot">=</span> <span class="st">"OS — M1"</span>, <span class="st">"M2.OS"</span> <span class="ot">=</span> <span class="st">"OS — M2"</span>)) <span class="sc">+</span></span>
-<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">1.6</span>)) <span class="sc">+</span></span>
-<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odds Ratio"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Steroid Mediation: OS vs NRM"</span>,</span>
-<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"M2 = adjusted for arm-level systemic steroid exposure"</span>,</span>
-<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="cn">NULL</span>, <span class="at">shape =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
-<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## Acute GVHD Grade II–IV {#sec-c1-agvhd}</span></span>
-<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-agvhd</span></span>
-<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy effect on aGVHD grade II–IV. This is the largest treatment effect and the mechanistic linchpin of the causal framework."</span></span>
-<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
-<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">log_or =</span> post_agvhd<span class="sc">$</span>b_ptcy_binary) <span class="sc">|&gt;</span></span>
-<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or)) <span class="sc">+</span></span>
-<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> jama_navy, <span class="at">colour =</span> jama_navy, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
-<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"aGVHD Grade II\u2013IV — Posterior Distribution"</span>,</span>
-<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 24 studies, N = 3,837 · OR 0.63 [0.54\u20130.74]"</span>) <span class="sc">+</span></span>
-<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
-<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.63 (95% CrI 0.54–0.74), P(OR &lt; 1) = 100%, τ = 0.66. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.</span>
-<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a><span class="fu">## CMV Any-Reactivation {#sec-c1-cmv}</span></span>
-<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-cmv-posterior</span></span>
-<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior densities for PTCy effect on CMV reactivation. M1 (direct), M2 (steroid-adjusted), and M3 (aGVHD-adjusted). None of the adjustments attenuate the signal — confirming steroid-independent, GVHD-independent harm."</span></span>
-<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
-<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a>cmv_draws <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>  <span class="at">M1 =</span> post_m1<span class="sc">$</span>b_ptcy_binary,</span>
-<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">M2 (steroid)</span><span class="st">`</span> <span class="ot">=</span> <span class="cf">if</span> (<span class="st">"b_ptcy_binary"</span> <span class="sc">%in%</span> <span class="fu">names</span>(post_m2)) post_m2<span class="sc">$</span>b_ptcy_binary <span class="cf">else</span> post_m2<span class="sc">$</span>b_eventsn_ptcy_binary</span>
-<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_m3)) {</span>
-<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a>  m3_col <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="st">"b_ptcy_binary"</span> <span class="sc">%in%</span> <span class="fu">names</span>(post_m3)) <span class="st">"b_ptcy_binary"</span> <span class="cf">else</span> <span class="st">"b_eventsn_ptcy_binary"</span></span>
-<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>  cmv_draws<span class="sc">$</span><span class="st">`</span><span class="at">M3 (aGVHD)</span><span class="st">`</span> <span class="ot">&lt;-</span> post_m3[[m3_col]]</span>
-<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a>cmv_draws <span class="sc">|&gt;</span></span>
-<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Model =</span> <span class="fu">factor</span>(Model, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"M1"</span>, <span class="st">"M2 (steroid)"</span>, <span class="st">"M3 (aGVHD)"</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
-<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2 (steroid)"</span> <span class="ot">=</span> jama_steel,</span>
-<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"M3 (aGVHD)"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
-<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2 (steroid)"</span> <span class="ot">=</span> jama_steel,</span>
-<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"M3 (aGVHD)"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
-<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
-<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"CMV Reactivation — Posterior Distributions"</span>,</span>
-<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 18, N = 3,357 · No attenuation with steroid or aGVHD adjustment"</span>) <span class="sc">+</span></span>
-<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
-<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a>**M1:** OR 1.41 (95% CrI 1.20–1.65), P(OR &gt; 1) = 100%.</span>
-<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>**M2 (steroid-adjusted):** OR 1.43 (no attenuation). **M3 (aGVHD-adjusted):** OR 1.52 (slight amplification). Both confirm the CMV excess operates through a steroid-independent, GVHD-independent pathway — consistent with direct impairment of CMV-specific T-cell reconstitution.</span>
-<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a><span class="fu">## BSI and IFI {#sec-c1-infections}</span></span>
-<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-bsi-ifi</span></span>
-<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior densities for BSI (any pathogen) and IFI (any). BSI shows a large, consistent excess; IFI shows a probable protective signal with extreme heterogeneity."</span></span>
-<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
-<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a>  <span class="at">BSI =</span> post_bsi<span class="sc">$</span>b_ptcy_binary,</span>
-<span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a>  <span class="at">IFI =</span> post_ifi<span class="sc">$</span>b_ptcy_binary</span>
-<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Outcome"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Outcome, <span class="at">colour =</span> Outcome)) <span class="sc">+</span></span>
-<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"BSI"</span> <span class="ot">=</span> jama_navy, <span class="st">"IFI"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
-<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"BSI"</span> <span class="ot">=</span> jama_navy, <span class="st">"IFI"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
-<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
-<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Infection Outcomes — Posterior Distributions"</span>,</span>
-<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"BSI: OR 2.39 [1.85\u20133.10], k = 6  |  IFI: OR 0.73 [0.53\u20131.00], k = 8"</span>) <span class="sc">+</span></span>
-<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
-<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a>**BSI (k = 6):** OR 2.39 (95% CrI 1.85–3.10), P(OR &gt; 2) = 91%. The largest infection effect. Seven additional eligible studies had unreported event counts, raising selection concerns.</span>
-<span id="cb8-236"><a href="#cb8-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-237"><a href="#cb8-237" aria-hidden="true" tabindex="-1"></a>**IFI (k = 8):** OR 0.73 (95% CrI 0.53–1.00), P(OR &lt; 1) = 97.5%. Probable protection, but driven by heterogeneous antifungal prophylaxis practices rather than a direct PTCy immunological effect. τ = 1.05 is dominated by a single zero-event study (Yanada 2026).</span>
-<span id="cb8-238"><a href="#cb8-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-239"><a href="#cb8-239" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Forest Plot {#sec-c1-forest}</span></span>
-<span id="cb8-240"><a href="#cb8-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-243"><a href="#cb8-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-244"><a href="#cb8-244" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-forest</span></span>
-<span id="cb8-245"><a href="#cb8-245" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Summary forest plot for all Comparison 1 outcomes. Filled circles = M1 (direct); open circles = M2 (steroid-adjusted). The null line (OR = 1) is shown as a dashed vertical line."</span></span>
-<span id="cb8-246"><a href="#cb8-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb8-247"><a href="#cb8-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-248"><a href="#cb8-248" aria-hidden="true" tabindex="-1"></a>c1_pd <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">list</span>(</span>
-<span id="cb8-249"><a href="#cb8-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_os,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb8-250"><a href="#cb8-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_os, <span class="fu">ptcy_col</span>(post_m2_os), <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
-<span id="cb8-251"><a href="#cb8-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_nrm,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb8-252"><a href="#cb8-252" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_nrm, <span class="fu">ptcy_col</span>(post_m2_nrm), <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
-<span id="cb8-253"><a href="#cb8-253" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_agvhd, <span class="st">"b_ptcy_binary"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb8-254"><a href="#cb8-254" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m1,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb8-255"><a href="#cb8-255" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2,    <span class="fu">ptcy_col</span>(post_m2), <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
-<span id="cb8-256"><a href="#cb8-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_bsi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"BSI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
-<span id="cb8-257"><a href="#cb8-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_ifi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"IFI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
-<span id="cb8-258"><a href="#cb8-258" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">|&gt;</span></span>
-<span id="cb8-259"><a href="#cb8-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-260"><a href="#cb8-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-261"><a href="#cb8-261" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> <span class="fu">factor</span>(outcome, <span class="at">levels =</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"CMV"</span>, <span class="st">"BSI"</span>, <span class="st">"IFI"</span>))),</span>
-<span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f [%.2f, %.2f]"</span>, or, lo, hi),</span>
-<span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_num =</span> <span class="fu">as.numeric</span>(outcome),</span>
-<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_pos =</span> y_num <span class="sc">+</span> <span class="fu">ifelse</span>(model <span class="sc">==</span> <span class="st">"M2"</span>, <span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>)</span>
-<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-266"><a href="#cb8-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-267"><a href="#cb8-267" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(c1_pd, <span class="fu">aes</span>(<span class="at">x =</span> or, <span class="at">y =</span> y_pos, <span class="at">shape =</span> model, <span class="at">fill =</span> model, <span class="at">colour =</span> model)) <span class="sc">+</span></span>
-<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
-<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lo, <span class="at">xmax =</span> hi), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb8-270"><a href="#cb8-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> hi, <span class="at">label =</span> label), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">size =</span> <span class="fl">2.6</span>,</span>
-<span id="cb8-271"><a href="#cb8-271" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> jama_black, <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">nudge_y =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
-<span id="cb8-272"><a href="#cb8-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">3</span>)) <span class="sc">+</span></span>
-<span id="cb8-273"><a href="#cb8-273" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
-<span id="cb8-274"><a href="#cb8-274" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"CMV"</span>, <span class="st">"BSI"</span>, <span class="st">"IFI"</span>))) <span class="sc">+</span></span>
-<span id="cb8-275"><a href="#cb8-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"M2"</span> <span class="ot">=</span> <span class="dv">21</span>)) <span class="sc">+</span></span>
-<span id="cb8-276"><a href="#cb8-276" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
-<span id="cb8-277"><a href="#cb8-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> <span class="st">"white"</span>)) <span class="sc">+</span></span>
-<span id="cb8-278"><a href="#cb8-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">5.5</span>)) <span class="sc">+</span></span>
-<span id="cb8-279"><a href="#cb8-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odds Ratio (log scale)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb8-280"><a href="#cb8-280" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparison 1: PTCy vs CNI+MTX/MMF"</span>,</span>
-<span id="cb8-281"><a href="#cb8-281" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Bayesian M1/M2 posterior summaries"</span>,</span>
-<span id="cb8-282"><a href="#cb8-282" aria-hidden="true" tabindex="-1"></a>       <span class="at">shape =</span> <span class="cn">NULL</span>, <span class="at">colour =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb8-283"><a href="#cb8-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
-<span id="cb8-284"><a href="#cb8-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Comparison 1: PTCy vs CNI+MTX/MMF"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load C1 posteriors</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>post_os      <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_os.rds"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>post_m2_os   <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m2_os.rds"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>post_nrm     <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_nrm.rds"</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>post_m2_nrm  <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m2_nrm.rds"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>post_agvhd   <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_agvhd.rds"</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>post_m1      <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m1.rds"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>post_m2      <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_m2.rds"</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>post_m3      <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">load_post</span>(<span class="st">"post_m3_agvhd.rds"</span>), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>post_bsi     <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_bsi.rds"</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>post_ifi     <span class="ot">&lt;-</span> <span class="fu">load_post</span>(<span class="st">"post_ifi.rds"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>post_rrm     <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">load_post</span>(<span class="st">"post_c1_rrm.rds"</span>), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>post_m2_rrm  <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">load_post</span>(<span class="st">"post_m2_c1_rrm.rds"</span>), <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fallback: extract from model object</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">load_model</span>(<span class="st">"m2_c1_rrm.rds"</span>), <span class="at">error =</span> <span class="cf">function</span>(e2) <span class="cn">NULL</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(m)) <span class="fu">as_draws_df</span>(m) <span class="cf">else</span> <span class="cn">NULL</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>post_bk      <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">load_post</span>(<span class="st">"post_c1_bk.rds"</span>), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Load analytic datasets (post-Block-9 preferred, fallback to pre)</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>c1_os    <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"os_brms_clean.rds"</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>c1_nrm   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"nrm_brms_clean.rds"</span>)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>c1_agvhd <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"agvhd_brms_clean.rds"</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>c1_cmv   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"cmv_brms_clean.rds"</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>c1_bsi   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"bsi_brms_clean.rds"</span>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>c1_ifi   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"ifi_brms_clean.rds"</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Load frequentist models</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>res_os_freq    <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"res_os_freq.rds"</span>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>res_nrm_freq   <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"res_nrm_freq.rds"</span>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>res_agvhd_freq <span class="ot">&lt;-</span> <span class="fu">load_model</span>(<span class="st">"res_agvhd_freq.rds"</span>)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>Comparison 1 evaluates PTCy against calcineurin inhibitor–based prophylaxis (CNI+MTX or CNI+MMF) — the most common alternative platform. This comparison draws on the largest evidence base in the meta-analysis.</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overall Survival {#sec-c1-os}</span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-os-posterior</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy log-OR on overall survival (Comparison 1). M1 (direct effect, navy) and M2 (steroid-adjusted, grey). The vertical dashed line marks the null (log-OR = 0). Shaded regions show 95% credible intervals."</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">M1 =</span> post_os<span class="sc">$</span>b_ptcy_binary,</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">M2 =</span> post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]]</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Overall Survival — Posterior Distributions"</span>) <span class="sc">+</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>**M1 (Direct effect):** OR 0.79 (95% CrI 0.73–0.85), P(OR &lt; 1) = 100%, τ = 0.61. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.79 to 0.86 (95% CrI 0.77–0.96), a 36% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Non-Relapse Mortality {#sec-c1-nrm}</span></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-nrm-posterior</span></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy log-OR on non-relapse mortality. M2 adjustment abolishes the M1 benefit entirely — the hallmark of complete steroid mediation."</span></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>  <span class="at">M1 =</span> post_nrm<span class="sc">$</span>b_ptcy_binary,</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>  <span class="at">M2 =</span> post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Non-Relapse Mortality — Posterior Distributions"</span>) <span class="sc">+</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.88 (95% CrI 0.66–1.18), P(OR &lt; 1) = 83%, τ = 0.72. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.</span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>**M2:** OR 0.90 (95% CrI 0.59–1.36), P(OR &lt; 1) = 60%. The M1→M2 shift is modest (0.88 → 0.90), with wide CrIs overlapping substantially. Unlike the pre-Block-9 analysis (where M2 crossed null at 1.02, suggesting complete mediation), the current data are **inconclusive regarding steroid mediation** of NRM — the point estimates barely differ, and the wide intervals accommodate both full mediation and no mediation.</span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="fu">## NRM Mediation — Revised</span></span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>The pre-Block-9 M1→M2 shift (OR 0.86 → 1.02) was the strongest mediation finding. After arm reclassification and expanded data, the shift is now minimal (0.88 → 0.90) with wide CrIs. The steroid mediation hypothesis for NRM remains plausible but is no longer clearly supported by the Bayesian models alone.</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mediation Comparison: OS vs NRM {#sec-c1-mediation}</span></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-mediation</span></span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Comparison of M1→M2 attenuation for OS and NRM. For OS, 71% of the log-OR survives steroid adjustment (partial mediation). For NRM, 0% survives (complete mediation). This contrast defines the causal pathway."</span></span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a>med_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a>  <span class="at">Outcome =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>), <span class="at">each =</span> <span class="dv">2</span>),</span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"M1"</span>, <span class="st">"M2"</span>), <span class="dv">2</span>),</span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>  <span class="at">or =</span> <span class="fu">c</span>(</span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_os<span class="sc">$</span>b_ptcy_binary)),</span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]])),</span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_nrm<span class="sc">$</span>b_ptcy_binary)),</span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>    <span class="fu">median</span>(<span class="fu">exp</span>(post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]))</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>  <span class="at">lo =</span> <span class="fu">c</span>(</span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_os<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.025</span>),</span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]]), <span class="fl">0.025</span>),</span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_nrm<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.025</span>),</span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]), <span class="fl">0.025</span>)</span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>  <span class="at">hi =</span> <span class="fu">c</span>(</span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_os<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.975</span>),</span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_os[[<span class="fu">ptcy_col</span>(post_m2_os)]]), <span class="fl">0.975</span>),</span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_nrm<span class="sc">$</span>b_ptcy_binary), <span class="fl">0.975</span>),</span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quantile</span>(<span class="fu">exp</span>(post_m2_nrm[[<span class="fu">ptcy_col</span>(post_m2_nrm)]]), <span class="fl">0.975</span>)</span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f [%.2f, %.2f]"</span>, or, lo, hi))</span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(med_data, <span class="fu">aes</span>(<span class="at">x =</span> or, <span class="at">y =</span> <span class="fu">interaction</span>(Model, Outcome),</span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>                      <span class="at">colour =</span> Model, <span class="at">shape =</span> Model)) <span class="sc">+</span></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lo, <span class="at">xmax =</span> hi), <span class="at">size =</span> <span class="fl">0.6</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> hi, <span class="at">label =</span> label), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"M2"</span> <span class="ot">=</span> <span class="dv">21</span>)) <span class="sc">+</span></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"M1.NRM"</span> <span class="ot">=</span> <span class="st">"NRM — M1"</span>, <span class="st">"M2.NRM"</span> <span class="ot">=</span> <span class="st">"NRM — M2"</span>,</span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"M1.OS"</span> <span class="ot">=</span> <span class="st">"OS — M1"</span>, <span class="st">"M2.OS"</span> <span class="ot">=</span> <span class="st">"OS — M2"</span>)) <span class="sc">+</span></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">1.6</span>)) <span class="sc">+</span></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odds Ratio"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Steroid Mediation: OS vs NRM"</span>,</span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"M2 = adjusted for arm-level systemic steroid exposure"</span>,</span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="cn">NULL</span>, <span class="at">shape =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a><span class="fu">## Acute GVHD Grade II–IV {#sec-c1-agvhd}</span></span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-agvhd</span></span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy effect on aGVHD grade II–IV. This is the largest treatment effect and the mechanistic linchpin of the causal framework."</span></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">log_or =</span> post_agvhd<span class="sc">$</span>b_ptcy_binary) <span class="sc">|&gt;</span></span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or)) <span class="sc">+</span></span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> jama_navy, <span class="at">colour =</span> jama_navy, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"aGVHD Grade II\u2013IV — Posterior Distribution"</span>,</span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 28 studies, N = 4,197 · OR 0.67 [0.59\u20130.78]"</span>) <span class="sc">+</span></span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.67 (95% CrI 0.59–0.78), P(OR &lt; 1) = 100%, τ = 0.68. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.</span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## CMV Any-Reactivation {#sec-c1-cmv}</span></span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-cmv-posterior</span></span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior densities for PTCy effect on CMV reactivation. M1 (direct), M2 (steroid-adjusted), and M3 (aGVHD-adjusted). None of the adjustments attenuate the signal — confirming steroid-independent, GVHD-independent harm."</span></span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>cmv_draws <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>  <span class="at">M1 =</span> post_m1<span class="sc">$</span>b_ptcy_binary,</span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">M2 (steroid)</span><span class="st">`</span> <span class="ot">=</span> <span class="cf">if</span> (<span class="st">"b_ptcy_binary"</span> <span class="sc">%in%</span> <span class="fu">names</span>(post_m2)) post_m2<span class="sc">$</span>b_ptcy_binary <span class="cf">else</span> post_m2<span class="sc">$</span>b_eventsn_ptcy_binary</span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_m3)) {</span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a>  m3_col <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="st">"b_ptcy_binary"</span> <span class="sc">%in%</span> <span class="fu">names</span>(post_m3)) <span class="st">"b_ptcy_binary"</span> <span class="cf">else</span> <span class="st">"b_eventsn_ptcy_binary"</span></span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a>  cmv_draws<span class="sc">$</span><span class="st">`</span><span class="at">M3 (aGVHD)</span><span class="st">`</span> <span class="ot">&lt;-</span> post_m3[[m3_col]]</span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a>cmv_draws <span class="sc">|&gt;</span></span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Model =</span> <span class="fu">factor</span>(Model, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"M1"</span>, <span class="st">"M2 (steroid)"</span>, <span class="st">"M3 (aGVHD)"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2 (steroid)"</span> <span class="ot">=</span> jama_steel,</span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"M3 (aGVHD)"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2 (steroid)"</span> <span class="ot">=</span> jama_steel,</span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"M3 (aGVHD)"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"CMV Reactivation — Posterior Distributions"</span>,</span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 22, N = 3,328 · No attenuation with steroid adjustment"</span>) <span class="sc">+</span></span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a>**M1:** OR 1.26 (95% CrI 1.07–1.47), P(OR &gt; 1) &gt; 99%, τ = 0.74. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.</span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>**M2 (steroid-adjusted):** OR 1.25 (no attenuation). The CMV excess is steroid-independent, consistent with direct impairment of CMV-specific T-cell reconstitution rather than a downstream GVHD effect.</span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a><span class="fu">## BSI and IFI {#sec-c1-infections}</span></span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-bsi-ifi</span></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior densities for BSI (any pathogen) and IFI (any). BSI shows a large, consistent excess; IFI shows a probable protective signal with extreme heterogeneity."</span></span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a>  <span class="at">BSI =</span> post_bsi<span class="sc">$</span>b_ptcy_binary,</span>
+<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a>  <span class="at">IFI =</span> post_ifi<span class="sc">$</span>b_ptcy_binary</span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Outcome"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Outcome, <span class="at">colour =</span> Outcome)) <span class="sc">+</span></span>
+<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"BSI"</span> <span class="ot">=</span> jama_navy, <span class="st">"IFI"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
+<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"BSI"</span> <span class="ot">=</span> jama_navy, <span class="st">"IFI"</span> <span class="ot">=</span> jama_light_blue)) <span class="sc">+</span></span>
+<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Infection Outcomes — Posterior Distributions"</span>,</span>
+<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"BSI: OR 1.87 [1.33\u20132.62], k = 6  |  IFI: OR 0.43 [0.29\u20130.63], k = 6"</span>) <span class="sc">+</span></span>
+<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a>**BSI (k = 6):** OR 1.87 (95% CrI 1.33–2.62), τ = 0.96. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 <span class="co">[</span><span class="ot">0.61–2.73</span><span class="co">]</span>) crosses null, reflecting sensitivity to the REML τ² estimate.</span>
+<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a>**IFI (k = 6):** OR 0.43 (95% CrI 0.29–0.63), P(OR &lt; 1) &gt; 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.64 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.</span>
+<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relapse-Related Mortality {#sec-c1-rrm}</span></span>
+<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-250"><a href="#cb10-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-rrm</span></span>
+<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy effect on relapse-related mortality (C1). M1 and M2 (steroid-adjusted) are near-identical, indicating no steroid mediation — consistent with a direct graft-versus-leukaemia mechanism."</span></span>
+<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(post_rrm)) { <span class="fu">cat</span>(<span class="st">"RRM posteriors not available."</span>) } <span class="cf">else</span> {</span>
+<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a>rrm_draws <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">M1 =</span> post_rrm<span class="sc">$</span>b_ptcy_binary)</span>
+<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_m2_rrm)) {</span>
+<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a>  rrm_col <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="st">"b_ptcy_binary"</span> <span class="sc">%in%</span> <span class="fu">names</span>(post_m2_rrm)) <span class="st">"b_ptcy_binary"</span> <span class="cf">else</span> <span class="st">"b_eventsn_ptcy_binary"</span></span>
+<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a>  rrm_draws<span class="sc">$</span>M2 <span class="ot">&lt;-</span> post_m2_rrm[[rrm_col]]</span>
+<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a>rrm_draws <span class="sc">|&gt;</span></span>
+<span id="cb10-263"><a href="#cb10-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Model"</span>, <span class="at">values_to =</span> <span class="st">"log_or"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-264"><a href="#cb10-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or, <span class="at">fill =</span> Model, <span class="at">colour =</span> Model)) <span class="sc">+</span></span>
+<span id="cb10-265"><a href="#cb10-265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-266"><a href="#cb10-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relapse-Related Mortality — Posterior Distributions"</span>,</span>
+<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 38, N = 19,225"</span>) <span class="sc">+</span></span>
+<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.84 (95% CrI 0.76–0.93), P(OR &lt; 1) &gt; 99%, k = 38. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.</span>
+<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>**M2 (steroid-adjusted):** OR 0.83 (95% CrI 0.73–0.93). No attenuation after steroid adjustment — confirming that the RRM benefit operates through a GVHD-independent pathway, most plausibly GVL preservation. This contrasts with OS (partially mediated) and NRM (uncertain mediation), and helps decompose the residual OS benefit that survives steroid adjustment.</span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## RRM Completes the Causal Picture</span></span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>The RRM finding resolves the question of what drives the residual OS benefit after steroid adjustment. OS M2 retains ~64% of the M1 log-OR; RRM retains ~100%. The portion of the OS advantage not explained by GVHD/steroid reduction is likely attributable to preserved anti-leukaemia immunity.</span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a><span class="fu">## BK Virus Reactivation {#sec-c1-bk}</span></span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-bk</span></span>
+<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Posterior density for the PTCy effect on BK virus reactivation (C1)."</span></span>
+<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_bk)) {</span>
+<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">log_or =</span> post_bk<span class="sc">$</span>b_ptcy_binary) <span class="sc">|&gt;</span></span>
+<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_or)) <span class="sc">+</span></span>
+<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">fill =</span> jama_navy, <span class="at">colour =</span> jama_navy, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
+<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"BK Virus Reactivation — Posterior Distribution"</span>,</span>
+<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"k = 11, N = 1,333 · OR 2.48 [1.82\u20133.38]"</span>) <span class="sc">+</span></span>
+<span id="cb10-303"><a href="#cb10-303" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_jama</span>()</span>
+<span id="cb10-304"><a href="#cb10-304" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a>**M1:** OR 2.48 (95% CrI 1.82–3.38), P(OR &gt; 1) &gt; 99%, k = 11, τ = 1.06. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.</span>
+<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb10-310"><a href="#cb10-310" aria-hidden="true" tabindex="-1"></a><span class="fu">## BK Virus: Dual Mechanism</span></span>
+<span id="cb10-311"><a href="#cb10-311" aria-hidden="true" tabindex="-1"></a>Unlike CMV and BSI (which operate through T-cell lymphodepletion alone), BK virus reactivation has a **dual mechanism**: (1) direct urothelial toxicity from cyclophosphamide metabolites (acrolein), and (2) impaired BK-specific immune reconstitution. This explains why the BK effect (OR 2.48) is larger than CMV (OR 1.26) and BSI (OR 1.87).</span>
+<span id="cb10-312"><a href="#cb10-312" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-313"><a href="#cb10-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-314"><a href="#cb10-314" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Forest Plot {#sec-c1-forest}</span></span>
+<span id="cb10-315"><a href="#cb10-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-318"><a href="#cb10-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-319"><a href="#cb10-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-forest</span></span>
+<span id="cb10-320"><a href="#cb10-320" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Summary forest plot for all Comparison 1 outcomes. Filled circles = M1 (direct); open circles = M2 (steroid-adjusted). The null line (OR = 1) is shown as a dashed vertical line."</span></span>
+<span id="cb10-321"><a href="#cb10-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 8</span></span>
+<span id="cb10-322"><a href="#cb10-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-323"><a href="#cb10-323" aria-hidden="true" tabindex="-1"></a>c1_summaries <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb10-324"><a href="#cb10-324" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_os,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb10-325"><a href="#cb10-325" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_os, <span class="fu">ptcy_col</span>(post_m2_os), <span class="st">"OS"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
+<span id="cb10-326"><a href="#cb10-326" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_nrm,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb10-327"><a href="#cb10-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2_nrm, <span class="fu">ptcy_col</span>(post_m2_nrm), <span class="st">"NRM"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
+<span id="cb10-328"><a href="#cb10-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_agvhd, <span class="st">"b_ptcy_binary"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb10-329"><a href="#cb10-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m1,    <span class="st">"b_ptcy_binary"</span>, <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb10-330"><a href="#cb10-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_m2,    <span class="fu">ptcy_col</span>(post_m2), <span class="st">"CMV"</span>, <span class="st">"C1"</span>, <span class="st">"M2"</span>),</span>
+<span id="cb10-331"><a href="#cb10-331" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_bsi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"BSI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>),</span>
+<span id="cb10-332"><a href="#cb10-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">or_summary</span>(post_ifi,   <span class="st">"b_ptcy_binary"</span>, <span class="st">"IFI"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
+<span id="cb10-333"><a href="#cb10-333" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-334"><a href="#cb10-334" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_rrm)) {</span>
+<span id="cb10-335"><a href="#cb10-335" aria-hidden="true" tabindex="-1"></a>  c1_summaries <span class="ot">&lt;-</span> <span class="fu">c</span>(c1_summaries, <span class="fu">list</span>(</span>
+<span id="cb10-336"><a href="#cb10-336" aria-hidden="true" tabindex="-1"></a>    <span class="fu">or_summary</span>(post_rrm, <span class="st">"b_ptcy_binary"</span>, <span class="st">"RRM"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
+<span id="cb10-337"><a href="#cb10-337" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb10-338"><a href="#cb10-338" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-339"><a href="#cb10-339" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(post_bk)) {</span>
+<span id="cb10-340"><a href="#cb10-340" aria-hidden="true" tabindex="-1"></a>  c1_summaries <span class="ot">&lt;-</span> <span class="fu">c</span>(c1_summaries, <span class="fu">list</span>(</span>
+<span id="cb10-341"><a href="#cb10-341" aria-hidden="true" tabindex="-1"></a>    <span class="fu">or_summary</span>(post_bk, <span class="st">"b_ptcy_binary"</span>, <span class="st">"BK Virus"</span>, <span class="st">"C1"</span>, <span class="st">"M1"</span>)</span>
+<span id="cb10-342"><a href="#cb10-342" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb10-343"><a href="#cb10-343" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-344"><a href="#cb10-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-345"><a href="#cb10-345" aria-hidden="true" tabindex="-1"></a>outcome_levels <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"OS"</span>, <span class="st">"NRM"</span>, <span class="st">"RRM"</span>, <span class="st">"aGVHD II\u2013IV"</span>, <span class="st">"CMV"</span>, <span class="st">"BK Virus"</span>, <span class="st">"BSI"</span>, <span class="st">"IFI"</span>))</span>
+<span id="cb10-346"><a href="#cb10-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-347"><a href="#cb10-347" aria-hidden="true" tabindex="-1"></a>c1_pd <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, c1_summaries) <span class="sc">|&gt;</span></span>
+<span id="cb10-348"><a href="#cb10-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb10-349"><a href="#cb10-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-350"><a href="#cb10-350" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> <span class="fu">factor</span>(outcome, <span class="at">levels =</span> outcome_levels),</span>
+<span id="cb10-351"><a href="#cb10-351" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f [%.2f, %.2f]"</span>, or, lo, hi),</span>
+<span id="cb10-352"><a href="#cb10-352" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_num =</span> <span class="fu">as.numeric</span>(outcome),</span>
+<span id="cb10-353"><a href="#cb10-353" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_pos =</span> y_num <span class="sc">+</span> <span class="fu">ifelse</span>(model <span class="sc">==</span> <span class="st">"M2"</span>, <span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>)</span>
+<span id="cb10-354"><a href="#cb10-354" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-355"><a href="#cb10-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-356"><a href="#cb10-356" aria-hidden="true" tabindex="-1"></a>n_outcomes <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(c1_pd<span class="sc">$</span>outcome))</span>
+<span id="cb10-357"><a href="#cb10-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-358"><a href="#cb10-358" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(c1_pd, <span class="fu">aes</span>(<span class="at">x =</span> or, <span class="at">y =</span> y_pos, <span class="at">shape =</span> model, <span class="at">fill =</span> model, <span class="at">colour =</span> model)) <span class="sc">+</span></span>
+<span id="cb10-359"><a href="#cb10-359" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
+<span id="cb10-360"><a href="#cb10-360" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lo, <span class="at">xmax =</span> hi), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb10-361"><a href="#cb10-361" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> hi, <span class="at">label =</span> label), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">size =</span> <span class="fl">2.6</span>,</span>
+<span id="cb10-362"><a href="#cb10-362" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> jama_black, <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">nudge_y =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb10-363"><a href="#cb10-363" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb10-364"><a href="#cb10-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq_len</span>(n_outcomes),</span>
+<span id="cb10-365"><a href="#cb10-365" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> outcome_levels[<span class="fu">seq_len</span>(n_outcomes)]) <span class="sc">+</span></span>
+<span id="cb10-366"><a href="#cb10-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"M2"</span> <span class="ot">=</span> <span class="dv">21</span>)) <span class="sc">+</span></span>
+<span id="cb10-367"><a href="#cb10-367" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
+<span id="cb10-368"><a href="#cb10-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> <span class="st">"white"</span>)) <span class="sc">+</span></span>
+<span id="cb10-369"><a href="#cb10-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">5.5</span>)) <span class="sc">+</span></span>
+<span id="cb10-370"><a href="#cb10-370" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odds Ratio (log scale)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb10-371"><a href="#cb10-371" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparison 1: PTCy vs CNI+MTX/MMF"</span>,</span>
+<span id="cb10-372"><a href="#cb10-372" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Bayesian M1/M2 posterior summaries — post-Block-9"</span>,</span>
+<span id="cb10-373"><a href="#cb10-373" aria-hidden="true" tabindex="-1"></a>       <span class="at">shape =</span> <span class="cn">NULL</span>, <span class="at">colour =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb10-374"><a href="#cb10-374" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
+<span id="cb10-375"><a href="#cb10-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

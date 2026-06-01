@@ -14,13 +14,15 @@ post_c2_m2_nrm  <- tryCatch(load_post("post_c2_m2_nrm.rds"), error = function(e)
 post_c2_agvhd   <- load_post("post_c2_agvhd.rds")
 post_c2_cmv     <- load_post("post_c2_cmv.rds")
 post_c2_m2_cmv  <- load_post("post_c2_m2_cmv.rds")
+post_c2_rrm     <- tryCatch(load_post("post_c2_rrm.rds"), error = function(e) NULL)
+post_c2_bk      <- tryCatch(load_post("post_c2_bk.rds"), error = function(e) NULL)
 
 # C1 posteriors for cross-comparison
 post_m1 <- load_post("post_m1.rds")
 post_os <- load_post("post_os.rds")
 ```
 
-Comparison 2 evaluates PTCy against ATG-based GVHD prophylaxis — a more deeply T-cell–depleting comparator. This comparison uses 40 paired studies (82 clean arms) after excluding PTCy+ATG combination, mixed, and unpaired arms.
+Comparison 2 evaluates PTCy against ATG-based GVHD prophylaxis — a more deeply T-cell–depleting comparator. This comparison draws on paired studies after excluding PTCy+ATG combination, mixed, and unpaired arms.
 
 ## Overall Survival {#sec-c2-os}
 
@@ -41,23 +43,26 @@ tibble(
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   labs(x = "log-OR (PTCy vs ATG)", y = "Posterior density",
        title = "Overall Survival — Comparison 2",
-       subtitle = "k = 10, N = 10,624 · M1 OR 0.69 → M2 OR 0.78 (35% attenuation)") +
+       subtitle = "k = 10, N = 12,851 · M1 OR 0.81 → M2 OR 0.82 (minimal attenuation)") +
   theme_jama()
 ```
 
-**M1:** OR 0.69 (95% CrI 0.61–0.78), P(OR < 1) = 100%, τ = 0.56. Consistent OS advantage for PTCy over ATG.
+**M1:** OR 0.81 (95% CrI 0.74–0.90), P(OR < 1) = 100%, τ = 0.51. Consistent OS advantage for PTCy over ATG, though attenuated from the pre-Block-9 estimate (0.69).
 
-**M2:** OR 0.78 (95% CrI 0.68–0.90), 35% log-OR attenuation. Substantial residual benefit persists, paralleling C1.
+**M2:** OR 0.82 (95% CrI 0.71–0.94), minimal log-OR attenuation (~6%). Unlike the pre-Block-9 analysis (35% attenuation), steroid adjustment barely changes the estimate, suggesting that the OS benefit in C2 operates largely through non-GVHD pathways.
 
 ## Non-Relapse Mortality {#sec-c2-nrm}
 
-**M1:** OR 0.65 (95% CrI 0.43–0.97), P(OR < 1) = 98%, τ = 0.38. Larger point estimate than C1, but k = 5.
+**M1:** k reduced to 3 after arm reclassification (from 5 pre-Block-9). The frequentist estimate is OR 0.63 (95% CI 0.30–1.34), I² = 0%. With only 3 studies, the CrI is too wide for reliable inference. M2 steroid-adjusted models were not fit due to insufficient k.
 
-**M2:** OR 0.76 (95% CrI 0.48–1.16), 38% attenuation. CrI crosses null — consistent with substantial steroid mediation, mirroring C1.
+::: {.callout-warning}
+## C2 NRM Below Modelling Threshold
+The pre-Block-9 C2 NRM (k = 5, OR 0.65 [0.43–0.97]) was nominally significant. Arm reclassification corrections reduced k to 3, and the estimate should now be considered hypothesis-generating only.
+:::
 
 ## Acute GVHD Grade II–IV {#sec-c2-agvhd}
 
-**M1:** OR 0.59 (95% CrI 0.42–0.84), P(OR < 1) = 99.8%, τ = 0.27. Concordant with C1 (OR 0.63), confirming aGVHD benefit is comparator-independent.
+**M1:** OR 0.58 (95% CrI 0.44–0.77), P(OR < 1) > 99%, τ = 0.55, k = 9. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.
 
 ## CMV Reactivation — The Direction Reversal {#sec-c2-cmv}
 
@@ -82,13 +87,13 @@ tibble(
   scale_colour_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
   labs(x = "log-OR (PTCy vs comparator)", y = "Posterior density",
        title = "CMV Reactivation — Direction Reversal Across Comparisons",
-       subtitle = "C1 OR 1.41 [1.20\u20131.65] vs C2 OR 0.77 [0.60\u20130.99]") +
+       subtitle = "C1 OR 1.26 [1.07\u20131.47] vs C2 OR 0.92 [0.73\u20131.15]") +
   theme_jama()
 ```
 
 ::: {.callout-note}
-## CMV Across Comparisons — Updated
-In the pre-Block-9 analysis, a direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77). With the expanded post-Block-9 corpus, C1 CMV remains harmful but C2 CMV has shifted toward null. The T-cell depletion depth hierarchy remains plausible, but the evidence for a qualitative reversal is now weaker. See the [Discussion](discussion.qmd) for details.
+## CMV: From Direction Reversal to Depletion Gradient
+In the pre-Block-9 analysis, a qualitative direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77 [0.60–0.99]). With the expanded post-Block-9 corpus (C1 k = 22, C2 k = 13), C1 CMV remains harmful (OR 1.26 [1.07–1.47]) but C2 CMV has shifted to near-null (OR 0.92 [0.73–1.15]). The evidence now supports a **depletion gradient** (C1 harmful → C2 near-null → C2-sensitivity null) rather than a binary reversal. See [Discussion](discussion.qmd) for the full three-point gradient interpretation.
 :::
 
 ## BSI Descriptive Supplement {#sec-c2-bsi}
@@ -137,22 +142,65 @@ ggplot(bsi_all, aes(x = or, y = study)) +
 
 MH OR 2.03 (95% CI 1.33–3.09), but driven by definition mismatch (any culture vs ICU/fatal only), timepoint mismatch (D+100 vs 1 year), and donor-type confound (Meyer 2025: 54% haplo vs 100% MUD). Hypothesis-generating only.
 
+## Relapse-Related Mortality {#sec-c2-rrm}
+
+```{r}
+#| label: fig-c2-rrm
+#| fig-cap: "Posterior density for the PTCy effect on relapse-related mortality (C2)."
+#| fig-height: 4
+
+
+if (!is.null(post_c2_rrm)) {
+  tibble(log_or = post_c2_rrm$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy vs ATG)", y = "Posterior density",
+         title = "Relapse-Related Mortality — Comparison 2",
+         subtitle = "k = 10, N = 17,182 · OR 0.79 [0.69\u20130.89]") +
+    theme_jama()
+}
+```
+
+**M1:** OR 0.79 (95% CrI 0.69–0.89), P(OR < 1) > 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.84) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.
+
+## BK Virus Reactivation {#sec-c2-bk}
+
+```{r}
+#| label: fig-c2-bk
+#| fig-cap: "Posterior density for the PTCy effect on BK virus reactivation (C2)."
+#| fig-height: 4
+
+
+if (!is.null(post_c2_bk)) {
+  tibble(log_or = post_c2_bk$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy vs ATG)", y = "Posterior density",
+         title = "BK Virus Reactivation — Comparison 2",
+         subtitle = "k = 3, N = 313 · OR 2.44 [1.40\u20134.26]") +
+    theme_jama()
+}
+```
+
+**M1:** OR 2.44 (95% CrI 1.40–4.26), P(OR > 1) > 99%, k = 3. Consistent with C1 (OR 2.48), confirming elevated BK virus risk is comparator-independent. This supports the dual-mechanism hypothesis (urothelial toxicity + T-cell depletion), since ATG provides comparable T-cell depletion but not urothelial damage.
+
 ## Cross-Comparison Summary {#sec-c2-summary}
 
 ```{r}
 #| label: fig-c2-combined
-#| fig-cap: "Combined forest plot comparing Comparison 1 (left) and Comparison 2 (right). The CMV direction reversal is the most striking cross-comparison finding."
-#| fig-height: 7
+#| fig-cap: "Combined forest plot comparing Comparison 1 (left) and Comparison 2 (right). Post-Block-9 update with expanded outcomes including RRM and BK virus."
+#| fig-height: 9
 #| fig-width: 11
 
-# Helper to find the ptcy_binary column in a posterior (handles both old mi() and new complete-case naming)
 get_ptcy_col <- function(post) {
   if ("b_ptcy_binary" %in% names(post)) return("b_ptcy_binary")
   if ("b_eventsn_ptcy_binary" %in% names(post)) return("b_eventsn_ptcy_binary")
   stop("Cannot find ptcy_binary column in posterior")
 }
 
-all_pd <- do.call(rbind, list(
+c1_list <- list(
   or_summary(post_os,    "b_ptcy_binary", "OS", "C1: PTCy vs CNI+MTX"),
   or_summary(load_post("post_m2_os.rds"), get_ptcy_col(load_post("post_m2_os.rds")), "OS", "C1: PTCy vs CNI+MTX", "M2"),
   or_summary(load_post("post_nrm.rds"),    "b_ptcy_binary", "NRM", "C1: PTCy vs CNI+MTX"),
@@ -161,22 +209,38 @@ all_pd <- do.call(rbind, list(
   or_summary(post_m1, "b_ptcy_binary", "CMV", "C1: PTCy vs CNI+MTX"),
   or_summary(load_post("post_m2.rds"), get_ptcy_col(load_post("post_m2.rds")), "CMV", "C1: PTCy vs CNI+MTX", "M2"),
   or_summary(load_post("post_bsi.rds"),   "b_ptcy_binary", "BSI", "C1: PTCy vs CNI+MTX"),
-  or_summary(load_post("post_ifi.rds"),   "b_ptcy_binary", "IFI", "C1: PTCy vs CNI+MTX"),
+  or_summary(load_post("post_ifi.rds"),   "b_ptcy_binary", "IFI", "C1: PTCy vs CNI+MTX")
+)
+# Add RRM and BK for C1 if available
+post_c1_rrm_tmp <- tryCatch(load_post("post_c1_rrm.rds"), error = function(e) NULL)
+post_c1_bk_tmp  <- tryCatch(load_post("post_c1_bk.rds"), error = function(e) NULL)
+if (!is.null(post_c1_rrm_tmp)) c1_list <- c(c1_list, list(or_summary(post_c1_rrm_tmp, "b_ptcy_binary", "RRM", "C1: PTCy vs CNI+MTX")))
+if (!is.null(post_c1_bk_tmp))  c1_list <- c(c1_list, list(or_summary(post_c1_bk_tmp,  "b_ptcy_binary", "BK Virus", "C1: PTCy vs CNI+MTX")))
+
+c2_list <- list(
   or_summary(post_c2_os,     "b_ptcy_binary", "OS", "C2: PTCy vs ATG"),
   or_summary(load_post("post_c2_m2_os.rds"), get_ptcy_col(load_post("post_c2_m2_os.rds")), "OS", "C2: PTCy vs ATG", "M2"),
   or_summary(post_c2_nrm,    "b_ptcy_binary", "NRM", "C2: PTCy vs ATG"),
   or_summary(post_c2_agvhd,  "b_ptcy_binary", "aGVHD II\u2013IV", "C2: PTCy vs ATG"),
   or_summary(post_c2_cmv,    "b_ptcy_binary", "CMV", "C2: PTCy vs ATG"),
   or_summary(load_post("post_c2_m2_cmv.rds"), get_ptcy_col(load_post("post_c2_m2_cmv.rds")), "CMV", "C2: PTCy vs ATG", "M2")
-)) |>
+)
+if (!is.null(post_c2_rrm)) c2_list <- c(c2_list, list(or_summary(post_c2_rrm, "b_ptcy_binary", "RRM", "C2: PTCy vs ATG")))
+if (!is.null(post_c2_bk))  c2_list <- c(c2_list, list(or_summary(post_c2_bk,  "b_ptcy_binary", "BK Virus", "C2: PTCy vs ATG")))
+
+outcome_levels <- rev(c("OS", "NRM", "RRM", "aGVHD II\u2013IV", "CMV", "BK Virus", "BSI", "IFI"))
+
+all_pd <- do.call(rbind, c(c1_list, c2_list)) |>
   as_tibble() |>
   mutate(
-    outcome = factor(outcome, levels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))),
+    outcome = factor(outcome, levels = outcome_levels),
     comparison = factor(comparison, levels = c("C1: PTCy vs CNI+MTX", "C2: PTCy vs ATG")),
     label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi),
     y_num = as.numeric(outcome),
     y_pos = y_num + ifelse(model == "M2", -0.15, 0.15)
   )
+
+n_outcomes <- length(unique(all_pd$outcome))
 
 ggplot(all_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = model)) +
   geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
@@ -184,8 +248,8 @@ ggplot(all_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = mode
   geom_text(aes(x = hi, label = label), hjust = -0.05, size = 2.5,
             colour = jama_black, show.legend = FALSE, nudge_y = 0.25) +
   scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2, 3)) +
-  scale_y_continuous(breaks = 1:6,
-                     labels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))) +
+  scale_y_continuous(breaks = seq_len(n_outcomes),
+                     labels = outcome_levels[seq_len(n_outcomes)]) +
   scale_shape_manual(values = c("M1" = 16, "M2" = 21)) +
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   scale_fill_manual(values = c("M1" = jama_navy, "M2" = "white")) +
@@ -193,6 +257,7 @@ ggplot(all_pd, aes(x = or, y = y_pos, shape = model, fill = model, colour = mode
   coord_cartesian(xlim = c(0.25, 5.5)) +
   labs(x = "Odds Ratio (log scale)", y = NULL,
        title = "Bayesian Meta-Analysis: PTCy Effect by Comparator",
+       subtitle = "Post-Block-9 update — includes RRM and BK virus",
        shape = NULL, colour = NULL, fill = NULL) +
   theme_jama()
 ```

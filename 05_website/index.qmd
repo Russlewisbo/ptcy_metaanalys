@@ -27,6 +27,12 @@ post_c2_agvhd  <- load_post("post_c2_agvhd.rds")
 post_c2_cmv    <- load_post("post_c2_cmv.rds")
 post_c2_m2_cmv <- load_post("post_c2_m2_cmv.rds")
 
+# New outcomes: RRM, BK virus
+post_rrm       <- tryCatch(load_post("post_c1_rrm.rds"), error = function(e) NULL)
+post_c2_rrm    <- tryCatch(load_post("post_c2_rrm.rds"), error = function(e) NULL)
+post_bk        <- tryCatch(load_post("post_c1_bk.rds"), error = function(e) NULL)
+post_c2_bk     <- tryCatch(load_post("post_c2_bk.rds"), error = function(e) NULL)
+
 # Dynamically compute OR summaries
 or_os      <- or_summary(post_os,    "b_ptcy_binary", "OS", "C1: PTCy vs CNI+MTX")
 or_m2_os   <- or_summary(post_m2_os, "b_ptcy_binary", "OS", "C1: PTCy vs CNI+MTX", "M2")
@@ -44,6 +50,11 @@ or_c2_nrm    <- or_summary(post_c2_nrm,    "b_ptcy_binary", "NRM", "C2: PTCy vs 
 or_c2_agvhd  <- or_summary(post_c2_agvhd,  "b_ptcy_binary", "aGVHD II\u2013IV", "C2: PTCy vs ATG")
 or_c2_cmv    <- or_summary(post_c2_cmv,    "b_ptcy_binary", "CMV", "C2: PTCy vs ATG")
 or_c2_m2_cmv <- or_summary(post_c2_m2_cmv, "b_ptcy_binary", "CMV", "C2: PTCy vs ATG", "M2")
+
+or_rrm       <- if (!is.null(post_rrm))    or_summary(post_rrm,    "b_ptcy_binary", "RRM", "C1: PTCy vs CNI+MTX") else list(or = NA, lo = NA, hi = NA)
+or_c2_rrm    <- if (!is.null(post_c2_rrm)) or_summary(post_c2_rrm, "b_ptcy_binary", "RRM", "C2: PTCy vs ATG")     else list(or = NA, lo = NA, hi = NA)
+or_bk        <- if (!is.null(post_bk))     or_summary(post_bk,     "b_ptcy_binary", "BK Virus", "C1: PTCy vs CNI+MTX") else list(or = NA, lo = NA, hi = NA)
+or_c2_bk     <- if (!is.null(post_c2_bk))  or_summary(post_c2_bk,  "b_ptcy_binary", "BK Virus", "C2: PTCy vs ATG")     else list(or = NA, lo = NA, hi = NA)
 
 # Load Table2 for k/N values
 t2_file <- file.path(model_dir, "Table2_post_block9.csv")
@@ -66,9 +77,9 @@ n_rcts    <- sum(studies_df$study_design == "RCT", na.rm = TRUE)
 
 **Methods.** We conducted a Bayesian random-effects meta-analysis of `r n_studies` studies (`r n_rcts` RCTs) comparing PTCy to (1) CNI+MTX/MMF-based regimens (Comparison 1) and (2) ATG-based regimens (Comparison 2). Primary outcomes included overall survival (OS), non-relapse mortality (NRM), acute GVHD grade II–IV, CMV reactivation, bloodstream infection (BSI), and invasive fungal infection (IFI). Steroid-mediation models (M2) tested whether GVHD-driven steroid exposure confounded observed effects.
 
-**Results.** PTCy was associated with improved OS (C1: OR `r fmt_or(or_os$or, or_os$lo, or_os$hi)`; C2: OR `r fmt_or(or_c2_os$or, or_c2_os$lo, or_c2_os$hi)`) and reduced aGVHD (C1: OR `r round(or_agvhd$or, 2)`; C2: OR `r round(or_c2_agvhd$or, 2)`) across both comparators. NRM benefit was substantially or completely mediated by steroid exposure in both comparisons. CMV reactivation showed a direction reversal: increased with PTCy vs CNI+MTX/MMF (OR `r fmt_or(or_cmv$or, or_cmv$lo, or_cmv$hi)`) but decreased vs ATG (OR `r fmt_or(or_c2_cmv$or, or_c2_cmv$lo, or_c2_cmv$hi)`), consistent with a T-cell depletion depth hierarchy. BSI risk was elevated in both comparisons (C1: OR `r round(or_bsi$or, 2)`; C2: MH OR 2.03).
+**Results.** PTCy was associated with improved OS (C1: OR `r fmt_or(or_os$or, or_os$lo, or_os$hi)`; C2: OR `r fmt_or(or_c2_os$or, or_c2_os$lo, or_c2_os$hi)`), reduced aGVHD (C1: OR `r round(or_agvhd$or, 2)`; C2: OR `r round(or_c2_agvhd$or, 2)`), and reduced relapse-related mortality (C1: OR `r round(or_rrm$or, 2)`; C2: OR `r round(or_c2_rrm$or, 2)`) across both comparators. CMV reactivation was increased vs CNI+MTX/MMF (OR `r fmt_or(or_cmv$or, or_cmv$lo, or_cmv$hi)`) but near-null vs ATG (OR `r fmt_or(or_c2_cmv$or, or_c2_cmv$lo, or_c2_cmv$hi)`), consistent with a T-cell depletion depth gradient. BK virus (C1: OR `r round(or_bk$or, 2)`; C2: OR `r round(or_c2_bk$or, 2)`) and BSI (C1: OR `r round(or_bsi$or, 2)`) were elevated regardless of comparator. Within-PTCy regimen variants (C3, k = 4–7) showed no significant differences across outcomes.
 
-**Conclusions.** PTCy provides consistent survival and GVHD advantages regardless of comparator. The CMV direction reversal establishes that infection risk is determined by the relative depth of T-cell depletion, not by any intrinsic PTCy property. NRM benefit is steroid-mediated. GRADE certainty is LOW for OS and aGVHD, VERY LOW for other outcomes.
+**Conclusions.** PTCy provides consistent survival, GVHD, and anti-relapse advantages regardless of comparator. CMV risk follows a T-cell depletion depth gradient rather than reflecting a PTCy-specific property. BK virus and BSI elevations are comparator-independent. GRADE certainty is LOW for OS and aGVHD, VERY LOW for other outcomes.
 :::
 
 ---
@@ -77,24 +88,35 @@ n_rcts    <- sum(studies_df$study_design == "RCT", na.rm = TRUE)
 
 ```{r}
 #| label: fig-exec-summary
-#| fig-cap: "Bayesian meta-analysis — PTCy effect across outcomes and comparators. Filled circles represent direct-effect models (M1); open circles represent steroid-adjusted models (M2). The dashed vertical line marks OR = 1 (no effect). OR < 1 favours PTCy for all outcomes."
-#| fig-height: 7
+#| fig-cap: "Bayesian meta-analysis — PTCy effect across outcomes and comparators. Filled circles represent direct-effect models (M1); open circles represent steroid-adjusted models (M2). The dashed vertical line marks OR = 1 (no effect). OR < 1 favours PTCy for mortality, GVHD, and IFI outcomes."
+#| fig-height: 8
 #| fig-width: 10
 
-pd <- do.call(rbind, list(
+exec_list <- list(
   or_os, or_m2_os, or_nrm, or_m2_nrm, or_agvhd,
   or_cmv, or_m2_cmv, or_bsi, or_ifi,
   or_c2_os, or_c2_m2_os, or_c2_nrm, or_c2_agvhd,
   or_c2_cmv, or_c2_m2_cmv
-)) |>
+)
+# Add new outcomes if available
+if (!is.null(post_rrm))    exec_list <- c(exec_list, list(or_rrm))
+if (!is.null(post_c2_rrm)) exec_list <- c(exec_list, list(or_c2_rrm))
+if (!is.null(post_bk))     exec_list <- c(exec_list, list(or_bk))
+if (!is.null(post_c2_bk))  exec_list <- c(exec_list, list(or_c2_bk))
+
+outcome_levels <- rev(c("OS", "NRM", "RRM", "aGVHD II\u2013IV", "CMV", "BK Virus", "BSI", "IFI"))
+
+pd <- do.call(rbind, exec_list) |>
   as_tibble() |>
   mutate(
-    outcome = factor(outcome, levels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))),
+    outcome = factor(outcome, levels = outcome_levels),
     comparison = factor(comparison, levels = c("C1: PTCy vs CNI+MTX", "C2: PTCy vs ATG")),
     label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi),
     y_num = as.numeric(outcome),
     y_pos = y_num + ifelse(model == "M2", -0.15, 0.15)
   )
+
+n_outcomes <- length(unique(pd$outcome))
 
 ggplot(pd, aes(x = or, y = y_pos, shape = model, fill = model)) +
   geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey, linewidth = 0.4) +
@@ -103,7 +125,7 @@ ggplot(pd, aes(x = or, y = y_pos, shape = model, fill = model)) +
   geom_text(aes(x = hi, label = label), hjust = -0.05, size = 2.5,
             colour = jama_black, show.legend = FALSE, nudge_y = 0.25) +
   scale_x_log10(breaks = c(0.3, 0.5, 0.7, 1, 1.5, 2, 3)) +
-  scale_y_continuous(breaks = 1:6, labels = rev(c("OS", "NRM", "aGVHD II\u2013IV", "CMV", "BSI", "IFI"))) +
+  scale_y_continuous(breaks = seq_len(n_outcomes), labels = outcome_levels[seq_len(n_outcomes)]) +
   scale_shape_manual(values = c("M1" = 16, "M2" = 21), labels = c("M1 (Direct)", "M2 (Steroid-adjusted)")) +
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel),
                       labels = c("M1 (Direct)", "M2 (Steroid-adjusted)")) +
@@ -113,7 +135,7 @@ ggplot(pd, aes(x = or, y = y_pos, shape = model, fill = model)) +
   coord_cartesian(xlim = c(0.25, 5.5)) +
   labs(x = "Odds Ratio (log scale)", y = NULL,
        shape = NULL, colour = NULL, fill = NULL,
-       caption = "Bayesian random-effects models (binomial family, brms). BSI C2 estimate is Mantel-Haenszel (not shown).") +
+       caption = "Bayesian random-effects models (binomial family, brms). Post-Block-9 update.") +
   theme_jama(base_size = 11) +
   theme(legend.position = "bottom")
 ```
@@ -121,19 +143,23 @@ ggplot(pd, aes(x = or, y = y_pos, shape = model, fill = model)) +
 ### Key Findings
 
 ::: {.key-finding}
-**1. Survival and GVHD benefit.** PTCy was associated with reduced overall mortality and acute GVHD in both Comparison 1 (vs CNI+MTX/MMF) and Comparison 2 (vs ATG). The effect was consistent in magnitude and direction across comparators.
+**1. Survival and GVHD benefit.** PTCy was associated with reduced overall mortality (C1 OR `r round(or_os$or, 2)`; C2 OR `r round(or_c2_os$or, 2)`) and acute GVHD (C1 OR `r round(or_agvhd$or, 2)`; C2 OR `r round(or_c2_agvhd$or, 2)`) in both comparisons. The effects were consistent in direction across comparators.
 :::
 
 ::: {.key-finding}
-**2. NRM is steroid-mediated.** The apparent NRM benefit was substantially or completely attenuated after adjusting for GVHD-driven steroid exposure in both comparisons, indicating that PTCy reduces NRM indirectly — through fewer GVHD episodes and less corticosteroid toxicity.
+**2. Anti-relapse benefit preserved.** Relapse-related mortality was reduced in both comparisons (C1 OR `r round(or_rrm$or, 2)`; C2 OR `r round(or_c2_rrm$or, 2)`), with no steroid mediation. This supports preserved graft-versus-leukaemia activity and helps explain the residual OS benefit after steroid adjustment.
 :::
 
 ::: {.key-finding}
-**3. CMV direction reversal.** PTCy increased CMV reactivation vs CNI+MTX/MMF (OR `r round(or_cmv$or, 2)`) but *decreased* it vs ATG (OR `r round(or_c2_cmv$or, 2)`). This reversal confirms that CMV risk is ordered by the depth of T-cell depletion (CNI < PTCy < ATG), not by any intrinsic PTCy property.
+**3. CMV depletion gradient.** PTCy increased CMV reactivation vs CNI+MTX/MMF (OR `r round(or_cmv$or, 2)`) but showed a near-null effect vs ATG (OR `r round(or_c2_cmv$or, 2)`). Rather than a binary reversal, the evidence now supports a T-cell depletion depth gradient: CNI < PTCy ≈ ATG.
 :::
 
 ::: {.key-finding}
-**4. BSI elevated in both comparisons.** Bloodstream infection risk was approximately doubled with PTCy regardless of comparator (C1: OR `r round(or_bsi$or, 2)`; C2: MH OR 2.03), though the C2 estimate is based on only 3 studies with heterogeneous definitions.
+**4. BK virus and BSI elevated.** BK virus reactivation (C1 OR `r round(or_bk$or, 2)`; C2 OR `r round(or_c2_bk$or, 2)`) and BSI (C1 OR `r round(or_bsi$or, 2)`) were elevated regardless of comparator. BK virus has a dual mechanism (urothelial toxicity + T-cell depletion).
+:::
+
+::: {.key-finding}
+**5. Within-PTCy variants equivalent.** Comparison 3 found no significant differences across PTCy regimen variants for OS, NRM, aGVHD, or cGVHD, suggesting that the PTCy component dominates the regimen effect.
 :::
 
 ### Summary of Evidence
@@ -151,45 +177,41 @@ get_k <- function(slug, mdl = "m1") {
   list(k = NA, n = NA)
 }
 
-summary_tbl <- tibble::tribble(
-  ~Outcome, ~Comparison,
-  "OS",            "C1",
-  "OS",            "C2",
-  "NRM",           "C1",
-  "NRM",           "C2",
-  "aGVHD II\u2013IV", "C1",
-  "aGVHD II\u2013IV", "C2",
-  "CMV",           "C1",
-  "CMV",           "C2",
-  "BSI",           "C1",
-  "IFI",           "C1"
-) |>
-  mutate(
-    `OR [95% CrI]` = c(
-      fmt_or(or_os$or, or_os$lo, or_os$hi),
-      fmt_or(or_c2_os$or, or_c2_os$lo, or_c2_os$hi),
-      fmt_or(or_nrm$or, or_nrm$lo, or_nrm$hi),
-      fmt_or(or_c2_nrm$or, or_c2_nrm$lo, or_c2_nrm$hi),
-      fmt_or(or_agvhd$or, or_agvhd$lo, or_agvhd$hi),
-      fmt_or(or_c2_agvhd$or, or_c2_agvhd$lo, or_c2_agvhd$hi),
-      fmt_or(or_cmv$or, or_cmv$lo, or_cmv$hi),
-      fmt_or(or_c2_cmv$or, or_c2_cmv$lo, or_c2_cmv$hi),
-      fmt_or(or_bsi$or, or_bsi$lo, or_bsi$hi),
-      fmt_or(or_ifi$or, or_ifi$lo, or_ifi$hi)
-    ),
-    `P(directional)` = c(
-      sprintf("P(<1) = %.0f%%", or_os$p_dir * 100),
-      sprintf("P(<1) = %.0f%%", or_c2_os$p_dir * 100),
-      sprintf("P(<1) = %.0f%%", or_nrm$p_dir * 100),
-      sprintf("P(<1) = %.0f%%", or_c2_nrm$p_dir * 100),
-      sprintf("P(<1) = %.0f%%", or_agvhd$p_dir * 100),
-      sprintf("P(<1) = %.0f%%", or_c2_agvhd$p_dir * 100),
-      sprintf("P(>1) = %.0f%%", or_cmv$p_dir * 100),
-      sprintf("P(<1) = %.0f%%", or_c2_cmv$p_dir * 100),
-      sprintf("P(>1) = %.0f%%", or_bsi$p_dir * 100),
-      sprintf("P(<1) = %.0f%%", or_ifi$p_dir * 100)
-    )
-  )
+summary_rows <- list(
+  list("OS",            "C1", fmt_or(or_os$or, or_os$lo, or_os$hi),               sprintf("P(<1) = %.0f%%", or_os$p_dir * 100)),
+  list("OS",            "C2", fmt_or(or_c2_os$or, or_c2_os$lo, or_c2_os$hi),       sprintf("P(<1) = %.0f%%", or_c2_os$p_dir * 100)),
+  list("NRM",           "C1", fmt_or(or_nrm$or, or_nrm$lo, or_nrm$hi),             sprintf("P(<1) = %.0f%%", or_nrm$p_dir * 100)),
+  list("aGVHD II\u2013IV", "C1", fmt_or(or_agvhd$or, or_agvhd$lo, or_agvhd$hi),   sprintf("P(<1) = %.0f%%", or_agvhd$p_dir * 100)),
+  list("aGVHD II\u2013IV", "C2", fmt_or(or_c2_agvhd$or, or_c2_agvhd$lo, or_c2_agvhd$hi), sprintf("P(<1) = %.0f%%", or_c2_agvhd$p_dir * 100)),
+  list("CMV",           "C1", fmt_or(or_cmv$or, or_cmv$lo, or_cmv$hi),             sprintf("P(>1) = %.0f%%", or_cmv$p_dir * 100)),
+  list("CMV",           "C2", fmt_or(or_c2_cmv$or, or_c2_cmv$lo, or_c2_cmv$hi),   sprintf("P(<1) = %.0f%%", or_c2_cmv$p_dir * 100)),
+  list("BSI",           "C1", fmt_or(or_bsi$or, or_bsi$lo, or_bsi$hi),             sprintf("P(>1) = %.0f%%", or_bsi$p_dir * 100)),
+  list("IFI",           "C1", fmt_or(or_ifi$or, or_ifi$lo, or_ifi$hi),             sprintf("P(<1) = %.0f%%", or_ifi$p_dir * 100))
+)
+if (!is.null(post_rrm)) {
+  summary_rows <- c(summary_rows, list(
+    list("RRM", "C1", fmt_or(or_rrm$or, or_rrm$lo, or_rrm$hi), sprintf("P(<1) = %.0f%%", or_rrm$p_dir * 100))
+  ))
+}
+if (!is.null(post_c2_rrm)) {
+  summary_rows <- c(summary_rows, list(
+    list("RRM", "C2", fmt_or(or_c2_rrm$or, or_c2_rrm$lo, or_c2_rrm$hi), sprintf("P(<1) = %.0f%%", or_c2_rrm$p_dir * 100))
+  ))
+}
+if (!is.null(post_bk)) {
+  summary_rows <- c(summary_rows, list(
+    list("BK Virus", "C1", fmt_or(or_bk$or, or_bk$lo, or_bk$hi), sprintf("P(>1) = %.0f%%", or_bk$p_dir * 100))
+  ))
+}
+if (!is.null(post_c2_bk)) {
+  summary_rows <- c(summary_rows, list(
+    list("BK Virus", "C2", fmt_or(or_c2_bk$or, or_c2_bk$lo, or_c2_bk$hi), sprintf("P(>1) = %.0f%%", or_c2_bk$p_dir * 100))
+  ))
+}
+
+summary_tbl <- do.call(rbind, lapply(summary_rows, function(r) {
+  tibble(Outcome = r[[1]], Comparison = r[[2]], `OR [95% CrI]` = r[[3]], `P(directional)` = r[[4]])
+}))
 
 summary_tbl |>
   kable(align = c("l", "c", "c", "c")) |>
@@ -198,11 +220,13 @@ summary_tbl |>
 
 ### Mechanistic Framework
 
-The findings resolve into a unified framework built on two separable consequences of PTCy:
+The findings resolve into a unified framework built on three separable consequences of PTCy:
 
-1. **GVHD suppression pathway** (intended): PTCy → reduced aGVHD → less steroid exposure → lower NRM → improved OS. The NRM benefit is fully steroid-mediated; the OS benefit is only partially mediated, suggesting an additional direct contribution.
+1. **GVHD suppression pathway** (intended): PTCy → reduced aGVHD → less steroid exposure → lower NRM → improved OS. The OS benefit is partially mediated by steroid reduction, with a substantial residual component attributable to anti-relapse activity (RRM benefit).
 
-2. **T-cell lymphodepletion pathway** (unintended): PTCy depletes CMV-specific and bacterial-specific T cells during engraftment. The CMV direction reversal across comparisons confirms this is a depth-of-depletion effect rather than a PTCy-specific one.
+2. **GVL preservation pathway** (intended): PTCy → reduced relapse-related mortality (C1 OR 0.84; C2 OR 0.79), with no steroid mediation. This is the first meta-analytic demonstration of the GVL preservation benefit and explains the residual OS advantage after steroid adjustment.
+
+3. **T-cell lymphodepletion pathway** (unintended): PTCy depletes CMV-specific and bacterial-specific T cells during engraftment. The CMV depletion gradient across comparisons (CNI < PTCy ≈ ATG) confirms this is a depth-of-depletion effect. BK virus reactivation has a dual mechanism (urothelial toxicity + T-cell depletion), explaining why its effect size (OR ~2.5) exceeds CMV and BSI.
 
 ```{mermaid}
 %%| fig-width: 8
@@ -212,22 +236,30 @@ The findings resolve into a unified framework built on two separable consequence
 flowchart LR
     PTCy --> A["↓ Alloreactive\nT cells"]
     PTCy --> B["↓ Pathogen-specific\nT cells"]
+    PTCy --> U["Urothelial\ntoxicity"]
 
-    A --> C["↓ aGVHD\nOR 0.59–0.67"]
+    A --> C["↓ aGVHD\nOR 0.58–0.67"]
+    A --> R["↓ RRM\nOR 0.79–0.84"]
     C --> D["↓ Steroid\nexposure"]
-    D --> E["↓ NRM\n(fully mediated)"]
+    D --> E["↓ NRM\n(mediation uncertain)"]
     D --> F["↓ OS\n(partially mediated)"]
+    R --> F
 
-    B --> G["↑ CMV vs CNI\nOR ~1.4"]
-    B --> H["↓ CMV vs ATG\nOR ~0.8"]
-    B --> I["↑ BSI\nOR ~2.0–2.4"]
+    B --> G["↑ CMV vs CNI\nOR ~1.3"]
+    B --> H["≈ CMV vs ATG\nOR ~0.9"]
+    B --> I["↑ BSI\nOR ~1.9"]
+    B --> J["↑ BK Virus"]
+    U --> J["↑ BK Virus\nOR ~2.5"]
 
     style A fill:#a3c1d4,stroke:#2b5c8a,color:#1a2a3a
     style B fill:#d4d8dc,stroke:#6b7d8d,color:#1a2a3a
+    style U fill:#d4d8dc,stroke:#6b7d8d,color:#1a2a3a
     style C fill:#a3c1d4,stroke:#2b5c8a,color:#1a2a3a
+    style R fill:#a3c1d4,stroke:#2b5c8a,color:#1a2a3a
     style G fill:#d4d8dc,stroke:#6b7d8d,color:#1a2a3a
     style H fill:#d4d8dc,stroke:#6b7d8d,color:#1a2a3a
     style I fill:#d4d8dc,stroke:#6b7d8d,color:#1a2a3a
+    style J fill:#d4d8dc,stroke:#6b7d8d,color:#1a2a3a
 ```
 
 ---
