@@ -1,0 +1,7 @@
+study_id,comparison,category,subtype,timepoint_used,tp_early,ptcy_arm_id,comp_arm_id,ptcy_n,comp_n,ptcy_e,comp_e,ptcy_steroid_pct,comp_steroid_pct
+397,3,relapse_related_mortality,RRM_any_cause_relapse,D+365_1yr,0,444,445,44,22,0,1,18.2,18.2
+437,3,relapse_related_mortality,RRM_any_cause_relapse,D+365_1yr,0,490,489,17,16,2,1,11.8,31.3
+146,3,relapse_related_mortality,RRM_any_cause_relapse,end_of_followup,1,167,168,148,237,20,32,22,30
+418,3,relapse_related_mortality,RRM_any_cause_relapse,end_of_followup,1,462,463,33,25,4,6,18,17
+425,3,relapse_related_mortality,RRM_any_cause_relapse,end_of_followup,1,474,473,23,5,5,1,0,NA
+462,3,relapse_related_mortality,RRM_any_cause_relapse,end_of_followup,1,520,521,61,61,4,9,11.5,39.3

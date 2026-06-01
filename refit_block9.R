@@ -1,22 +1,23 @@
 # ---------------------------------------------------------------------------
-# PTCy meta-analysis — Block 9 refit script
+# PTCy meta-analysis — Block 9 + v1.3 refit script
 #
-# Refits all Bayesian random-effects models on the post-Block-9 corpus
-# (251 studies / 525 arms / 3604 outcomes / 14 RCTs).
+# Refits all Bayesian random-effects models on the post-v1.3 corpus
+# (251 studies / 525 arms / 3901 outcomes / 14 RCTs / 162 RRM rows / 201 BK rows).
 #
-# Assumes the 6 tidy CSVs in 02_extraction/ have already been refreshed from
-# PTCy_MA_extraction_template_v1.2_post_block9.xlsx (done by the Python
-# consolidator on 2026-05-29; backups of the pre-Block-9 CSVs are in
+# Assumes the 6 tidy CSVs in 02_extraction/ have been refreshed from
+# PTCy_MA_extraction_template_v1.3_fixed.xlsx (done by the Python consolidator
+# on 2026-05-30; backups of the pre-Block-9 CSVs are in
 # 02_extraction/_backup_pre_block9/).
 #
 # Output: 03_models/post_block9/*.rds + Table2_post_block9.csv
+#         (now includes c1_rrm / c2_rrm / c3_rrm and c1_bk / c2_bk)
 #
 # Usage:
 #   setwd("/Users/russelllewis/Desktop/ptcy_metaanalys")
 #   source("refit_block9.R")
 #
-# Approx runtime on M-series Mac: ~2–3 hours for all 16 model fits
-# (4 chains × 3000 post-warmup × 16 models).
+# Approx runtime on M-series Mac: ~3–4 hours for all 21 model fits
+# (4 chains × 3000 post-warmup × 21 models, of which 16 = M1 and 5 = M2_steroid).
 # ---------------------------------------------------------------------------
 
 suppressPackageStartupMessages({
@@ -207,7 +208,19 @@ specs <- list(
   list(slug="c3_agvhd",    cat="aGVHD",                        sub="grade_II_IV",
        tp="D+100",       fb=c("D+180"),                       cmp=3, m2=FALSE),
   list(slug="c3_cgvhd",    cat="cGVHD",                        sub="moderate_severe_NIH",
-       tp="D+365_1yr",   fb=c("D+730_2yr"),                   cmp=3, m2=FALSE)
+       tp="D+365_1yr",   fb=c("D+730_2yr"),                   cmp=3, m2=FALSE),
+
+  # v1.3 backfill — RRM (new category) and BK / hemorrhagic cystitis
+  list(slug="c1_rrm",      cat="relapse_related_mortality",    sub="RRM_any_cause_relapse",
+       tp="D+365_1yr",   fb=c("D+730_2yr","end_of_followup"), cmp=1, m2=TRUE),
+  list(slug="c2_rrm",      cat="relapse_related_mortality",    sub="RRM_any_cause_relapse",
+       tp="D+365_1yr",   fb=c("D+730_2yr","end_of_followup"), cmp=2, m2=FALSE),
+  list(slug="c3_rrm",      cat="relapse_related_mortality",    sub="RRM_any_cause_relapse",
+       tp="D+365_1yr",   fb=c("D+730_2yr","end_of_followup"), cmp=3, m2=FALSE),
+  list(slug="c1_bk",       cat="other_infection",              sub="BK_hemorrhagic_cystitis",
+       tp="D+100",       fb=c("D+180","D+365_1yr"),           cmp=1, m2=FALSE),
+  list(slug="c2_bk",       cat="other_infection",              sub="BK_hemorrhagic_cystitis",
+       tp="D+100",       fb=c("D+180","D+365_1yr"),           cmp=2, m2=FALSE)
 )
 
 # ---------------------------------------------------------------------------

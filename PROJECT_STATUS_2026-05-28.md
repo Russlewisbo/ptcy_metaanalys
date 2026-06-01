@@ -19,6 +19,8 @@
 
 **2026-05-29 Block 9 extraction:** All 55 PDFs processed via parallel subagent pipeline. **30 extracted, 1 PRISMA-tracked single-arm trial (Raiola PHYLOS), 24 excluded** (19 single-arm descriptive, 3 narrative reviews, 1 systematic review, 1 conference abstract, 1 non-eligible population). **+4 new RCTs (Koura 2025, Zhang 2023, Zu 2022, Zu 2023) — total 14 RCTs.** See `BLOCK_9_extraction_summary_2026-05-29.md` for full details.
 
+**2026-05-30 v1.3 RRM + BK backfill:** Targeted re-extraction of relapse-related mortality and BK/hemorrhagic cystitis across all 229 arm-bearing studies. **+297 new outcome rows** (162 RRM + 135 BK). RRM is a new outcome category added in v1.3; BK was already in v1.2 vocab but extracted only opportunistically. Current workbook: `PTCy_MA_extraction_template_v1.3_fixed.xlsx`. See `BACKFILL_v1.3_summary_2026-05-30.md`.
+
 ---
 
 ## Database snapshot (post Block 9, 2026-05-29)
