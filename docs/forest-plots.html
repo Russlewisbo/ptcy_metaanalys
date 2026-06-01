@@ -199,20 +199,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#overall-survival" id="toc-overall-survival" class="nav-link" data-scroll-target="#overall-survival">Overall Survival</a></li>
   <li><a href="#non-relapse-mortality" id="toc-non-relapse-mortality" class="nav-link" data-scroll-target="#non-relapse-mortality">Non-Relapse Mortality</a></li>
   <li><a href="#acute-gvhd-grade-iiiv" id="toc-acute-gvhd-grade-iiiv" class="nav-link" data-scroll-target="#acute-gvhd-grade-iiiv">Acute GVHD Grade II–IV</a></li>
+  <li><a href="#chronic-gvhd-moderate-severe" id="toc-chronic-gvhd-moderate-severe" class="nav-link" data-scroll-target="#chronic-gvhd-moderate-severe">Chronic GVHD Moderate-Severe</a></li>
   <li><a href="#cmv-reactivation" id="toc-cmv-reactivation" class="nav-link" data-scroll-target="#cmv-reactivation">CMV Reactivation</a></li>
   <li><a href="#bloodstream-infection" id="toc-bloodstream-infection" class="nav-link" data-scroll-target="#bloodstream-infection">Bloodstream Infection</a></li>
   <li><a href="#invasive-fungal-infection" id="toc-invasive-fungal-infection" class="nav-link" data-scroll-target="#invasive-fungal-infection">Invasive Fungal Infection</a></li>
   <li><a href="#relapse-related-mortality" id="toc-relapse-related-mortality" class="nav-link" data-scroll-target="#relapse-related-mortality">Relapse-Related Mortality</a></li>
   <li><a href="#bk-virus-reactivation" id="toc-bk-virus-reactivation" class="nav-link" data-scroll-target="#bk-virus-reactivation">BK Virus Reactivation</a></li>
+  <li><a href="#infection-related-mortality" id="toc-infection-related-mortality" class="nav-link" data-scroll-target="#infection-related-mortality">Infection-Related Mortality</a></li>
   </ul></li>
   <li><a href="#sec-c2" id="toc-sec-c2" class="nav-link" data-scroll-target="#sec-c2">Comparison 2: PTCy vs ATG</a>
   <ul class="collapse">
   <li><a href="#overall-survival-1" id="toc-overall-survival-1" class="nav-link" data-scroll-target="#overall-survival-1">Overall Survival</a></li>
   <li><a href="#non-relapse-mortality-1" id="toc-non-relapse-mortality-1" class="nav-link" data-scroll-target="#non-relapse-mortality-1">Non-Relapse Mortality</a></li>
   <li><a href="#acute-gvhd-grade-iiiv-1" id="toc-acute-gvhd-grade-iiiv-1" class="nav-link" data-scroll-target="#acute-gvhd-grade-iiiv-1">Acute GVHD Grade II–IV</a></li>
+  <li><a href="#chronic-gvhd-moderate-severe-1" id="toc-chronic-gvhd-moderate-severe-1" class="nav-link" data-scroll-target="#chronic-gvhd-moderate-severe-1">Chronic GVHD Moderate-Severe</a></li>
   <li><a href="#cmv-reactivation-1" id="toc-cmv-reactivation-1" class="nav-link" data-scroll-target="#cmv-reactivation-1">CMV Reactivation</a></li>
   <li><a href="#relapse-related-mortality-1" id="toc-relapse-related-mortality-1" class="nav-link" data-scroll-target="#relapse-related-mortality-1">Relapse-Related Mortality</a></li>
   <li><a href="#bk-virus-reactivation-1" id="toc-bk-virus-reactivation-1" class="nav-link" data-scroll-target="#bk-virus-reactivation-1">BK Virus Reactivation</a></li>
+  <li><a href="#infection-related-mortality-1" id="toc-infection-related-mortality-1" class="nav-link" data-scroll-target="#infection-related-mortality-1">Infection-Related Mortality</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -305,12 +309,33 @@ Figure&nbsp;3: Forest plot — Acute GVHD grade II–IV, C1.
 </div>
 </div>
 </section>
+<section id="chronic-gvhd-moderate-severe" class="level3">
+<h3 class="anchored" data-anchor-id="chronic-gvhd-moderate-severe">Chronic GVHD Moderate-Severe</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_cgvhd_f)) <span class="fu">forest_study</span>(c1_cgvhd_f, studies_df, <span class="st">"Chronic GVHD Moderate-Severe"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-forest-c1-cgvhd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forest-c1-cgvhd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="forest-plots_files/figure-html/fig-forest-c1-cgvhd-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c1-cgvhd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Forest plot — Chronic GVHD moderate-severe, C1.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="cmv-reactivation" class="level3">
 <h3 class="anchored" data-anchor-id="cmv-reactivation">CMV Reactivation</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c1-cmv" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -319,7 +344,7 @@ Figure&nbsp;3: Forest plot — Acute GVHD grade II–IV, C1.
 <img src="forest-plots_files/figure-html/fig-forest-c1-cmv-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c1-cmv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Forest plot — CMV any reactivation, C1.
+Figure&nbsp;5: Forest plot — CMV any reactivation, C1.
 </figcaption>
 </figure>
 </div>
@@ -331,7 +356,7 @@ Figure&nbsp;4: Forest plot — CMV any reactivation, C1.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_bsi, studies_df, <span class="st">"Bloodstream Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_bsi, studies_df, <span class="st">"Bloodstream Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c1-bsi" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -340,7 +365,7 @@ Figure&nbsp;4: Forest plot — CMV any reactivation, C1.
 <img src="forest-plots_files/figure-html/fig-forest-c1-bsi-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c1-bsi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Forest plot — Bloodstream infection, C1.
+Figure&nbsp;6: Forest plot — Bloodstream infection, C1.
 </figcaption>
 </figure>
 </div>
@@ -352,7 +377,7 @@ Figure&nbsp;5: Forest plot — Bloodstream infection, C1.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_ifi, studies_df, <span class="st">"Invasive Fungal Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_ifi, studies_df, <span class="st">"Invasive Fungal Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c1-ifi" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -361,7 +386,7 @@ Figure&nbsp;5: Forest plot — Bloodstream infection, C1.
 <img src="forest-plots_files/figure-html/fig-forest-c1-ifi-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c1-ifi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Forest plot — Invasive fungal infection, C1.
+Figure&nbsp;7: Forest plot — Invasive fungal infection, C1.
 </figcaption>
 </figure>
 </div>
@@ -373,7 +398,7 @@ Figure&nbsp;6: Forest plot — Invasive fungal infection, C1.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_rrm)) <span class="fu">forest_study</span>(c1_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_rrm)) <span class="fu">forest_study</span>(c1_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c1-rrm" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -382,7 +407,7 @@ Figure&nbsp;6: Forest plot — Invasive fungal infection, C1.
 <img src="forest-plots_files/figure-html/fig-forest-c1-rrm-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c1-rrm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Forest plot — Relapse-related mortality, C1.
+Figure&nbsp;8: Forest plot — Relapse-related mortality, C1.
 </figcaption>
 </figure>
 </div>
@@ -394,7 +419,7 @@ Figure&nbsp;7: Forest plot — Relapse-related mortality, C1.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_bk)) <span class="fu">forest_study</span>(c1_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_bk)) <span class="fu">forest_study</span>(c1_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c1-bk" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -403,7 +428,28 @@ Figure&nbsp;7: Forest plot — Relapse-related mortality, C1.
 <img src="forest-plots_files/figure-html/fig-forest-c1-bk-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c1-bk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Forest plot — BK virus reactivation, C1.
+Figure&nbsp;9: Forest plot — BK virus reactivation, C1.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="infection-related-mortality" class="level3">
+<h3 class="anchored" data-anchor-id="infection-related-mortality">Infection-Related Mortality</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_irm)) <span class="fu">forest_study</span>(c1_irm, studies_df, <span class="st">"Infection-Related Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-forest-c1-irm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forest-c1-irm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="forest-plots_files/figure-html/fig-forest-c1-irm-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c1-irm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Forest plot — Infection-related mortality, C1.
 </figcaption>
 </figure>
 </div>
@@ -419,7 +465,7 @@ Figure&nbsp;8: Forest plot — BK virus reactivation, C1.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_os, studies_df, <span class="st">"Overall Survival"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_os, studies_df, <span class="st">"Overall Survival"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c2-os" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -428,7 +474,7 @@ Figure&nbsp;8: Forest plot — BK virus reactivation, C1.
 <img src="forest-plots_files/figure-html/fig-forest-c2-os-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-os-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Forest plot — Overall survival, C2.
+Figure&nbsp;11: Forest plot — Overall survival, C2.
 </figcaption>
 </figure>
 </div>
@@ -440,7 +486,7 @@ Figure&nbsp;9: Forest plot — Overall survival, C2.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_nrm, studies_df, <span class="st">"Non-Relapse Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_nrm, studies_df, <span class="st">"Non-Relapse Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c2-nrm" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -449,7 +495,7 @@ Figure&nbsp;9: Forest plot — Overall survival, C2.
 <img src="forest-plots_files/figure-html/fig-forest-c2-nrm-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-nrm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: Forest plot — Non-relapse mortality, C2.
+Figure&nbsp;12: Forest plot — Non-relapse mortality, C2.
 </figcaption>
 </figure>
 </div>
@@ -461,7 +507,7 @@ Figure&nbsp;10: Forest plot — Non-relapse mortality, C2.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_agvhd, studies_df, <span class="st">"Acute GVHD Grade II\u2013IV"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_agvhd, studies_df, <span class="st">"Acute GVHD Grade II\u2013IV"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c2-agvhd" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -470,7 +516,28 @@ Figure&nbsp;10: Forest plot — Non-relapse mortality, C2.
 <img src="forest-plots_files/figure-html/fig-forest-c2-agvhd-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-agvhd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11: Forest plot — Acute GVHD grade II–IV, C2.
+Figure&nbsp;13: Forest plot — Acute GVHD grade II–IV, C2.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="chronic-gvhd-moderate-severe-1" class="level3">
+<h3 class="anchored" data-anchor-id="chronic-gvhd-moderate-severe-1">Chronic GVHD Moderate-Severe</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_cgvhd_f)) <span class="fu">forest_study</span>(c2_cgvhd_f, studies_df, <span class="st">"Chronic GVHD Moderate-Severe"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-forest-c2-cgvhd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forest-c2-cgvhd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="forest-plots_files/figure-html/fig-forest-c2-cgvhd-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-cgvhd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Forest plot — Chronic GVHD moderate-severe, C2.
 </figcaption>
 </figure>
 </div>
@@ -482,7 +549,7 @@ Figure&nbsp;11: Forest plot — Acute GVHD grade II–IV, C2.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c2-cmv" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -491,7 +558,7 @@ Figure&nbsp;11: Forest plot — Acute GVHD grade II–IV, C2.
 <img src="forest-plots_files/figure-html/fig-forest-c2-cmv-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-cmv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: Forest plot — CMV any reactivation, C2.
+Figure&nbsp;15: Forest plot — CMV any reactivation, C2.
 </figcaption>
 </figure>
 </div>
@@ -503,7 +570,7 @@ Figure&nbsp;12: Forest plot — CMV any reactivation, C2.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_rrm)) <span class="fu">forest_study</span>(c2_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_rrm)) <span class="fu">forest_study</span>(c2_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c2-rrm" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -512,7 +579,7 @@ Figure&nbsp;12: Forest plot — CMV any reactivation, C2.
 <img src="forest-plots_files/figure-html/fig-forest-c2-rrm-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-rrm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: Forest plot — Relapse-related mortality, C2.
+Figure&nbsp;16: Forest plot — Relapse-related mortality, C2.
 </figcaption>
 </figure>
 </div>
@@ -524,7 +591,7 @@ Figure&nbsp;13: Forest plot — Relapse-related mortality, C2.
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_bk)) <span class="fu">forest_study</span>(c2_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_bk)) <span class="fu">forest_study</span>(c2_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-forest-c2-bk" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -533,7 +600,28 @@ Figure&nbsp;13: Forest plot — Relapse-related mortality, C2.
 <img src="forest-plots_files/figure-html/fig-forest-c2-bk-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-bk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: Forest plot — BK virus reactivation, C2.
+Figure&nbsp;17: Forest plot — BK virus reactivation, C2.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="infection-related-mortality-1" class="level3">
+<h3 class="anchored" data-anchor-id="infection-related-mortality-1">Infection-Related Mortality</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_irm)) <span class="fu">forest_study</span>(c2_irm, studies_df, <span class="st">"Infection-Related Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-forest-c2-irm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forest-c2-irm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="forest-plots_files/figure-html/fig-forest-c2-irm-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-c2-irm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Forest plot — Infection-related mortality, C2.
 </figcaption>
 </figure>
 </div>
@@ -1003,187 +1091,235 @@ Figure&nbsp;14: Forest plot — BK virus reactivation, C2.
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Study-Level Forest Plots"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>studies_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(extract_dir, <span class="st">"studies.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># C1 paired data</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>c1_os    <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_os.csv"</span>))</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>c1_nrm   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_nrm.csv"</span>))</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>c1_agvhd <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_agvhd.csv"</span>))</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>c1_cmv   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_cmv.csv"</span>))</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>c1_bsi   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_bsi.csv"</span>))</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>c1_ifi   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_ifi_any.csv"</span>))</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>c1_rrm   <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_rrm.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>c1_bk    <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_bk.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># C2 paired data</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>c2_os    <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_os.csv"</span>))</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>c2_nrm   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_nrm.csv"</span>))</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>c2_agvhd <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_agvhd.csv"</span>))</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>c2_cmv   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_cmv.csv"</span>))</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>c2_rrm   <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_rrm.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>c2_bk    <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_bk.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>Study-level forest plots show individual study odds ratios with 95% confidence intervals from frequentist random-effects meta-analysis (REML estimator). The pooled estimate is displayed as a diamond at the top. OR <span class="sc">\&lt;</span> 1 favours PTCy for all outcomes.</span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparison 1: PTCy vs CNI+MTX/MMF {#sec-c1}</span></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### Overall Survival</span></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-os</span></span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Overall survival, C1."</span></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(6, nrow(c1_os) * 0.35 + 2)</span></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_os, studies_df, <span class="st">"Overall Survival"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Non-Relapse Mortality</span></span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-nrm</span></span>
-<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Non-relapse mortality, C1."</span></span>
-<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(5, nrow(c1_nrm) * 0.35 + 2)</span></span>
-<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_nrm, studies_df, <span class="st">"Non-Relapse Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Acute GVHD Grade II–IV</span></span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-agvhd</span></span>
-<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Acute GVHD grade II–IV, C1."</span></span>
-<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(5, nrow(c1_agvhd) * 0.35 + 2)</span></span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_agvhd, studies_df, <span class="st">"Acute GVHD Grade II\u2013IV"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a><span class="fu">### CMV Reactivation</span></span>
-<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-cmv</span></span>
-<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — CMV any reactivation, C1."</span></span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(5, nrow(c1_cmv) * 0.35 + 2)</span></span>
-<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bloodstream Infection</span></span>
-<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-bsi</span></span>
-<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Bloodstream infection, C1."</span></span>
-<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c1_bsi) * 0.35 + 2)</span></span>
-<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_bsi, studies_df, <span class="st">"Bloodstream Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### Invasive Fungal Infection</span></span>
-<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-ifi</span></span>
-<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Invasive fungal infection, C1."</span></span>
-<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c1_ifi) * 0.35 + 2)</span></span>
-<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_ifi, studies_df, <span class="st">"Invasive Fungal Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-107"><a href="#cb15-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-108"><a href="#cb15-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-109"><a href="#cb15-109" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relapse-Related Mortality</span></span>
-<span id="cb15-110"><a href="#cb15-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-113"><a href="#cb15-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-114"><a href="#cb15-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-rrm</span></span>
-<span id="cb15-115"><a href="#cb15-115" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Relapse-related mortality, C1."</span></span>
-<span id="cb15-116"><a href="#cb15-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
-<span id="cb15-117"><a href="#cb15-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-118"><a href="#cb15-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-119"><a href="#cb15-119" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_rrm)) <span class="fu">forest_study</span>(c1_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-120"><a href="#cb15-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-121"><a href="#cb15-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-122"><a href="#cb15-122" aria-hidden="true" tabindex="-1"></a><span class="fu">### BK Virus Reactivation</span></span>
-<span id="cb15-123"><a href="#cb15-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-126"><a href="#cb15-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-127"><a href="#cb15-127" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-bk</span></span>
-<span id="cb15-128"><a href="#cb15-128" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — BK virus reactivation, C1."</span></span>
-<span id="cb15-129"><a href="#cb15-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb15-130"><a href="#cb15-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-131"><a href="#cb15-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-132"><a href="#cb15-132" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_bk)) <span class="fu">forest_study</span>(c1_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
-<span id="cb15-133"><a href="#cb15-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-134"><a href="#cb15-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-135"><a href="#cb15-135" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb15-136"><a href="#cb15-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-137"><a href="#cb15-137" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparison 2: PTCy vs ATG {#sec-c2}</span></span>
-<span id="cb15-138"><a href="#cb15-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-139"><a href="#cb15-139" aria-hidden="true" tabindex="-1"></a><span class="fu">### Overall Survival</span></span>
-<span id="cb15-140"><a href="#cb15-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-143"><a href="#cb15-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-144"><a href="#cb15-144" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-os</span></span>
-<span id="cb15-145"><a href="#cb15-145" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Overall survival, C2."</span></span>
-<span id="cb15-146"><a href="#cb15-146" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_os) * 0.35 + 2)</span></span>
-<span id="cb15-147"><a href="#cb15-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-148"><a href="#cb15-148" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_os, studies_df, <span class="st">"Overall Survival"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
-<span id="cb15-149"><a href="#cb15-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-150"><a href="#cb15-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-151"><a href="#cb15-151" aria-hidden="true" tabindex="-1"></a><span class="fu">### Non-Relapse Mortality</span></span>
-<span id="cb15-152"><a href="#cb15-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-155"><a href="#cb15-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-156"><a href="#cb15-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-nrm</span></span>
-<span id="cb15-157"><a href="#cb15-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Non-relapse mortality, C2."</span></span>
-<span id="cb15-158"><a href="#cb15-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_nrm) * 0.35 + 2)</span></span>
-<span id="cb15-159"><a href="#cb15-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-160"><a href="#cb15-160" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_nrm, studies_df, <span class="st">"Non-Relapse Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
-<span id="cb15-161"><a href="#cb15-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-162"><a href="#cb15-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-163"><a href="#cb15-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### Acute GVHD Grade II–IV</span></span>
-<span id="cb15-164"><a href="#cb15-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-167"><a href="#cb15-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-168"><a href="#cb15-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-agvhd</span></span>
-<span id="cb15-169"><a href="#cb15-169" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Acute GVHD grade II–IV, C2."</span></span>
-<span id="cb15-170"><a href="#cb15-170" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_agvhd) * 0.35 + 2)</span></span>
-<span id="cb15-171"><a href="#cb15-171" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-172"><a href="#cb15-172" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_agvhd, studies_df, <span class="st">"Acute GVHD Grade II\u2013IV"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
-<span id="cb15-173"><a href="#cb15-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-174"><a href="#cb15-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-175"><a href="#cb15-175" aria-hidden="true" tabindex="-1"></a><span class="fu">### CMV Reactivation</span></span>
-<span id="cb15-176"><a href="#cb15-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-179"><a href="#cb15-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-180"><a href="#cb15-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-cmv</span></span>
-<span id="cb15-181"><a href="#cb15-181" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — CMV any reactivation, C2."</span></span>
-<span id="cb15-182"><a href="#cb15-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_cmv) * 0.35 + 2)</span></span>
-<span id="cb15-183"><a href="#cb15-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-184"><a href="#cb15-184" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
-<span id="cb15-185"><a href="#cb15-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-186"><a href="#cb15-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-187"><a href="#cb15-187" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relapse-Related Mortality</span></span>
-<span id="cb15-188"><a href="#cb15-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-191"><a href="#cb15-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-192"><a href="#cb15-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-rrm</span></span>
-<span id="cb15-193"><a href="#cb15-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Relapse-related mortality, C2."</span></span>
-<span id="cb15-194"><a href="#cb15-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb15-195"><a href="#cb15-195" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-196"><a href="#cb15-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-197"><a href="#cb15-197" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_rrm)) <span class="fu">forest_study</span>(c2_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
-<span id="cb15-198"><a href="#cb15-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-199"><a href="#cb15-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-200"><a href="#cb15-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### BK Virus Reactivation</span></span>
-<span id="cb15-201"><a href="#cb15-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-204"><a href="#cb15-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-205"><a href="#cb15-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-bk</span></span>
-<span id="cb15-206"><a href="#cb15-206" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — BK virus reactivation, C2."</span></span>
-<span id="cb15-207"><a href="#cb15-207" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb15-208"><a href="#cb15-208" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb15-209"><a href="#cb15-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-210"><a href="#cb15-210" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_bk)) <span class="fu">forest_study</span>(c2_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
-<span id="cb15-211"><a href="#cb15-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Study-Level Forest Plots"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>studies_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(extract_dir, <span class="st">"studies.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># C1 paired data</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>c1_os    <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_os.csv"</span>))</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>c1_nrm   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_nrm.csv"</span>))</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>c1_agvhd <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_agvhd.csv"</span>))</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>c1_cmv   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_cmv.csv"</span>))</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>c1_bsi   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_bsi.csv"</span>))</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>c1_ifi   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_ifi_any.csv"</span>))</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>c1_rrm   <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_rrm.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>c1_bk    <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_bk.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>c1_irm     <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_irm.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>c1_cgvhd_f <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c1_cgvhd_ms.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co"># C2 paired data</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>c2_os    <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_os.csv"</span>))</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>c2_nrm   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_nrm.csv"</span>))</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>c2_agvhd <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_agvhd.csv"</span>))</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>c2_cmv   <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_cmv.csv"</span>))</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>c2_rrm   <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_rrm.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>c2_bk    <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_bk.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>c2_irm     <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_irm.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>c2_cgvhd_f <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(<span class="fu">read.csv</span>(<span class="fu">file.path</span>(model_dir, <span class="st">"data_c2_cgvhd_ms.csv"</span>)), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NULL</span>)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>Study-level forest plots show individual study odds ratios with 95% confidence intervals from frequentist random-effects meta-analysis (REML estimator). The pooled estimate is displayed as a diamond at the top. OR <span class="sc">\&lt;</span> 1 favours PTCy for all outcomes.</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparison 1: PTCy vs CNI+MTX/MMF {#sec-c1}</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Overall Survival</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-os</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Overall survival, C1."</span></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(6, nrow(c1_os) * 0.35 + 2)</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_os, studies_df, <span class="st">"Overall Survival"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### Non-Relapse Mortality</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-nrm</span></span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Non-relapse mortality, C1."</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(5, nrow(c1_nrm) * 0.35 + 2)</span></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_nrm, studies_df, <span class="st">"Non-Relapse Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Acute GVHD Grade II–IV</span></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-agvhd</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Acute GVHD grade II–IV, C1."</span></span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(5, nrow(c1_agvhd) * 0.35 + 2)</span></span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_agvhd, studies_df, <span class="st">"Acute GVHD Grade II\u2013IV"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Chronic GVHD Moderate-Severe</span></span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-cgvhd</span></span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Chronic GVHD moderate-severe, C1."</span></span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 10</span></span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_cgvhd_f)) <span class="fu">forest_study</span>(c1_cgvhd_f, studies_df, <span class="st">"Chronic GVHD Moderate-Severe"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### CMV Reactivation</span></span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-cmv</span></span>
+<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — CMV any reactivation, C1."</span></span>
+<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(5, nrow(c1_cmv) * 0.35 + 2)</span></span>
+<span id="cb19-98"><a href="#cb19-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-99"><a href="#cb19-99" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bloodstream Infection</span></span>
+<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-bsi</span></span>
+<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Bloodstream infection, C1."</span></span>
+<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c1_bsi) * 0.35 + 2)</span></span>
+<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-111"><a href="#cb19-111" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_bsi, studies_df, <span class="st">"Bloodstream Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-112"><a href="#cb19-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-113"><a href="#cb19-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-114"><a href="#cb19-114" aria-hidden="true" tabindex="-1"></a><span class="fu">### Invasive Fungal Infection</span></span>
+<span id="cb19-115"><a href="#cb19-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-118"><a href="#cb19-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-119"><a href="#cb19-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-ifi</span></span>
+<span id="cb19-120"><a href="#cb19-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Invasive fungal infection, C1."</span></span>
+<span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c1_ifi) * 0.35 + 2)</span></span>
+<span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c1_ifi, studies_df, <span class="st">"Invasive Fungal Infection"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relapse-Related Mortality</span></span>
+<span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-130"><a href="#cb19-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-131"><a href="#cb19-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-rrm</span></span>
+<span id="cb19-132"><a href="#cb19-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Relapse-related mortality, C1."</span></span>
+<span id="cb19-133"><a href="#cb19-133" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
+<span id="cb19-134"><a href="#cb19-134" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-135"><a href="#cb19-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-136"><a href="#cb19-136" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_rrm)) <span class="fu">forest_study</span>(c1_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-137"><a href="#cb19-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-138"><a href="#cb19-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-139"><a href="#cb19-139" aria-hidden="true" tabindex="-1"></a><span class="fu">### BK Virus Reactivation</span></span>
+<span id="cb19-140"><a href="#cb19-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-143"><a href="#cb19-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-144"><a href="#cb19-144" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-bk</span></span>
+<span id="cb19-145"><a href="#cb19-145" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — BK virus reactivation, C1."</span></span>
+<span id="cb19-146"><a href="#cb19-146" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb19-147"><a href="#cb19-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-148"><a href="#cb19-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_bk)) <span class="fu">forest_study</span>(c1_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-150"><a href="#cb19-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-151"><a href="#cb19-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-152"><a href="#cb19-152" aria-hidden="true" tabindex="-1"></a><span class="fu">### Infection-Related Mortality</span></span>
+<span id="cb19-153"><a href="#cb19-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-156"><a href="#cb19-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-157"><a href="#cb19-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c1-irm</span></span>
+<span id="cb19-158"><a href="#cb19-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Infection-related mortality, C1."</span></span>
+<span id="cb19-159"><a href="#cb19-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 8</span></span>
+<span id="cb19-160"><a href="#cb19-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-161"><a href="#cb19-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-162"><a href="#cb19-162" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c1_irm)) <span class="fu">forest_study</span>(c1_irm, studies_df, <span class="st">"Infection-Related Mortality"</span>, <span class="st">"C1: PTCy vs CNI+MTX/MMF"</span>)</span>
+<span id="cb19-163"><a href="#cb19-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-164"><a href="#cb19-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-165"><a href="#cb19-165" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-167"><a href="#cb19-167" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparison 2: PTCy vs ATG {#sec-c2}</span></span>
+<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-169"><a href="#cb19-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### Overall Survival</span></span>
+<span id="cb19-170"><a href="#cb19-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-173"><a href="#cb19-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-174"><a href="#cb19-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-os</span></span>
+<span id="cb19-175"><a href="#cb19-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Overall survival, C2."</span></span>
+<span id="cb19-176"><a href="#cb19-176" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_os) * 0.35 + 2)</span></span>
+<span id="cb19-177"><a href="#cb19-177" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-178"><a href="#cb19-178" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_os, studies_df, <span class="st">"Overall Survival"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-179"><a href="#cb19-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-180"><a href="#cb19-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-181"><a href="#cb19-181" aria-hidden="true" tabindex="-1"></a><span class="fu">### Non-Relapse Mortality</span></span>
+<span id="cb19-182"><a href="#cb19-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-185"><a href="#cb19-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-186"><a href="#cb19-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-nrm</span></span>
+<span id="cb19-187"><a href="#cb19-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Non-relapse mortality, C2."</span></span>
+<span id="cb19-188"><a href="#cb19-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_nrm) * 0.35 + 2)</span></span>
+<span id="cb19-189"><a href="#cb19-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-190"><a href="#cb19-190" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_nrm, studies_df, <span class="st">"Non-Relapse Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-191"><a href="#cb19-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-192"><a href="#cb19-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-193"><a href="#cb19-193" aria-hidden="true" tabindex="-1"></a><span class="fu">### Acute GVHD Grade II–IV</span></span>
+<span id="cb19-194"><a href="#cb19-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-197"><a href="#cb19-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-198"><a href="#cb19-198" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-agvhd</span></span>
+<span id="cb19-199"><a href="#cb19-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Acute GVHD grade II–IV, C2."</span></span>
+<span id="cb19-200"><a href="#cb19-200" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_agvhd) * 0.35 + 2)</span></span>
+<span id="cb19-201"><a href="#cb19-201" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-202"><a href="#cb19-202" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_agvhd, studies_df, <span class="st">"Acute GVHD Grade II\u2013IV"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-203"><a href="#cb19-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-204"><a href="#cb19-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-205"><a href="#cb19-205" aria-hidden="true" tabindex="-1"></a><span class="fu">### Chronic GVHD Moderate-Severe</span></span>
+<span id="cb19-206"><a href="#cb19-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-209"><a href="#cb19-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-210"><a href="#cb19-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-cgvhd</span></span>
+<span id="cb19-211"><a href="#cb19-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Chronic GVHD moderate-severe, C2."</span></span>
+<span id="cb19-212"><a href="#cb19-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb19-213"><a href="#cb19-213" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-214"><a href="#cb19-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-215"><a href="#cb19-215" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_cgvhd_f)) <span class="fu">forest_study</span>(c2_cgvhd_f, studies_df, <span class="st">"Chronic GVHD Moderate-Severe"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-216"><a href="#cb19-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-217"><a href="#cb19-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-218"><a href="#cb19-218" aria-hidden="true" tabindex="-1"></a><span class="fu">### CMV Reactivation</span></span>
+<span id="cb19-219"><a href="#cb19-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-222"><a href="#cb19-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-223"><a href="#cb19-223" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-cmv</span></span>
+<span id="cb19-224"><a href="#cb19-224" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — CMV any reactivation, C2."</span></span>
+<span id="cb19-225"><a href="#cb19-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: !expr max(4, nrow(c2_cmv) * 0.35 + 2)</span></span>
+<span id="cb19-226"><a href="#cb19-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-227"><a href="#cb19-227" aria-hidden="true" tabindex="-1"></a><span class="fu">forest_study</span>(c2_cmv, studies_df, <span class="st">"CMV Any Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-229"><a href="#cb19-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-230"><a href="#cb19-230" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relapse-Related Mortality</span></span>
+<span id="cb19-231"><a href="#cb19-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-234"><a href="#cb19-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-235"><a href="#cb19-235" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-rrm</span></span>
+<span id="cb19-236"><a href="#cb19-236" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Relapse-related mortality, C2."</span></span>
+<span id="cb19-237"><a href="#cb19-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb19-238"><a href="#cb19-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-239"><a href="#cb19-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-240"><a href="#cb19-240" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_rrm)) <span class="fu">forest_study</span>(c2_rrm, studies_df, <span class="st">"Relapse-Related Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-241"><a href="#cb19-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-242"><a href="#cb19-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-243"><a href="#cb19-243" aria-hidden="true" tabindex="-1"></a><span class="fu">### BK Virus Reactivation</span></span>
+<span id="cb19-244"><a href="#cb19-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-247"><a href="#cb19-247" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-248"><a href="#cb19-248" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-bk</span></span>
+<span id="cb19-249"><a href="#cb19-249" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — BK virus reactivation, C2."</span></span>
+<span id="cb19-250"><a href="#cb19-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-252"><a href="#cb19-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-253"><a href="#cb19-253" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_bk)) <span class="fu">forest_study</span>(c2_bk, studies_df, <span class="st">"BK Virus Reactivation"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-254"><a href="#cb19-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-255"><a href="#cb19-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-256"><a href="#cb19-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### Infection-Related Mortality</span></span>
+<span id="cb19-257"><a href="#cb19-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-260"><a href="#cb19-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-261"><a href="#cb19-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-forest-c2-irm</span></span>
+<span id="cb19-262"><a href="#cb19-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Forest plot — Infection-related mortality, C2."</span></span>
+<span id="cb19-263"><a href="#cb19-263" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb19-264"><a href="#cb19-264" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb19-265"><a href="#cb19-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-266"><a href="#cb19-266" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(c2_irm)) <span class="fu">forest_study</span>(c2_irm, studies_df, <span class="st">"Infection-Related Mortality"</span>, <span class="st">"C2: PTCy vs ATG"</span>)</span>
+<span id="cb19-267"><a href="#cb19-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

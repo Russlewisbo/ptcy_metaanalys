@@ -705,11 +705,16 @@ Table&nbsp;2: RoBMA publication bias assessment. P(effect) is the model-averaged
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.67 [0.59-0.78]"</span>, <span class="st">"0.61 [0.47-0.79]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.58 [0.44-0.77]"</span>, <span class="st">"0.46 [0.26-0.83]"</span>, <span class="st">"73%"</span>, <span class="st">"Moderate"</span>,</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C1"</span>, <span class="st">"1.26 [1.07-1.47]"</span>, <span class="st">"1.25 [0.94-1.66]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.92 [0.73-1.15]"</span>, <span class="st">"0.76 [0.47-1.22]"</span>, <span class="st">"71%"</span>, <span class="st">"Good"</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="st">"Driven by extreme outlier studies; Bayesian tau prior regularises these outliers."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.92 [0.73-1.15]"</span>, <span class="st">"0.76 [0.47-1.22]"</span>, <span class="st">"71%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C1"</span>, <span class="st">"1.35 [1.16-1.57]"</span>, <span class="st">"1.01 [0.70-1.45]"</span>, <span class="st">"70%"</span>, <span class="st">"Divergent**"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C2"</span>, <span class="st">"0.90 [0.74-1.09]"</span>, <span class="st">"0.81 [0.66-1.00]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.33 [0.29-0.36]"</span>, <span class="st">"0.44 [0.29-0.67]"</span>, <span class="st">"80%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.79 [0.55-1.14]"</span>, <span class="st">"0.77 [0.40-1.45]"</span>, <span class="st">"60%"</span>, <span class="st">"Good"</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="fu">c</span>(<span class="st">"C2 OS: Driven by extreme outlier studies; Bayesian tau prior regularises."</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"C1 IRM: Bayesian binomial model weights large CIBMTR studies heavily; frequentist RE equalises study contributions."</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="tbl-freq-concordance" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -794,9 +799,49 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
 <td style="text-align: center;">71%</td>
 <td style="text-align: center;">Good</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">IRM</td>
+<td style="text-align: center;">C1</td>
+<td style="text-align: center;">1.35 [1.16-1.57]</td>
+<td style="text-align: center;">1.01 [0.70-1.45]</td>
+<td style="text-align: center;">70%</td>
+<td style="text-align: center;">Divergent**</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IRM</td>
+<td style="text-align: center;">C2</td>
+<td style="text-align: center;">0.90 [0.74-1.09]</td>
+<td style="text-align: center;">0.81 [0.66-1.00]</td>
+<td style="text-align: center;">0%</td>
+<td style="text-align: center;">Good</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cGVHD</td>
+<td style="text-align: center;">C1</td>
+<td style="text-align: center;">0.33 [0.29-0.36]</td>
+<td style="text-align: center;">0.44 [0.29-0.67]</td>
+<td style="text-align: center;">80%</td>
+<td style="text-align: center;">Good</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cGVHD</td>
+<td style="text-align: center;">C2</td>
+<td style="text-align: center;">0.79 [0.55-1.14]</td>
+<td style="text-align: center;">0.77 [0.40-1.45]</td>
+<td style="text-align: center;">60%</td>
+<td style="text-align: center;">Good</td>
+</tr>
 </tbody><tfoot>
 <tr class="odd">
-<td style="text-align: left; padding: 0;"><sup>*</sup> Driven by extreme outlier studies; Bayesian tau prior regularises these outliers.</td>
+<td style="text-align: left; padding: 0;"><sup>*</sup> C2 OS: Driven by extreme outlier studies; Bayesian tau prior regularises.</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup>†</sup> C1 IRM: Bayesian binomial model weights large CIBMTR studies heavily; frequentist RE equalises study contributions.</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -1636,12 +1681,17 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
 <span id="cb9-380"><a href="#cb9-380" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.67 [0.59-0.78]"</span>, <span class="st">"0.61 [0.47-0.79]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
 <span id="cb9-381"><a href="#cb9-381" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.58 [0.44-0.77]"</span>, <span class="st">"0.46 [0.26-0.83]"</span>, <span class="st">"73%"</span>, <span class="st">"Moderate"</span>,</span>
 <span id="cb9-382"><a href="#cb9-382" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C1"</span>, <span class="st">"1.26 [1.07-1.47]"</span>, <span class="st">"1.25 [0.94-1.66]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb9-383"><a href="#cb9-383" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.92 [0.73-1.15]"</span>, <span class="st">"0.76 [0.47-1.22]"</span>, <span class="st">"71%"</span>, <span class="st">"Good"</span></span>
-<span id="cb9-384"><a href="#cb9-384" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb9-385"><a href="#cb9-385" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb9-386"><a href="#cb9-386" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-387"><a href="#cb9-387" aria-hidden="true" tabindex="-1"></a>  <span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="st">"Driven by extreme outlier studies; Bayesian tau prior regularises these outliers."</span>)</span>
-<span id="cb9-388"><a href="#cb9-388" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-383"><a href="#cb9-383" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.92 [0.73-1.15]"</span>, <span class="st">"0.76 [0.47-1.22]"</span>, <span class="st">"71%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb9-384"><a href="#cb9-384" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C1"</span>, <span class="st">"1.35 [1.16-1.57]"</span>, <span class="st">"1.01 [0.70-1.45]"</span>, <span class="st">"70%"</span>, <span class="st">"Divergent**"</span>,</span>
+<span id="cb9-385"><a href="#cb9-385" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C2"</span>, <span class="st">"0.90 [0.74-1.09]"</span>, <span class="st">"0.81 [0.66-1.00]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good"</span>,</span>
+<span id="cb9-386"><a href="#cb9-386" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.33 [0.29-0.36]"</span>, <span class="st">"0.44 [0.29-0.67]"</span>, <span class="st">"80%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb9-387"><a href="#cb9-387" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.79 [0.55-1.14]"</span>, <span class="st">"0.77 [0.40-1.45]"</span>, <span class="st">"60%"</span>, <span class="st">"Good"</span></span>
+<span id="cb9-388"><a href="#cb9-388" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb9-389"><a href="#cb9-389" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb9-390"><a href="#cb9-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-391"><a href="#cb9-391" aria-hidden="true" tabindex="-1"></a>  <span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="fu">c</span>(<span class="st">"C2 OS: Driven by extreme outlier studies; Bayesian tau prior regularises."</span>,</span>
+<span id="cb9-392"><a href="#cb9-392" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"C1 IRM: Bayesian binomial model weights large CIBMTR studies heavily; frequentist RE equalises study contributions."</span>))</span>
+<span id="cb9-393"><a href="#cb9-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

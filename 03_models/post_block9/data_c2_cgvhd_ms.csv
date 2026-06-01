@@ -1,0 +1,7 @@
+"study_id","first_author","pub_year","timepoint","tp_early","ptcy_arm_id","comp_arm_id","ptcy_n","comp_n","ptcy_e","comp_e","ptcy_steroid_pct","comp_steroid_pct"
+6,"Meyer T",2025,"D+365_1yr",1,10,12,68,280,16,45,"60","48"
+24,"Alanazi W",2021,"end_of_followup",0,31,32,69,90,13,37,"21.7","58.9"
+43,"Bailen",2021,"D+730_2yr",0,42,43,72,60,15,13,"46","67"
+66,"Berro M",2021,"D+730_2yr",0,76,77,28,28,1,3,"25","50"
+124,"Dybko J",2024,"end_of_followup",0,149,150,23,37,0,4,"21.7","59.5"
+211,"Langer R",2024,"end_of_followup",0,218,219,39,111,14,37,"NR","NR"

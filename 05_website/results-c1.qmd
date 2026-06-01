@@ -25,6 +25,9 @@ post_m2_rrm  <- tryCatch(load_post("post_m2_c1_rrm.rds"), error = function(e) {
   if (!is.null(m)) as_draws_df(m) else NULL
 })
 post_bk      <- tryCatch(load_post("post_c1_bk.rds"), error = function(e) NULL)
+post_irm     <- tryCatch(load_post("post_c1_irm.rds"), error = function(e) NULL)
+post_cgvhd_ms  <- tryCatch(load_post("post_c1_cgvhd_ms.rds"), error = function(e) NULL)
+post_cgvhd_any <- tryCatch(load_post("post_c1_cgvhd_any.rds"), error = function(e) NULL)
 
 # Load analytic datasets (post-Block-9 preferred, fallback to pre)
 c1_os    <- load_model("os_brms_clean.rds")
@@ -167,6 +170,39 @@ tibble(log_or = post_agvhd$b_ptcy_binary) |>
 
 **M1:** OR 0.67 (95% CrI 0.59–0.78), P(OR < 1) = 100%, τ = 0.68. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.
 
+## Chronic GVHD {#sec-c1-cgvhd}
+
+```{r}
+#| label: fig-c1-cgvhd
+#| fig-cap: "Posterior densities for the PTCy effect on chronic GVHD. Moderate-severe NIH cGVHD (navy) is the primary grading; any-NIH cGVHD (grey) is shown for completeness."
+#| fig-height: 4.5
+
+cgvhd_draws <- tibble()
+if (!is.null(post_cgvhd_ms)) cgvhd_draws <- bind_rows(cgvhd_draws, tibble(Model = "Moderate-severe", log_or = post_cgvhd_ms$b_ptcy_binary))
+if (!is.null(post_cgvhd_any)) cgvhd_draws <- bind_rows(cgvhd_draws, tibble(Model = "Any NIH grade", log_or = post_cgvhd_any$b_ptcy_binary))
+
+if (nrow(cgvhd_draws) > 0) {
+  ggplot(cgvhd_draws, aes(x = log_or, fill = Model, colour = Model)) +
+    geom_density(alpha = 0.35, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    scale_fill_manual(values = c("Moderate-severe" = jama_navy, "Any NIH grade" = jama_steel)) +
+    scale_colour_manual(values = c("Moderate-severe" = jama_navy, "Any NIH grade" = jama_steel)) +
+    labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+         title = "Chronic GVHD — Posterior Distributions",
+         subtitle = "Mod-sev: k = 21, N = 12,493 · Any: k = 8, N = 1,732") +
+    theme_jama()
+}
+```
+
+**Moderate-severe NIH cGVHD (k = 21):** OR 0.33 (95% CrI 0.29–0.36), P(OR < 1) = 100%, τ = 0.71. The **largest treatment effect in the entire analysis** — PTCy reduces moderate-severe chronic GVHD by approximately two-thirds compared to CNI+MTX/MMF. The CrI is narrow and entirely below null, reflecting the large k and consistent direction across studies.
+
+**Any-NIH cGVHD (k = 8):** OR 0.23 (95% CrI 0.18–0.30), P(OR < 1) = 100%, τ = 0.52. An even larger effect when including all grades, though k is smaller. The lower OR likely reflects the inclusion of mild cGVHD, which PTCy prevents almost completely.
+
+::: {.callout-note}
+## cGVHD: The Strongest PTCy Effect
+Chronic GVHD is the most profoundly affected outcome in the entire analysis. The moderate-severe cGVHD OR of 0.33 is substantially larger than the aGVHD effect (OR 0.67), consistent with PTCy's mechanism: alloreactive T-cell depletion during the early post-transplant window has an outsized impact on the chronic alloimmune processes that drive cGVHD. This has direct implications for long-term quality of life, immunosuppression duration, and late NRM.
+:::
+
 ## CMV Any-Reactivation {#sec-c1-cmv}
 
 ```{r}
@@ -293,12 +329,42 @@ if (!is.null(post_bk)) {
 Unlike CMV and BSI (which operate through T-cell lymphodepletion alone), BK virus reactivation has a **dual mechanism**: (1) direct urothelial toxicity from cyclophosphamide metabolites (acrolein), and (2) impaired BK-specific immune reconstitution. This explains why the BK effect (OR 2.48) is larger than CMV (OR 1.26) and BSI (OR 1.87).
 :::
 
+## Infection-Related Mortality {#sec-c1-irm}
+
+```{r}
+#| label: fig-c1-irm
+#| fig-cap: "Posterior density for the PTCy effect on infection-related mortality (C1). The distribution is centred above OR = 1, indicating higher IRM with PTCy — but this conflicts with the frequentist null (see text)."
+#| fig-height: 4
+
+if (!is.null(post_irm)) {
+  tibble(log_or = post_irm$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
+         title = "Infection-Related Mortality — Posterior Distribution",
+         subtitle = "k = 16, N = 8,214 · Bayesian OR 1.35 [1.16\u20131.57]") +
+    theme_jama()
+}
+```
+
+**Bayesian M1:** OR 1.35 (95% CrI 1.16–1.57), P(OR > 1) = 100%, k = 16, τ = 0.84. The Bayesian binomial model finds elevated infection-related mortality with PTCy.
+
+**Frequentist RE:** OR 1.01 (95% CI 0.70–1.45), I² = 70%. The frequentist random-effects model finds a null effect.
+
+::: {.callout-warning}
+## Bayesian–Frequentist Divergence
+The Bayesian and frequentist models **disagree** on C1 IRM. The divergence is driven by two large CIBMTR registry studies (Battipaglia 2019: IRM 41% vs 25%; Mulroney 2021: IRM 35% vs 26%) that together contribute >2,400 patients. The Bayesian binomial model weights these heavily (they carry the most binomial information); the frequentist RE model equalizes study contributions through the random-effects structure, and smaller studies showing protective effects (Baron 2024, Montoro 2021, Tischer 2015) partially offset the CIBMTR signal.
+
+**Interpretation:** The truth likely lies between these estimates. PTCy may modestly increase infection-related mortality (consistent with the Bayesian estimate), but the effect is uncertain and substantially smaller than the infection *rate* increases (CMV +26%, BSI +87%, BK +148%). The key message remains that the infection rate excess translates to a much smaller — and possibly null — mortality excess.
+:::
+
 ## Summary Forest Plot {#sec-c1-forest}
 
 ```{r}
 #| label: fig-c1-forest
 #| fig-cap: "Summary forest plot for all Comparison 1 outcomes. Filled circles = M1 (direct); open circles = M2 (steroid-adjusted). The null line (OR = 1) is shown as a dashed vertical line."
-#| fig-height: 8
+#| fig-height: 9
 
 c1_summaries <- list(
   or_summary(post_os,    "b_ptcy_binary", "OS", "C1", "M1"),
@@ -321,8 +387,18 @@ if (!is.null(post_bk)) {
     or_summary(post_bk, "b_ptcy_binary", "BK Virus", "C1", "M1")
   ))
 }
+if (!is.null(post_irm)) {
+  c1_summaries <- c(c1_summaries, list(
+    or_summary(post_irm, "b_ptcy_binary", "IRM", "C1", "M1")
+  ))
+}
+if (!is.null(post_cgvhd_ms)) {
+  c1_summaries <- c(c1_summaries, list(
+    or_summary(post_cgvhd_ms, "b_ptcy_binary", "cGVHD mod-sev", "C1", "M1")
+  ))
+}
 
-outcome_levels <- rev(c("OS", "NRM", "RRM", "aGVHD II\u2013IV", "CMV", "BK Virus", "BSI", "IFI"))
+outcome_levels <- rev(c("OS", "NRM", "RRM", "aGVHD II\u2013IV", "cGVHD mod-sev", "CMV", "BK Virus", "BSI", "IFI", "IRM"))
 
 c1_pd <- do.call(rbind, c1_summaries) |>
   as_tibble() |>

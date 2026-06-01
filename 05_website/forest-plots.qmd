@@ -18,6 +18,8 @@ c1_bsi   <- read.csv(file.path(model_dir, "data_c1_bsi.csv"))
 c1_ifi   <- read.csv(file.path(model_dir, "data_c1_ifi_any.csv"))
 c1_rrm   <- tryCatch(read.csv(file.path(model_dir, "data_c1_rrm.csv")), error = function(e) NULL)
 c1_bk    <- tryCatch(read.csv(file.path(model_dir, "data_c1_bk.csv")), error = function(e) NULL)
+c1_irm     <- tryCatch(read.csv(file.path(model_dir, "data_c1_irm.csv")), error = function(e) NULL)
+c1_cgvhd_f <- tryCatch(read.csv(file.path(model_dir, "data_c1_cgvhd_ms.csv")), error = function(e) NULL)
 
 # C2 paired data
 c2_os    <- read.csv(file.path(model_dir, "data_c2_os.csv"))
@@ -26,6 +28,8 @@ c2_agvhd <- read.csv(file.path(model_dir, "data_c2_agvhd.csv"))
 c2_cmv   <- read.csv(file.path(model_dir, "data_c2_cmv.csv"))
 c2_rrm   <- tryCatch(read.csv(file.path(model_dir, "data_c2_rrm.csv")), error = function(e) NULL)
 c2_bk    <- tryCatch(read.csv(file.path(model_dir, "data_c2_bk.csv")), error = function(e) NULL)
+c2_irm     <- tryCatch(read.csv(file.path(model_dir, "data_c2_irm.csv")), error = function(e) NULL)
+c2_cgvhd_f <- tryCatch(read.csv(file.path(model_dir, "data_c2_cgvhd_ms.csv")), error = function(e) NULL)
 ```
 
 Study-level forest plots show individual study odds ratios with 95% confidence intervals from frequentist random-effects meta-analysis (REML estimator). The pooled estimate is displayed as a diamond at the top. OR \< 1 favours PTCy for all outcomes.
@@ -60,6 +64,17 @@ forest_study(c1_nrm, studies_df, "Non-Relapse Mortality", "C1: PTCy vs CNI+MTX/M
 #| fig-height: !expr max(5, nrow(c1_agvhd) * 0.35 + 2)
 #| fig-width: 10
 forest_study(c1_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C1: PTCy vs CNI+MTX/MMF")
+```
+
+### Chronic GVHD Moderate-Severe
+
+```{r}
+#| label: fig-forest-c1-cgvhd
+#| fig-cap: "Forest plot — Chronic GVHD moderate-severe, C1."
+#| fig-height: 10
+#| fig-width: 10
+
+if (!is.null(c1_cgvhd_f)) forest_study(c1_cgvhd_f, studies_df, "Chronic GVHD Moderate-Severe", "C1: PTCy vs CNI+MTX/MMF")
 ```
 
 ### CMV Reactivation
@@ -114,6 +129,17 @@ if (!is.null(c1_rrm)) forest_study(c1_rrm, studies_df, "Relapse-Related Mortalit
 if (!is.null(c1_bk)) forest_study(c1_bk, studies_df, "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF")
 ```
 
+### Infection-Related Mortality
+
+```{r}
+#| label: fig-forest-c1-irm
+#| fig-cap: "Forest plot — Infection-related mortality, C1."
+#| fig-height: 8
+#| fig-width: 10
+
+if (!is.null(c1_irm)) forest_study(c1_irm, studies_df, "Infection-Related Mortality", "C1: PTCy vs CNI+MTX/MMF")
+```
+
 ---
 
 ## Comparison 2: PTCy vs ATG {#sec-c2}
@@ -148,6 +174,17 @@ forest_study(c2_nrm, studies_df, "Non-Relapse Mortality", "C2: PTCy vs ATG")
 forest_study(c2_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C2: PTCy vs ATG")
 ```
 
+### Chronic GVHD Moderate-Severe
+
+```{r}
+#| label: fig-forest-c2-cgvhd
+#| fig-cap: "Forest plot — Chronic GVHD moderate-severe, C2."
+#| fig-height: 5
+#| fig-width: 10
+
+if (!is.null(c2_cgvhd_f)) forest_study(c2_cgvhd_f, studies_df, "Chronic GVHD Moderate-Severe", "C2: PTCy vs ATG")
+```
+
 ### CMV Reactivation
 
 ```{r}
@@ -178,4 +215,15 @@ if (!is.null(c2_rrm)) forest_study(c2_rrm, studies_df, "Relapse-Related Mortalit
 #| fig-width: 10
 
 if (!is.null(c2_bk)) forest_study(c2_bk, studies_df, "BK Virus Reactivation", "C2: PTCy vs ATG")
+```
+
+### Infection-Related Mortality
+
+```{r}
+#| label: fig-forest-c2-irm
+#| fig-cap: "Forest plot — Infection-related mortality, C2."
+#| fig-height: 5
+#| fig-width: 10
+
+if (!is.null(c2_irm)) forest_study(c2_irm, studies_df, "Infection-Related Mortality", "C2: PTCy vs ATG")
 ```

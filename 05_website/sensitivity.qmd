@@ -360,9 +360,14 @@ tibble::tribble(
   "aGVHD","C1", "0.67 [0.59-0.78]", "0.61 [0.47-0.79]", "62%", "Good",
   "aGVHD","C2", "0.58 [0.44-0.77]", "0.46 [0.26-0.83]", "73%", "Moderate",
   "CMV",  "C1", "1.26 [1.07-1.47]", "1.25 [0.94-1.66]", "62%", "Good",
-  "CMV",  "C2", "0.92 [0.73-1.15]", "0.76 [0.47-1.22]", "71%", "Good"
+  "CMV",  "C2", "0.92 [0.73-1.15]", "0.76 [0.47-1.22]", "71%", "Good",
+  "IRM",  "C1", "1.35 [1.16-1.57]", "1.01 [0.70-1.45]", "70%", "Divergent**",
+  "IRM",  "C2", "0.90 [0.74-1.09]", "0.81 [0.66-1.00]", "0%",  "Good",
+  "cGVHD","C1", "0.33 [0.29-0.36]", "0.44 [0.29-0.67]", "80%", "Good",
+  "cGVHD","C2", "0.79 [0.55-1.14]", "0.77 [0.40-1.45]", "60%", "Good"
 ) |>
   kable(align = c("l","c","c","c","c","c")) |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) |>
-  footnote(symbol = "Driven by extreme outlier studies; Bayesian tau prior regularises these outliers.")
+  footnote(symbol = c("C2 OS: Driven by extreme outlier studies; Bayesian tau prior regularises.",
+                       "C1 IRM: Bayesian binomial model weights large CIBMTR studies heavily; frequentist RE equalises study contributions."))
 ```

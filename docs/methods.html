@@ -266,7 +266,7 @@ window.Quarto = {
 
 <section id="study-design" class="level2">
 <h2 class="anchored" data-anchor-id="study-design">Study Design</h2>
-<p>This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 251 studies (525 arms, 14 RCTs) drawn from 9 extraction blocks, with 214 papers excluded per PRISMA criteria. Two pre-specified comparisons were analysed:</p>
+<p>This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 220 studies (457 arms, 10 RCTs) drawn from 9 extraction blocks, with 190 papers excluded per PRISMA criteria. Three pre-specified comparisons were analysed:</p>
 <ul>
 <li><strong>Comparison 1:</strong> PTCy vs CNI+MTX/MMF-based prophylaxis</li>
 <li><strong>Comparison 2:</strong> PTCy vs ATG-based prophylaxis</li>
@@ -275,7 +275,7 @@ window.Quarto = {
 </section>
 <section id="outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="outcomes">Outcomes</h2>
-<p>Six primary outcomes were evaluated:</p>
+<p>Ten outcomes were evaluated across transplant, GVHD, and infection domains:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -286,7 +286,7 @@ window.Quarto = {
 <tr class="header">
 <th>Outcome</th>
 <th>Definition</th>
-<th>Timepoint preference (Strategy C)</th>
+<th>Timepoint preference</th>
 </tr>
 </thead>
 <tbody>
@@ -301,9 +301,19 @@ window.Quarto = {
 <td>2yr &gt; 1yr &gt; EoF</td>
 </tr>
 <tr class="odd">
+<td>Relapse-related mortality (RRM)</td>
+<td>Death with or after relapse</td>
+<td>2yr &gt; 1yr &gt; EoF</td>
+</tr>
+<tr class="even">
 <td>aGVHD grade II–IV</td>
 <td>Acute GVHD by consensus criteria</td>
 <td>D+100 &gt; D+180 &gt; EoF</td>
+</tr>
+<tr class="odd">
+<td>cGVHD moderate-severe (NIH)</td>
+<td>Chronic GVHD by NIH severity grading</td>
+<td>1yr &gt; 2yr &gt; EoF</td>
 </tr>
 <tr class="even">
 <td>CMV any-reactivation</td>
@@ -311,14 +321,24 @@ window.Quarto = {
 <td>D+100 &gt; D+180 &gt; EoF &gt; 1yr</td>
 </tr>
 <tr class="odd">
+<td>BK virus reactivation</td>
+<td>BK viruria/viremia or haemorrhagic cystitis</td>
+<td>D+100 &gt; D+180 &gt; EoF</td>
+</tr>
+<tr class="even">
 <td>BSI (any pathogen)</td>
 <td>Positive blood culture</td>
 <td>D+100 &gt; D+180 &gt; EoF</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>IFI (any)</td>
 <td>Proven/probable invasive fungal infection</td>
 <td>D+100 &gt; D+180 &gt; EoF &gt; 1yr</td>
+</tr>
+<tr class="even">
+<td>Infection-related mortality (IRM)</td>
+<td>Death attributed to infection</td>
+<td>EoF &gt; 1yr &gt; 2yr</td>
 </tr>
 </tbody>
 </table>
@@ -354,23 +374,23 @@ u_j \sim \text{Normal}(0, \tau)
 <tbody>
 <tr class="odd">
 <td><span class="math display">\[\beta_{\text{PTCy}}\]</span></td>
-<td>Normal(0, 0.82)</td>
-<td>Weakly informative; 95% prior mass covers OR 0.20–5.0</td>
+<td>Normal(0, 2.5)</td>
+<td>Weakly informative; 95% prior mass covers OR 0.007–140</td>
 </tr>
 <tr class="even">
 <td><span class="math display">\[\beta_{\text{tp\_early}}\]</span></td>
-<td>Normal(0, 0.50)</td>
-<td>Timepoint adjustment; modest range</td>
+<td>Normal(0, 2.5)</td>
+<td>Timepoint adjustment; same prior class</td>
 </tr>
 <tr class="odd">
 <td>Intercept</td>
-<td>Normal(0, 1.50)</td>
+<td>Normal(0, 1.5)</td>
 <td>Baseline event rate</td>
 </tr>
 <tr class="even">
 <td><span class="math display">\[\tau\]</span></td>
-<td>Half-Normal(0, 0.50)</td>
-<td>Heterogeneity; calibrated to plausible variation in transplant outcomes</td>
+<td>Student-t(3, 0, 1)</td>
+<td>Heterogeneity; weakly informative with heavy tails for sparse outcomes</td>
 </tr>
 </tbody>
 </table>
@@ -379,7 +399,7 @@ u_j \sim \text{Normal}(0, \tau)
 <h3 class="anchored" data-anchor-id="model-hierarchy">Model Hierarchy</h3>
 <ul>
 <li><strong>M1 (Direct effect):</strong> PTCy + timepoint adjustment + random study intercept</li>
-<li><strong>M2 (Steroid-adjusted):</strong> M1 + arm-level systemic steroid exposure (% receiving steroids for GVHD). Missing steroid data handled via <code>mi()</code> (Bayesian multiple imputation within brms) where needed.</li>
+<li><strong>M2 (Steroid-adjusted):</strong> M1 + arm-level systemic steroid exposure (% receiving steroids for GVHD). Post-Block-9 M2 models use complete-case analysis (arms with missing steroid data excluded).</li>
 <li><strong>M3 (aGVHD-adjusted, CMV only):</strong> M1 + arm-level aGVHD grade II–IV cumulative incidence</li>
 </ul>
 </section>
@@ -888,7 +908,7 @@ u_j \sim \text{Normal}(0, \tau)
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Study Design</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 251 studies (525 arms, 14 RCTs) drawn from 9 extraction blocks, with 214 papers excluded per PRISMA criteria. Two pre-specified comparisons were analysed:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 220 studies (457 arms, 10 RCTs) drawn from 9 extraction blocks, with 190 papers excluded per PRISMA criteria. Three pre-specified comparisons were analysed:</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Comparison 1:** PTCy vs CNI+MTX/MMF-based prophylaxis</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Comparison 2:** PTCy vs ATG-based prophylaxis</span>
@@ -896,70 +916,74 @@ u_j \sim \text{Normal}(0, \tau)
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Outcomes</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Six primary outcomes were evaluated:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Ten outcomes were evaluated across transplant, GVHD, and infection domains:</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Outcome <span class="pp">|</span> Definition <span class="pp">|</span> Timepoint preference (Strategy C) <span class="pp">|</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Outcome <span class="pp">|</span> Definition <span class="pp">|</span> Timepoint preference <span class="pp">|</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Overall survival (OS) <span class="pp">|</span> All-cause mortality <span class="pp">|</span> 2yr &gt; 1yr &gt; EoF <span class="pp">|</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Non-relapse mortality (NRM) <span class="pp">|</span> Death without prior relapse <span class="pp">|</span> 2yr &gt; 1yr &gt; EoF <span class="pp">|</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> aGVHD grade II–IV <span class="pp">|</span> Acute GVHD by consensus criteria <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF <span class="pp">|</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> CMV any-reactivation <span class="pp">|</span> Any CMV reactivation by PCR/antigenemia <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF &gt; 1yr <span class="pp">|</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> BSI (any pathogen) <span class="pp">|</span> Positive blood culture <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF <span class="pp">|</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> IFI (any) <span class="pp">|</span> Proven/probable invasive fungal infection <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF &gt; 1yr <span class="pp">|</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Framework</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bayesian Random-Effects Models</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Relapse-related mortality (RRM) <span class="pp">|</span> Death with or after relapse <span class="pp">|</span> 2yr &gt; 1yr &gt; EoF <span class="pp">|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> aGVHD grade II–IV <span class="pp">|</span> Acute GVHD by consensus criteria <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF <span class="pp">|</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> cGVHD moderate-severe (NIH) <span class="pp">|</span> Chronic GVHD by NIH severity grading <span class="pp">|</span> 1yr &gt; 2yr &gt; EoF <span class="pp">|</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> CMV any-reactivation <span class="pp">|</span> Any CMV reactivation by PCR/antigenemia <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF &gt; 1yr <span class="pp">|</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> BK virus reactivation <span class="pp">|</span> BK viruria/viremia or haemorrhagic cystitis <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF <span class="pp">|</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> BSI (any pathogen) <span class="pp">|</span> Positive blood culture <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF <span class="pp">|</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> IFI (any) <span class="pp">|</span> Proven/probable invasive fungal infection <span class="pp">|</span> D+100 &gt; D+180 &gt; EoF &gt; 1yr <span class="pp">|</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Infection-related mortality (IRM) <span class="pp">|</span> Death attributed to infection <span class="pp">|</span> EoF &gt; 1yr &gt; 2yr <span class="pp">|</span></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>All models were fit using <span class="in">`brms`</span> with the <span class="in">`rstan`</span> backend. The general form:</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Framework</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>\text{events}_i \mid \text{trials}_i \sim \text{Binomial}(\pi_i)</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>\text{logit}(\pi_i) = \beta_0 + \beta_1 \cdot \text{PTCy}_i + \beta_2 \cdot \text{tp\_early}_i + u_{j<span class="co">[</span><span class="ot">i</span><span class="co">]</span>}</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bayesian Random-Effects Models</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>All models were fit using <span class="in">`brms`</span> with the <span class="in">`rstan`</span> backend. The general form:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>\text{events}_i \mid \text{trials}_i \sim \text{Binomial}(\pi_i)</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>u_j \sim \text{Normal}(0, \tau)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prior Specification</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parameter <span class="pp">|</span> Prior <span class="pp">|</span> Rationale <span class="pp">|</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $$\beta_{\text{PTCy}}$$ <span class="pp">|</span> Normal(0, 0.82) <span class="pp">|</span> Weakly informative; 95% prior mass covers OR 0.20–5.0 <span class="pp">|</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $$\beta_{\text{tp<span class="sc">\_</span>early}}$$ <span class="pp">|</span> Normal(0, 0.50) <span class="pp">|</span> Timepoint adjustment; modest range <span class="pp">|</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Intercept <span class="pp">|</span> Normal(0, 1.50) <span class="pp">|</span> Baseline event rate <span class="pp">|</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $$\tau$$ <span class="pp">|</span> Half-Normal(0, 0.50) <span class="pp">|</span> Heterogeneity; calibrated to plausible variation in transplant outcomes <span class="pp">|</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Model Hierarchy</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**M1 (Direct effect):** PTCy + timepoint adjustment + random study intercept</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**M2 (Steroid-adjusted):** M1 + arm-level systemic steroid exposure (% receiving steroids for GVHD). Missing steroid data handled via <span class="in">`mi()`</span> (Bayesian multiple imputation within brms) where needed.</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**M3 (aGVHD-adjusted, CMV only):** M1 + arm-level aGVHD grade II–IV cumulative incidence</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\text{logit}(\pi_i) = \beta_0 + \beta_1 \cdot \text{PTCy}_i + \beta_2 \cdot \text{tp\_early}_i + u_{j<span class="co">[</span><span class="ot">i</span><span class="co">]</span>}</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>u_j \sim \text{Normal}(0, \tau)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prior Specification</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parameter <span class="pp">|</span> Prior <span class="pp">|</span> Rationale <span class="pp">|</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $$\beta_{\text{PTCy}}$$ <span class="pp">|</span> Normal(0, 2.5) <span class="pp">|</span> Weakly informative; 95% prior mass covers OR 0.007–140 <span class="pp">|</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $$\beta_{\text{tp<span class="sc">\_</span>early}}$$ <span class="pp">|</span> Normal(0, 2.5) <span class="pp">|</span> Timepoint adjustment; same prior class <span class="pp">|</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Intercept <span class="pp">|</span> Normal(0, 1.5) <span class="pp">|</span> Baseline event rate <span class="pp">|</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $$\tau$$ <span class="pp">|</span> Student-t(3, 0, 1) <span class="pp">|</span> Heterogeneity; weakly informative with heavy tails for sparse outcomes <span class="pp">|</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">### Model Hierarchy</span></span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### MCMC Configuration</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>4 chains × 4,000 iterations (1,000 warmup + 3,000 sampling) = 12,000 posterior draws</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Convergence assessed via R̂ (all ≤ 1.005) and effective sample sizes (bulk ESS, tail ESS)</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No divergent transitions in any fitted model</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**M1 (Direct effect):** PTCy + timepoint adjustment + random study intercept</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**M2 (Steroid-adjusted):** M1 + arm-level systemic steroid exposure (% receiving steroids for GVHD). Post-Block-9 M2 models use complete-case analysis (arms with missing steroid data excluded).</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**M3 (aGVHD-adjusted, CMV only):** M1 + arm-level aGVHD grade II–IV cumulative incidence</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### MCMC Configuration</span></span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="fu">### Frequentist Comparison</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>All Bayesian models were cross-checked with frequentist random-effects models (REML) via <span class="in">`metafor`</span> (v5.0-1) using log-OR as the effect size. BSI in Comparison 2 (k = 3) was pooled using Mantel-Haenszel fixed-effect estimation.</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>4 chains × 4,000 iterations (1,000 warmup + 3,000 sampling) = 12,000 posterior draws</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Convergence assessed via R̂ (all ≤ 1.005) and effective sample sizes (bulk ESS, tail ESS)</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No divergent transitions in any fitted model</span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arm Classification</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### Frequentist Comparison</span></span>
 <span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparison 1</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>Arms were classified as PTCy if <span class="in">`ptcy_used == "Y"`</span> and as control if the primary prophylaxis was CNI+MTX or CNI+MMF without PTCy.</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparison 2</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Primary analysis:** Clean binary — PTCy-only (<span class="in">`ptcy_used == "Y"`</span>, <span class="in">`atg_used == "N"`</span>) vs ATG-only (<span class="in">`ptcy_used == "N"`</span>, <span class="in">`atg_used == "Y"`</span>)</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sensitivity analysis:** PTCy+ATG combination arms reclassified as PTCy-side; mixed-ATG arms classified by PTCy co-administration; "neither" arms excluded</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>All Bayesian models were cross-checked with frequentist random-effects models (REML) via <span class="in">`metafor`</span> (v5.0-1) using log-OR as the effect size. BSI in Comparison 2 (k = 3) was pooled using Mantel-Haenszel fixed-effect estimation.</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arm Classification</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparison 1</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>Arms were classified as PTCy if <span class="in">`ptcy_used == "Y"`</span> and as control if the primary prophylaxis was CNI+MTX or CNI+MMF without PTCy.</span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## GRADE Assessment</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>Certainty of evidence was assessed per the GRADE Handbook (Schünemann et al.) adapted for Bayesian meta-analyses of observational studies. Starting certainty: LOW. Cross-comparison coherence was considered as a potential upgrade criterion where applicable.</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparison 2</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Primary analysis:** Clean binary — PTCy-only (<span class="in">`ptcy_used == "Y"`</span>, <span class="in">`atg_used == "N"`</span>) vs ATG-only (<span class="in">`ptcy_used == "N"`</span>, <span class="in">`atg_used == "Y"`</span>)</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sensitivity analysis:** PTCy+ATG combination arms reclassified as PTCy-side; mixed-ATG arms classified by PTCy co-administration; "neither" arms excluded</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## GRADE Assessment</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>Certainty of evidence was assessed per the GRADE Handbook (Schünemann et al.) adapted for Bayesian meta-analyses of observational studies. Starting certainty: LOW. Cross-comparison coherence was considered as a potential upgrade criterion where applicable.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

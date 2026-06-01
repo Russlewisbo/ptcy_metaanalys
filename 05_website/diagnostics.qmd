@@ -22,7 +22,8 @@ model_files_c1 <- c(
   "aGVHD M1" = "m1_c1_agvhd.rds",
   "CMV M1" = "m1_c1_cmv.rds", "CMV M2" = "m2_c1_cmv.rds",
   "BSI M1" = "m1_c1_bsi.rds", "IFI M1" = "m1_c1_ifi_any.rds",
-  "RRM M1" = "m1_c1_rrm.rds", "BK M1" = "m1_c1_bk.rds"
+  "RRM M1" = "m1_c1_rrm.rds", "BK M1" = "m1_c1_bk.rds",
+  "IRM M1" = "m1_c1_irm.rds"
 )
 
 # Fallback to pre-Block-9 names if post-Block-9 not available

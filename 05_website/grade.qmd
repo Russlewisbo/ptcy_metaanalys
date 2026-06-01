@@ -32,10 +32,14 @@ tibble::tribble(
   "CMV",           "C2", 13,  1571, "0.92 [0.73\u20131.15]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; sensitivity convergence",
   "BSI",           "C1",  6,   806, "1.87 [1.33\u20132.62]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 6; freq CrI crosses null",
   "IFI",           "C1",  6,  2243, "0.43 [0.29\u20130.63]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.64; extreme heterogeneity",
+  "cGVHD mod-sev", "C1", 21, 12493, "0.33 [0.29\u20130.36]", "\u2295\u2295\u2296\u2296 LOW",       "Largest effect; I\u00B2 = 80%",
+  "cGVHD mod-sev", "C2",  6,   905, "0.79 [0.55\u20131.14]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; k = 6",
   "RRM",           "C1", 38, 19225, "0.84 [0.76\u20130.93]", "\u2295\u2295\u2296\u2296 LOW",       "Consistent; no steroid mediation",
   "RRM",           "C2", 10, 17182, "0.79 [0.69\u20130.89]", "\u2295\u2295\u2296\u2296 LOW",       "\u03c4 = 0.16; highly consistent",
   "BK Virus",      "C1", 11,  1333, "2.48 [1.82\u20133.38]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.06; dual mechanism",
-  "BK Virus",      "C2",  3,   313, "2.44 [1.40\u20134.26]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 3; hypothesis-generating"
+  "BK Virus",      "C2",  3,   313, "2.44 [1.40\u20134.26]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 3; hypothesis-generating",
+  "IRM",           "C1", 16,  8214, "1.35 [1.16\u20131.57]", "\u2295\u2296\u2296\u2296 V.LOW",     "Bayes-freq divergence; CIBMTR-driven",
+  "IRM",           "C2",  7, 13346, "0.90 [0.74\u20131.09]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; k = 7"
 ) |>
   kable(align = c("l","c","r","r","c","c","l")) |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
@@ -213,19 +217,20 @@ C1 OS shows borderline concern: 7 studies imputed with adjusted OR touching null
 
 Across both comparisons, certainty does not exceed LOW — a predictable consequence of an almost entirely observational evidence base.
 
-**The most robust finding** is C1 OS (OR 0.79, k = 40, LOW certainty), which has been stable across the pre-Block-9 and post-Block-9 analyses, is consistent across comparators (C2 OR 0.81), and has CrIs that exclude null. C1 aGVHD (OR 0.67, k = 28) is consistent across comparators (C2 OR 0.58, k = 9) and directionally stable, but is downgraded to VERY LOW due to significant funnel asymmetry (Egger p = 0.041). The trim-and-fill adjusted estimate (OR 0.83) crosses null, suggesting the effect size may be inflated by selective reporting of small positive studies. **Cross-comparison coherence** remains the strongest methodological asset.
+**The most robust findings** are C1 OS (OR 0.79, k = 40, LOW certainty) and C1 moderate-severe cGVHD (OR 0.33, k = 21, LOW certainty). Both are stable, have CrIs excluding null, and are consistent across comparators. C1 cGVHD is the largest treatment effect in the analysis. C1 RRM (OR 0.84, k = 38, LOW certainty) is similarly robust and steroid-independent, supporting preserved GVL activity. **Cross-comparison coherence** remains the strongest methodological asset.
 
-**The CMV depletion hierarchy** is supported not by a single direction reversal but by a three-point gradient across the primary and sensitivity analyses. This gradient pattern carries greater evidential weight than any one estimate. Certainty for the mechanistic conclusion (that CMV risk tracks depletion depth) is LOW when integrating the full pattern.
+**Chronic GVHD is arguably the most clinically important finding.** The OR of 0.33 for moderate-severe cGVHD translates to a two-thirds reduction in the leading cause of late post-transplant morbidity. Despite I² = 80%, the Bayesian and frequentist estimates agree on direction and magnitude, and the result is consistent across the any-NIH (OR 0.23) and moderate-severe (OR 0.33) subsets.
 
-**Infection outcomes remain the principal evidence gap.** BSI and IFI carry VERY LOW certainty. Both show substantial discordance between Bayesian and frequentist estimators, and both have extreme heterogeneity. Dedicated prospective studies with standardised endpoint definitions are needed.
+**The infection–mortality disconnect is the key risk-benefit finding.** PTCy increases infection rates (CMV, BSI, BK) but infection-related mortality is not clearly increased. The C1 IRM Bayesian–frequentist divergence (OR 1.35 vs 1.01) warrants caution, but even the more pessimistic estimate represents a far smaller effect than the infection rate increases, suggesting infectious complications are clinically manageable.
 
-**C2 NRM is no longer gradeable.** Arm classification corrections reduced k to 2. The steroid mediation pattern observed in C1 NRM (OR 0.88 → M2 OR 0.90) remains the best available evidence for the GVHD→steroid→NRM causal chain.
+**C2 NRM is no longer gradeable.** Arm classification corrections reduced k to 3. NRM steroid mediation is inconclusive in the post-Block-9 data.
 
 ::: {.callout-tip}
 ## Post-Block-9 GRADE Changes
-- C2 NRM: removed (k = 2 after arm reclassification)
-- C2 BSI: removed (k = 3 Mantel-Haenszel was not formally gradeable)
-- C2 CMV: still VERY LOW; reasoning revised from "direction reversal" to "gradient pattern"
-- C1 IFI: k decreased (8 → 6), but CrI now excludes null; τ = 1.64 warrants extreme caution
-- All other outcomes: certainty unchanged
+- **New outcomes added:** cGVHD moderate-severe (C1 LOW, C2 V.LOW), RRM (C1 LOW, C2 LOW), BK virus (V.LOW), IRM (V.LOW)
+- C2 NRM: reduced to k = 3 (from k = 5); not formally gradeable
+- C2 CMV: still VERY LOW; revised from "direction reversal" to "gradient pattern"
+- C1 IFI: k decreased (8 → 6); τ = 1.64 warrants extreme caution
+- C1 IRM: Bayesian–frequentist divergence; rated VERY LOW
+- C1 NRM mediation: no longer shows clear complete mediation (M1→M2 shift minimal)
 :::

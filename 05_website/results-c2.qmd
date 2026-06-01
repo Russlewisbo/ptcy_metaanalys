@@ -16,6 +16,8 @@ post_c2_cmv     <- load_post("post_c2_cmv.rds")
 post_c2_m2_cmv  <- load_post("post_c2_m2_cmv.rds")
 post_c2_rrm     <- tryCatch(load_post("post_c2_rrm.rds"), error = function(e) NULL)
 post_c2_bk      <- tryCatch(load_post("post_c2_bk.rds"), error = function(e) NULL)
+post_c2_irm     <- tryCatch(load_post("post_c2_irm.rds"), error = function(e) NULL)
+post_c2_cgvhd   <- tryCatch(load_post("post_c2_cgvhd_ms.rds"), error = function(e) NULL)
 
 # C1 posteriors for cross-comparison
 post_m1 <- load_post("post_m1.rds")
@@ -63,6 +65,27 @@ The pre-Block-9 C2 NRM (k = 5, OR 0.65 [0.43–0.97]) was nominally significant.
 ## Acute GVHD Grade II–IV {#sec-c2-agvhd}
 
 **M1:** OR 0.58 (95% CrI 0.44–0.77), P(OR < 1) > 99%, τ = 0.55, k = 9. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.
+
+## Chronic GVHD Moderate-Severe {#sec-c2-cgvhd}
+
+```{r}
+#| label: fig-c2-cgvhd
+#| fig-cap: "Posterior density for the PTCy effect on moderate-severe chronic GVHD (C2)."
+#| fig-height: 4
+
+if (!is.null(post_c2_cgvhd)) {
+  tibble(log_or = post_c2_cgvhd$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy vs ATG)", y = "Posterior density",
+         title = "Chronic GVHD Moderate-Severe — Comparison 2",
+         subtitle = "k = 6, N = 905 · OR 0.79 [0.55\u20131.14]") +
+    theme_jama()
+}
+```
+
+**M1:** OR 0.79 (95% CrI 0.55–1.14), P(OR < 1) = 90%, k = 6, τ = 0.89. Directionally protective but CrI crosses null. The C2 cGVHD effect (OR 0.79) is substantially weaker than C1 (OR 0.33), consistent with ATG also providing significant cGVHD prophylaxis through T-cell depletion — the differential between PTCy and ATG for chronic GVHD is smaller than between PTCy and CNI+MTX.
 
 ## CMV Reactivation — The Direction Reversal {#sec-c2-cmv}
 
@@ -186,6 +209,32 @@ if (!is.null(post_c2_bk)) {
 
 **M1:** OR 2.44 (95% CrI 1.40–4.26), P(OR > 1) > 99%, k = 3. Consistent with C1 (OR 2.48), confirming elevated BK virus risk is comparator-independent. This supports the dual-mechanism hypothesis (urothelial toxicity + T-cell depletion), since ATG provides comparable T-cell depletion but not urothelial damage.
 
+## Infection-Related Mortality {#sec-c2-irm}
+
+```{r}
+#| label: fig-c2-irm
+#| fig-cap: "Posterior density for the PTCy effect on infection-related mortality (C2)."
+#| fig-height: 4
+
+if (!is.null(post_c2_irm)) {
+  tibble(log_or = post_c2_irm$b_ptcy_binary) |>
+    ggplot(aes(x = log_or)) +
+    geom_density(fill = jama_navy, colour = jama_navy, alpha = 0.4, linewidth = 0.6) +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
+    labs(x = "log-OR (PTCy vs ATG)", y = "Posterior density",
+         title = "Infection-Related Mortality — Comparison 2",
+         subtitle = "k = 7, N = 13,346 · OR 0.90 [0.74\u20131.09]") +
+    theme_jama()
+}
+```
+
+**Bayesian M1:** OR 0.90 (95% CrI 0.74–1.09), P(OR < 1) = 86%, k = 7, τ = 0.58. Directionally protective (lower IRM with PTCy than ATG), concordant with the frequentist estimate (OR 0.81 [0.66–1.00], I² = 0%). Unlike C1, Bayesian and frequentist models agree: PTCy does not increase infection-related mortality relative to ATG.
+
+::: {.callout-note}
+## IRM Across Comparisons
+The C1/C2 IRM pattern mirrors the CMV depletion gradient: IRM is modestly elevated vs CNI+MTX (Bayesian OR 1.35) but *reduced* vs ATG (OR 0.90). This is consistent with ATG causing greater T-cell depletion–related mortality than PTCy. The C1 Bayesian–frequentist divergence warrants caution, but the overall picture suggests PTCy's infection cost is offset by ATG's even greater immune compromise.
+:::
+
 ## Cross-Comparison Summary {#sec-c2-summary}
 
 ```{r}
@@ -227,8 +276,16 @@ c2_list <- list(
 )
 if (!is.null(post_c2_rrm)) c2_list <- c(c2_list, list(or_summary(post_c2_rrm, "b_ptcy_binary", "RRM", "C2: PTCy vs ATG")))
 if (!is.null(post_c2_bk))  c2_list <- c(c2_list, list(or_summary(post_c2_bk,  "b_ptcy_binary", "BK Virus", "C2: PTCy vs ATG")))
+if (!is.null(post_c2_irm)) c2_list <- c(c2_list, list(or_summary(post_c2_irm, "b_ptcy_binary", "IRM", "C2: PTCy vs ATG")))
 
-outcome_levels <- rev(c("OS", "NRM", "RRM", "aGVHD II\u2013IV", "CMV", "BK Virus", "BSI", "IFI"))
+post_c1_irm_tmp <- tryCatch(load_post("post_c1_irm.rds"), error = function(e) NULL)
+if (!is.null(post_c1_irm_tmp)) c1_list <- c(c1_list, list(or_summary(post_c1_irm_tmp, "b_ptcy_binary", "IRM", "C1: PTCy vs CNI+MTX")))
+
+post_c1_cgvhd_tmp <- tryCatch(load_post("post_c1_cgvhd_ms.rds"), error = function(e) NULL)
+if (!is.null(post_c1_cgvhd_tmp)) c1_list <- c(c1_list, list(or_summary(post_c1_cgvhd_tmp, "b_ptcy_binary", "cGVHD mod-sev", "C1: PTCy vs CNI+MTX")))
+if (!is.null(post_c2_cgvhd)) c2_list <- c(c2_list, list(or_summary(post_c2_cgvhd, "b_ptcy_binary", "cGVHD mod-sev", "C2: PTCy vs ATG")))
+
+outcome_levels <- rev(c("OS", "NRM", "RRM", "aGVHD II\u2013IV", "cGVHD mod-sev", "CMV", "BK Virus", "BSI", "IFI", "IRM"))
 
 all_pd <- do.call(rbind, c(c1_list, c2_list)) |>
   as_tibble() |>

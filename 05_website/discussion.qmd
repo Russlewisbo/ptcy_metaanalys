@@ -254,19 +254,35 @@ In contrast, when the donor is seropositive (D+/R+ and D+/R−), the comparator 
 All D/R stratum-specific estimates are based on k = 1 study each. The ecological meta-regressions lack power (k = 8–11 with restricted ranges). Testing whether PTCy's CMV effect genuinely differs by D/R serostatus requires individual patient data (IPD) meta-analysis, where within-study D/R interactions can be estimated without ecological bias.
 :::
 
+## Chronic GVHD: The Dominant Treatment Effect {#sec-disc-cgvhd}
+
+The C1 moderate-severe chronic GVHD OR of 0.33 [0.29–0.36] is the single largest treatment effect in this meta-analysis, substantially exceeding the aGVHD effect (OR 0.67). This magnitude — a two-thirds reduction — is clinically transformative given that moderate-severe cGVHD is the leading cause of late morbidity and long-term immunosuppression dependence after allogeneic HCT.
+
+The C1-vs-C2 attenuation (OR 0.33 → 0.79) mirrors the aGVHD pattern (0.67 → 0.58) and is mechanistically coherent: ATG also depletes alloreactive T cells, narrowing the differential. However, PTCy retains a residual cGVHD advantage even against ATG (90% posterior probability of OR < 1), suggesting PTCy may target the chronic alloimmune process through a partially distinct mechanism — possibly the selective elimination of alloreactive T cells that are actively dividing during the early post-transplant window, which are disproportionately represented among the long-lived T-cell clones that drive chronic GVHD.
+
+## Infection-Related Mortality: The Risk-Benefit Resolution {#sec-disc-irm}
+
+The IRM analysis is arguably the most clinically important finding in this report because it resolves the central risk-benefit question: *do the excess infections with PTCy translate into excess deaths?*
+
+The answer is nuanced. In C2 (vs ATG), both the Bayesian (OR 0.90 [0.74–1.09]) and frequentist (OR 0.81 [0.66–1.00]) models agree: PTCy does not increase infection-related mortality relative to ATG. In C1 (vs CNI+MTX), the models diverge: the Bayesian binomial model finds elevated IRM (OR 1.35 [1.16–1.57]) while the frequentist RE model finds null (OR 1.01 [0.70–1.45]). The divergence is driven by two large CIBMTR studies (Battipaglia 2019, Mulroney 2021) that contribute disproportionately to the Bayesian estimate.
+
+The clinically relevant interpretation is that even under the more pessimistic Bayesian estimate, the IRM increase (OR 1.35) is far smaller than the corresponding infection rate increases (CMV OR 1.26, BSI OR 1.87, BK virus OR 2.48). This disconnect between infection incidence and infection mortality suggests that PTCy-associated infections are, as a class, manageable with contemporary antimicrobial prophylaxis and pre-emptive therapy. The net survival effect remains strongly favourable (OS OR 0.79).
+
 ## Practical Implications {#sec-disc-practical}
 
-The mechanistic architecture carries direct clinical implications:
+The expanded analysis — now covering 10 outcomes across 3 comparisons — carries direct clinical implications:
 
-| Domain | Intervention target | Rationale |
-|---|---|---|
-| **CMV / BSI** | T-cell reconstitution (adoptive therapy, early IS tapering) | Infection risk is GVHD-independent; steroid avoidance will not help |
-| **NRM** | GVHD control and steroid minimisation | NRM benefit is steroid-mediated |
-| **OS** | Both GVHD control + relapse prevention | Partial mediation suggests dual contribution |
+| Domain | Finding | Intervention target | Rationale |
+|---|---|---|---|
+| **cGVHD** | OR 0.33 (largest effect) | Long-term IS tapering, QoL | PTCy profoundly reduces late morbidity |
+| **OS / RRM** | OR 0.79 / 0.84 | Relapse prevention | GVL preserved; dual survival benefit |
+| **CMV / BSI / BK** | Rates elevated | T-cell reconstitution, antimicrobial prophylaxis | Infections manageable; IRM not clearly increased |
+| **NRM** | Mediation uncertain | GVHD control + steroid minimisation | Indirect pathway; evidence weaker post-Block-9 |
+| **aGVHD** | OR 0.67 | GVHD prevention | Consistent across comparators |
 
 ::: {.callout-note}
 ## ATG Is Not the Solution
-The C2 data — and especially the sensitivity analysis — show that ATG-based regimens carry at least as great a T-cell reconstitution liability as PTCy. Adding ATG to PTCy does not worsen CMV; it merely saturates the depletion effect. The infection costs of PTCy are best understood as a general consequence of T-cell–depleting prophylaxis, not a PTCy-specific limitation.
+The C2 data show that ATG-based regimens carry at least as great a T-cell reconstitution liability as PTCy. The infection costs of PTCy are best understood as a general consequence of T-cell–depleting prophylaxis, not a PTCy-specific limitation. PTCy's advantage over ATG lies in its superior cGVHD prophylaxis and preserved GVL activity.
 :::
 
 ## Limitations {#sec-disc-limitations}

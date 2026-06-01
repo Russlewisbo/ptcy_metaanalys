@@ -10,7 +10,7 @@ source("_common.R")
 
 ## Study Design
 
-This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 251 studies (525 arms, 14 RCTs) drawn from 9 extraction blocks, with 214 papers excluded per PRISMA criteria. Two pre-specified comparisons were analysed:
+This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 220 studies (457 arms, 10 RCTs) drawn from 9 extraction blocks, with 190 papers excluded per PRISMA criteria. Three pre-specified comparisons were analysed:
 
 - **Comparison 1:** PTCy vs CNI+MTX/MMF-based prophylaxis
 - **Comparison 2:** PTCy vs ATG-based prophylaxis
@@ -18,16 +18,20 @@ This is a systematic review and Bayesian meta-analysis of studies comparing post
 
 ## Outcomes
 
-Six primary outcomes were evaluated:
+Ten outcomes were evaluated across transplant, GVHD, and infection domains:
 
-| Outcome | Definition | Timepoint preference (Strategy C) |
+| Outcome | Definition | Timepoint preference |
 |---|---|---|
 | Overall survival (OS) | All-cause mortality | 2yr > 1yr > EoF |
 | Non-relapse mortality (NRM) | Death without prior relapse | 2yr > 1yr > EoF |
+| Relapse-related mortality (RRM) | Death with or after relapse | 2yr > 1yr > EoF |
 | aGVHD grade II–IV | Acute GVHD by consensus criteria | D+100 > D+180 > EoF |
+| cGVHD moderate-severe (NIH) | Chronic GVHD by NIH severity grading | 1yr > 2yr > EoF |
 | CMV any-reactivation | Any CMV reactivation by PCR/antigenemia | D+100 > D+180 > EoF > 1yr |
+| BK virus reactivation | BK viruria/viremia or haemorrhagic cystitis | D+100 > D+180 > EoF |
 | BSI (any pathogen) | Positive blood culture | D+100 > D+180 > EoF |
 | IFI (any) | Proven/probable invasive fungal infection | D+100 > D+180 > EoF > 1yr |
+| Infection-related mortality (IRM) | Death attributed to infection | EoF > 1yr > 2yr |
 
 ## Statistical Framework
 
@@ -49,15 +53,15 @@ $$
 
 | Parameter | Prior | Rationale |
 |---|---|---|
-| $$\beta_{\text{PTCy}}$$ | Normal(0, 0.82) | Weakly informative; 95% prior mass covers OR 0.20–5.0 |
-| $$\beta_{\text{tp\_early}}$$ | Normal(0, 0.50) | Timepoint adjustment; modest range |
-| Intercept | Normal(0, 1.50) | Baseline event rate |
-| $$\tau$$ | Half-Normal(0, 0.50) | Heterogeneity; calibrated to plausible variation in transplant outcomes |
+| $$\beta_{\text{PTCy}}$$ | Normal(0, 2.5) | Weakly informative; 95% prior mass covers OR 0.007–140 |
+| $$\beta_{\text{tp\_early}}$$ | Normal(0, 2.5) | Timepoint adjustment; same prior class |
+| Intercept | Normal(0, 1.5) | Baseline event rate |
+| $$\tau$$ | Student-t(3, 0, 1) | Heterogeneity; weakly informative with heavy tails for sparse outcomes |
 
 ### Model Hierarchy
 
 - **M1 (Direct effect):** PTCy + timepoint adjustment + random study intercept
-- **M2 (Steroid-adjusted):** M1 + arm-level systemic steroid exposure (% receiving steroids for GVHD). Missing steroid data handled via `mi()` (Bayesian multiple imputation within brms) where needed.
+- **M2 (Steroid-adjusted):** M1 + arm-level systemic steroid exposure (% receiving steroids for GVHD). Post-Block-9 M2 models use complete-case analysis (arms with missing steroid data excluded).
 - **M3 (aGVHD-adjusted, CMV only):** M1 + arm-level aGVHD grade II–IV cumulative incidence
 
 ### MCMC Configuration
