@@ -18,6 +18,13 @@ post_m2      <- load_post("post_m2.rds")
 post_m3      <- tryCatch(load_post("post_m3_agvhd.rds"), error = function(e) NULL)
 post_bsi     <- load_post("post_bsi.rds")
 post_ifi     <- load_post("post_ifi.rds")
+post_rrm     <- tryCatch(load_post("post_c1_rrm.rds"), error = function(e) NULL)
+post_m2_rrm  <- tryCatch(load_post("post_m2_c1_rrm.rds"), error = function(e) {
+  # Fallback: extract from model object
+  m <- tryCatch(load_model("m2_c1_rrm.rds"), error = function(e2) NULL)
+  if (!is.null(m)) as_draws_df(m) else NULL
+})
+post_bk      <- tryCatch(load_post("post_c1_bk.rds"), error = function(e) NULL)
 
 # Load analytic datasets (post-Block-9 preferred, fallback to pre)
 c1_os    <- load_model("os_brms_clean.rds")
@@ -57,9 +64,9 @@ tibble(
   theme_jama()
 ```
 
-**M1 (Direct effect):** OR 0.77 (95% CrI 0.71–0.83), P(OR < 1) = 100%, τ = 0.59. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.
+**M1 (Direct effect):** OR 0.79 (95% CrI 0.73–0.85), P(OR < 1) = 100%, τ = 0.61. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.
 
-**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.77 to 0.83 (95% CrI 0.75–0.92), a 29% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.
+**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.79 to 0.86 (95% CrI 0.77–0.96), a 36% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.
 
 ## Non-Relapse Mortality {#sec-c1-nrm}
 
@@ -83,13 +90,13 @@ tibble(
   theme_jama()
 ```
 
-**M1:** OR 0.86 (95% CrI 0.70–1.08), P(OR < 1) = 90%. Probable but uncertain benefit.
+**M1:** OR 0.88 (95% CrI 0.66–1.18), P(OR < 1) = 83%, τ = 0.72. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.
 
-**M2:** OR 1.02 (95% CrI 0.79–1.33), P(OR < 1) = 43%. **Complete mediation**: the NRM benefit vanishes after steroid adjustment, indicating it is entirely downstream of GVHD suppression.
+**M2:** OR 0.90 (95% CrI 0.59–1.36), P(OR < 1) = 60%. The M1→M2 shift is modest (0.88 → 0.90), with wide CrIs overlapping substantially. Unlike the pre-Block-9 analysis (where M2 crossed null at 1.02, suggesting complete mediation), the current data are **inconclusive regarding steroid mediation** of NRM — the point estimates barely differ, and the wide intervals accommodate both full mediation and no mediation.
 
-::: {.callout-important}
-## Complete NRM Mediation
-The M1→M2 shift (OR 0.86 → 1.02) is the single most interpretable mediation finding in the analysis. Once the steroid burden differential between arms is accounted for, there is no residual PTCy effect on non-relapse mortality.
+::: {.callout-note}
+## NRM Mediation — Revised
+The pre-Block-9 M1→M2 shift (OR 0.86 → 1.02) was the strongest mediation finding. After arm reclassification and expanded data, the shift is now minimal (0.88 → 0.90) with wide CrIs. The steroid mediation hypothesis for NRM remains plausible but is no longer clearly supported by the Bayesian models alone.
 :::
 
 ## Mediation Comparison: OS vs NRM {#sec-c1-mediation}
@@ -154,11 +161,11 @@ tibble(log_or = post_agvhd$b_ptcy_binary) |>
   geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
   labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
        title = "aGVHD Grade II\u2013IV — Posterior Distribution",
-       subtitle = "k = 24 studies, N = 3,837 · OR 0.63 [0.54\u20130.74]") +
+       subtitle = "k = 28 studies, N = 4,197 · OR 0.67 [0.59\u20130.78]") +
   theme_jama()
 ```
 
-**M1:** OR 0.63 (95% CrI 0.54–0.74), P(OR < 1) = 100%, τ = 0.66. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.
+**M1:** OR 0.67 (95% CrI 0.59–0.78), P(OR < 1) = 100%, τ = 0.68. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.
 
 ## CMV Any-Reactivation {#sec-c1-cmv}
 
@@ -187,13 +194,13 @@ cmv_draws |>
                                   "M3 (aGVHD)" = jama_light_blue)) +
   labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
        title = "CMV Reactivation — Posterior Distributions",
-       subtitle = "k = 18, N = 3,357 · No attenuation with steroid or aGVHD adjustment") +
+       subtitle = "k = 22, N = 3,328 · No attenuation with steroid adjustment") +
   theme_jama()
 ```
 
-**M1:** OR 1.41 (95% CrI 1.20–1.65), P(OR > 1) = 100%.
+**M1:** OR 1.26 (95% CrI 1.07–1.47), P(OR > 1) > 99%, τ = 0.74. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.
 
-**M2 (steroid-adjusted):** OR 1.43 (no attenuation). **M3 (aGVHD-adjusted):** OR 1.52 (slight amplification). Both confirm the CMV excess operates through a steroid-independent, GVHD-independent pathway — consistent with direct impairment of CMV-specific T-cell reconstitution.
+**M2 (steroid-adjusted):** OR 1.25 (no attenuation). The CMV excess is steroid-independent, consistent with direct impairment of CMV-specific T-cell reconstitution rather than a downstream GVHD effect.
 
 ## BSI and IFI {#sec-c1-infections}
 
@@ -214,7 +221,7 @@ tibble(
   scale_colour_manual(values = c("BSI" = jama_navy, "IFI" = jama_light_blue)) +
   labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
        title = "Infection Outcomes — Posterior Distributions",
-       subtitle = "BSI: OR 2.39 [1.85\u20133.10], k = 6  |  IFI: OR 0.73 [0.53\u20131.00], k = 8") +
+       subtitle = "BSI: OR 1.87 [1.33\u20132.62], k = 6  |  IFI: OR 0.43 [0.29\u20130.63], k = 6") +
   theme_jama()
 ```
 
