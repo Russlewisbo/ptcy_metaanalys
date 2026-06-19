@@ -1,215 +1,215 @@
-"study_id","study_label","exclusion_reason","label_complete"
-13,"Abedin 2024 (ASH abstract)","Conference abstract",TRUE
-18,"Ahmad I 2023","Conference abstract",TRUE
-28,"Altareb 2024","Conference abstract",TRUE
-1,"Ara 2023","Conference abstract",TRUE
-33,"Arslan 2023","Conference abstract",TRUE
-36,"Asano-Mori 2014","Conference abstract",TRUE
-40,"Aydin 2022","Conference abstract",TRUE
-53,"Baron F 2023","Conference abstract",TRUE
-58,"Battipaglia 2024","Conference abstract",TRUE
-59,"Battipaglia 2024","Conference abstract",TRUE
-64,"Bento 2025","Conference abstract",TRUE
-68,"Bhatia 2024","Conference abstract",TRUE
-76,"Bothara 2025","Conference abstract",TRUE
-81,"Bu 2023","Conference abstract",TRUE
-85,"Camargo 2021 (TCT abstract #426)","Conference abstract",TRUE
-92,"Chalandon 2023","Conference abstract",TRUE
-93,"Chalandon 2024","Conference abstract",TRUE
-103,"Cioccio 2021","Conference abstract",TRUE
-106,"Dachy 2022","Conference abstract",TRUE
-409,"de Almeida 2025","Conference abstract",TRUE
-415,"Desai N 2025","Conference abstract",TRUE
-115,"Desai N 2025 (ASCO abstract 6508)","Conference abstract",TRUE
-117,"Devine 2019","Conference abstract",TRUE
-125,"Dykes 2025","Conference abstract",TRUE
-126,"Eissa 2023","Conference abstract",TRUE
-127,"El Cheikh 2015","Conference abstract",TRUE
-129,"Elcheikh 2014","Conference abstract",TRUE
-131,"Elshamy 2020","Conference abstract",TRUE
-145,"Gao 2025 ASH abstract","Conference abstract",TRUE
-149,"Giebel S 2022 (EBMT abstract O005)","Conference abstract",TRUE
-154,"Girard 2020","Conference abstract",TRUE
-157,"Glass 2023","Conference abstract",TRUE
-160,"Gooptu 2025","Conference abstract",TRUE
-165,"Guare 2024","Conference abstract",TRUE
-172,"Harbi 2022","Conference abstract",TRUE
-175,"Holtan 2023","Conference abstract",TRUE
-176,"Hong J 2023","Conference abstract",TRUE
-188,"Jo 2023","Conference abstract",TRUE
-190,"Justino 2024","Conference abstract",TRUE
-195,"Kanakry 2019 (Abstract 614)","Conference abstract",TRUE
-200,"Kerbauy 2023","Conference abstract",TRUE
-206,"Koura D 2023","Conference abstract",TRUE
-213,"Lazana 2025","Conference abstract",TRUE
-214,"Li C 2024","Conference abstract",TRUE
-227,"Luznik 2021","Conference abstract",TRUE
-239,"Mayo 2025","Conference abstract",TRUE
-255,"Mohsen A 2024","Conference abstract",TRUE
-259,"Moiseev 2016 update","Conference abstract",TRUE
-265,"Moukalled 2024","Conference abstract",TRUE
-267,"Mukherjee 2019","Conference abstract",TRUE
-269,"Munshi 2025","Conference abstract",TRUE
-283,"Nagler 2023 ASH","Conference abstract",TRUE
-286,"Nagler 2024","Conference abstract",TRUE
-288,"Nagler 2024 TCT abstract #54","Conference abstract",TRUE
-294,"Niederwieser C 2022","Conference abstract",TRUE
-295,"Nishikubo M 2023","Conference abstract",TRUE
-309,"Penack 2023","Conference abstract",TRUE
-310,"Penack 2023 (ASH abstract)","Conference abstract",TRUE
-315,"Popat 2020","Conference abstract",TRUE
-319,"Ranspach 2020","Conference abstract",TRUE
-331,"Saha 2024","Conference abstract",TRUE
-333,"Salas 2023","Conference abstract",TRUE
-339,"Saliba RM 2020","Conference abstract",TRUE
-351,"Schriber 2016","Conference abstract",TRUE
-355,"Shahzad 2024","Conference abstract",TRUE
-362,"Singh AK 2020","Conference abstract",TRUE
-114,"Study ID 114","Conference abstract",FALSE
-135,"Study ID 135","Conference abstract",FALSE
-159,"Study ID 159","Conference abstract",FALSE
-17,"Study ID 17","Conference abstract",FALSE
-173,"Study ID 173","Conference abstract",FALSE
-174,"Study ID 174","Conference abstract",FALSE
-179,"Study ID 179","Conference abstract",FALSE
-182,"Study ID 182","Conference abstract",FALSE
-194,"Study ID 194","Conference abstract",FALSE
-199,"Study ID 199","Conference abstract",FALSE
-202,"Study ID 202","Conference abstract",FALSE
-204,"Study ID 204","Conference abstract",FALSE
-21,"Study ID 21","Conference abstract",FALSE
-215,"Study ID 215","Conference abstract",FALSE
-218,"Study ID 218","Conference abstract",FALSE
-222,"Study ID 222","Conference abstract",FALSE
-23,"Study ID 23","Conference abstract",FALSE
-247,"Study ID 247","Conference abstract",FALSE
-27,"Study ID 27","Conference abstract",FALSE
-284,"Study ID 284","Conference abstract",FALSE
-285,"Study ID 285","Conference abstract",FALSE
-29,"Study ID 29","Conference abstract",FALSE
-298,"Study ID 298","Conference abstract",FALSE
-3,"Study ID 3","Conference abstract",FALSE
-316,"Study ID 316","Conference abstract",FALSE
-317,"Study ID 317","Conference abstract",FALSE
-330,"Study ID 330","Conference abstract",FALSE
-34,"Study ID 34","Conference abstract",FALSE
-342,"Study ID 342","Conference abstract",FALSE
-354,"Study ID 354","Conference abstract",FALSE
-356,"Study ID 356","Conference abstract",FALSE
-365,"Study ID 365","Conference abstract",FALSE
-367,"Study ID 367","Conference abstract",FALSE
-377,"Study ID 377","Conference abstract",FALSE
-388,"Study ID 388","Conference abstract",FALSE
-393,"Study ID 393","Conference abstract",FALSE
-402,"Study ID 402","Conference abstract",FALSE
-403,"Study ID 403","Conference abstract",FALSE
-404,"Study ID 404","Conference abstract",FALSE
-42,"Study ID 42","Conference abstract",FALSE
-70,"Study ID 70","Conference abstract",FALSE
-369,"Surana 2025","Conference abstract",TRUE
-370,"Taborda 2025","Conference abstract",TRUE
-373,"Taplitz 2020","Conference abstract",TRUE
-376,"Tischer 2015 (Acute Leukemias XV symposium)","Conference abstract",TRUE
-378,"Tolosa-Ridao 2023","Conference abstract",TRUE
-385,"Vydra J 2024","Conference abstract",TRUE
-387,"Wagner 2020","Conference abstract",TRUE
-398,"Yahia 2024","Conference abstract",TRUE
-400,"Yanez San Segundo 2016","Conference abstract",TRUE
-84,"Bykova 2018","Duplicate publication",TRUE
-87,"Cao J 2023","Duplicate publication",TRUE
-121,"Dreger 2019","Duplicate publication",TRUE
-349,"Sayin 2024","Duplicate publication",TRUE
-116,"Study ID 116","Duplicate publication",FALSE
-150,"Study ID 150","Duplicate publication",FALSE
-181,"Study ID 181","Duplicate publication",FALSE
-228,"Study ID 228","Duplicate publication",FALSE
-25,"Study ID 25","Duplicate publication",FALSE
-266,"Study ID 266","Duplicate publication",FALSE
-73,"Study ID 73","Duplicate publication",FALSE
-96,"Study ID 96","Duplicate publication",FALSE
-98,"Study ID 98","Duplicate publication",FALSE
-443,"Parta 2020","Non-eligible population",TRUE
-113,"Study ID 113","Non-eligible population",FALSE
-132,"Study ID 132","Non-eligible population",FALSE
-210,"Study ID 210","Non-eligible population",FALSE
-74,"Study ID 74","Non-eligible population",FALSE
-139,"Study ID 139","Other",FALSE
-169,"Study ID 169","Other",FALSE
-171,"Study ID 171","Other",FALSE
-90,"Chakraverty 2025","Protocol or survey only",TRUE
-313,"Polverelli 2026","Protocol or survey only",TRUE
-234,"Study ID 234","Protocol or survey only",FALSE
-91,"Study ID 91","Protocol or survey only",FALSE
-15,"Adhikari 2017","Review, not primary study",TRUE
-41,"Bacigalupo 2016","Review, not primary study",TRUE
-54,"Barriga 2025","Review, not primary study",TRUE
-428,"John 2025","Review, not primary study",TRUE
-435,"Lazzari 2025","Review, not primary study",TRUE
-224,"Luo XH 2021","Review, not primary study",TRUE
-229,"Ma 2025","Review, not primary study",TRUE
-233,"Mariotti 2020","Review, not primary study",TRUE
-237,"Matsui_Ogimi_2023","Review, not primary study",TRUE
-240,"McCurdy 2015","Review, not primary study",TRUE
-251,"Mikulska 2023","Review, not primary study",TRUE
-441,"Mussetti 2021","Review, not primary study",TRUE
-130,"Study ID 130","Review, not primary study",FALSE
-148,"Study ID 148","Review, not primary study",FALSE
-161,"Study ID 161","Review, not primary study",FALSE
-235,"Study ID 235","Review, not primary study",FALSE
-274,"Study ID 274","Review, not primary study",FALSE
-275,"Study ID 275","Review, not primary study",FALSE
-38,"Study ID 38","Review, not primary study",FALSE
-392,"Williams 2020","Review, not primary study",TRUE
-459,"Williams 2020","Review, not primary study",TRUE
-22,"Akahoshi 2025","Single-arm or no PTCy contrast",TRUE
-411,"Al Malki 2021","Single-arm or no PTCy contrast",TRUE
-56,"Baskett 2020","Single-arm or no PTCy contrast",TRUE
-412,"Bejanyan 2021","Single-arm or no PTCy contrast",TRUE
-69,"Bi 2022","Single-arm or no PTCy contrast",TRUE
-82,"Bueno 2021","Single-arm or no PTCy contrast",TRUE
-414,"Carnevale-Schianca 2021","Single-arm or no PTCy contrast",TRUE
-95,"Chen 2021","Single-arm or no PTCy contrast",TRUE
-102,"Cibich 2026","Single-arm or no PTCy contrast",TRUE
-420,"Elmariah 2021","Single-arm or no PTCy contrast",TRUE
-138,"Freyer 2022","Single-arm or no PTCy contrast",TRUE
-423,"García-Cadenas 2020","Single-arm or no PTCy contrast",TRUE
-153,"Gimenez 2025","Single-arm or no PTCy contrast",TRUE
-156,"Gjaerde 2022","Single-arm or no PTCy contrast",TRUE
-177,"Hubmann 2016","Single-arm or no PTCy contrast",TRUE
-427,"Jiang 2021","Single-arm or no PTCy contrast",TRUE
-429,"Joyce 2025","Single-arm or no PTCy contrast",TRUE
-191,"Kachur 2021","Single-arm or no PTCy contrast",TRUE
-212,"Larue 2024","Single-arm or no PTCy contrast",TRUE
-434,"Lazzari 2022","Single-arm or no PTCy contrast",TRUE
-413,"Le Bourgeois 2023","Single-arm or no PTCy contrast",TRUE
-223,"Lunde 2015","Single-arm or no PTCy contrast",TRUE
-230,"Ma Y-R 2021","Single-arm or no PTCy contrast",TRUE
-439,"Moiseev IS 2020","Single-arm or no PTCy contrast",TRUE
-440,"Montoro 2020","Single-arm or no PTCy contrast",TRUE
-303,"Park S.-S. 2021","Single-arm or no PTCy contrast",TRUE
-444,"Prem 2019","Single-arm or no PTCy contrast",TRUE
-329,"Sadowska-Klasa 2026","Single-arm or no PTCy contrast",TRUE
-448,"Salas 2020","Single-arm or no PTCy contrast",TRUE
-449,"Salas 2020","Single-arm or no PTCy contrast",TRUE
-350,"Schmitz 2025","Single-arm or no PTCy contrast",TRUE
-451,"Shimomura 2024","Single-arm or no PTCy contrast",TRUE
-452,"Slade 2017","Single-arm or no PTCy contrast",TRUE
-189,"Study ID 189","Single-arm or no PTCy contrast",FALSE
-205,"Study ID 205","Single-arm or no PTCy contrast",FALSE
-252,"Study ID 252","Single-arm or no PTCy contrast",FALSE
-322,"Study ID 322","Single-arm or no PTCy contrast",FALSE
-406,"Study ID 406","Single-arm or no PTCy contrast",FALSE
-458,"Wieczorek 2023","Single-arm or no PTCy contrast",TRUE
-394,"Wu L 2023","Single-arm or no PTCy contrast",TRUE
-463,"Zhao 2022","Single-arm or no PTCy contrast",TRUE
-164,"Gu Z 2017","Systematic review or meta-analysis",TRUE
-186,"Jin 2025","Systematic review or meta-analysis",TRUE
-225,"Luo C 2025","Systematic review or meta-analysis",TRUE
-128,"Study ID 128","Systematic review or meta-analysis",FALSE
-143,"Study ID 143","Systematic review or meta-analysis",FALSE
-249,"Study ID 249","Systematic review or meta-analysis",FALSE
-30,"Study ID 30","Systematic review or meta-analysis",FALSE
-31,"Study ID 31","Systematic review or meta-analysis",FALSE
-314,"Study ID 314","Systematic review or meta-analysis",FALSE
-372,"Tang L 2023","Systematic review or meta-analysis",TRUE
-381,"Ullah 2026","Systematic review or meta-analysis",TRUE
+"study_id","Study","Reason for exclusion","confidence"
+13,"Abedin 2024 (ASH abstract)","Conference abstract","original"
+17,"Agarwal N 2023","Conference abstract","matched"
+18,"Ahmad I 2023","Conference abstract","original"
+21,"Akahoshi Y 2023","Conference abstract","matched"
+23,"Akpinar S 2022","Conference abstract","probable"
+27,"Alousi AM 2015","Conference abstract","manual_resolved"
+28,"Altareb 2024","Conference abstract","original"
+29,"Alyamany R 2025","Conference abstract","probable"
+1,"Ara 2023","Conference abstract","original"
+33,"Arslan 2023","Conference abstract","original"
+34,"Arslan Ö 2023","Conference abstract","manual_resolved"
+36,"Asano-Mori 2014","Conference abstract","original"
+40,"Aydin 2022","Conference abstract","original"
+42,"Bacigalupo A 2010","Conference abstract","probable"
+53,"Baron F 2023","Conference abstract","original"
+58,"Battipaglia 2024","Conference abstract","original"
+59,"Battipaglia 2024","Conference abstract","original"
+64,"Bento 2025","Conference abstract","original"
+68,"Bhatia 2024","Conference abstract","original"
+70,"Bi X 2024","Conference abstract","matched"
+3,"Bonfim C 2017","Conference abstract","probable"
+76,"Bothara 2025","Conference abstract","original"
+81,"Bu 2023","Conference abstract","original"
+85,"Camargo 2021 (TCT abstract #426)","Conference abstract","original"
+92,"Chalandon 2023","Conference abstract","original"
+93,"Chalandon 2024","Conference abstract","original"
+103,"Cioccio 2021","Conference abstract","original"
+106,"Dachy 2022","Conference abstract","original"
+409,"de Almeida 2025","Conference abstract","original"
+415,"Desai N 2025","Conference abstract","original"
+114,"Desai N 2025","Conference abstract","manual_resolved"
+115,"Desai N 2025 (ASCO abstract 6508)","Conference abstract","original"
+117,"Devine 2019","Conference abstract","original"
+125,"Dykes 2025","Conference abstract","original"
+126,"Eissa 2023","Conference abstract","original"
+127,"El Cheikh 2015","Conference abstract","original"
+129,"Elcheikh 2014","Conference abstract","original"
+131,"Elshamy 2020","Conference abstract","original"
+135,"Etra A 2024","Conference abstract","probable"
+145,"Gao 2025 ASH abstract","Conference abstract","original"
+149,"Giebel S 2022 (EBMT abstract O005)","Conference abstract","original"
+154,"Girard 2020","Conference abstract","original"
+157,"Glass 2023","Conference abstract","original"
+159,"Gómez-Centurión I 2023","Conference abstract","probable"
+160,"Gooptu 2025","Conference abstract","original"
+165,"Guare 2024","Conference abstract","original"
+172,"Harbi 2022","Conference abstract","original"
+173,"Harris AC 2018","Conference abstract","probable"
+174,"Heo BY 2023","Conference abstract","probable"
+175,"Holtan 2023","Conference abstract","original"
+176,"Hong J 2023","Conference abstract","original"
+179,"Huselton E 2018","Conference abstract","probable"
+182,"Ito A 2020","Conference abstract","probable"
+188,"Jo 2023","Conference abstract","original"
+190,"Justino 2024","Conference abstract","original"
+195,"Kanakry 2019 (Abstract 614)","Conference abstract","original"
+194,"Kanakry CG 2014","Conference abstract","probable"
+199,"Karagun BS 2024","Conference abstract","probable"
+200,"Kerbauy 2023","Conference abstract","original"
+202,"Khandelwal P 2016","Conference abstract","probable"
+204,"Klein OR 2016","Conference abstract","probable"
+206,"Koura D 2023","Conference abstract","original"
+213,"Lazana 2025","Conference abstract","original"
+214,"Li C 2024","Conference abstract","original"
+215,"Li H 2024","Conference abstract","manual_resolved"
+218,"Limerick E 2026","Conference abstract","probable"
+222,"Lu N 2026","Conference abstract","probable"
+227,"Luznik 2021","Conference abstract","original"
+239,"Mayo 2025","Conference abstract","original"
+247,"Merchán-Muñoz B 2025","Conference abstract","probable"
+255,"Mohsen A 2024","Conference abstract","original"
+259,"Moiseev 2016 update","Conference abstract","original"
+265,"Moukalled 2024","Conference abstract","original"
+267,"Mukherjee 2019","Conference abstract","original"
+269,"Munshi 2025","Conference abstract","original"
+283,"Nagler 2023 ASH","Conference abstract","original"
+286,"Nagler 2024","Conference abstract","original"
+288,"Nagler 2024 TCT abstract #54","Conference abstract","original"
+284,"Nagler A 2013","Conference abstract","probable"
+285,"Nagler A 2015","Conference abstract","probable"
+294,"Niederwieser C 2022","Conference abstract","original"
+295,"Nishikubo M 2023","Conference abstract","original"
+298,"Novitzky N 2013","Conference abstract","probable"
+309,"Penack 2023","Conference abstract","original"
+310,"Penack 2023 (ASH abstract)","Conference abstract","original"
+315,"Popat 2020","Conference abstract","original"
+316,"Poudyal BS 2022","Conference abstract","probable"
+317,"Pruitt A 2023","Conference abstract","probable"
+319,"Ranspach 2020","Conference abstract","original"
+330,"Saengboon S 2024","Conference abstract","probable"
+331,"Saha 2024","Conference abstract","original"
+333,"Salas 2023","Conference abstract","original"
+339,"Saliba RM 2020","Conference abstract","original"
+342,"Samuels DT 2025","Conference abstract","matched"
+351,"Schriber 2016","Conference abstract","original"
+354,"Seydoux C 2021","Conference abstract","probable"
+355,"Shahzad 2024","Conference abstract","original"
+356,"Shanmugasundaram K 2024","Conference abstract","probable"
+362,"Singh AK 2020","Conference abstract","original"
+365,"Stein A 2017","Conference abstract","probable"
+367,"Stocker N 2019","Conference abstract","probable"
+369,"Surana 2025","Conference abstract","original"
+370,"Taborda 2025","Conference abstract","original"
+373,"Taplitz 2020","Conference abstract","original"
+376,"Tischer 2015 (Acute Leukemias XV symposium)","Conference abstract","original"
+377,"Tischer J 2015","Conference abstract","manual_resolved"
+378,"Tolosa-Ridao 2023","Conference abstract","original"
+385,"Vydra J 2024","Conference abstract","original"
+387,"Wagner 2020","Conference abstract","original"
+388,"Wang X 2014","Conference abstract","probable"
+393,"Wirbel J 2026","Conference abstract","probable"
+403,"Xiao F 2024","Conference abstract","probable"
+404,"Xiao H 2025","Conference abstract","probable"
+402,"Xiao QQ 2024","Conference abstract","probable"
+398,"Yahia 2024","Conference abstract","original"
+400,"Yanez San Segundo 2016","Conference abstract","original"
+25,"Albert MH 2021","Duplicate publication","probable"
+73,"Bonfim C 2017","Duplicate publication","matched"
+84,"Bykova 2018","Duplicate publication","original"
+87,"Cao J 2023","Duplicate publication","original"
+96,"Chhabra S 2024","Duplicate publication","probable"
+98,"Chiusolo P 2018","Duplicate publication","matched"
+116,"Devillier R 2016","Duplicate publication","probable"
+121,"Dreger 2019","Duplicate publication","original"
+150,"Giebel S 2023","Duplicate publication","manual_resolved"
+181,"Irene GC 2021","Duplicate publication","probable"
+228,"Luznik L 2012","Duplicate publication","probable"
+266,"Moussallem AR 2024","Duplicate publication","manual_resolved"
+349,"Sayin 2024","Duplicate publication","original"
+74,"Bordat J 2026","Non-eligible population","matched"
+113,"Desai N 2025","Non-eligible population","manual_resolved"
+132,"Eroglu C 2013","Non-eligible population","probable"
+210,"Lad DP 2023","Non-eligible population","probable"
+443,"Parta 2020","Non-eligible population","original"
+139,"Fu H 2014","Other","probable"
+169,"Hamerschlak N 2016","Other","probable"
+171,"Harbi S 2024","Other","matched"
+90,"Chakraverty 2025","Protocol or survey only","original"
+91,"Chakraverty R 2025","Protocol or survey only","manual_resolved"
+234,"Markey KA 2018","Protocol or survey only","probable"
+313,"Polverelli 2026","Protocol or survey only","original"
+15,"Adhikari 2017","Review, not primary study","original"
+38,"Astigarraga CC 2025","Review, not primary study","probable"
+41,"Bacigalupo 2016","Review, not primary study","original"
+54,"Barriga 2025","Review, not primary study","original"
+130,"ElGohary G 2020","Review, not primary study","probable"
+148,"Gelo O 2025","Review, not primary study","probable"
+161,"Gopcsa L 2021","Review, not primary study","probable"
+428,"John 2025","Review, not primary study","original"
+435,"Lazzari 2025","Review, not primary study","original"
+224,"Luo XH 2021","Review, not primary study","original"
+229,"Ma 2025","Review, not primary study","original"
+233,"Mariotti 2020","Review, not primary study","original"
+235,"Marra JD 2023","Review, not primary study","probable"
+237,"Matsui_Ogimi_2023","Review, not primary study","original"
+240,"McCurdy 2015","Review, not primary study","original"
+251,"Mikulska 2023","Review, not primary study","original"
+441,"Mussetti 2021","Review, not primary study","original"
+274,"Nagler A 2013","Review, not primary study","probable"
+275,"Nagler A 2015","Review, not primary study","probable"
+392,"Williams 2020","Review, not primary study","original"
+459,"Williams 2020","Review, not primary study","original"
+22,"Akahoshi 2025","Single-arm or no PTCy contrast","original"
+411,"Al Malki 2021","Single-arm or no PTCy contrast","original"
+56,"Baskett 2020","Single-arm or no PTCy contrast","original"
+412,"Bejanyan 2021","Single-arm or no PTCy contrast","original"
+69,"Bi 2022","Single-arm or no PTCy contrast","original"
+82,"Bueno 2021","Single-arm or no PTCy contrast","original"
+414,"Carnevale-Schianca 2021","Single-arm or no PTCy contrast","original"
+95,"Chen 2021","Single-arm or no PTCy contrast","original"
+102,"Cibich 2026","Single-arm or no PTCy contrast","original"
+420,"Elmariah 2021","Single-arm or no PTCy contrast","original"
+138,"Freyer 2022","Single-arm or no PTCy contrast","original"
+423,"García-Cadenas 2020","Single-arm or no PTCy contrast","original"
+153,"Gimenez 2025","Single-arm or no PTCy contrast","original"
+156,"Gjaerde 2022","Single-arm or no PTCy contrast","original"
+177,"Hubmann 2016","Single-arm or no PTCy contrast","original"
+427,"Jiang 2021","Single-arm or no PTCy contrast","original"
+189,"Jorge Cordeiro D 2025","Single-arm or no PTCy contrast","probable"
+429,"Joyce 2025","Single-arm or no PTCy contrast","original"
+191,"Kachur 2021","Single-arm or no PTCy contrast","original"
+205,"Klein OR 2017","Single-arm or no PTCy contrast","probable"
+212,"Larue 2024","Single-arm or no PTCy contrast","original"
+434,"Lazzari 2022","Single-arm or no PTCy contrast","original"
+413,"Le Bourgeois 2023","Single-arm or no PTCy contrast","original"
+223,"Lunde 2015","Single-arm or no PTCy contrast","original"
+230,"Ma Y-R 2021","Single-arm or no PTCy contrast","original"
+252,"Modi D 2021","Single-arm or no PTCy contrast","probable"
+439,"Moiseev IS 2020","Single-arm or no PTCy contrast","original"
+440,"Montoro 2020","Single-arm or no PTCy contrast","original"
+303,"Park S.-S. 2021","Single-arm or no PTCy contrast","original"
+444,"Prem 2019","Single-arm or no PTCy contrast","original"
+322,"Regueiro-García A 2018","Single-arm or no PTCy contrast","probable"
+329,"Sadowska-Klasa 2026","Single-arm or no PTCy contrast","original"
+448,"Salas 2020","Single-arm or no PTCy contrast","original"
+449,"Salas 2020","Single-arm or no PTCy contrast","original"
+350,"Schmitz 2025","Single-arm or no PTCy contrast","original"
+451,"Shimomura 2024","Single-arm or no PTCy contrast","original"
+452,"Slade 2017","Single-arm or no PTCy contrast","original"
+458,"Wieczorek 2023","Single-arm or no PTCy contrast","original"
+394,"Wu L 2023","Single-arm or no PTCy contrast","original"
+406,"Yoshimaru R 2025","Single-arm or no PTCy contrast","probable"
+463,"Zhao 2022","Single-arm or no PTCy contrast","original"
+30,"Amanam I 2023","Systematic review or meta-analysis","probable"
+31,"Ambinder A 2022","Systematic review or meta-analysis","probable"
+128,"El Jurdi N 2023","Systematic review or meta-analysis","probable"
+143,"Gao F 2021","Systematic review or meta-analysis","probable"
+164,"Gu Z 2017","Systematic review or meta-analysis","original"
+186,"Jin 2025","Systematic review or meta-analysis","original"
+225,"Luo C 2025","Systematic review or meta-analysis","original"
+249,"Metheny L 2019","Systematic review or meta-analysis","probable"
+314,"Polverelli N 2026","Systematic review or meta-analysis","manual_resolved"
+372,"Tang L 2023","Systematic review or meta-analysis","original"
+381,"Ullah 2026","Systematic review or meta-analysis","original"
