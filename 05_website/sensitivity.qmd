@@ -38,7 +38,7 @@ Two pre-specified sensitivity analyses were conducted for CMV to address era eff
 
 ```{r}
 #| label: fig-sens-c1-cmv
-#| fig-cap: "CMV sensitivity analyses (C1). Primary estimate uses post-Block-9 data (k=22). Post-2020 and haplo subsets use pre-Block-9 posteriors (*) pending refit."
+#| fig-cap: "CMV sensitivity analyses (C1). All three estimates use post-Block-9 data. Both subgroup restrictions strengthen the signal, consistent with (a) letermovir-era studies widening the gap and (b) haploidentical settings amplifying the T-cell depletion effect."
 #| fig-height: 5
 
 sens_list <- list(
@@ -53,7 +53,7 @@ if (!is.null(post_m1_haplo)) {
 sens_cmv <- do.call(rbind, sens_list) |>
   as_tibble() |>
   mutate(
-    model = factor(model, levels = rev(c("Primary (k=22)", "Post-2020 (k=13)*", "Haplo \u226550% (k=11)*"))),
+    model = factor(model, levels = rev(c("Primary (k=22)", "Post-2020 (k=17)", "Haplo \u226550% (k=12)"))),
     label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi)
   )
 

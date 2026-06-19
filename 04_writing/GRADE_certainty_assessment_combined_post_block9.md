@@ -43,7 +43,8 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
    0.90 [0.59–1.36]. At k = 12, the distinction between complete and partial mediation
    is now indeterminate.
 4. **C1 CMV attenuated (1.41→1.26):** Still significant but M2 CrI barely excludes null
-   (1.01–1.54).
+   (1.01–1.54). Robustness upgrade **confirmed** by post-Block-9 sensitivity models:
+   post-2020 (k = 17, OR 1.53 [1.28–1.85]) and haplo ≥50% (k = 12, OR 1.38 [1.12–1.71]).
 5. **C2 OS attenuated (0.69→0.81):** Still significantly protective; M2 mediation
    essentially vanishes (0.81→0.82).
 6. **C2 NRM dropped below minimum (k = 2):** No longer assessable.
@@ -193,7 +194,7 @@ tracks depth of T-cell depletion — is weakened but not refuted.
 | **Indirectness** | Not serious. 0 | Not serious. 0 |
 | **Imprecision** | Not serious: Bayesian CrI 1.07–1.47 excludes null. However, M2 CrI barely excludes null (1.01–1.54) and freq CrI crosses. 0 (borderline) | Serious: CrI 0.73–1.15 crosses null; M2 CrI also crosses; signal is null. **−1** |
 | **Publication bias** | Not strongly suspected. 0 | Not strongly suspected. 0 |
-| **Upgrade: robustness** | Direction consistently harmful across k = 22, steroid-independence confirmed (M2 no attenuation). Signal is attenuated from pre-Block-9 but still robust across study additions. **+1** | The direction reversal is now weaker (C2 null rather than protective). The qualitative pattern (PTCy ≤ ATG) persists but C2 no longer provides independent statistical evidence. **+1 (partial, for comparative coherence)** |
+| **Upgrade: robustness** | Direction consistently harmful across k = 22; steroid-independence confirmed (M2 no attenuation). **Sensitivity models confirm robustness:** post-2020 subset (k = 17, OR 1.53 [1.28–1.85]) and haplo ≥50% subset (k = 12, OR 1.38 [1.12–1.71]) both remain significantly > 1 (P(OR > 1) ≥ 99.9%). Both subsets strengthen the signal relative to the primary estimate, consistent with the T-cell depletion mechanism. **+1** | The direction reversal is now weaker (C2 null rather than protective). The qualitative pattern (PTCy ≤ ATG) persists but C2 no longer provides independent statistical evidence. **+1 (partial, for comparative coherence)** |
 | **Net** | −1 + 1 = 0 | −2 + 1 = −1 |
 
 | | C1 | C2 |
@@ -202,7 +203,7 @@ tracks depth of T-cell depletion — is weakened but not refuted.
 
 *Ratings unchanged from pre-Block-9 for both comparisons, despite substantial attenuation.*
 
-> *C1: Low certainty that PTCy increases CMV risk vs CNI+MTX/MMF (OR 1.26 [1.07–1.47]). The signal has attenuated from 1.41 but remains consistent across 22 studies and is confirmed as steroid-independent by M2. The frequentist estimate is now non-significant, reflecting the tension between framework-specific precision in this outcome.*
+> *C1: Low certainty that PTCy increases CMV risk vs CNI+MTX/MMF (OR 1.26 [1.07–1.47]). The signal has attenuated from 1.41 but remains consistent across 22 studies, is steroid-independent (M2 no attenuation), and is confirmed by two pre-specified sensitivity analyses: post-2020 studies (OR 1.53 [1.28–1.85], k = 17) and haplo-dominant studies (OR 1.38 [1.12–1.71], k = 12). The frequentist estimate is now non-significant, reflecting the tension between framework-specific precision in this outcome.*
 
 > *C2: Very low certainty about CMV risk of PTCy vs ATG. The previously borderline-protective signal (OR 0.77) has dissolved to null (OR 0.92) after Block-9 data cleaning identified arm classification errors in three studies. The most defensible inference is no longer "PTCy protects against CMV vs ATG" but rather "PTCy does not increase CMV risk beyond that already inherent to ATG-based regimens." The comparative pattern (C1 harmful, C2 null) is still broadly consistent with the T-cell depletion depth hypothesis but no longer provides strong independent evidence for it.*
 
@@ -375,7 +376,11 @@ clinically relevant ways:
    (1.26 vs 0.92). The qualitative ordering is preserved (PTCy ≤ ATG for CMV risk)
    but the C2 estimate no longer provides independent evidence of protection. The
    mechanistic inference about T-cell depletion depth should be presented with
-   appropriate caveats.
+   appropriate caveats. Importantly, the C1 CMV signal is **robustly confirmed** by
+   two sensitivity analyses on post-Block-9 data: post-2020 studies (OR 1.53
+   [1.28–1.85], k = 17) and haplo ≥50% studies (OR 1.38 [1.12–1.71], k = 12).
+   Both strengthen the signal relative to the primary estimate, supporting the
+   GRADE robustness upgrade.
 
 4. **BSI evidence is weaker than previously estimated.** The loss of the large-magnitude
    upgrade and the appearance of heterogeneity (I²: 0%→71%) mean the BSI signal,
