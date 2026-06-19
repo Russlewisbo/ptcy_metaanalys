@@ -12,7 +12,7 @@ t2 <- read_csv(file.path(model_dir, "Table2_post_block9.csv"), show_col_types = 
 freq <- read_csv(file.path(model_dir, "freq_results.csv"), show_col_types = FALSE)
 ```
 
-GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence). Post-Block-9 corpus: 220 studies (10 RCTs), 457 arms.
+GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence). Post-Block-9 corpus: 251 studies (14 RCTs), 525 arms.
 
 ## Summary {#sec-grade-summary}
 

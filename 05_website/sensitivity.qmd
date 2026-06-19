@@ -38,7 +38,7 @@ Two pre-specified sensitivity analyses were conducted for CMV to address era eff
 
 ```{r}
 #| label: fig-sens-c1-cmv
-#| fig-cap: "CMV sensitivity analyses (C1). Both restrictions strengthen the effect, consistent with (a) post-2020 letermovir-era prophylaxis widening the gap, and (b) haploidentical donor settings amplifying PTCy's T-cell depletion effect."
+#| fig-cap: "CMV sensitivity analyses (C1). Primary estimate uses post-Block-9 data (k=22). Post-2020 and haplo subsets use pre-Block-9 posteriors (*) pending refit."
 #| fig-height: 5
 
 sens_list <- list(
@@ -53,7 +53,7 @@ if (!is.null(post_m1_haplo)) {
 sens_cmv <- do.call(rbind, sens_list) |>
   as_tibble() |>
   mutate(
-    model = factor(model, levels = rev(c("Primary (k=18)", "Post-2020 (k=13)", "Haplo \u226550% (k=11)"))),
+    model = factor(model, levels = rev(c("Primary (k=22)", "Post-2020 (k=13)*", "Haplo \u226550% (k=11)*"))),
     label = sprintf("%.2f [%.2f, %.2f]", or, lo, hi)
   )
 
@@ -80,7 +80,7 @@ ggplot(sens_cmv, aes(x = or, y = model)) +
 
 ```{r}
 #| label: fig-sens-ifi-loo
-#| fig-cap: "Leave-one-out analysis for IFI (C1). Excluding Yanada 2026 (zero-event structural outlier) collapses τ from 1.05 to 0.38 while barely moving the OR. No other single study produces a comparable influence."
+#| fig-cap: "Leave-one-out analysis for IFI (C1, post-Block-9, k=6, frequentist REML). Haebe S 2023 is now the dominant heterogeneity driver (τ drops 1.11 → 0.82 on exclusion). Yanada 2026 (zero-event outlier) no longer collapses τ as in the pre-Block-9 analysis."
 #| fig-height: 5
 
 if (is.data.frame(loo_tbl)) {
@@ -109,7 +109,7 @@ The primary C2 analysis excluded 12 arms (PTCy+ATG combo, mixed, neither). The s
 
 ```{r}
 #| label: fig-sens-c2-arms
-#| fig-cap: "Sensitivity analysis — expanded arm inclusion (C2). OS and aGVHD are robust; CMV attenuates notably (OR 0.77 → 0.91) because PTCy+ATG combination arms (reclassified as PTCy-side) carry higher CMV reactivation risk."
+#| fig-cap: "Sensitivity analysis — expanded arm inclusion (C2). OS and aGVHD are robust. CMV primary estimate is now near-null (OR 0.92); expanded arm inclusion may further attenuate toward unity."
 #| fig-height: 5
 
 sens_c2_list <- list(

@@ -186,5 +186,5 @@ For the PTCy coefficient, the Normal(0, 0.82) prior corresponds to 95% prior mas
 
 ::: {.callout-tip}
 ## Assessing Prior Influence
-The Bayesian τ estimates are most informative for outcomes with k ≥ 15 (OS, CMV in C1). For sparse outcomes (BSI k=6, NRM C2 k=5), the prior provides meaningful regularisation — this is a feature, not a bug, as it prevents extreme heterogeneity estimates that would arise from fitting random-effects models to very small corpora.
+The Bayesian τ estimates are most informative for outcomes with k ≥ 15 (OS, RRM, aGVHD in C1). For sparse outcomes (BSI k=6, NRM C2 k=2), the prior provides meaningful regularisation — this is a feature, not a bug, as it prevents extreme heterogeneity estimates that would arise from fitting random-effects models to very small corpora.
 :::

@@ -10,7 +10,7 @@ source("_common.R")
 
 ## Study Design
 
-This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 220 studies (457 arms, 10 RCTs) drawn from 9 extraction blocks, with 190 papers excluded per PRISMA criteria. Three pre-specified comparisons were analysed:
+This is a systematic review and Bayesian meta-analysis of studies comparing post-transplant cyclophosphamide (PTCy) to alternative GVHD prophylaxis regimens in allogeneic haematopoietic cell transplantation. The extraction database comprises 251 studies (525 arms, 14 RCTs) drawn from 9 extraction blocks, with 214 papers excluded per PRISMA criteria. Three pre-specified comparisons were analysed:
 
 - **Comparison 1:** PTCy vs CNI+MTX/MMF-based prophylaxis
 - **Comparison 2:** PTCy vs ATG-based prophylaxis
