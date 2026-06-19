@@ -3,7 +3,7 @@
 .Rhistory
 .RData
 .Ruserdata
-.positai
+.posit/assistant
 
 # PDFs
 *.pdf
