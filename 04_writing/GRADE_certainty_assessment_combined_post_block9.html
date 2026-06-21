@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>grade_certainty_assessment_combined_post_block9</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="GRADE_certainty_assessment_combined_post_block9_files/libs/clipboard/clipboard.min.js"></script>
+<script src="GRADE_certainty_assessment_combined_post_block9_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="GRADE_certainty_assessment_combined_post_block9_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="GRADE_certainty_assessment_combined_post_block9_files/libs/quarto-html/popper.min.js"></script>
+<script src="GRADE_certainty_assessment_combined_post_block9_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="GRADE_certainty_assessment_combined_post_block9_files/libs/quarto-html/anchor.min.js"></script>
+<link href="GRADE_certainty_assessment_combined_post_block9_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="GRADE_certainty_assessment_combined_post_block9_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="GRADE_certainty_assessment_combined_post_block9_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="GRADE_certainty_assessment_combined_post_block9_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="GRADE_certainty_assessment_combined_post_block9_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="grade-certainty-of-evidence-assessment-post-block-9" class="level1">
+<h1>GRADE Certainty-of-Evidence Assessment (Post-Block-9)</h1>
+<section id="comparisons-1-and-2-all-primary-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="comparisons-1-and-2-all-primary-outcomes">Comparisons 1 and 2 — All Primary Outcomes</h3>
+<p><em>Prepared: 2026-06-19 · Updated from 2026-05-28 combined assessment</em> <em>Post-Block-9 corpus: 251 studies, 525 arms, 3,604 outcomes, 14 RCTs</em></p>
+<hr>
+</section>
+<section id="framework" class="level2">
+<h2 class="anchored" data-anchor-id="framework">Framework</h2>
+<p>All evidence derives from observational studies (predominantly retrospective cohort and registry analyses). Multiple RCTs now contribute to the Comparison 1 corpus (14 total in the database), though individual outcome models typically include 1–3 RCTs among predominantly observational studies. No RCT contributes numeric data to any Comparison 2 outcome other than Brissot 2024 (aGVHD only). GRADE starting certainty for observational evidence is <strong>LOW</strong>. Downgrades are applied per the standard five GRADE domains; upgrades for observational evidence are applied only when strict criteria are met (large magnitude [OR ≥ 2 or ≤ 0.5], dose-response, or all plausible residual confounding would oppose the observed effect).</p>
+<p>Where results from one comparison inform the assessment of the other — for example, the CMV comparison across C1 and C2 — this is noted explicitly and may contribute to upgrades for cross-comparison coherence.</p>
+<p><strong>Comparisons:</strong> - <strong>C1:</strong> PTCy vs CNI+MTX/MMF (k = 6–40 across outcomes) - <strong>C2:</strong> PTCy vs ATG-based prophylaxis (k = 2–13 across outcomes)</p>
+<p><strong>Key methodological change from pre-Block-9:</strong> M2 models now use complete-case analysis (dropping arms with missing steroid %) rather than <code>mi()</code> imputation, due to a brms v2.23+ API change. This is more conservative and slightly reduces M2 sample sizes.</p>
+<hr>
+</section>
+<section id="changes-from-pre-block-9-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="changes-from-pre-block-9-assessment">Changes from Pre-Block-9 Assessment</h2>
+<p>The following shifts are GRADE-relevant and are flagged in the per-outcome sections below:</p>
+<ol type="1">
+<li><strong>C1 BSI attenuated (2.39→1.87):</strong> OR no longer meets the ≥ 2.0 large-magnitude upgrade threshold. Frequentist I² rose from 0% to 71%, adding an inconsistency concern.</li>
+<li><strong>C1 IFI strengthened (0.73→0.43):</strong> OR now meets the ≤ 0.50 large-magnitude upgrade threshold. However, τ increased from 1.05 to 1.64 and k dropped from 8 to 6.</li>
+<li><strong>C1 NRM M2 mediation less clean:</strong> M2 OR shifted from 1.02 (complete mediation) to 0.90 [0.59–1.36]. At k = 12, the distinction between complete and partial mediation is now indeterminate.</li>
+<li><strong>C1 CMV attenuated (1.41→1.26):</strong> Still significant but M2 CrI barely excludes null (1.01–1.54). Robustness upgrade <strong>confirmed</strong> by post-Block-9 sensitivity models: post-2020 (k = 17, OR 1.53 [1.28–1.85]) and haplo ≥50% (k = 12, OR 1.38 [1.12–1.71]).</li>
+<li><strong>C2 OS attenuated (0.69→0.81):</strong> Still significantly protective; M2 mediation essentially vanishes (0.81→0.82).</li>
+<li><strong>C2 NRM dropped below minimum (k = 2):</strong> No longer assessable.</li>
+<li><strong>C2 CMV now null (0.77→0.92):</strong> CrI crosses 1; weakens the direction-reversal narrative, though the qualitative pattern (PTCy ≤ ATG for CMV) persists.</li>
+</ol>
+<hr>
+</section>
+<section id="overall-survival-os" class="level2">
+<h2 class="anchored" data-anchor-id="overall-survival-os">1. Overall Survival (OS)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>C1: PTCy vs CNI+MTX/MMF</th>
+<th>C2: PTCy vs ATG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Studies</strong></td>
+<td>k = 40, N = 19,724</td>
+<td>k = 10, N = 12,851</td>
+</tr>
+<tr class="even">
+<td><strong>M1</strong></td>
+<td>OR 0.79 [0.73–0.85], P(&lt;1) = 100%, τ = 0.61</td>
+<td>OR 0.81 [0.74–0.90], P(&lt;1) = 100%, τ = 0.51</td>
+</tr>
+<tr class="odd">
+<td><strong>M2</strong></td>
+<td>OR 0.86 [0.77–0.96], P(&lt;1) = 100%, τ = 0.58</td>
+<td>OR 0.82 [0.71–0.94], P(&lt;1) &gt; 99%</td>
+</tr>
+<tr class="even">
+<td><strong>Attenuation</strong></td>
+<td>27% (partial; was 29% pre-Block-9)</td>
+<td>~5% (negligible; was 35% pre-Block-9)</td>
+</tr>
+<tr class="odd">
+<td><strong>Frequentist</strong></td>
+<td>OR 0.77 [0.66–0.90], I² = 64%</td>
+<td>OR 0.59 [0.32–1.09], I² = 95%</td>
+</tr>
+</tbody>
+</table>
+<section id="grade-domains" class="level3">
+<h3 class="anchored" data-anchor-id="grade-domains">GRADE domains</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study design</td>
+<td>Retrospective/registry + multiple RCTs; start LOW</td>
+<td>All retrospective/registry; start LOW</td>
+</tr>
+<tr class="even">
+<td><strong>Risk of bias</strong></td>
+<td>Serious: selection bias plausible; M2 attenuation (0.79→0.86) confirms some confounding but effect survives. <strong>No downgrade</strong></td>
+<td>Serious: similar selection bias. M2 attenuation now negligible (0.81→0.82), suggesting less steroid-mediated confounding than pre-Block-9 estimated. <strong>No downgrade</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Inconsistency</strong></td>
+<td>Serious: I² = 64%, τ = 0.61. <strong>−1</strong></td>
+<td>Very serious: freq I² = 95%, driven by small extreme studies; Bayesian τ = 0.51 after regularisation. <strong>−1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Indirectness</strong></td>
+<td>Not serious. 0</td>
+<td>Not serious. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Imprecision</strong></td>
+<td>Not serious: CrI entirely below null; N = 19,724. 0</td>
+<td>Not serious: CrI entirely below null; N = 12,851. 0</td>
+</tr>
+<tr class="even">
+<td><strong>Publication bias</strong></td>
+<td>Undetected. 0</td>
+<td>Not strongly suspected. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Upgrade</strong></td>
+<td>Not met (OR = 0.79; threshold &lt; 0.50). 0</td>
+<td>Cross-comparison coherence: direction consistent with C1; mediation pattern consistent. <strong>+1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Net</strong></td>
+<td>−1</td>
+<td>−1 + 1 = 0</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CERTAINTY</strong></td>
+<td><strong>⊕⊕◯◯ LOW</strong></td>
+<td><strong>⊕⊕◯◯ LOW</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Rating unchanged from pre-Block-9 for both comparisons.</em></p>
+<blockquote class="blockquote">
+<p><em>C1: Low certainty that PTCy reduces overall mortality vs CNI+MTX/MMF (OR 0.79 [0.73–0.85]). The corpus is now the largest in the analysis (k = 40, N = 19,724). Partial M2 attenuation (0.79→0.86) indicates some steroid-mediated confounding but a probable direct mortality benefit remains.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>C2: Low certainty that PTCy reduces overall mortality vs ATG (OR 0.81 [0.74–0.90]). The estimate attenuated from pre-Block-9 (was OR 0.69) but remains significantly protective. Notably, M2 steroid adjustment now produces essentially no attenuation (0.81→0.82), suggesting the C2 OS benefit is largely steroid-independent — a shift from the pre-Block-9 finding of 35% mediation.</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="non-relapse-mortality-nrm" class="level2">
+<h2 class="anchored" data-anchor-id="non-relapse-mortality-nrm">2. Non-Relapse Mortality (NRM)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>C1: PTCy vs CNI+MTX/MMF</th>
+<th>C2: PTCy vs ATG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Studies</strong></td>
+<td>k = 12, N = 1,309</td>
+<td>k = 2 <strong>(below minimum)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>M1</strong></td>
+<td>OR 0.88 [0.66–1.18], P(&lt;1) = 87%, τ = 0.72</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><strong>M2</strong></td>
+<td>OR 0.90 [0.59–1.36], P(&lt;1) = 69%, τ = 0.60</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>Attenuation</strong></td>
+<td>Negligible (M1 0.88 → M2 0.90)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><strong>Frequentist</strong></td>
+<td>OR 0.91 [0.68–1.23], I² = 0%</td>
+<td>OR 0.63 [0.30–1.31], k = 3*</td>
+</tr>
+</tbody>
+</table>
+<p><em>C2 NRM k = 2 in Bayesian (below 3-study minimum); 3 studies available for frequentist but insufficient for random-effects modelling.</em></p>
+<section id="grade-domains-c1-only-c2-not-assessable" class="level3">
+<h3 class="anchored" data-anchor-id="grade-domains-c1-only-c2-not-assessable">GRADE domains — C1 only (C2 not assessable)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>C1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study design</td>
+<td>All retrospective/registry; start LOW</td>
+</tr>
+<tr class="even">
+<td><strong>Risk of bias</strong></td>
+<td>Serious: pre-Block-9 showed complete M2 mediation (OR 1.02), constituting a formal confounding signal. Post-Block-9, M2 OR = 0.90 [0.59–1.36] — the distinction between complete and partial mediation is now <strong>indeterminate</strong> at k = 12 with wide CrIs. The confounding concern persists but the evidence for it is less decisive. <strong>−1</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Inconsistency</strong></td>
+<td>Not serious: freq I² = 0%; consistent direction. 0</td>
+</tr>
+<tr class="even">
+<td><strong>Indirectness</strong></td>
+<td>Not serious. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Imprecision</strong></td>
+<td>Serious: M1 CrI 0.66–1.18 crosses null; M2 CrI 0.59–1.36 widely crosses; k dropped from 15 to 12; N = 1,309 modest for mortality. <strong>−1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Publication bias</strong></td>
+<td>Possible but not formally detectable. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Net</strong></td>
+<td>−2</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CERTAINTY</strong></td>
+<td><strong>⊕◯◯◯ VERY LOW</strong></td>
+<td><strong>Not assessable (k = 2)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>C1 rating unchanged from pre-Block-9; C2 dropped from VERY LOW to not assessable.</em></p>
+<blockquote class="blockquote">
+<p><em>C1: Very low certainty. The M1 estimate (OR 0.88) trends toward benefit but the CrI crosses the null. Post-Block-9, the mediation picture is less clean than before: M2 OR shifted from 1.02 (clear complete mediation) to 0.90 (indeterminate), with a very wide CrI [0.59–1.36]. Clinical inference remains unchanged: any NRM benefit of PTCy is likely conditional on its GVHD-prevention effect, but the evidence is now insufficient to confirm or reject complete mediation.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>C2: Not assessable. Removing a misclassified study (Sayin) reduced C2 NRM to k = 2, below the minimum threshold for GRADE assessment. This is the only outcome that became unassessable after Block-9 data cleaning.</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="acute-gvhd-grade-iiiv" class="level2">
+<h2 class="anchored" data-anchor-id="acute-gvhd-grade-iiiv">3. Acute GVHD Grade II–IV</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>C1: PTCy vs CNI+MTX/MMF</th>
+<th>C2: PTCy vs ATG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Studies</strong></td>
+<td>k = 28, N = 4,197</td>
+<td>k = 9, N = 1,099</td>
+</tr>
+<tr class="even">
+<td><strong>M1</strong></td>
+<td>OR 0.67 [0.59–0.78], P(&lt;1) = 100%, τ = 0.68</td>
+<td>OR 0.58 [0.44–0.77], P(&lt;1) = 100%, τ = 0.55</td>
+</tr>
+<tr class="odd">
+<td><strong>Frequentist</strong></td>
+<td>OR 0.61 [0.47–0.79], I² = 62%</td>
+<td>OR 0.46 [0.26–0.83], I² = 73%</td>
+</tr>
+</tbody>
+</table>
+<section id="grade-domains-1" class="level3">
+<h3 class="anchored" data-anchor-id="grade-domains-1">GRADE domains</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study design</td>
+<td>All retrospective/registry; start LOW</td>
+<td>All retrospective/registry (+1 RCT Brissot 2024); start LOW</td>
+</tr>
+<tr class="even">
+<td><strong>Risk of bias</strong></td>
+<td>Serious: centre-dependent GVHD grading; possible under-diagnosis in PTCy arms. However, this bias would attenuate the effect (conservative). 0</td>
+<td>Same. 0 (bias direction opposes effect)</td>
+</tr>
+<tr class="odd">
+<td><strong>Inconsistency</strong></td>
+<td>Serious: I² = 62%, τ = 0.68. <strong>−1</strong></td>
+<td>Serious: freq I² = 73%; Bayesian τ = 0.55. <strong>−1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Indirectness</strong></td>
+<td>Not serious. 0</td>
+<td>Not serious: all D+100, standard endpoint. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Imprecision</strong></td>
+<td>Not serious: CrI does not include 1; N = 4,197. 0</td>
+<td>Not serious: CrI 0.44–0.77 entirely below null; improved from pre-Block-9 (was 0.42–0.84). 0</td>
+</tr>
+<tr class="even">
+<td><strong>Publication bias</strong></td>
+<td>Not strongly suspected. 0</td>
+<td>Not assessable at k = 9 (improved from k = 6). 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Upgrade: confounders oppose</strong></td>
+<td>Partially met: GVHD under-reporting in PTCy arms would bias toward null. <strong>+1</strong></td>
+<td>Same logic + cross-comparison coherence with C1 (OR 0.67). <strong>+1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Net</strong></td>
+<td>−1 + 1 = 0</td>
+<td>−1 + 1 = 0</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CERTAINTY</strong></td>
+<td><strong>⊕⊕◯◯ LOW</strong></td>
+<td><strong>⊕⊕◯◯ LOW</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Rating unchanged for both comparisons. C2 k improved from 6 to 9, strengthening the assessment.</em></p>
+<blockquote class="blockquote">
+<p><em>C1: Low certainty that PTCy reduces aGVHD grade II–IV (OR 0.67 [0.59–0.78], k = 28). The finding remains mechanistically central and consistent across the largest aGVHD corpus to date.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>C2: Low certainty that PTCy reduces aGVHD vs ATG (OR 0.58 [0.44–0.77], k = 9). The point estimate is concordant with C1 and the CrI has tightened with the addition of 3 studies. This is the strongest C2 outcome.</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="cmv-any-reactivation" class="level2">
+<h2 class="anchored" data-anchor-id="cmv-any-reactivation">4. CMV Any-Reactivation</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>C1: PTCy vs CNI+MTX/MMF</th>
+<th>C2: PTCy vs ATG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Studies</strong></td>
+<td>k = 22, N = 3,328</td>
+<td>k = 13, N = 1,571</td>
+</tr>
+<tr class="even">
+<td><strong>M1</strong></td>
+<td>OR 1.26 [1.07–1.47], P(&gt;1) = 100%, τ = 0.75</td>
+<td>OR 0.92 [0.73–1.15], P(&lt;1) = 74%, τ = 0.64</td>
+</tr>
+<tr class="odd">
+<td><strong>M2</strong></td>
+<td>OR 1.25 [1.01–1.54] (no attenuation)</td>
+<td>OR 0.98 [0.78–1.24] (null)</td>
+</tr>
+<tr class="even">
+<td><strong>Frequentist</strong></td>
+<td>OR 1.25 [0.94–1.66], I² = 62%</td>
+<td>OR 0.76 [0.47–1.22], I² = 71%</td>
+</tr>
+<tr class="odd">
+<td><strong>Direction</strong></td>
+<td><strong>PTCy harmful</strong> (attenuated from 1.41)</td>
+<td><strong>Null</strong> (was protective at 0.77)</td>
+</tr>
+</tbody>
+</table>
+<section id="major-post-block-9-changes" class="level3">
+<h3 class="anchored" data-anchor-id="major-post-block-9-changes">⚠ Major post-Block-9 changes</h3>
+<p><strong>C1:</strong> Attenuated from OR 1.41 to 1.26 (k: 18→22). The M2 CrI (1.01–1.54) now barely excludes the null. The frequentist estimate is non-significant (0.94–1.66).</p>
+<p><strong>C2:</strong> Shifted from borderline-significant protective (OR 0.77 [0.60–0.99]) to null (OR 0.92 [0.73–1.15]). Three Block-9 C2 CMV studies were found to have arm classification problems during audit (Sayin comparator misclassified; Xu and Zu had combination PTCy+ATG arms). After correction, the C2 signal largely dissolved.</p>
+<p><strong>Direction-reversal interpretation:</strong> The pre-Block-9 narrative described a clean reversal (C1 harmful at 1.41, C2 protective at 0.77). Post-Block-9, the pattern is better characterised as: C1 mildly harmful (1.26), C2 null (0.92). The qualitative ordering (CNI-based &lt; PTCy ≤ ATG for CMV risk) is preserved, but the C2 estimate no longer provides independent evidence of PTCy protection vs ATG. The mechanistic inference — that CMV risk tracks depth of T-cell depletion — is weakened but not refuted.</p>
+</section>
+<section id="grade-domains-2" class="level3">
+<h3 class="anchored" data-anchor-id="grade-domains-2">GRADE domains</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study design</td>
+<td>All retrospective; start LOW</td>
+<td>All retrospective; start LOW</td>
+</tr>
+<tr class="even">
+<td><strong>Risk of bias</strong></td>
+<td>Serious: CMV monitoring intensity varies; ascertainment bias possible. 0 (noted)</td>
+<td>Serious: monitoring may differ between PTCy and ATG arms. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Inconsistency</strong></td>
+<td>Serious: I² = 62%, τ = 0.75. <strong>−1</strong></td>
+<td>Serious: freq I² = 71%, τ = 0.64. <strong>−1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Indirectness</strong></td>
+<td>Not serious. 0</td>
+<td>Not serious. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Imprecision</strong></td>
+<td>Not serious: Bayesian CrI 1.07–1.47 excludes null. However, M2 CrI barely excludes null (1.01–1.54) and freq CrI crosses. 0 (borderline)</td>
+<td>Serious: CrI 0.73–1.15 crosses null; M2 CrI also crosses; signal is null. <strong>−1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Publication bias</strong></td>
+<td>Not strongly suspected. 0</td>
+<td>Not strongly suspected. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Upgrade: robustness</strong></td>
+<td>Direction consistently harmful across k = 22; steroid-independence confirmed (M2 no attenuation). <strong>Sensitivity models confirm robustness:</strong> post-2020 subset (k = 17, OR 1.53 [1.28–1.85]) and haplo ≥50% subset (k = 12, OR 1.38 [1.12–1.71]) both remain significantly &gt; 1 (P(OR &gt; 1) ≥ 99.9%). Both subsets strengthen the signal relative to the primary estimate, consistent with the T-cell depletion mechanism. <strong>+1</strong></td>
+<td>The direction reversal is now weaker (C2 null rather than protective). The qualitative pattern (PTCy ≤ ATG) persists but C2 no longer provides independent statistical evidence. <strong>+1 (partial, for comparative coherence)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Net</strong></td>
+<td>−1 + 1 = 0</td>
+<td>−2 + 1 = −1</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CERTAINTY</strong></td>
+<td><strong>⊕⊕◯◯ LOW</strong></td>
+<td><strong>⊕◯◯◯ VERY LOW</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Ratings unchanged from pre-Block-9 for both comparisons, despite substantial attenuation.</em></p>
+<blockquote class="blockquote">
+<p><em>C1: Low certainty that PTCy increases CMV risk vs CNI+MTX/MMF (OR 1.26 [1.07–1.47]). The signal has attenuated from 1.41 but remains consistent across 22 studies, is steroid-independent (M2 no attenuation), and is confirmed by two pre-specified sensitivity analyses: post-2020 studies (OR 1.53 [1.28–1.85], k = 17) and haplo-dominant studies (OR 1.38 [1.12–1.71], k = 12). The frequentist estimate is now non-significant, reflecting the tension between framework-specific precision in this outcome.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>C2: Very low certainty about CMV risk of PTCy vs ATG. The previously borderline-protective signal (OR 0.77) has dissolved to null (OR 0.92) after Block-9 data cleaning identified arm classification errors in three studies. The most defensible inference is no longer “PTCy protects against CMV vs ATG” but rather “PTCy does not increase CMV risk beyond that already inherent to ATG-based regimens.” The comparative pattern (C1 harmful, C2 null) is still broadly consistent with the T-cell depletion depth hypothesis but no longer provides strong independent evidence for it.</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="bloodstream-infection-bsi-any-pathogen" class="level2">
+<h2 class="anchored" data-anchor-id="bloodstream-infection-bsi-any-pathogen">5. Bloodstream Infection (BSI, any pathogen)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>C1: PTCy vs CNI+MTX/MMF</th>
+<th>C2: PTCy vs ATG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Studies</strong></td>
+<td>k = 6, N = 806</td>
+<td>k = 3, N = 613</td>
+</tr>
+<tr class="even">
+<td><strong>Estimate</strong></td>
+<td>Bayesian M1: OR 1.87 [1.33–2.62], τ = 0.96</td>
+<td>MH fixed-effect: OR 2.03 [1.33–3.09], I² = 69%</td>
+</tr>
+<tr class="odd">
+<td><strong>Frequentist</strong></td>
+<td>OR 1.29 [0.61–2.73], I² = 71%</td>
+<td>(MH is the primary estimate)</td>
+</tr>
+</tbody>
+</table>
+<section id="major-post-block-9-changes-c1" class="level3">
+<h3 class="anchored" data-anchor-id="major-post-block-9-changes-c1">⚠ Major post-Block-9 changes (C1)</h3>
+<p><strong>C1 BSI attenuated from 2.39 to 1.87.</strong> Two GRADE-relevant consequences: 1. <strong>Large-magnitude upgrade no longer applies:</strong> OR 1.87 is below the ≥ 2.0 threshold (previously OR 2.39 qualified). This removes the sole upgrade the C1 BSI assessment previously received. 2. <strong>Inconsistency now present:</strong> Frequentist I² rose from 0% to 71%, and the frequentist OR (1.29 [0.61–2.73]) is now non-significant. τ increased from 0.64 to 0.96. This adds a new downgrade for inconsistency.</p>
+</section>
+<section id="grade-domains-3" class="level3">
+<h3 class="anchored" data-anchor-id="grade-domains-3">GRADE domains</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study design</td>
+<td>All retrospective; start LOW</td>
+<td>All retrospective; start LOW</td>
+</tr>
+<tr class="even">
+<td><strong>Risk of bias</strong></td>
+<td>Very serious: 7 of 13 eligible studies had NR event counts; retained studies may over-represent high-BSI centres. <strong>−1</strong></td>
+<td>Very serious: definitional heterogeneity (any blood culture vs ICU/fatal only); donor-type confound in Meyer 2025. <strong>−1</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Inconsistency</strong></td>
+<td><strong>Serious (NEW): freq I² = 71%, τ = 0.96.</strong> Previously I² = 0%; Block-9 additions introduced heterogeneity. <strong>−1</strong></td>
+<td>Serious: I² = 69% across 3 definitionally heterogeneous studies. <strong>−1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Indirectness</strong></td>
+<td>Mild: BSI definitions varied. 0</td>
+<td>Captured under inconsistency. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Imprecision</strong></td>
+<td>Serious: k = 6; freq CrI crosses null (0.61–2.73); Bayesian prior influence at small k. <strong>−1</strong></td>
+<td>Very serious: k = 3; below conventional GRADE minimum. <strong>−1</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Publication bias</strong></td>
+<td>Suspected: small k. 0</td>
+<td>Not assessable. 0</td>
+</tr>
+<tr class="odd">
+<td><strong>Upgrade: large magnitude</strong></td>
+<td><strong>No longer met</strong> (OR 1.87; was 2.39, threshold ≥ 2.0). 0</td>
+<td>Not applied. 0</td>
+</tr>
+<tr class="even">
+<td><strong>Net</strong></td>
+<td>−3 → floor</td>
+<td>−3 → floor</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CERTAINTY</strong></td>
+<td><strong>⊕◯◯◯ VERY LOW</strong></td>
+<td><strong>⊕◯◯◯ VERY LOW</strong>‡</td>
+</tr>
+</tbody>
+</table>
+<p>‡Informal rating; formal GRADE not conventionally performed at k = 3.</p>
+<p><em>C1 rating unchanged (VERY LOW) but reasoning shifts substantially: the loss of the large-magnitude upgrade and the addition of an inconsistency downgrade mean the evidence is now weaker than pre-Block-9, even though the formal rating hits the same floor.</em></p>
+<blockquote class="blockquote">
+<p><em>C1: Very low certainty. The 6-study corpus still shows PTCy-associated BSI excess (OR 1.87 [1.33–2.62]), but the signal is weaker than pre-Block-9 (was 2.39) and now heterogeneous (freq I² = 71%, was 0%). The Bayesian and frequentist estimates diverge substantially (Bayesian OR 1.87 vs freq OR 1.29), reflecting model-dependency at k = 6. The clinical implication — that PTCy recipients warrant attentive BSI surveillance — remains reasonable, but the magnitude of excess risk is uncertain.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>C2: Very low certainty. Direction consistent with C1 (OR 2.03 vs 1.87), but the three contributing studies are not measuring the same construct. Hypothesis-generating only.</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="invasive-fungal-infection-ifi-any-comparison-1-only" class="level2">
+<h2 class="anchored" data-anchor-id="invasive-fungal-infection-ifi-any-comparison-1-only">6. Invasive Fungal Infection (IFI, any) — Comparison 1 Only</h2>
+<p><strong>k = 6, N = 2,243</strong> <strong>M1: OR 0.43 [0.29–0.63], P(OR &lt; 1) = 100% · τ = 1.64</strong> <strong>Frequentist: OR 0.60 [0.21–1.74], I² = 80%</strong></p>
+<p><em>No Comparison 2 data available (insufficient k).</em></p>
+<section id="major-post-block-9-changes-1" class="level3">
+<h3 class="anchored" data-anchor-id="major-post-block-9-changes-1">⚠ Major post-Block-9 changes</h3>
+<p><strong>IFI effect dramatically strengthened (0.73→0.43)</strong> while heterogeneity worsened (τ: 1.05→1.64, I²: 82%→80%). k dropped from 8 to 6. The CrI now entirely excludes the null (0.29–0.63; was 0.53–1.00, touching null).</p>
+<p>A new GRADE-relevant consideration: <strong>OR 0.43 meets the ≤ 0.50 large-magnitude upgrade threshold</strong>, which was not met pre-Block-9 (OR 0.73). However, the extreme heterogeneity (τ = 1.64 — the highest in the entire analysis) and the Bayesian-frequentist divergence (Bayesian OR 0.43 vs freq OR 0.60 [0.21–1.74], non-significant) raise serious concerns about the reliability of the point estimate.</p>
+</section>
+<section id="grade-domains-4" class="level3">
+<h3 class="anchored" data-anchor-id="grade-domains-4">GRADE domains</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>Assessment</th>
+<th>Direction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study design</td>
+<td>All retrospective; start LOW</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>Risk of bias</strong></td>
+<td>Serious: IFI diagnosis protocol-dependent; PTCy arms may be under-investigated. 0 (bias would inflate apparent protection)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Inconsistency</strong></td>
+<td>Very serious: τ = 1.64 (highest in entire analysis), I² = 80%. Previously driven by Yanada 2026 (zero events in 241 PTCy patients); the problem persists and may have worsened with study removal. <strong>−2</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Indirectness</strong></td>
+<td>Serious: antifungal prophylaxis regimens heterogeneous and non-randomly distributed between arms. <strong>−1</strong></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Imprecision</strong></td>
+<td>Serious: k = 6 (dropped from 8); freq CrI widely crosses null (0.21–1.74); Bayesian-frequentist divergence. <strong>−1</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Publication bias</strong></td>
+<td>Possible at k = 6. 0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Upgrade: large magnitude</strong></td>
+<td><strong>Now met (NEW):</strong> OR 0.43 ≤ 0.50 threshold. However, this upgrade must be interpreted cautiously given the extreme heterogeneity — the large magnitude may reflect the disproportionate influence of zero-event studies rather than a genuine population-level effect. <strong>+1</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Net</strong></td>
+<td>−4 + 1 = −3 → floor</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⊕◯◯◯ CERTAINTY: VERY LOW</strong></p>
+<p><em>Rating unchanged (VERY LOW floor) but the evidence profile has shifted: the point estimate is now dramatically stronger but the heterogeneity is worse and the corpus smaller.</em></p>
+<blockquote class="blockquote">
+<p><em>Very low certainty. The posterior probability of IFI protection is now very high (P(OR &lt; 1) = 100%), and the OR of 0.43 suggests a potentially large effect. However, the extreme heterogeneity (τ = 1.64) indicates that this estimate is not representative of any single clinical context — it reflects a mixture of zero-event contemporary cohorts (with aggressive mold prophylaxis) and older cohorts with higher baseline IFI rates. The most defensible clinical inference remains: PTCy does not appear to increase IFI risk, and IFI reduction may be achievable in centres with optimised antifungal prophylaxis, but the evidence base is too heterogeneous for a more specific recommendation.</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="combined-summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="combined-summary-table">Combined Summary Table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Outcome</th>
+<th>Comparison</th>
+<th>k</th>
+<th>N</th>
+<th>OR [95% CrI]</th>
+<th>Posterior P</th>
+<th>Certainty</th>
+<th>Δ from pre-B9</th>
+<th>Key limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>OS</strong></td>
+<td>C1</td>
+<td>40</td>
+<td>19,724</td>
+<td>0.79 [0.73–0.85]</td>
+<td>P(&lt;1) = 100%</td>
+<td>⊕⊕◯◯ LOW</td>
+<td>0.77→0.79</td>
+<td>I² = 64%; obs dominant</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>C2</td>
+<td>10</td>
+<td>12,851</td>
+<td>0.81 [0.74–0.90]</td>
+<td>P(&lt;1) = 100%</td>
+<td>⊕⊕◯◯ LOW</td>
+<td><strong>0.69→0.81</strong></td>
+<td>I² = 95% (freq); one registry dominant</td>
+</tr>
+<tr class="odd">
+<td><strong>NRM</strong></td>
+<td>C1</td>
+<td>12</td>
+<td>1,309</td>
+<td>0.88 [0.66–1.18]</td>
+<td>P(&lt;1) = 87%</td>
+<td>⊕◯◯◯ V. LOW</td>
+<td>k: 15→12</td>
+<td>M2 mediation indeterminate; CrI crosses null</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>C2</td>
+<td>2</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>Not assessable</strong></td>
+<td><strong>k: 5→2</strong></td>
+<td>Below minimum</td>
+</tr>
+<tr class="odd">
+<td><strong>aGVHD II–IV</strong></td>
+<td>C1</td>
+<td>28</td>
+<td>4,197</td>
+<td>0.67 [0.59–0.78]</td>
+<td>P(&lt;1) = 100%</td>
+<td>⊕⊕◯◯ LOW</td>
+<td>0.63→0.67</td>
+<td>I² = 62%; obs dominant</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>C2</td>
+<td>9</td>
+<td>1,099</td>
+<td>0.58 [0.44–0.77]</td>
+<td>P(&lt;1) = 100%</td>
+<td>⊕⊕◯◯ LOW</td>
+<td>k: 6→9</td>
+<td>τ poorly estimated</td>
+</tr>
+<tr class="odd">
+<td><strong>CMV</strong></td>
+<td>C1</td>
+<td>22</td>
+<td>3,328</td>
+<td>1.26 [1.07–1.47]</td>
+<td>P(&gt;1) = 100%</td>
+<td>⊕⊕◯◯ LOW</td>
+<td><strong>1.41→1.26</strong></td>
+<td>Attenuated; M2 CrI borderline</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>C2</td>
+<td>13</td>
+<td>1,571</td>
+<td>0.92 [0.73–1.15]</td>
+<td>P(&lt;1) = 74%</td>
+<td>⊕◯◯◯ V. LOW</td>
+<td><strong>0.77→0.92 (null)</strong></td>
+<td>Signal dissolved; direction reversal weakened</td>
+</tr>
+<tr class="odd">
+<td><strong>BSI</strong></td>
+<td>C1</td>
+<td>6</td>
+<td>806</td>
+<td>1.87 [1.33–2.62]</td>
+<td>P(&gt;1) = 100%</td>
+<td>⊕◯◯◯ V. LOW</td>
+<td><strong>2.39→1.87</strong></td>
+<td>Lost large-mag upgrade; gained I² = 71%</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>C2</td>
+<td>3</td>
+<td>613</td>
+<td>2.03 [1.33–3.09]†</td>
+<td>p = 0.001</td>
+<td>(⊕◯◯◯) V. LOW‡</td>
+<td>—</td>
+<td>k = 3; definitional heterogeneity</td>
+</tr>
+<tr class="odd">
+<td><strong>IFI</strong></td>
+<td>C1</td>
+<td>6</td>
+<td>2,243</td>
+<td>0.43 [0.29–0.63]</td>
+<td>P(&lt;1) = 100%</td>
+<td>⊕◯◯◯ V. LOW</td>
+<td><strong>0.73→0.43</strong></td>
+<td>Gained large-mag upgrade; τ = 1.64</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>C2</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Insufficient data</td>
+</tr>
+</tbody>
+</table>
+<p>†Mantel-Haenszel fixed-effect. ‡Informal rating.</p>
+<p><em>⊕ = present; ◯ = absent. Certainty levels: HIGH (⊕⊕⊕⊕), MODERATE (⊕⊕⊕◯), LOW (⊕⊕◯◯), VERY LOW (⊕◯◯◯).</em></p>
+<hr>
+</section>
+<section id="new-outcomes-available-not-yet-grade-assessed" class="level2">
+<h2 class="anchored" data-anchor-id="new-outcomes-available-not-yet-grade-assessed">New Outcomes Available (Not Yet GRADE-Assessed)</h2>
+<p>The post-Block-9 models include additional outcomes not present in the pre-Block-9 GRADE assessment. These are listed here for completeness; formal GRADE assessment is deferred pending discussion of their inclusion in the primary analysis:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Outcome</th>
+<th>C1 k</th>
+<th>C1 OR [95% CrI]</th>
+<th>C2 k</th>
+<th>C2 OR [95% CrI]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Relapse-related mortality</td>
+<td>38</td>
+<td>0.84 [0.76–0.93]</td>
+<td>10</td>
+<td>0.79 [0.69–0.89]</td>
+</tr>
+<tr class="even">
+<td>cGVHD moderate-severe</td>
+<td>21</td>
+<td>0.33 [0.29–0.36]</td>
+<td>6</td>
+<td>0.79 [0.55–1.14]</td>
+</tr>
+<tr class="odd">
+<td>cGVHD any grade</td>
+<td>8</td>
+<td>0.23 [0.18–0.30]</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>BK virus reactivation</td>
+<td>11</td>
+<td>2.48 [1.82–3.38]</td>
+<td>3</td>
+<td>2.44 [1.40–4.26]</td>
+</tr>
+<tr class="odd">
+<td>Infection-related mortality</td>
+<td>16</td>
+<td>1.35 [1.16–1.57]</td>
+<td>7</td>
+<td>0.90 [0.74–1.09]</td>
+</tr>
+</tbody>
+</table>
+<p>These outcomes include several with potentially GRADE-assessable corpora (RRM k = 38, cGVHD mod-severe k = 21, IRM k = 16). BK virus and infection-related mortality show the same comparative pattern as CMV (direction reversal between C1 and C2).</p>
+<hr>
+</section>
+<section id="comparison-3-within-ptcy-variants" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-3-within-ptcy-variants">Comparison 3: Within-PTCy Variants</h2>
+<p>All four C3 outcomes (OS, NRM, aGVHD, cGVHD) have CrIs crossing 1 with point estimates near the null. A formal GRADE assessment is not performed for C3, as the null findings are best interpreted as absence of detectable differences between PTCy regimen variants rather than evidence for equivalence (imprecision at k = 4–7 precludes equivalence claims).</p>
+<hr>
+</section>
+<section id="overarching-grade-narrative" class="level2">
+<h2 class="anchored" data-anchor-id="overarching-grade-narrative">Overarching GRADE Narrative</h2>
+<p>Across both comparisons and all outcomes, certainty of evidence does not exceed LOW — reflecting an evidence base that is almost entirely observational.</p>
+<section id="what-has-changed-since-pre-block-9" class="level3">
+<h3 class="anchored" data-anchor-id="what-has-changed-since-pre-block-9">What has changed since pre-Block-9</h3>
+<p>The Block-9 corpus addition (31 new studies) and subsequent data cleaning introduced both new information and new uncertainty. <strong>No GRADE certainty rating changed level</strong> (all movements were within-tier), but the evidence profiles shifted in several clinically relevant ways:</p>
+<ol type="1">
+<li><p><strong>The core findings are robust.</strong> C1 OS (0.79), C1 aGVHD (0.67), and C2 aGVHD (0.58) all moved by ≤ 0.04 OR units from their pre-Block-9 estimates despite substantial k increases. These are the most dependable signals in the analysis.</p></li>
+<li><p><strong>C2 OS attenuated but clarified.</strong> The C2 OS estimate moved from 0.69 to 0.81. While this represents meaningful attenuation, the steroid mediation essentially vanished (M2 0.82 ≈ M1 0.81), suggesting the post-Block-9 estimate may be <em>less</em> confounded than the pre-Block-9 estimate was.</p></li>
+<li><p><strong>The CMV direction-reversal narrative is weakened but not refuted.</strong> The clean C1-harmful/C2-protective pattern (1.41 vs 0.77) has become C1-mildly-harmful/C2-null (1.26 vs 0.92). The qualitative ordering is preserved (PTCy ≤ ATG for CMV risk) but the C2 estimate no longer provides independent evidence of protection. The mechanistic inference about T-cell depletion depth should be presented with appropriate caveats. Importantly, the C1 CMV signal is <strong>robustly confirmed</strong> by two sensitivity analyses on post-Block-9 data: post-2020 studies (OR 1.53 [1.28–1.85], k = 17) and haplo ≥50% studies (OR 1.38 [1.12–1.71], k = 12). Both strengthen the signal relative to the primary estimate, supporting the GRADE robustness upgrade.</p></li>
+<li><p><strong>BSI evidence is weaker than previously estimated.</strong> The loss of the large-magnitude upgrade and the appearance of heterogeneity (I²: 0%→71%) mean the BSI signal, while still positive, is less certain than the pre-Block-9 assessment suggested.</p></li>
+<li><p><strong>IFI evidence has shifted character.</strong> The dramatic strengthening (0.73→0.43) and the new large-magnitude upgrade are offset by worsened heterogeneity (τ: 1.05→1.64). The clinical message is unchanged — PTCy does not increase IFI risk — but the evidence for active protection is now paradoxically both stronger (point estimate) and more uncertain (heterogeneity).</p></li>
+</ol>
+</section>
+<section id="clinical-decision-threshold" class="level3">
+<h3 class="anchored" data-anchor-id="clinical-decision-threshold">Clinical decision threshold</h3>
+<p>For the primary clinical question — should PTCy be preferred over alternative GVHD prophylaxis platforms — the converging LOW-certainty evidence for OS benefit (C1 and C2) and aGVHD reduction (C1 and C2) remains sufficient to inform guideline recommendations, particularly in haploidentical settings. The CMV risk signal (C1 LOW certainty, OR 1.26) should be incorporated into monitoring guidance. The BSI signal warrants attention but the evidence is weaker than pre-Block-9 suggested. The infection-outcome evidence gaps (BSI, IFI) remain the principal limitation of the current evidence base.</p>
+<hr>
+<p><em>All Bayesian estimates from brms 2.23.0 (rstan backend), post-Block-9 refit (251-study corpus). Frequentist estimates from metafor. GRADE applied per the GRADE Handbook (Schünemann et al.) and the GRADE working group guidance for meta-analyses of observational studies.</em></p>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
