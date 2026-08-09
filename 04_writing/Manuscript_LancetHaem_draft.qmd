@@ -430,42 +430,7 @@ The 225 comparative studies encompassed 520 arms and 177 758 patients. Most were
 
 ### Risk of bias
 
-```{r}
-#| label: fig-rob-summary
-#| fig-cap: "Risk of bias summary"
-#| fig-height: 4
-
-robins <- rob_df[rob_df$rob_tool == "ROBINS-I", ]
-rob2   <- rob_df[rob_df$rob_tool == "RoB2", ]
-
-# ROBINS-I domain summary
-domain_cols <- c("d1","d2","d3","d4","d5","d6","d7")
-domain_labels <- c("Confounding", "Selection", "Classification",
-                    "Deviations", "Missing data", "Measurement", "Reporting")
-
-robins_long <- robins |>
-  select(rob_id, all_of(domain_cols)) |>
-  pivot_longer(-rob_id, names_to = "domain", values_to = "judgement") |>
-  mutate(
-    domain = factor(domain, levels = domain_cols, labels = domain_labels),
-    judgement = factor(judgement, levels = c("low", "moderate", "serious", "critical", "NI", ""))
-  ) |>
-  filter(judgement != "") |>
-  count(domain, judgement)
-
-ggplot(robins_long, aes(x = n, y = fct_rev(domain), fill = judgement)) +
-  geom_col(position = "fill", width = 0.7) +
-  scale_fill_manual(
-    values = c("low" = "#4CAF50", "moderate" = "#FFB74D", "serious" = "#EF5350",
-               "critical" = "#B71C1C", "NI" = "#BDBDBD"),
-    name = "Judgement", drop = FALSE
-  ) +
-  scale_x_continuous(labels = scales::percent) +
-  labs(x = NULL, y = NULL, title = "ROBINS-I domain-level summary (n = 227)") +
-  theme_jama(base_size = 10)
-```
-
-Of 227 observational studies assessed with ROBINS-I, 150 (66%) were at moderate risk of bias and 71 (31%) at serious risk (@fig-rob-summary). Of 14 RCTs assessed with RoB 2, 11 had some concerns, two were at high risk, and one was at low risk.
+Of 227 observational studies assessed with ROBINS-I, 150 (66%) were at moderate risk of bias and 71 (31%) at serious risk (appendix p XX). Of 14 RCTs assessed with RoB 2, 11 had some concerns, two were at high risk, and one was at low risk.
 
 ### Comparison 1: PTCy versus CNI+MTX/MMF
 
@@ -618,14 +583,120 @@ kable(excl_summary, col.names = c("Exclusion reason", "n")) |>
 
 *Full alphabetical list available in Table_S3_excluded_studies.csv.*
 
-### Appendix S5: Risk of bias — domain-level detail
+### Appendix S5: Risk of bias
 
 ```{r}
-#| label: fig-rob-domains
-#| fig-cap: "ROBINS-I domain-level risk of bias (n = 227 observational studies)"
-#| fig-height: 5
+#| label: rob-prep
+#| echo: false
 
-# Already rendered above in fig-rob-summary; this provides the tabular version
+robins <- rob_df[rob_df$rob_tool == "ROBINS-I", ]
+rob2   <- rob_df[rob_df$rob_tool == "RoB2", ]
+
+domain_cols   <- c("d1","d2","d3","d4","d5","d6","d7")
+domain_labels <- c("D1 Confounding", "D2 Selection", "D3 Classification",
+                    "D4 Deviations", "D5 Missing data", "D6 Measurement", "D7 Reporting")
+judgement_levels <- c("low", "moderate", "serious", "critical", "NI", "")
+judgement_colours <- c("low" = "#4CAF50", "moderate" = "#FFB74D", "serious" = "#EF5350",
+                        "critical" = "#B71C1C", "NI" = "#BDBDBD")
+judgement_symbols <- c("low" = "+", "moderate" = "\u2212", "serious" = "!", "critical" = "\u00D7", "NI" = "?")
+
+robins_long <- robins |>
+  select(rob_id, all_of(domain_cols)) |>
+  pivot_longer(-rob_id, names_to = "domain", values_to = "judgement") |>
+  mutate(
+    domain = factor(domain, levels = domain_cols, labels = domain_labels),
+    judgement = factor(judgement, levels = judgement_levels)
+  ) |>
+  filter(judgement != "") |>
+  count(domain, judgement)
+```
+
+#### Appendix S5a: Risk of bias traffic-light plot (ROBINS-I, per study)
+
+```{r}
+#| label: fig-rob-traffic
+#| fig-cap: "Appendix Figure S5a: ROBINS-I risk-of-bias traffic-light plot (n = 227 observational studies). One row per study, grouped by overall judgement (critical, serious, no information, moderate, low, top to bottom) and alphabetically within each group; columns D1–D7 are the seven ROBINS-I domains (confounding, selection, classification, deviations, missing data, measurement, reporting); the rightmost column is the overall judgement."
+#| fig-height: 30
+
+traffic_long <- robins |>
+  select(rob_id, study_id, all_of(domain_cols), overall_judgement) |>
+  rename(Overall = overall_judgement) |>
+  left_join(studies_df[, c("study_id", "first_author", "pub_year")], by = "study_id") |>
+  mutate(slab = paste0(first_author, " (", pub_year, ")")) |>
+  mutate(slab = make.unique(slab, sep = " \u2013 ")) |>
+  select(rob_id, slab, all_of(domain_cols), Overall) |>
+  pivot_longer(cols = c(all_of(domain_cols), "Overall"), names_to = "domain", values_to = "judgement") |>
+  mutate(
+    domain = factor(domain, levels = c(domain_cols, "Overall"),
+                     labels = c("D1", "D2", "D3", "D4", "D5", "D6", "D7", "Overall")),
+    judgement = ifelse(judgement %in% c("", NA), "NI", judgement),
+    judgement = factor(judgement, levels = c("low", "moderate", "serious", "critical", "NI")),
+    symbol = judgement_symbols[as.character(judgement)]
+  )
+
+# Order rows by overall-judgement severity (most concerning first), with
+# alphabetical order as a tiebreaker within each severity group. "No
+# information" is treated as a concern in its own right (rated just behind
+# critical) rather than assumed benign. This groups similarly-rated studies
+# together for easier visual scanning, at the cost of no longer matching the
+# alphabetical convention used in Table S3/S4.
+severity_rank <- c("critical" = 1, "serious" = 2, "NI" = 3, "moderate" = 4, "low" = 5)
+
+study_order <- traffic_long |>
+  filter(domain == "Overall") |>
+  distinct(slab, judgement) |>
+  mutate(rank = severity_rank[as.character(judgement)]) |>
+  arrange(rank, slab)
+
+# rank 1 (most concerning) is placed LAST in the levels vector so it renders
+# at the TOP of the plot (ggplot2 draws the highest factor level at the top
+# of a discrete y-axis).
+traffic_long$slab <- factor(traffic_long$slab, levels = rev(study_order$slab))
+
+fig_rob_traffic <- ggplot(traffic_long, aes(x = domain, y = slab, fill = judgement)) +
+  geom_tile(colour = "white", linewidth = 0.3) +
+  geom_text(aes(label = symbol), size = 2.2, colour = "white", fontface = "bold") +
+  scale_fill_manual(values = judgement_colours, name = "Judgement", drop = FALSE,
+                     labels = c("Low", "Moderate", "Serious", "Critical", "No information")) +
+  scale_x_discrete(position = "top") +
+  labs(x = NULL, y = NULL) +
+  theme_jama(base_size = 8) +
+  theme(
+    axis.text.y = element_text(size = rel(0.55)),
+    axis.text.x = element_text(size = rel(0.9), face = "bold"),
+    panel.grid = element_blank(),
+    legend.position = "bottom"
+  )
+save_fig(fig_rob_traffic, "FigureS5a_ROBINS_traffic_light", width = 8, height = 30)
+fig_rob_traffic
+```
+
+#### Appendix S5b: Risk of bias domain-level summary (ROBINS-I)
+
+```{r}
+#| label: fig-rob-summary
+#| fig-cap: "Appendix Figure S5b: ROBINS-I domain-level risk-of-bias summary (n = 227 observational studies)."
+#| fig-height: 4
+
+fig_rob_summary <- ggplot(robins_long, aes(x = n, y = fct_rev(domain), fill = judgement)) +
+  geom_col(position = "fill", width = 0.7) +
+  scale_fill_manual(
+    values = judgement_colours,
+    name = "Judgement", drop = FALSE
+  ) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = NULL, y = NULL, title = "ROBINS-I domain-level summary (n = 227)") +
+  theme_jama(base_size = 10)
+save_fig(fig_rob_summary, "FigureS5b_ROBINS_domain_summary", width = 8, height = 4)
+fig_rob_summary
+```
+
+#### Appendix S5c: Risk of bias domain-level detail (table)
+
+```{r}
+#| label: tbl-rob-domains
+#| tbl-cap: "Table S5c: ROBINS-I domain-level risk of bias, counts by judgement (n = 227 observational studies)"
+
 robins_wide <- robins_long |>
   pivot_wider(names_from = judgement, values_from = n, values_fill = 0)
 

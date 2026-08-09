@@ -102,25 +102,33 @@ PRISMA-standard categories:
 *Source: `02_extraction/studies.csv`, `02_extraction/arms.csv`*
 
 ### S5. Risk of Bias Assessment
-**Status: ready to generate**
+**Status: S5a–S5c built and wired into `save_fig()` (PNG/PDF/SVG); S5d–S5e still pending**
 
-**Figure S5a: Risk of bias summary — ROBINS-I** (n = 227 observational studies)
-Traffic-light plot showing domain-level judgements (D1–D7) and overall
-judgement for each study.
+**Figure S5a: ROBINS-I risk-of-bias traffic-light plot** (n = 227 observational studies) — **built**
+One row per study; columns D1–D7 (confounding, selection, classification,
+deviations, missing data, measurement, reporting) plus an overall-judgement
+column. Colour + symbol coded (low = green "+", moderate = orange "−",
+serious = red "!", critical = dark red "×", no information = grey "?").
+Chunk `fig-rob-traffic` in `Manuscript_LancetHaem_draft.qmd`; files
+`figures/FigureS5a_ROBINS_traffic_light.{png,pdf,svg}`.
 
-- D1: Bias due to confounding
-- D2: Bias in selection of participants
-- D3: Bias in classification of interventions
-- D4: Bias due to deviations from intended interventions
-- D5: Bias due to missing data
-- D6: Bias in measurement of outcomes
-- D7: Bias in selection of reported result
-- Overall: 150 moderate, 71 serious, 6 high
+**Figure S5b: ROBINS-I domain-level summary** (n = 227 observational studies) — **built**
+Stacked bar chart of the proportion of studies at each judgement level,
+per domain. Relocated from the main-text "Risk of bias" section (previously
+labelled `fig-rob-summary`, cited inline) — the main text now cites this as
+an appendix figure instead. Chunk `fig-rob-summary`; files
+`figures/FigureS5b_ROBINS_domain_summary.{png,pdf,svg}`.
 
-**Figure S5b: Risk of bias summary — RoB 2** (n = 14 RCTs)
-Traffic-light plot for 14 RCTs. Overall: 2 low, 1 moderate, 11 some concerns.
+**Table S5c: ROBINS-I domain-level detail** (counts by judgement) — **built**
+Tabular counts underlying S5b. Chunk `tbl-rob-domains` (previously mislabelled
+as a `fig-` chunk despite being a `kable()` table).
 
-**Table S5c: ROB justification narratives** (241 rows)
+**Figure S5d: Risk of bias summary — RoB 2** (n = 14 RCTs) — **not yet built**
+Traffic-light plot for the 14 RCTs (`rob_df$rob_tool == "RoB2"`, loaded as
+`rob2` in the `rob-prep` chunk but not yet plotted). Overall breakdown per
+the manuscript text: 1 low, 11 some concerns, 2 high.
+
+**Table S5e: RoB justification narratives** (241 rows) — **not yet built**
 Full justification text for each study assessment.
 
 *Source: `02_extraction/rob.csv` (241 assessments)*
