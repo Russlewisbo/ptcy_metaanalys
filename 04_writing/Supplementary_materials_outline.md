@@ -20,7 +20,7 @@ expect for a Bayesian meta-analysis of 251 studies across three comparisons.
 ## Appendix Structure
 
 ### S1. Search Strategy
-**Status: needs drafting from PROSPERO protocol**
+**Status: draft table prepared (`Appendix_S1_search_strategy.md`); four items flagged for resolution before finalizing — database list mismatch (protocol names Cochrane CENTRAL/Web of Science, executed search used SCOPUS instead), date-limit mismatch (protocol says 2010–present, manuscript says database inception), final search date not recorded anywhere, and EMBASE/SCOPUS strategies not yet translated from the PubMed draft**
 
 - Full electronic search strategy for **PubMed/MEDLINE** (reproducing exact terms, Boolean operators, date limits)
 - Date of search (final cutoff)

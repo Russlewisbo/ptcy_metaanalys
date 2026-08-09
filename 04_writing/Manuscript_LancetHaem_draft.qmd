@@ -27,6 +27,7 @@ library(metafor)
 library(knitr)
 library(kableExtra)
 library(patchwork)
+library(brms)
 
 # ── Paths (relative to 04_writing/) ──
 model_dir   <- "../03_models/post_block9"
@@ -50,14 +51,58 @@ c1_agvhd <- load_data("data_c1_agvhd.csv")
 c1_cmv   <- load_data("data_c1_cmv.csv")
 c1_bsi   <- load_data("data_c1_bsi.csv")
 c1_ifi   <- load_data("data_c1_ifi_any.csv")
+c1_bk    <- load_data("data_c1_bk.csv")
 c2_os    <- load_data("data_c2_os.csv")
 c2_agvhd <- load_data("data_c2_agvhd.csv")
 c2_cmv   <- load_data("data_c2_cmv.csv")
 
 # ── Load CMV sensitivity posteriors ──
-post_cmv_primary  <- readRDS(file.path(model_dir, "post_c1_cmv.rds"))
+# NB: post_c1_cmv.rds/post_c2_cmv.rds/post_c1_os.rds/post_c2_os.rds on disk are
+# mislabelled — they contain draws from M2 (steroid-adjusted) fits, identifiable
+# by the presence of `b_steroid_pct_c`. The true M1 (primary) posteriors are
+# extracted directly from the m1_*.rds brmsfit objects below.
 post_cmv_post2020 <- readRDS(file.path(model_dir, "post_m1_post2020.rds"))
 post_cmv_haplo    <- readRDS(file.path(model_dir, "post_m1_haplo.rds"))
+
+# ── Load true M1 (primary) brmsfit objects for Bayesian pooled estimates ──
+m1_c1_os  <- readRDS(file.path(model_dir, "m1_c1_os.rds"))
+m1_c2_os  <- readRDS(file.path(model_dir, "m1_c2_os.rds"))
+m1_c1_cmv <- readRDS(file.path(model_dir, "m1_c1_cmv.rds"))
+m1_c2_cmv <- readRDS(file.path(model_dir, "m1_c2_cmv.rds"))
+m1_c1_bsi <- readRDS(file.path(model_dir, "m1_c1_bsi.rds"))
+m1_c1_ifi <- readRDS(file.path(model_dir, "m1_c1_ifi_any.rds"))
+m1_c1_bk  <- readRDS(file.path(model_dir, "m1_c1_bk.rds"))
+
+bayes_pooled <- function(model) {
+  d <- as_draws_df(model)
+  or <- exp(d$b_ptcy_binary)
+  list(or = median(or), lo = quantile(or, 0.025), hi = quantile(or, 0.975),
+       tau = median(d$sd_study_id__Intercept),
+       k = dplyr::n_distinct(model$data$study_id),
+       draws = or)
+}
+
+bayes_os_c1  <- bayes_pooled(m1_c1_os)
+bayes_os_c2  <- bayes_pooled(m1_c2_os)
+bayes_cmv_c1 <- bayes_pooled(m1_c1_cmv)
+bayes_cmv_c2 <- bayes_pooled(m1_c2_cmv)
+bayes_bsi_c1 <- bayes_pooled(m1_c1_bsi)
+bayes_ifi_c1 <- bayes_pooled(m1_c1_ifi)
+bayes_bk_c1  <- bayes_pooled(m1_c1_bk)
+
+# Corrected CMV sensitivity primary estimate (true M1, not the mislabelled cache)
+post_cmv_primary <- as_draws_df(m1_c1_cmv)
+
+# ── Standalone figure export ──
+# Every numbered/appendix figure is also saved to figures/ in three formats
+# (PNG for quick viewing, PDF for print/LaTeX, SVG for editing/web) so the
+# manuscript render is the single source of truth for all standalone files.
+save_fig <- function(plot, name, width, height, dpi = 300) {
+  dir.create("figures", showWarnings = FALSE)
+  ggsave(file.path("figures", paste0(name, ".png")), plot, width = width, height = height, dpi = dpi, bg = "white")
+  ggsave(file.path("figures", paste0(name, ".pdf")), plot, width = width, height = height)
+  ggsave(file.path("figures", paste0(name, ".svg")), plot, width = width, height = height)
+}
 
 # ── Load IFI LOO ──
 loo_tbl <- readRDS(file.path(model_dir, "loo_tbl.rds"))
@@ -135,6 +180,76 @@ forest_study <- function(dat, studies_df, title, subtitle = NULL) {
                     size = 0.35, linewidth = 0.4, colour = jama_navy) +
     geom_pointrange(data = subset(pd, is_pooled), aes(xmin = lo, xmax = hi),
                     shape = 18, size = 0.7, linewidth = 0.7, colour = jama_dark) +
+    # NB: scale_y_discrete(limits=) is required here — with two geom_pointrange
+    # layers built from subset() of the same factor, ggplot's default per-layer
+    # discrete-scale training (drop=TRUE) places levels in order of first
+    # appearance ACROSS layers rather than by the factor's levels() attribute,
+    # which silently pushes "RE Model" (present only in the pooled-only layer)
+    # to the end of the axis instead of its intended first position.
+    scale_y_discrete(limits = levels(pd$slab)) +
+    scale_x_log10() +
+    labs(x = "Odds Ratio (log scale)", y = NULL, title = title,
+         subtitle = auto_sub, caption = het_text) +
+    theme_jama(base_size = 10) +
+    theme(plot.caption = element_text(hjust = 0, size = rel(0.8)))
+}
+
+# ── Bayesian forest plot helper ──
+# Individual studies show raw per-study odds ratios (Wald 95% CI, computed
+# directly from event counts — no model fit); the pooled row is the Bayesian
+# M1 posterior, shown both as a median/95% CrI diamond AND as a one-sided
+# ("half-eye") density of the full posterior draws, drawn rising above the
+# pooled row's baseline only (not mirrored below it). NB: M1 has a single
+# shared treatment effect (ptcy_binary) with a random intercept only for
+# study-level baseline risk — there is no per-study random slope for the
+# treatment effect, so individual studies do not have their own Bayesian
+# posterior to overlay.
+forest_study_bayes <- function(dat, studies_df, title, subtitle, bayes) {
+  es <- escalc(measure = "OR",
+               ai = ptcy_e, n1i = ptcy_n,
+               ci = comp_e, n2i = comp_n,
+               data = dat, add = 0.5, to = "only0")
+  es <- merge(es, studies_df[, c("study_id", "first_author", "pub_year")],
+              by = "study_id", all.x = TRUE)
+  es$slab <- paste0(es$first_author, " (", es$pub_year, ")")
+  es$slab <- make.unique(es$slab, sep = " \u2013 ")
+
+  es$or <- exp(es$yi); es$lo <- exp(es$yi - 1.96*sqrt(es$vi)); es$hi <- exp(es$yi + 1.96*sqrt(es$vi))
+  es <- es[order(es$yi), ]
+  es$slab <- factor(es$slab, levels = es$slab)
+
+  slab_levels <- c("Bayesian pooled", levels(es$slab))
+  es$slab <- factor(as.character(es$slab), levels = slab_levels)
+  bp_y <- match("Bayesian pooled", slab_levels)
+
+  pooled_pt <- data.frame(slab = factor("Bayesian pooled", levels = slab_levels),
+                          or = bayes$or, lo = bayes$lo, hi = bayes$hi, is_pooled = TRUE)
+  es$is_pooled <- FALSE
+  pd_pts <- rbind(es[, c("slab","or","lo","hi","is_pooled")], pooled_pt)
+
+  # Half-density of the pooled posterior, computed on the log scale (to match
+  # scale_x_log10) and drawn only upward from the pooled row's baseline.
+  dens <- density(log(bayes$draws), n = 512)
+  dens_df <- data.frame(x = exp(dens$x), ymin = bp_y,
+                        ymax = bp_y + dens$y / max(dens$y) * 0.85)
+
+  het_text <- sprintf("Posterior median OR (95%% CrI); \u03C4 (posterior median) = %.2f\nDensity = full posterior of pooled OR (no per-study posterior under M1)", bayes$tau)
+  n_total <- sum(dat$ptcy_n) + sum(dat$comp_n)
+  auto_sub <- sprintf("k = %d, N = %s", bayes$k, format(n_total, big.mark = ","))
+  if (!is.null(subtitle)) auto_sub <- paste0(subtitle, " \u00B7 ", auto_sub)
+
+  ggplot() +
+    geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey, linewidth = 0.4) +
+    geom_ribbon(data = dens_df, aes(x = x, ymin = ymin, ymax = ymax),
+                inherit.aes = FALSE, fill = jama_navy, alpha = 0.3, colour = jama_navy, linewidth = 0.2) +
+    geom_pointrange(data = subset(pd_pts, !is_pooled), aes(x = or, y = slab, xmin = lo, xmax = hi),
+                    size = 0.35, linewidth = 0.4, colour = jama_navy) +
+    geom_pointrange(data = subset(pd_pts, is_pooled), aes(x = or, y = slab, xmin = lo, xmax = hi),
+                    shape = 18, size = 0.7, linewidth = 0.7, colour = jama_dark) +
+    # See note in forest_study(): forces the axis to respect slab_levels order
+    # (and hence align with dens_df's ymin/ymax, both anchored on bp_y) instead
+    # of ggplot's per-layer discrete-training order.
+    scale_y_discrete(limits = slab_levels) +
     scale_x_log10() +
     labs(x = "Odds Ratio (log scale)", y = NULL, title = title,
          subtitle = auto_sub, caption = het_text) +
@@ -358,13 +473,15 @@ Of 227 observational studies assessed with ROBINS-I, 150 (66%) were at moderate 
 
 ```{r}
 #| label: fig-forest-os
-#| fig-cap: "Figure 2: Forest plots — overall survival"
+#| fig-cap: "Figure 2: Forest plots — overall survival (Bayesian pooled estimate, with posterior density shown above the pooled row)"
 #| fig-height: 14
 
-p1 <- forest_study(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF")
-p2 <- forest_study(c2_os, studies_df, "Overall Survival", "C2: PTCy vs ATG")
+p1 <- forest_study_bayes(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF", bayes_os_c1)
+p2 <- forest_study_bayes(c2_os, studies_df, "Overall Survival", "C2: PTCy vs ATG", bayes_os_c2)
 
-p1 / p2 + plot_layout(heights = c(4, 1.2))
+fig2 <- p1 / p2 + plot_layout(heights = c(4, 1.2))
+save_fig(fig2, "Figure2_OS_forest", width = 8, height = 14)
+fig2
 ```
 
 PTCy was associated with improved OS (k=40, OR 0·79 [95% CrI 0·73–0·85]; P(OR<1)=100%; @fig-forest-os). Adjusting for steroid exposure attenuated the estimate (M2 OR 0·86 [0·77–0·96]), indicating partial GVHD-mediated confounding but a residual direct benefit. NRM showed a non-significant trend toward benefit (k=12, OR 0·88 [0·66–1·18]). Relapse-related mortality was reduced (k=38, OR 0·84 [0·76–0·93]).
@@ -388,49 +505,31 @@ Acute GVHD grade II–IV was substantially reduced (k=28, OR 0·67 [0·59–0·7
 
 ```{r}
 #| label: fig-forest-cmv
-#| fig-cap: "Figure 3: Forest plots — CMV any-reactivation"
+#| fig-cap: "Figure 3: Forest plots — CMV any-reactivation (Bayesian pooled estimate, with posterior density shown above the pooled row)"
 #| fig-height: 12
 
-p1 <- forest_study(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF")
-p2 <- forest_study(c2_cmv, studies_df, "CMV Any Reactivation", "C2: PTCy vs ATG")
+p1 <- forest_study_bayes(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_cmv_c1)
+p2 <- forest_study_bayes(c2_cmv, studies_df, "CMV Any Reactivation", "C2: PTCy vs ATG", bayes_cmv_c2)
 
-p1 / p2 + plot_layout(heights = c(2.5, 1.5))
+fig3 <- p1 / p2 + plot_layout(heights = c(2.5, 1.5))
+save_fig(fig3, "Figure3_CMV_forest", width = 8, height = 12)
+fig3
 ```
 
-CMV reactivation was increased in C1 (k=22, OR 1·26 [1·07–1·47]; @fig-forest-cmv). This effect was steroid-independent (M2 OR 1·25 [1·01–1·54]) and strengthened in sensitivity analyses (@fig-cmv-sensitivity). BSI was elevated (k=6, OR 1·87 [1·33–2·62]) and BK virus reactivation showed the largest infection effect (k=11, OR 2·48 [1·82–3·38]). IFI was reduced (k=6, OR 0·43 [0·29–0·63]), though with extreme heterogeneity (τ=1·64). Infection-related mortality was modestly elevated (k=16, OR 1·35 [1·16–1·57]).
+CMV reactivation was increased in C1 (k=22, OR 1·26 [1·07–1·47]; @fig-forest-cmv). This effect was steroid-independent (M2 OR 1·25 [1·01–1·54]) and strengthened in sensitivity analyses (appendix p XX). BSI was elevated (k=6, OR 1·87 [1·33–2·62]), BK virus reactivation showed the largest infection effect (k=11, OR 2·48 [1·82–3·38]), and IFI was reduced (k=6, OR 0·43 [0·29–0·63]), though with extreme heterogeneity (τ=1·64) (@fig-forest-infections). Infection-related mortality was modestly elevated (k=16, OR 1·35 [1·16–1·57]).
 
 ```{r}
-#| label: fig-cmv-sensitivity
-#| fig-cap: "Figure 4: CMV sensitivity analyses (Comparison 1). All three estimates use post-Block-9 data. Both subgroup restrictions strengthen the signal."
-#| fig-height: 4
+#| label: fig-forest-infections
+#| fig-cap: "Figure 4: Forest plots — bacterial, fungal, and BK viral infection risk (Comparison 1, Bayesian pooled estimates, with posterior density shown above each pooled row)"
+#| fig-height: 12
 
-or_summary_from_post <- function(post, col = "b_ptcy_binary", label) {
-  draws <- exp(post[[col]])
-  data.frame(
-    model = label,
-    or = median(draws),
-    lo = quantile(draws, 0.025),
-    hi = quantile(draws, 0.975)
-  )
-}
+p1 <- forest_study_bayes(c1_bsi, studies_df, "Bloodstream Infection", "C1: PTCy vs CNI+MTX/MMF", bayes_bsi_c1)
+p2 <- forest_study_bayes(c1_ifi, studies_df, "Invasive Fungal Infection", "C1: PTCy vs CNI+MTX/MMF", bayes_ifi_c1)
+p3 <- forest_study_bayes(c1_bk, studies_df, "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_bk_c1)
 
-sens_df <- bind_rows(
-  or_summary_from_post(post_cmv_primary, label = "Primary (k=22)"),
-  or_summary_from_post(post_cmv_post2020, label = "Post-2020 (k=17)"),
-  or_summary_from_post(post_cmv_haplo, label = "Haplo \u226550% (k=12)")
-)
-
-sens_df$model <- factor(sens_df$model,
-  levels = rev(c("Primary (k=22)", "Post-2020 (k=17)", "Haplo \u226550% (k=12)")))
-
-ggplot(sens_df, aes(x = or, y = model)) +
-  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
-  geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.6, linewidth = 0.6, colour = jama_navy) +
-  scale_x_log10() +
-  labs(x = "Odds Ratio (log scale)", y = NULL,
-       title = "C1 CMV Sensitivity Analyses",
-       subtitle = "All P(OR > 1) \u2265 99·9%") +
-  theme_jama(base_size = 11)
+fig4 <- p1 / p2 / p3 + plot_layout(heights = c(2, 2, 3))
+save_fig(fig4, "Figure4_infections_forest", width = 8, height = 12)
+fig4
 ```
 
 ### Comparison 2: PTCy versus ATG
@@ -535,6 +634,34 @@ kable(robins_wide) |>
 ```
 
 ### Appendix S8: Forest plots — all secondary outcomes
+
+#### Appendix S8a: Frequentist concordance checks — overall survival and CMV
+
+```{r}
+#| label: fig-forest-os-freq
+#| fig-cap: "Appendix Figure: Forest plots — overall survival (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 2 as a sensitivity/concordance check."
+#| fig-height: 14
+
+p1 <- forest_study(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF")
+p2 <- forest_study(c2_os, studies_df, "Overall Survival", "C2: PTCy vs ATG")
+
+figS8a_os <- p1 / p2 + plot_layout(heights = c(4, 1.2))
+save_fig(figS8a_os, "FigureS8a_OS_forest_frequentist", width = 8, height = 14)
+figS8a_os
+```
+
+```{r}
+#| label: fig-forest-cmv-freq
+#| fig-cap: "Appendix Figure: Forest plots — CMV any-reactivation (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 3 as a sensitivity/concordance check."
+#| fig-height: 12
+
+p1 <- forest_study(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF")
+p2 <- forest_study(c2_cmv, studies_df, "CMV Any Reactivation", "C2: PTCy vs ATG")
+
+figS8a_cmv <- p1 / p2 + plot_layout(heights = c(2.5, 1.5))
+save_fig(figS8a_cmv, "FigureS8a_CMV_forest_frequentist", width = 8, height = 12)
+figS8a_cmv
+```
 
 ```{r}
 #| label: fig-forest-nrm
@@ -652,6 +779,44 @@ if (!is.null(c3_cgvhd) && nrow(c3_cgvhd) >= 3) {
 } else {
   p1 / p2 / p3
 }
+```
+
+### Appendix S9a: CMV sensitivity analyses (Comparison 1)
+
+```{r}
+#| label: fig-cmv-sensitivity
+#| fig-cap: "Appendix Figure S9a: CMV sensitivity analyses (Comparison 1). All three estimates use post-Block-9 data and the true M1 (primary) posterior. Both subgroup restrictions strengthen the signal."
+#| fig-height: 4
+
+or_summary_from_post <- function(post, col = "b_ptcy_binary", label) {
+  draws <- exp(post[[col]])
+  data.frame(
+    model = label,
+    or = median(draws),
+    lo = quantile(draws, 0.025),
+    hi = quantile(draws, 0.975)
+  )
+}
+
+sens_df <- bind_rows(
+  or_summary_from_post(post_cmv_primary, label = "Primary (k=22)"),
+  or_summary_from_post(post_cmv_post2020, label = "Post-2020 (k=17)"),
+  or_summary_from_post(post_cmv_haplo, label = "Haplo \u226550% (k=12)")
+)
+
+sens_df$model <- factor(sens_df$model,
+  levels = rev(c("Primary (k=22)", "Post-2020 (k=17)", "Haplo \u226550% (k=12)")))
+
+fig_cmv_sens <- ggplot(sens_df, aes(x = or, y = model)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), size = 0.6, linewidth = 0.6, colour = jama_navy) +
+  scale_x_log10() +
+  labs(x = "Odds Ratio (log scale)", y = NULL,
+       title = "C1 CMV Sensitivity Analyses",
+       subtitle = "All P(OR > 1) \u2265 99\u00B79%") +
+  theme_jama(base_size = 11)
+save_fig(fig_cmv_sens, "FigureS9a_CMV_sensitivity", width = 8, height = 4)
+fig_cmv_sens
 ```
 
 ### Appendix S9: IFI leave-one-out analysis

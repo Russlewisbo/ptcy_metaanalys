@@ -264,13 +264,16 @@ M1=primary model adjusted for timepoint. M2=steroid-mediation model. k=number of
 4145 records identified from databases (EMBASE 2603, PubMed 1061, SCOPUS 481). 1220 duplicates removed. 2925 screened; 2408 excluded at title/abstract. 517 sought for retrieval; 52 not retrieved or not in English. 465 full-text assessed; 214 excluded (appendix p XX). 251 studies included in systematic review; 117 with extractable event counts included in meta-analysis (C1: 83 studies; C2: 42 studies; C3: 13 studies).
 
 **Figure 2: Forest plot — overall survival (Comparisons 1 and 2)**
-Individual study odds ratios with 95% CIs (frequentist REML) and pooled Bayesian random-effects estimate for overall survival. Panel A: C1, PTCy versus CNI+MTX/MMF (k=40). Panel B: C2, PTCy versus ATG (k=10). Events and denominators shown for PTCy and comparator groups for each study.
+Individual study odds ratios with 95% Wald CIs (raw per-study data) and pooled Bayesian random-effects posterior median with 95% credible interval (primary model M1) for overall survival. Panel A: C1, PTCy versus CNI+MTX/MMF (k=40, OR 0·79 [95% CrI 0·73–0·85]). Panel B: C2, PTCy versus ATG (k=10, OR 0·81 [0·74–0·90]). Events and denominators shown for PTCy and comparator groups for each study. The corresponding frequentist (REML) concordance check is provided in Appendix Figure S8a.
 
 **Figure 3: Forest plot — CMV reactivation (Comparisons 1 and 2)**
-Individual study odds ratios for CMV any-reactivation. Panel A: C1 (k=22, OR 1·26 [1·07–1·47]). Panel B: C2 (k=13, OR 0·92 [0·73–1·15]). The direction reversal between comparisons illustrates the T-cell depletion depth hierarchy.
+Individual study odds ratios for CMV any-reactivation. Panel A: C1 (k=22, OR 1·26 [1·07–1·47]). Panel B: C2 (k=13, OR 0·92 [0·73–1·15]). The direction reversal between comparisons suggests a T-cell depletion depth hierarchy. Pooled estimates are Bayesian random-effects posterior medians with 95% credible intervals (primary model M1), shown with the posterior density above the pooled row. The corresponding frequentist (REML) concordance check is provided in Appendix Figure S8a.
 
-**Figure 4: CMV sensitivity analyses (Comparison 1)**
-Point estimates and 95% CrIs for C1 CMV across three analyses: primary corpus (k=22, OR 1·26), post-2020 studies (k=17, OR 1·53), and haploidentical-dominant cohorts (k=12, OR 1·38). All estimates significantly exceed 1·0.
+**Figure 4: Forest plots — bacterial, fungal, and BK viral infection risk (Comparison 1)**
+Individual study odds ratios (raw per-study estimates) and pooled Bayesian random-effects posterior median with 95% credible interval (primary model M1), shown with the posterior density above each pooled row. Panel A: bloodstream infection, any pathogen (k=6, OR 1·87 [1·33–2·62]). Panel B: invasive fungal infection, any (k=6, OR 0·43 [0·29–0·63]; τ=1·64, reflecting extreme heterogeneity, probably confounded by antifungal prophylaxis practice). Panel C: BK virus reactivation (k=11, OR 2·48 [1·82–3·38]), the largest infection effect observed. All three comparisons are C1 (PTCy vs CNI+MTX/MMF); insufficient studies were available to fit the corresponding C2 models for BSI and IFI.
+
+**Appendix Figure S9a: CMV sensitivity analyses (Comparison 1)**
+Point estimates and 95% CrIs for C1 CMV across three analyses: primary corpus (k=22, OR 1·26), post-2020 studies (k=17, OR 1·53), and haploidentical-dominant cohorts (k=12, OR 1·38). All estimates significantly exceed 1·0. (Relocated from the main text to the appendix.)
 
 ---
 

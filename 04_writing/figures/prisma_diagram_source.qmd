@@ -1,0 +1,42 @@
+---
+title: "PRISMA 2020 flow diagram"
+format:
+  typst: default
+---
+
+```{mermaid}
+flowchart TD
+    subgraph id ["Identification"]
+        A["Records from databases<br>(n = 4,145)<br><i>EMBASE 2,603 · PubMed 1,061 · SCOPUS 481</i>"]
+    end
+
+    A --> DUP["Duplicates removed<br>(n = 1,220)"]
+    A --> B["Records screened<br>(n = 2,925)"]
+
+    subgraph scr ["Screening"]
+        B --> EXCL_TA["Excluded at title/abstract<br>(n = 2,408)"]
+        B --> C["Reports sought<br>for retrieval<br>(n = 517)"]
+    end
+
+    C --> NR["Not retrieved or<br>not in English<br>(n = 52)"]
+    C --> D["Full-text articles<br>assessed for eligibility<br>(n = 465)"]
+
+    subgraph incl ["Included"]
+        D --> EXCL_FT["Excluded (n = 214)<br>Conference abstract (116)<br>Single-arm / no contrast (41)<br>Review / MA (32)<br>Duplicate (13)<br>Other (12)"]
+        D --> E["Studies in<br>systematic review<br>(n = 251)"]
+        E --> F["Comparative studies<br>(n = 225)"]
+        E --> G["Single-arm<br>(n = 26)"]
+        F --> H["Studies in<br>meta-analysis<br>(n = 117)"]
+        H --> C1["C1: PTCy vs CNI+MTX<br>(83 studies)"]
+        H --> C2["C2: PTCy vs ATG<br>(42 studies)"]
+        H --> C3["C3: Within-PTCy<br>(13 studies)"]
+    end
+
+    style id fill:#e8f4fd,stroke:#2c5f8a
+    style scr fill:#fef9e7,stroke:#8a7c2c
+    style incl fill:#e8fde8,stroke:#2c8a3c
+    style EXCL_TA fill:#fde8e8,stroke:#8a2c2c
+    style EXCL_FT fill:#fde8e8,stroke:#8a2c2c
+    style DUP fill:#f0f0f0,stroke:#666
+    style NR fill:#f0f0f0,stroke:#666
+```
