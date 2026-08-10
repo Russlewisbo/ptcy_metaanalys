@@ -194,7 +194,7 @@
 <text x='328.98' y='471.64' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>1.0</text>
 <text x='483.45' y='471.64' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>10.0</text>
 <text x='338.26' y='483.57' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Arial";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
-<text x='120.45' y='47.73' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='211.39px' lengthAdjust='spacingAndGlyphs'>C1: PTCy vs CNI+MTX/MMF · k = 22, N = 3,328</text>
+<text x='120.45' y='47.73' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='211.94px' lengthAdjust='spacingAndGlyphs'>C1: PTCy vs CNI+MTX/MMF · k = 22, N = 3,328</text>
 <text x='120.45' y='30.30' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Arial";' textLength='133.69px' lengthAdjust='spacingAndGlyphs'>CMV Any Reactivation</text>
 <text x='120.45' y='500.96' style='font-size: 8.80px;fill: #808080; font-family: "Arial";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 62%, τ = 0.50, Q p &lt; 0.001</text>
 </g>
@@ -293,7 +293,7 @@
 <text x='381.69' y='813.83' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>10.0</text>
 <text x='491.89' y='813.83' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='23.41px' lengthAdjust='spacingAndGlyphs'>100.0</text>
 <text x='338.26' y='825.76' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Arial";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
-<text x='120.45' y='549.61' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='161.48px' lengthAdjust='spacingAndGlyphs'>C2: PTCy vs ATG · k = 13, N = 1,571</text>
+<text x='120.45' y='549.61' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='162.03px' lengthAdjust='spacingAndGlyphs'>C2: PTCy vs ATG · k = 13, N = 1,571</text>
 <text x='120.45' y='532.19' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Arial";' textLength='133.69px' lengthAdjust='spacingAndGlyphs'>CMV Any Reactivation</text>
 <text x='120.45' y='843.15' style='font-size: 8.80px;fill: #808080; font-family: "Arial";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 71%, τ = 0.69, Q p &lt; 0.001</text>
 </g>

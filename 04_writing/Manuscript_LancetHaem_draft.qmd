@@ -29,9 +29,9 @@ library(kableExtra)
 library(patchwork)
 library(brms)
 
-# ── Paths (relative to 04_writing/) ──
-model_dir   <- "../03_models/post_block9"
-extract_dir <- "../02_extraction"
+# ── Paths — adaptive for both quarto render (04_writing/) and interactive console (project root) ──
+model_dir   <- if (file.exists("../03_models/post_block9")) "../03_models/post_block9" else "03_models/post_block9"
+extract_dir <- if (file.exists("../02_extraction"))         "../02_extraction"         else "02_extraction"
 
 # ── Load core data ──
 studies_df <- read.csv(file.path(extract_dir, "studies.csv"))

@@ -68,7 +68,7 @@
 <text x='399.39' y='263.66' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>1.50</text>
 <text x='505.94' y='263.66' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>1.75</text>
 <text x='331.94' y='275.84' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Arial";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
-<text x='97.85' y='37.77' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='97.52px' lengthAdjust='spacingAndGlyphs'>All P(OR &gt; 1) ≥ 99·9%</text>
+<text x='97.85' y='37.77' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='98.06px' lengthAdjust='spacingAndGlyphs'>All P(OR &gt; 1) ≥ 99·9%</text>
 <text x='97.85' y='20.34' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Arial";' textLength='173.08px' lengthAdjust='spacingAndGlyphs'>C1 CMV Sensitivity Analyses</text>
 </g>
 </g>

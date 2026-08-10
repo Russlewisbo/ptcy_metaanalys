@@ -290,7 +290,7 @@
 <text x='431.42' y='674.54' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>1.00</text>
 <text x='502.33' y='674.54' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>3.00</text>
 <text x='347.08' y='686.47' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Arial";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
-<text x='138.09' y='47.73' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='216.89px' lengthAdjust='spacingAndGlyphs'>C1: PTCy vs CNI+MTX/MMF · k = 40, N = 19,724</text>
+<text x='138.09' y='47.73' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='217.44px' lengthAdjust='spacingAndGlyphs'>C1: PTCy vs CNI+MTX/MMF · k = 40, N = 19,724</text>
 <text x='138.09' y='30.30' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Arial";' textLength='95.59px' lengthAdjust='spacingAndGlyphs'>Overall Survival</text>
 <text x='138.09' y='703.86' style='font-size: 8.80px;fill: #808080; font-family: "Arial";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 64%, τ = 0.35, Q p &lt; 0.001</text>
 </g>
@@ -377,7 +377,7 @@
 <text x='431.17' y='957.83' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>1.00</text>
 <text x='506.31' y='957.83' text-anchor='middle' style='font-size: 9.35px;fill: #2D2D2D; font-family: "Arial";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>3.00</text>
 <text x='347.08' y='969.76' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Arial";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
-<text x='138.09' y='752.52' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='166.98px' lengthAdjust='spacingAndGlyphs'>C2: PTCy vs ATG · k = 10, N = 12,851</text>
+<text x='138.09' y='752.52' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Arial";' textLength='167.53px' lengthAdjust='spacingAndGlyphs'>C2: PTCy vs ATG · k = 10, N = 12,851</text>
 <text x='138.09' y='735.09' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Arial";' textLength='95.59px' lengthAdjust='spacingAndGlyphs'>Overall Survival</text>
 <text x='138.09' y='987.15' style='font-size: 8.80px;fill: #808080; font-family: "Arial";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 95%, τ = 0.88, Q p &lt; 0.001</text>
 </g>
