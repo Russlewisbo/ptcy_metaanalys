@@ -32,6 +32,7 @@ library(brms)
 # ── Paths — adaptive for both quarto render (04_writing/) and interactive console (project root) ──
 model_dir   <- if (file.exists("../03_models/post_block9")) "../03_models/post_block9" else "03_models/post_block9"
 extract_dir <- if (file.exists("../02_extraction"))         "../02_extraction"         else "02_extraction"
+writing_dir <- if (file.exists("../02_extraction"))         "."                        else "04_writing"
 
 # ── Load core data ──
 studies_df <- read.csv(file.path(extract_dir, "studies.csv"))
@@ -571,7 +572,7 @@ In conclusion, PTCy improves overall survival and reduces GVHD across comparator
 #| label: tbl-excluded-summary
 #| tbl-cap: "Studies excluded at full-text screening"
 
-excl_csv <- read.csv("Table_S3_excluded_studies.csv")
+excl_csv <- read.csv(file.path(writing_dir, "Table_S3_excluded_studies.csv"))
 excl_summary <- excl_csv |>
   count(Reason.for.exclusion, name = "n") |>
   arrange(desc(n)) |>
