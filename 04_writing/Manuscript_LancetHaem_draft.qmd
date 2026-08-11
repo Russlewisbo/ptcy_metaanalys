@@ -31,18 +31,29 @@ library(brms)
 
 # ── Paths — adaptive for both quarto render (04_writing/) and interactive console (project root) ──
 model_dir   <- if (file.exists("../03_models/post_block9")) "../03_models/post_block9" else "03_models/post_block9"
+setb_dir    <- if (file.exists("../03_models/set_b"))       "../03_models/set_b"       else "03_models/set_b"
 extract_dir <- if (file.exists("../02_extraction"))         "../02_extraction"         else "02_extraction"
 writing_dir <- if (file.exists("../02_extraction"))         "."                        else "04_writing"
+
+# ── Set B resolution ──
+# The adopted analysis is Set B (one publication per cohort per outcome). Only the
+# outcomes affected by deduplication were refitted, so 03_models/set_b/ is a partial
+# overlay: prefer a file there, otherwise fall back to the post-Block-9 model dir.
+# Affected: c1_os, c1_rrm, c1_irm, c1_cgvhd_ms, c2_os, c2_agvhd, c2_cmv (+ C2 sens).
+resolve_model_file <- function(file) {
+  f <- file.path(setb_dir, file)
+  if (file.exists(f)) f else file.path(model_dir, file)
+}
 
 # ── Load core data ──
 studies_df <- read.csv(file.path(extract_dir, "studies.csv"))
 arms_df    <- read.csv(file.path(extract_dir, "arms.csv"))
 rob_df     <- read.csv(file.path(extract_dir, "rob.csv"))
-t2         <- read.csv(file.path(model_dir, "Table2_post_block9.csv"))
+t2         <- read.csv(resolve_model_file("Table2_setB.csv"))
 
 # ── Load analytic datasets ──
 load_data <- function(file) {
-  f <- file.path(model_dir, file)
+  f <- resolve_model_file(file)
   if (file.exists(f)) read.csv(f) else NULL
 }
 
@@ -66,13 +77,14 @@ post_cmv_post2020 <- readRDS(file.path(model_dir, "post_m1_post2020.rds"))
 post_cmv_haplo    <- readRDS(file.path(model_dir, "post_m1_haplo.rds"))
 
 # ── Load true M1 (primary) brmsfit objects for Bayesian pooled estimates ──
-m1_c1_os  <- readRDS(file.path(model_dir, "m1_c1_os.rds"))
-m1_c2_os  <- readRDS(file.path(model_dir, "m1_c2_os.rds"))
-m1_c1_cmv <- readRDS(file.path(model_dir, "m1_c1_cmv.rds"))
-m1_c2_cmv <- readRDS(file.path(model_dir, "m1_c2_cmv.rds"))
-m1_c1_bsi <- readRDS(file.path(model_dir, "m1_c1_bsi.rds"))
-m1_c1_ifi <- readRDS(file.path(model_dir, "m1_c1_ifi_any.rds"))
-m1_c1_bk  <- readRDS(file.path(model_dir, "m1_c1_bk.rds"))
+m1_c1_os  <- readRDS(resolve_model_file("m1_c1_os.rds"))
+m1_c2_os  <- readRDS(resolve_model_file("m1_c2_os.rds"))
+m1_c1_cmv <- readRDS(resolve_model_file("m1_c1_cmv.rds"))
+m1_c2_cmv <- readRDS(resolve_model_file("m1_c2_cmv.rds"))
+m1_c1_bsi <- readRDS(resolve_model_file("m1_c1_bsi.rds"))
+m1_c1_ifi <- readRDS(resolve_model_file("m1_c1_ifi_any.rds"))
+m1_c1_bk  <- readRDS(resolve_model_file("m1_c1_bk.rds"))
+m1_c2_bk  <- readRDS(resolve_model_file("m1_c2_bk.rds"))
 
 bayes_pooled <- function(model) {
   d <- as_draws_df(model)
@@ -90,6 +102,7 @@ bayes_cmv_c2 <- bayes_pooled(m1_c2_cmv)
 bayes_bsi_c1 <- bayes_pooled(m1_c1_bsi)
 bayes_ifi_c1 <- bayes_pooled(m1_c1_ifi)
 bayes_bk_c1  <- bayes_pooled(m1_c1_bk)
+bayes_bk_c2  <- bayes_pooled(m1_c2_bk)
 
 # Corrected CMV sensitivity primary estimate (true M1, not the mislabelled cache)
 post_cmv_primary <- as_draws_df(m1_c1_cmv)
@@ -273,7 +286,7 @@ Post-transplant cyclophosphamide (PTCy) is increasingly used for graft-versus-ho
 In this systematic review and Bayesian meta-analysis, we searched EMBASE, PubMed, and SCOPUS from database inception to [search date] for studies comparing PTCy-based GVHD prophylaxis with alternative regimens in adult allo-HSCT recipients. We defined three pre-specified comparisons: PTCy versus calcineurin inhibitor (CNI)+methotrexate/mycophenolate (Comparison 1 [C1]); PTCy versus anti-thymocyte globulin (ATG; Comparison 2 [C2]); and within-PTCy regimen variants (Comparison 3 [C3]). The primary outcome was overall survival (OS). Secondary outcomes included non-relapse mortality (NRM), acute GVHD grade II–IV, CMV reactivation, bloodstream infection (BSI), and invasive fungal infection (IFI). We used Bayesian random-effects binomial-logistic models with a GVHD-mediation analysis (steroid exposure as mediator). This study is registered with PROSPERO, [CRD number].
 
 **Findings**
-Of 4145 records identified, 251 studies (525 arms; 177 758 patients; 14 RCTs) were included in the systematic review and 117 contributed to the meta-analysis. In C1 (83 studies), PTCy was associated with improved OS (OR 0·79 [95% CrI 0·73–0·85]), reduced acute GVHD (0·67 [0·59–0·78]), but increased CMV reactivation (1·26 [1·07–1·47]) and BSI (1·87 [1·33–2·62]). In C2 (42 studies), PTCy improved OS versus ATG (0·81 [0·74–0·90]) with no CMV excess (0·92 [0·73–1·15]). The CMV signal was steroid-independent and strengthened in post-2020 and haploidentical-dominant cohorts. GRADE certainty was LOW for survival and GVHD outcomes; VERY LOW for infection outcomes.
+Of 4145 records identified, 251 studies (525 arms; 177 758 patients; 14 RCTs) were included in the systematic review and 117 contributed to the meta-analysis. In C1 (83 studies), PTCy was associated with improved OS (OR 0·84 [95% CrI 0·76–0·92]), reduced acute GVHD (0·67 [0·59–0·78]), but increased CMV reactivation (1·26 [1·07–1·47]) and BSI (1·87 [1·33–2·62]). In C2 (42 studies), PTCy improved OS versus ATG (0·83 [0·75–0·92]) with no CMV excess (0·97 [0·77–1·23]). The CMV signal was steroid-independent and strengthened in post-2020 and haploidentical-dominant cohorts. GRADE certainty was LOW for survival and GVHD outcomes; VERY LOW for infection outcomes.
 
 **Interpretation**
 PTCy improves survival and reduces GVHD across comparator platforms, but increases CMV and bacterial infection risk relative to less T-cell-depleting regimens. The comparative pattern — CMV harm versus CNI-based but not versus ATG-based prophylaxis — indicates that infection risk tracks the depth of T-cell depletion across platforms, reframing PTCy-associated infections as a class effect of T-cell-depleting prophylaxis rather than a PTCy-specific limitation.
@@ -291,7 +304,7 @@ We searched PubMed for systematic reviews and meta-analyses of post-transplant c
 
 ### Added value of this study
 
-This systematic review and meta-analysis is, to our knowledge, the largest to date (251 studies, 177 758 patients). It is the first to systematically pool CMV, bloodstream infection, and invasive fungal infection alongside GVHD and survival within the same analytic framework. Its dual-comparator design reveals that PTCy's effect on CMV reverses direction depending on the comparator's own T-cell depletion depth — harmful versus CNI-based (OR 1·26) but null versus ATG-based (OR 0·92) — establishing a T-cell depletion hierarchy. Bayesian mediation analysis shows that the survival benefit is only partially mediated through GVHD suppression.
+This systematic review and meta-analysis is, to our knowledge, the largest to date (251 studies, 177 758 patients). It is the first to systematically pool CMV, bloodstream infection, and invasive fungal infection alongside GVHD and survival within the same analytic framework. Its dual-comparator design reveals that PTCy's effect on CMV reverses direction depending on the comparator's own T-cell depletion depth — harmful versus CNI-based (OR 1·26) but null versus ATG-based (OR 0·97) — establishing a T-cell depletion hierarchy. Bayesian mediation analysis indicates that the survival benefit is not detectable independently of GVHD suppression once steroid exposure is accounted for.
 
 ### Implications of all the available evidence
 
@@ -324,6 +337,8 @@ The primary outcome was overall survival (OS). Secondary outcomes included non-r
 ### Data analysis
 
 We fitted Bayesian random-effects binomial-logistic regression models using brms (version 2.23.0) with an rstan backend. The primary model (M1) estimated the PTCy treatment effect adjusted for timepoint with a random intercept for study. Weakly informative priors were specified: N(0, 2·5) on fixed effects, N(0, 1·5) on the intercept, and Student-t(3, 0, 1) on the between-study standard deviation (τ). The GVHD-mediation model (M2) added arm-level systemic steroid exposure percentage as a covariate. Pre-specified sensitivity analyses included restriction to post-2020 publications and haploidentical-dominant cohorts. Frequentist random-effects models (REML, metafor version 5.0.1) were fitted as concordance checks. Full model specifications are in the appendix (p XX).
+
+Where several publications reported on the same patient cohort, only one was allowed to contribute to any given outcome, selected from a pre-specified cohort-override registry recording which publication is primary for which outcome. This rule was applied after an audit showed that permitting outcome-specific ("partial") primary publications had allowed up to five publications from a single registry cohort to enter the same model as independent studies (appendix p XX). Estimates reported here reflect the deduplicated analysis.
 
 ---
 
@@ -450,7 +465,7 @@ save_fig(fig2, "Figure2_OS_forest", width = 8, height = 14)
 fig2
 ```
 
-PTCy was associated with improved OS (k=40, OR 0·79 [95% CrI 0·73–0·85]; P(OR<1)=100%; @fig-forest-os). Adjusting for steroid exposure attenuated the estimate (M2 OR 0·86 [0·77–0·96]), indicating partial GVHD-mediated confounding but a residual direct benefit. NRM showed a non-significant trend toward benefit (k=12, OR 0·88 [0·66–1·18]). Relapse-related mortality was reduced (k=38, OR 0·84 [0·76–0·93]).
+PTCy was associated with improved OS (k=35, OR 0·84 [95% CrI 0·76–0·92]; P(OR<1)=100%; @fig-forest-os). Adjusting for steroid exposure abolished the association (M2 OR 1·04 [0·89–1·22]), indicating that the survival advantage is not separable from GVHD suppression: no steroid-independent survival benefit was detectable. NRM showed a non-significant trend toward benefit (k=12, OR 0·88 [0·66–1·18]). Relapse-related mortality was reduced (k=34, OR 0·87 [0·77–0·97]).
 
 #### GVHD outcomes
 
@@ -462,10 +477,12 @@ PTCy was associated with improved OS (k=40, OR 0·79 [95% CrI 0·73–0·85]; P(
 p1 <- forest_study(c1_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C2: PTCy vs ATG")
 
-p1 / p2 + plot_layout(heights = c(3, 1.2))
+fig_agvhd <- p1 / p2 + plot_layout(heights = c(3, 1.2))
+save_fig(fig_agvhd, "FigureS8b_aGVHD_forest", width = 8, height = 12)
+fig_agvhd
 ```
 
-Acute GVHD grade II–IV was substantially reduced (k=28, OR 0·67 [0·59–0·78]) as was moderate-to-severe chronic GVHD (k=21, OR 0·33 [0·29–0·36]).
+Acute GVHD grade II–IV was substantially reduced (k=28, OR 0·67 [0·59–0·78]). Moderate-to-severe chronic GVHD was also reduced (k=19, OR 0·47 [0·38–0·57]). This estimate is substantially weaker than the previously reported 0·33: the earlier analytic dataset was not generated by the audited pipeline and included two studies ineligible under the cohort-selection rule, whose removal alone accounts for the shift (appendix p XX).
 
 #### Infection outcomes
 
@@ -482,7 +499,7 @@ save_fig(fig3, "Figure3_CMV_forest", width = 8, height = 12)
 fig3
 ```
 
-CMV reactivation was increased in C1 (k=22, OR 1·26 [1·07–1·47]; @fig-forest-cmv). This effect was steroid-independent (M2 OR 1·25 [1·01–1·54]) and strengthened in sensitivity analyses (appendix p XX). BSI was elevated (k=6, OR 1·87 [1·33–2·62]), BK virus reactivation showed the largest infection effect (k=11, OR 2·48 [1·82–3·38]), and IFI was reduced (k=6, OR 0·43 [0·29–0·63]), though with extreme heterogeneity (τ=1·64) (@fig-forest-infections). Infection-related mortality was modestly elevated (k=16, OR 1·35 [1·16–1·57]).
+CMV reactivation was increased in C1 (k=22, OR 1·26 [1·07–1·47]; @fig-forest-cmv). This effect was steroid-independent (M2 OR 1·25 [1·01–1·54]) and strengthened in sensitivity analyses (appendix p XX). BSI was elevated (k=6, OR 1·87 [1·33–2·62]), BK virus reactivation showed the largest infection effect (k=11, OR 2·48 [1·82–3·38]), and IFI was reduced (k=6, OR 0·43 [0·29–0·63]), though with extreme heterogeneity (τ=1·64) (@fig-forest-infections). Infection-related mortality was not significantly increased (k=13, OR 1·19 [1·00–1·43]).
 
 ```{r}
 #| label: fig-forest-infections
@@ -500,7 +517,7 @@ fig4
 
 ### Comparison 2: PTCy versus ATG
 
-PTCy improved OS versus ATG (k=10, OR 0·81 [0·74–0·90]; @fig-forest-os), with negligible steroid-mediated attenuation (M2 OR 0·82 [0·71–0·94]). Acute GVHD was reduced (k=9, OR 0·58 [0·44–0·77]). CMV reactivation was not significantly different (k=13, OR 0·92 [0·73–1·15]; @fig-forest-cmv), contrasting with the excess seen in C1. Infection-related mortality was not increased (k=7, OR 0·90 [0·74–1·09]).
+PTCy improved OS versus ATG (k=9, OR 0·83 [0·75–0·92]; @fig-forest-os), with negligible steroid-mediated attenuation (M2 OR 0·81 [0·70–0·93]). Acute GVHD was reduced (k=8, OR 0·63 [0·47–0·83]). CMV reactivation was not significantly different (k=12, OR 0·97 [0·77–1·23]; @fig-forest-cmv), contrasting with the excess seen in C1. Infection-related mortality was not increased (k=7, OR 0·90 [0·74–1·09]).
 
 ### Comparison 3: within-PTCy variants
 
@@ -518,6 +535,26 @@ grade_map <- c(
   "c1_cmv" = "LOW", "c2_cmv" = "V. LOW",
   "c1_bsi" = "V. LOW", "c1_ifi_any" = "V. LOW"
 )
+
+# Outcome families drive both row order and the pack_rows() boundaries below.
+# NB: these boundaries were previously hardcoded (1-8 / 9-14 / 15-23) and did not
+# match the actual row order of Table2, so the section headings were mislabelled.
+# They are now derived from the data.
+family_of <- function(slug) {
+  o <- str_remove(slug, "^c[123]_")
+  dplyr::case_when(
+    o %in% c("os", "nrm", "rrm")                  ~ "Survival and mortality",
+    o %in% c("agvhd", "cgvhd_ms", "cgvhd_any")    ~ "GVHD",
+    TRUE                                          ~ "Infection"
+  )
+}
+
+t2 <- t2 |>
+  mutate(family = factor(family_of(slug),
+                         levels = c("Survival and mortality", "GVHD", "Infection")),
+         .ord_outcome = str_remove(slug, "^c[123]_"),
+         .ord_cmp = str_extract(slug, "^c[123]")) |>
+  arrange(family, .ord_outcome, .ord_cmp, model)
 
 t2_display <- t2 |>
   mutate(
@@ -539,11 +576,17 @@ t2_display <- t2 |>
          k, N = n_total, `OR [95% CrI]` = OR_CrI, tau_val = tau, GRADE) |>
   rename("\u03c4" = tau_val)
 
-kable(t2_display, escape = FALSE) |>
-  kable_styling(bootstrap_options = c("striped", "condensed"), full_width = FALSE, font_size = 10) |>
-  pack_rows("Survival", 1, 8) |>
-  pack_rows("GVHD", 9, 14) |>
-  pack_rows("Infection", 15, 23)
+fam_bounds <- t2 |>
+  mutate(row = row_number()) |>
+  group_by(family) |>
+  summarise(start = min(row), end = max(row), .groups = "drop")
+
+kt <- kable(t2_display, escape = FALSE) |>
+  kable_styling(bootstrap_options = c("striped", "condensed"), full_width = FALSE, font_size = 10)
+for (i in seq_len(nrow(fam_bounds))) {
+  kt <- pack_rows(kt, as.character(fam_bounds$family[i]), fam_bounds$start[i], fam_bounds$end[i])
+}
+kt
 ```
 
 ---
@@ -552,11 +595,11 @@ kable(t2_display, escape = FALSE) |>
 
 This systematic review and meta-analysis — encompassing 251 studies, 525 arms, and over 177 000 patients — is, to our knowledge, the largest and most comprehensive evaluation of PTCy-based GVHD prophylaxis to date. Its dual-comparator design and simultaneous analysis of survival, GVHD, and infection outcomes within a unified Bayesian framework enables a mechanistic interpretation that has not been possible in prior single-comparison reviews.
 
-The survival and GVHD findings are unequivocal in direction and consistent across comparators. PTCy reduces acute GVHD grade II–IV by approximately one-third versus CNI+MTX/MMF (OR 0·67) and by more than 40% versus ATG (OR 0·58), with correspondingly large reductions in chronic GVHD. Overall survival is improved by approximately 20% in both comparisons (C1 OR 0·79; C2 OR 0·81). These findings align with and substantially extend the BMT CTN 1703 RCT,^4^ confirming that this advantage generalises across donor types, conditioning regimens, and geographic settings.
+The survival and GVHD findings are unequivocal in direction and consistent across comparators. PTCy reduces acute GVHD grade II–IV by approximately one-third versus CNI+MTX/MMF (OR 0·67) and versus ATG (OR 0·63). Overall survival is improved by approximately 15–20% in both comparisons (C1 OR 0·84; C2 OR 0·83). These findings align with and substantially extend the BMT CTN 1703 RCT,^4^ confirming that this advantage generalises across donor types, conditioning regimens, and geographic settings.
 
 The central conceptual contribution of this analysis is the resolution of apparently contradictory infection findings into a coherent mechanistic framework. PTCy administered on days +3 and +4 post-transplant eliminates alloreactive T cells (the intended GVHD-preventive effect) but simultaneously depletes the nascent pathogen-specific T-cell repertoire (an unintended immunological cost). In C1, this manifests as increased CMV reactivation (OR 1·26) and BSI (OR 1·87). Neither is attenuated by adjusting for steroid exposure, confirming that these infection risks operate through a pathway orthogonal to the GVHD–steroid cascade. This steroid independence contrasts sharply with the NRM signal, which is entirely steroid-mediated, demonstrating that the GVHD-mediated and T-cell-depletion-mediated consequences of PTCy are genuinely dissociable.
 
-The C2 analysis provides a critical test. If CMV excess were an intrinsic property of cyclophosphamide, it should persist regardless of comparator. Instead, PTCy shows no CMV excess versus ATG (C2 OR 0·92), consistent with infection risk tracking the relative depth of T-cell depletion between arms. This establishes a T-cell depletion hierarchy (CNI-based < PTCy < ATG) that reframes PTCy-associated infections as a class effect of T-cell-depleting prophylaxis rather than a drug-specific limitation.
+The C2 analysis provides a critical test. If CMV excess were an intrinsic property of cyclophosphamide, it should persist regardless of comparator. Instead, PTCy shows no CMV excess versus ATG (C2 OR 0·97), consistent with infection risk tracking the relative depth of T-cell depletion between arms. This establishes a T-cell depletion hierarchy (CNI-based < PTCy < ATG) that reframes PTCy-associated infections as a class effect of T-cell-depleting prophylaxis rather than a drug-specific limitation.
 
 Several limitations warrant discussion. The evidence base is predominantly observational, and no outcome exceeded LOW certainty under GRADE assessment. The steroid-mediation analysis uses arm-level rather than individual-patient data. Infection outcome definitions varied across studies. The IFI signal (OR 0·43) probably reflects confounding by antifungal prophylaxis practices rather than a direct PTCy effect. The C2 CMV estimate attenuated substantially after identification of arm classification errors, highlighting the fragility of comparative estimates in observational meta-analyses.
 
@@ -745,12 +788,14 @@ c2_nrm <- load_data("data_c2_nrm.csv")
 
 p1 <- forest_study(c1_nrm, studies_df, "Non-Relapse Mortality", "C1: PTCy vs CNI+MTX/MMF")
 
-if (!is.null(c2_nrm) && nrow(c2_nrm) >= 3) {
+fig_nrm <- if (!is.null(c2_nrm) && nrow(c2_nrm) >= 3) {
   p2 <- forest_study(c2_nrm, studies_df, "Non-Relapse Mortality", "C2: PTCy vs ATG")
   p1 / p2 + plot_layout(heights = c(2, 1))
 } else {
   p1
 }
+save_fig(fig_nrm, "FigureS8c_NRM_forest", width = 8, height = 9)
+fig_nrm
 ```
 
 ```{r}
@@ -764,7 +809,9 @@ c2_rrm <- load_data("data_c2_rrm.csv")
 p1 <- forest_study(c1_rrm, studies_df, "Relapse-Related Mortality", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_rrm, studies_df, "Relapse-Related Mortality", "C2: PTCy vs ATG")
 
-p1 / p2 + plot_layout(heights = c(4, 1.2))
+fig_rrm <- p1 / p2 + plot_layout(heights = c(4, 1.2))
+save_fig(fig_rrm, "FigureS8d_RRM_forest", width = 8, height = 14)
+fig_rrm
 ```
 
 ```{r}
@@ -778,43 +825,51 @@ c2_cgvhd_ms <- load_data("data_c2_cgvhd_ms.csv")
 p1 <- forest_study(c1_cgvhd_ms, studies_df, "Chronic GVHD Moderate\u2013Severe", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_cgvhd_ms, studies_df, "Chronic GVHD Moderate\u2013Severe", "C2: PTCy vs ATG")
 
-p1 / p2 + plot_layout(heights = c(2.5, 1))
+fig_cgvhd <- p1 / p2 + plot_layout(heights = c(2.5, 1))
+save_fig(fig_cgvhd, "FigureS8e_cGVHD_forest", width = 8, height = 12)
+fig_cgvhd
 ```
 
 ```{r}
 #| label: fig-forest-bsi
-#| fig-cap: "Bloodstream infection — any pathogen (C1)"
+#| fig-cap: "Bloodstream infection — any pathogen (C1). Bayesian pooled estimate, with the posterior density of the pooled OR shown above the pooled row (same style as Figure 4)."
 #| fig-height: 5
 
 c1_bsi <- load_data("data_c1_bsi.csv")
-forest_study(c1_bsi, studies_df, "Bloodstream Infection", "C1: PTCy vs CNI+MTX/MMF")
+fig_bsi <- forest_study_bayes(c1_bsi, studies_df, "Bloodstream Infection", "C1: PTCy vs CNI+MTX/MMF", bayes_bsi_c1)
+save_fig(fig_bsi, "FigureS8f_BSI_forest", width = 8, height = 5)
+fig_bsi
 ```
 
 ```{r}
 #| label: fig-forest-ifi
-#| fig-cap: "Invasive fungal infection — any (C1)"
+#| fig-cap: "Invasive fungal infection — any (C1). Bayesian pooled estimate, with the posterior density of the pooled OR shown above the pooled row (same style as Figure 4)."
 #| fig-height: 5
 
 c1_ifi <- load_data("data_c1_ifi_any.csv")
-forest_study(c1_ifi, studies_df, "Invasive Fungal Infection", "C1: PTCy vs CNI+MTX/MMF")
+fig_ifi <- forest_study_bayes(c1_ifi, studies_df, "Invasive Fungal Infection", "C1: PTCy vs CNI+MTX/MMF", bayes_ifi_c1)
+save_fig(fig_ifi, "FigureS8g_IFI_forest", width = 8, height = 5)
+fig_ifi
 ```
 
 ```{r}
 #| label: fig-forest-bk
-#| fig-cap: "BK virus reactivation (C1 and C2)"
+#| fig-cap: "BK virus reactivation (C1 and C2). Bayesian pooled estimates, with the posterior density of each pooled OR shown above its pooled row (same style as Figure 4)."
 #| fig-height: 8
 
 c1_bk <- load_data("data_c1_bk.csv")
 c2_bk <- load_data("data_c2_bk.csv")
 
-p1 <- forest_study(c1_bk, studies_df, "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF")
+p1 <- forest_study_bayes(c1_bk, studies_df, "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_bk_c1)
 
-if (!is.null(c2_bk) && nrow(c2_bk) >= 3) {
-  p2 <- forest_study(c2_bk, studies_df, "BK Virus Reactivation", "C2: PTCy vs ATG")
+fig_bk <- if (!is.null(c2_bk) && nrow(c2_bk) >= 3) {
+  p2 <- forest_study_bayes(c2_bk, studies_df, "BK Virus Reactivation", "C2: PTCy vs ATG", bayes_bk_c2)
   p1 / p2 + plot_layout(heights = c(2, 1))
 } else {
   p1
 }
+save_fig(fig_bk, "FigureS8h_BK_forest", width = 8, height = 8)
+fig_bk
 ```
 
 ```{r}
@@ -828,7 +883,9 @@ c2_irm <- load_data("data_c2_irm.csv")
 p1 <- forest_study(c1_irm, studies_df, "Infection-Related Mortality", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_irm, studies_df, "Infection-Related Mortality", "C2: PTCy vs ATG")
 
-p1 / p2 + plot_layout(heights = c(2, 1))
+fig_irm <- p1 / p2 + plot_layout(heights = c(2, 1))
+save_fig(fig_irm, "FigureS8i_IRM_forest", width = 8, height = 12)
+fig_irm
 ```
 
 ```{r}
@@ -845,12 +902,14 @@ p1 <- forest_study(c3_os, studies_df, "Overall Survival", "C3: Within-PTCy Varia
 p2 <- forest_study(c3_nrm, studies_df, "Non-Relapse Mortality", "C3: Within-PTCy Variants")
 p3 <- forest_study(c3_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C3: Within-PTCy Variants")
 
-if (!is.null(c3_cgvhd) && nrow(c3_cgvhd) >= 3) {
+fig_c3 <- if (!is.null(c3_cgvhd) && nrow(c3_cgvhd) >= 3) {
   p4 <- forest_study(c3_cgvhd, studies_df, "Chronic GVHD", "C3: Within-PTCy Variants")
   (p1 | p2) / (p3 | p4)
 } else {
   p1 / p2 / p3
 }
+save_fig(fig_c3, "FigureS8j_C3_forest", width = 12, height = 12)
+fig_c3
 ```
 
 ### Appendix S9a: CMV sensitivity analyses (Comparison 1)
@@ -901,7 +960,7 @@ fig_cmv_sens
 loo_plot <- loo_tbl |>
   mutate(label = factor(label, levels = rev(label)))
 
-ggplot(loo_plot, aes(x = or_median, y = label)) +
+fig_loo_ifi <- ggplot(loo_plot, aes(x = or_median, y = label)) +
   geom_vline(xintercept = 1, linetype = "dashed", colour = jama_grey) +
   geom_pointrange(aes(xmin = or_lo, xmax = or_hi), size = 0.5, linewidth = 0.5, colour = jama_navy) +
   scale_x_log10() +
@@ -909,6 +968,8 @@ ggplot(loo_plot, aes(x = or_median, y = label)) +
        title = "IFI Leave-One-Out (C1)",
        subtitle = sprintf("Full corpus \u03C4 = %.2f", loo_tbl$tau_median[nrow(loo_tbl)])) +
   theme_jama(base_size = 10)
+save_fig(fig_loo_ifi, "FigureS9b_IFI_leave_one_out", width = 8, height = 4)
+fig_loo_ifi
 ```
 
 ### Appendix S11: GRADE certainty summary

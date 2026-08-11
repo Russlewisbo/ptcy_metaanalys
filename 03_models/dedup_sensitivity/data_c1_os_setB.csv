@@ -1,0 +1,36 @@
+study_id,comparison,category,subtype,timepoint_used,tp_early,ptcy_arm_id,comp_arm_id,ptcy_n,comp_n,ptcy_e,comp_e,ptcy_steroid_pct,comp_steroid_pct,cohort_id,first_author,pub_year,primary_for_cohort
+8,1,overall_mortality,OS_event,D+730_2yr,1,17,18,403,1605,179,753,NA,NA,1001,Papanicolaou GA,2024,partial
+2,1,overall_mortality,OS_event,D+365_1yr,0,1,2,208,212,48,56,NA,NA,1002,Bolanos-Meade J,2023,Y
+9,1,overall_mortality,OS_event,D+730_2yr,1,19,20,200,130,63,46,NA,NA,1003,Salas,2022,partial
+6,1,overall_mortality,OS_event,D+365_1yr,0,10,11,68,97,26,29,60,80,1005,Meyer T,2025,Y
+20,1,overall_mortality,OS_event,D+365_1yr,0,29,30,26,52,4,11,NA,NA,1012,Ahn J,2025,Y
+45,1,overall_mortality,OS_event,end_of_followup,1,46,47,54,59,32,37,63,53,1021,Baker M,2016,Y
+52,1,overall_mortality,OS_event,D+730_2yr,1,58,59,270,209,79,91,29.2,44.4,1024,Baron F,2024,partial
+65,1,overall_mortality,OS_event,D+730_2yr,1,75,74,40,39,10,20,7,39,1026,Berger M,2022,Y
+67,1,overall_mortality,OS_event,D+365_1yr,0,78,79,41,20,22,8,NA,NA,1028,Bhatia,2026,Y
+88,1,overall_mortality,OS_event,D+730_2yr,1,104,105,40,40,14,17,15,39.8,1034,Cao J,2022,Y
+104,1,overall_mortality,OS_event,end_of_followup,1,118,119,49,41,11,20,NA,NA,1039,Cooper DL,2021,Y
+119,1,overall_mortality,OS_event,D+730_2yr,1,137,138,34,34,15,12,13,50,1045,Doppelhammer,2019,Y
+144,1,overall_mortality,OS_event,D+730_2yr,1,165,166,117,39,14,4,21.4,23.1,1054,Gao M,2025,Y
+166,1,overall_mortality,OS_event,D+730_2yr,1,172,173,30,31,5,7,16.7,25.8,1061,Guo W,2026,Y
+167,1,overall_mortality,OS_event,end_of_followup,1,174,175,16,16,9,9,13,50,1062,Haebe S,2023,Y
+178,1,overall_mortality,OS_event,D+365_1yr,0,184,185,118,76,33,18,26.3,31.6,1065,Huntley D,2020,Y
+180,1,overall_mortality,OS_event,D+730_2yr,1,188,189,29,87,6,34,17.2,34.5,1066,Iqbal M,2023,Y
+183,1,overall_mortality,OS_event,D+730_2yr,1,191,190,103,94,57,41,33,35,1067,Jamy O,2022,Y
+184,1,overall_mortality,OS_event,D+730_2yr,1,193,194,87,40,17,9,9.2,12.3,1068,Jia Y,2025,Y
+198,1,overall_mortality,OS_event,D+365_1yr,0,206,207,15,25,1,9,13.3,28,1075,Kara,2021,Y
+216,1,overall_mortality,OS_event,D+730_2yr,1,220,221,55,75,2,10,18.4,19.32,1081,Li Y,2022,Y
+260,1,overall_mortality,OS_event,D+365_1yr,0,269,270,46,191,5,66,13,28.4,1100,Molina A,2026,Y
+261,1,overall_mortality,OS_event,D+730_2yr,1,271,272,91,38,17,17,19,11,1101,Montoro J,2021,Y
+263,1,overall_mortality,OS_event,D+730_2yr,1,275,276,489,211,207,82,24.4,31.4,1103,Moriguchi,2024,Y
+271,1,overall_mortality,OS_event,D+365_1yr,0,285,284,176,276,45,75,50,51,1106,Mushtaq MU,2024,Y
+296,1,overall_mortality,OS_event,D+730_2yr,1,319,320,169,688,88,401,29.6,36.1,1113,Nishikubo M,2024,Y
+320,1,overall_mortality,OS_event,D+365_1yr,0,346,347,28,59,4,17,14,37,1126,Redondo S,2023,Y
+357,1,overall_mortality,OS_event,D+365_1yr,0,394,395,89,90,17,19,NA,NA,1141,Sharaf El-Deen MO,2024,Y
+390,1,overall_mortality,OS_event,D+730_2yr,1,431,432,114,125,16,27,26,36,1153,Wang Y,2019,Y
+395,1,overall_mortality,OS_event,D+730_2yr,1,438,439,157,140,19,23,16.6,31.6,1154,Wu L,2025,Y
+396,1,overall_mortality,OS_event,end_of_followup,1,441,440,122,230,41,37,28.7,28.6,1155,Xu ZL,2025,Y
+399,1,overall_mortality,OS_event,D+730_2yr,1,446,447,241,848,69,265,25,36,1157,Yanada M,2026,Y
+401,1,overall_mortality,OS_event,D+730_2yr,1,448,449,157,140,19,23,16.6,31.6,1158,Wu L,2025,Y
+407,1,overall_mortality,OS_event,D+730_2yr,1,450,451,121,91,61,42,35.6,47.3,1160,Yoshimitsu M,2025,Y
+432,1,overall_mortality,OS_event,D+365_1yr,0,482,483,25,15,2,3,12.5,35.7,1171,Koura D,2025,Y

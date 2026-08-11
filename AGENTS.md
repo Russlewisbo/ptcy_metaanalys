@@ -60,14 +60,20 @@ Schema: `PTCy_MA_database_schema_v1.2.md` (v1.3 amendments deferred)
 
 ---
 
-## Key Model Results (Post-Block-9)
+## Key Model Results (Set B — cohort-deduplicated, 2026-08-11)
+
+**Supersedes the post-Block-9 numbers.** An audit found that permitting outcome-specific
+(`partial`) primary publications let up to 5 publications from one registry cohort enter
+the same model as independent studies. Set B = one publication per cohort per outcome,
+resolved via `03_models/cohort_overrides.csv`. Refits live in `03_models/set_b/`
+(partial overlay; unaffected models remain in `post_block9/`).
 
 ### C1: PTCy vs CNI+MTX
 
 | Outcome  | Model | k  | OR [95% CrI]      | τ    |
 |----------|-------|----|--------------------|----- |
-| OS       | M1    | 40 | 0.79 [0.73–0.85]  | 0.61 |
-| OS       | M2    | 32 | 0.86 [0.77–0.96]  | 0.58 |
+| OS       | M1    | 35 | 0.84 [0.76–0.92]  | 0.66 |
+| OS       | M2    | 28 | 1.04 [0.89–1.22]  | 0.60 |  ← attenuates to null
 | NRM      | M1    | 12 | 0.88 [0.66–1.18]  | 0.72 |
 | NRM      | M2    | 9  | 0.90 [0.59–1.36]  | 0.60 |
 | aGVHD    | M1    | 28 | 0.67 [0.59–0.78]  | 0.68 |
@@ -75,6 +81,10 @@ Schema: `PTCy_MA_database_schema_v1.2.md` (v1.3 amendments deferred)
 | CMV      | M2    | 22 | 1.25 [1.01–1.54]  | 0.76 |
 | BSI      | M1    | 6  | 1.87 [1.33–2.62]  | 0.96 |
 | IFI      | M1    | 6  | 0.43 [0.29–0.63]  | 1.64 |
+| RRM      | M1    | 34 | 0.87 [0.77–0.97]  | 0.47 |
+| RRM      | M2    | 27 | 0.85 [0.73–0.99]  | 0.55 |
+| IRM      | M1    | 13 | 1.19 [1.00–1.43]  | 0.82 |  ← no longer significant
+| cGVHD ms | M1    | 19 | 0.47 [0.38–0.57]  | 0.77 |  ← was 0.33 (2 ineligible studies)
 
 ### C1 CMV Sensitivity Models (Post-Block-9, fitted 2026-06-19)
 
@@ -97,23 +107,25 @@ File: `03_models/post_block9/loo_tbl.rds`
 
 | Outcome  | Model | k  | OR [95% CrI]      | τ    |
 |----------|-------|----|--------------------|----- |
-| OS       | M1    | 10 | 0.81 [0.74–0.90]  | 0.51 |
-| OS       | M2    | 10 | 0.82 [0.71–0.94]  | 0.70 |
+| OS       | M1    | 9  | 0.83 [0.75–0.92]  | 0.50 |
+| OS       | M2    | 8  | 0.81 [0.70–0.93]  | 0.67 |
 | NRM      | M1    | —  | (k=2, below min)   | —    |
-| aGVHD    | M1    | 9  | 0.58 [0.44–0.77]  | 0.55 |
-| CMV      | M1    | 13 | 0.92 [0.73–1.15]  | 0.64 |
-| CMV      | M2    | 13 | 0.98 [0.78–1.24]  | 0.74 |
+| aGVHD    | M1    | 8  | 0.63 [0.47–0.83]  | 0.53 |
+| CMV      | M1    | 12 | 0.97 [0.77–1.23]  | 0.63 |
+| CMV      | M2    | 12 | 1.00 [0.79–1.26]  | 0.72 |
 
 ### C3: Within-PTCy Variants (all null)
 
 OS 1.11, NRM 0.96, aGVHD 1.00, cGVHD 0.67 — all CrIs cross 1.
 
-**Key mediation finding:** NRM M2 mediation now indeterminate (M2 OR 0.90 [0.59–1.36]);
-OS benefit only partially mediated; CMV harm is steroid-independent.
+**Key mediation finding (REVISED):** the C1 OS benefit is NOT separable from GVHD
+suppression — M2 attenuates to 1.04 [0.89–1.22]. The earlier "partial mediation with
+residual direct benefit" claim was an artifact of duplicated patients. C2 OS remains
+steroid-independent (0.83→0.81). CMV harm is steroid-independent. NRM M2 indeterminate.
 
 **Key cross-comparison finding:** CMV harmful vs CNI+MTX (C1 OR 1.26) but null vs ATG
-(C2 OR 0.92), consistent with T-cell depletion depth gradient. Direction-reversal
-narrative weakened post-Block-9 (C2 was 0.77, now null at 0.92).
+(C2 OR 0.97), consistent with T-cell depletion depth gradient. Direction-reversal
+narrative weakened (C2 was 0.77, now null at 0.97).
 
 ---
 
@@ -121,7 +133,7 @@ narrative weakened post-Block-9 (C2 was 0.77, now null at 0.92).
 
 | Outcome | C1 | C2 |
 |---------|----|----|
-| OS      | LOW | LOW |
+| OS      | LOW (retained; M2 attenuation = mediation, not bias) | LOW |
 | NRM     | VERY LOW | Not assessable (k=2) |
 | aGVHD   | LOW | LOW |
 | CMV     | LOW (robustness upgrade confirmed) | VERY LOW |
@@ -168,6 +180,11 @@ ptcy_metaanalys/
 │   ├── _backup_pre_block9/  # Pre-Block-9 CSV backup
 │   └── _backup_post_block9/ # Post-Block-9 CSV backup
 ├── 03_models/               # Pre-Block-9 brms models + posteriors
+│   ├── set_b/               # ADOPTED analysis: cohort-deduplicated refits (partial overlay)
+│   │   ├── Table2_setB.csv  # current Table 2
+│   │   └── m1_*/m2_*/data_* # only outcomes affected by deduplication
+│   ├── dedup_sensitivity/   # Set A/B/C comparison fits for C1 OS
+│   └── cohort_overrides.csv # cohort x outcome -> primary study registry
 │   ├── post_block9/         # Post-Block-9 refitted models (ACTIVE)
 │   │   ├── m1_c1_*.rds      # M1 brms model objects
 │   │   ├── m2_c1_*.rds      # M2 brms model objects
@@ -268,6 +285,18 @@ PTCy column is `b_eventsn_ptcy_binary`.
 ---
 
 ## Pending Work
+
+### Set B follow-ups (2026-08-11)
+
+1. Cohort 1024 (EBMT_ALWP) lumps 5 heterogeneous registry extractions with reused
+   cord-blood control arms - split into donor-stratum sub-cohorts to enable Set C.
+2. Cohort 1023 RRM duplicate (studies 50 vs 51, identical n) unresolved; the
+   outcome-aware builder declines to choose.
+3. Re-examine the C1 NRM -1 risk-of-bias downgrade (mediator/confounder conflation).
+4. 5 dangling cohort_ids, 2 missing primary_for_cohort, 10 cohorts with no `Y`,
+   4 cohorts with two `Y` - see Appendix S12.
+5. `freq_results.csv` is pre-deduplication; regenerate before drafting Table S9e.
+6. RoBMA / publication-bias models are pre-deduplication.
 
 1. **BMT director second-pass verification** — not started
 2. **Publication bias (RoBMA)** — models exist in post_block9/ but not fully interpreted

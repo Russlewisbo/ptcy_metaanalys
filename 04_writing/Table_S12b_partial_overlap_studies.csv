@@ -1,0 +1,117 @@
+cohort_id,cohort_label,cohort_size,cohort_n_partial,study_id,first_author,pub_year,primary_for_cohort,overlap_with_study_ids
+1024,EBMT_ALWP,31,31,221,Lorentino F,2017,partial,Ruggeri 2017 Haematologica (ref 27) partially overlaps; population overlaps with EBMT ALWP haplo-HSCT studies
+1024,EBMT_ALWP,31,31,324,Ruggeri A,2017,partial,NR
+1024,EBMT_ALWP,31,31,343,Santoro,2017,partial,EBMT_ALWP_cluster_1024
+1024,EBMT_ALWP,31,31,217,Li Z,2018,partial,NR
+1024,EBMT_ALWP,31,31,344,Santoro,2018,partial,NR
+1024,EBMT_ALWP,31,31,57,Battipaglia,2019,partial,NR
+1024,EBMT_ALWP,31,31,60,Battipaglia G,2019,partial,NR
+1024,EBMT_ALWP,31,31,77,Brissot E,2019,partial,other EBMT ALWP publications
+1024,EBMT_ALWP,31,31,345,Santoro N,2019,partial,EBMT_ALWP_cohort_1024
+1024,EBMT_ALWP,31,31,61,Battipaglia G,2020,partial,NR
+1024,EBMT_ALWP,31,31,78,Brissot,2020,partial,61
+1024,EBMT_ALWP,31,31,232,Al Malki,2020,partial,NR
+1024,EBMT_ALWP,31,31,118,Dholaria,2021,partial,NR
+1024,EBMT_ALWP,31,31,276,Nagler A,2021,partial,NR
+1024,EBMT_ALWP,31,31,277,Nagler A,2021,partial,NR
+1024,EBMT_ALWP,31,31,62,Battipaglia G,2022,partial,NR
+1024,EBMT_ALWP,31,31,287,Nagler A,2022,partial,other EBMT ALWP papers (cohort 1024)
+1024,EBMT_ALWP,31,31,325,Ruggeri A,2022,partial,NR
+1024,EBMT_ALWP,31,31,151,Giebel S,2023,partial,EBMT_ALWP_cluster
+1024,EBMT_ALWP,31,31,278,Nagler A,2023,partial,NR
+1024,EBMT_ALWP,31,31,279,Nagler A,2023,partial,NR
+1024,EBMT_ALWP,31,31,52,Baron F,2024,partial,NR
+1024,EBMT_ALWP,31,31,63,Bazarbachi,2024,partial,NR
+1024,EBMT_ALWP,31,31,79,Brissot E,2024,N,NR
+1024,EBMT_ALWP,31,31,280,Nagler A,2024,partial,"EBMT_ALWP cohort 1024 - partial overlap with other EBMT ALWP publications (Ruggeri 2018, Battipaglia 2019, Lorentino 2021, Brissot 2020, Sanz 2020, Battipaglia 2022)"
+1024,EBMT_ALWP,31,31,281,Nagler A,2024,partial,NR
+1024,EBMT_ALWP,31,31,282,Nagler A,2024,partial,other_EBMT_ALWP_papers
+1024,EBMT_ALWP,31,31,305,Paviglianiti A,2024,partial,NR
+1024,EBMT_ALWP,31,31,323,Ru Y,2025,partial,NR
+1024,EBMT_ALWP,31,31,383,Villalba M,2026,partial,NR
+1024,EBMT_ALWP,31,31,384,Vydra,2026,partial,NR
+1001,CIBMTR_HaploCy_SibCy_SibCNI,6,3,158,Goldsmith SR,2016,N,"4,8"
+1001,CIBMTR_HaploCy_SibCy_SibCNI,6,3,268,Mulroney CM,2021,partial,other_CIBMTR_HaploCy_SibCy_SibCNI_papers
+1001,CIBMTR_HaploCy_SibCy_SibCNI,6,3,361,Singh,2022,partial,Goldsmith_2021_CMV_primary
+1009,ABMTRR_older_haplo_AMLMDS,4,3,447,Ruggeri A,2018,partial,52;57;60;61;62;63;77;78;79;118;151;217;221;232;276;277;278;279;280;281;282;287;305;323;324;325;343;344;345;383;384
+1009,ABMTRR_older_haplo_AMLMDS,4,3,450,Sanz J,2020,partial,1009_cluster_EBMT_ALWP_AML
+1009,ABMTRR_older_haplo_AMLMDS,4,3,453,Spyridonidis A,2022,partial,1009_cluster_EBMT_ALWP_AML
+1003,Salas_Barcelona,3,3,9,Salas,2022,partial,Other Salas Barcelona publications (not in this 10-paper pilot)
+1003,Salas_Barcelona,3,3,335,Salas MQ,2022,partial,334
+1003,Salas_Barcelona,3,3,338,Salas,2024,partial,Salas 2022 BSI (cohort 1003 index); other Salas/Charry/Pinto Hospital Clinic Barcelona publications
+1013,PrincessMargaret_Toronto_Michelis,3,3,24,Alanazi W,2021,Y,"Possible overlap with Prem 2019, Deotare 2018, Law 2018, Salas 2019 (all Princess Margaret)."
+1013,PrincessMargaret_Toronto_Michelis,3,3,89,Carreira,2022,partial,"Princess Margaret Toronto cluster (Michelis 2014-2017 AML/MDS subset, Salas 2020 BMT PTCy-ATG-CsA)"
+1013,PrincessMargaret_Toronto_Michelis,3,3,108,Desai N,2024,N,NR
+1023,Barkhordar_Tehran_single_center,3,2,49,Barkhordar M,2021,Y,50;51
+1023,Barkhordar_Tehran_single_center,3,2,51,Barkhordar,2022,partial,"49,50"
+1047,PALG_Polish_registry,3,3,122,Dybko J,2023,partial,"123,124"
+1047,PALG_Polish_registry,3,3,123,Dybko J,2023,partial,122
+1047,PALG_Polish_registry,3,3,124,Dybko J,2024,partial,"122,123"
+1016,DRST_German_registry,2,2,35,Arslan,2024,Y,33
+1016,DRST_German_registry,2,2,142,Gantner,2026,partial,33
+1036,SanRaffaele_Milan_MAP_PTCy,2,1,461,Xue E,2022,partial,97
+1042,PMH_CIBMTR_MUD_acute_leukemia_FtoM,2,2,109,Desai N,2025,Y,1013;1008
+1042,PMH_CIBMTR_MUD_acute_leukemia_FtoM,2,2,416,Desai N,2026,partial,109; 415
+1064,JDCHCT_TRUMP2_UCBT_vs_PTCyHaplo,2,1,170,Harada K,2025,Y,171
+1068,Shanghai_General_older_myeloid_lowATGPTCy,2,1,184,Jia Y,2025,Y,Shanghai General prior publications (Yang 2019 BMT; Xu 2021 BMT; Li 2023 Front Immunol) on younger patients with same low-dose ATG/PTCy regimen
+1070,JSTCT_TRUMP_ALL_PTCyHaplo_UCB,2,2,187,Jo T,2024,Y,Sugita 2022 BMT; Wada 2022 Transplantation
+1070,JSTCT_TRUMP_ALL_PTCyHaplo_UCB,2,2,290,Jo T,2024,Y,289
+1086,Hamburg_Massoud_single_center,2,1,366,Steiner N,2024,partial,Massoud_2022_ref51
+1092,CIBMTR_ALL_Wieduwilt_dataset,2,1,245,Mehta RS,2023,Y,Wieduwilt 2022 Blood Adv
+1127,SantPau_Barcelona_Redondo_HLAmatched,2,2,321,Redondo S,2024,Y,"Redondo 2023 EJH (ref 20, TBI MAC PTCy subset); possibly Garcia-Cadenas 2020 BMT (ref 18)"
+1127,SantPau_Barcelona_Redondo_HLAmatched,2,2,446,Redondo S,2025,partial,321
+1138,Ankara_3center_MMUD_PTCy_vs_MRD,2,1,348,Sayin S,2024,Y,349
+1011,CIBMTR_HL_HaploPTCy_MSDCNI,1,1,19,Ahmed S,2019,Y,Kanate 2016 Blood; Ghosh 2016 JCO (CIBMTR lymphoma 2008-2013 subsets)
+1012,CatholicKorea_SeoulStMary_ALL_HIDT,1,1,20,Ahn J,2025,Y,21
+1018,Aydin_single_center,1,1,39,Aydin M,2023,partial,40
+1019,Bailen_GETH_MUD_mMUD_multicenter,1,1,43,Bailen,2021,Y,42;44
+1033,Miami_Sylvester_Camargo,1,1,86,Camargo JF,2021,partial,85
+1037,EBMT_CMWP_myelofibrosis,1,1,99,Chiusolo,2026,Y,Rathje_2024_BMT;Robin_2019_Haematologica;Kim_2025_AJH;Oechsler_2024_BMT
+1041,IPC_Marseille_MUD_PBSC,1,1,107,Dachy,2023,Y,Possible partial overlap with IPC publications by Nykolyszyn 2020 and Pagliardini 2019 (different donor strata).
+1044,PrincessMargaret_Toronto_MSD_PBSC,1,1,111,Desai N,2025,Y,1013;1042;1043
+1048,SantPau_Barcelona_Esquirol_UCBT_Haplo,1,1,133,Esquirol A,2020,Y,134
+1049,GETH_Esquirol_haplo_PTCy_infections,1,1,134,Esquirol A,2021,Y,"1019,1020"
+1051,GETH_TC_EBMT_RIC_HAPLO_MMUD,1,1,137,Fox ML,2026,Y,"possible overlap with cohort 1019 (Bailen GETH MUD/mMUD), cohort 1020 (GETH-TC AML PTCy), and possibly study 136 (Vall d'Hebron); adjudicate at consolidation"
+1054,SouthwestChina_4center_SAA,1,1,144,Gao M,2025,Y,NR
+1055,CTTC_Canada_haplo_ATGPTCy_vs_PTCy,1,1,146,Garcia-Horton A,2026,Y,"PMHCC ATG-PTCy arm may overlap with Law 2018, Salas 2021, and PMH cohorts 1013/1042/1043"
+1063,EBMT_CIBMTR_TCL_LWP,1,1,168,Hamadani M,2022,Y,"prior EBMT ALCL allo-HCT analysis (Le Gouill et al, ref 34, n=23 overlap); prior CIBMTR AITL allo-HCT analysis (ref 35, n=144 overlap)"
+1065,Spanish_4center_CMVdynamics_haplo_vs_other,1,1,178,Huntley D,2020,Y,potentially overlaps with cohort 1049 GETH_Esquirol haplo cohort
+1067,UAB_Birmingham_Jamy_CMV,1,1,183,Jamy O,2022,Y,Jamy 2021 Am J Hematol (ref 9)
+1069,MSKCC_UMiami_MMUD_Jimenez,1,1,185,Jimenez Jimenez,2022,Y,Shaw 2021 JCO 15-MMUD (ref 12) — 30 PTCy subjects from NCT02793544
+1076,AlbertEinstein_SaoPaulo_Kerbauy_haplo_UD,1,1,201,Kerbauy MN,2021,Y,200
+1081,Hubei_AA_haplo_multicenter,1,1,216,Li Y,2022,Y,NR
+1082,TaipeiVGH_Liu_IFD,1,1,219,Liu YC,2025,Y,"Liu 2016 J Microbiol Immunol Infect (ref 18, prior IFD study from same center)"
+1089,MDACC_Mehta_MMUD_PTCy_vs_conventional,1,1,242,Mehta RS,2016,Y,NR
+1090,MDACC_Mehta_PTCy_3arm,1,1,243,Mehta RS,2022,Y,NR
+1094,SanMartino_Genoa_preBSI,1,1,250,Mikulska M,2018,Y,Possible partial overlap with prior Mikulska 2009 BSI (Genoa) and Raiola 2013 BBMT haplo BM PTCy paper from same institution.
+1098,EBMT_TCWP_MD_PTCy_ATG,1,1,257,Moiseev I,2025,Y,Penack_2024_10_10_MUD; Penack_2024_9_10_MMUD
+1101,Montoro_Spanish_3center_TCD_vs_PTCySirMMF,1,1,261,Montoro J,2021,Y,cohort_1038_Chorao_partial_PTCy_arm_overlap
+1102,EBMT_LWP_HL_HLAmatched,1,1,262,Montoro,2024,Y,Montoro_2024_TCT_LWP_HL_ref14
+1103,JSTCT_TRUMP_AML_PBSCT_PTCyHaplo_vs_MUD,1,1,263,Moriguchi,2024,Y,Atsuta 2022 BMT (ref 21); Fuji 2024 BJHaem (ref 29) JSTCT PTCy dose comparison
+1106,KUMC_Mushtaq_MUD_haplo,1,1,271,Mushtaq MU,2024,Y,cohort_1097_KUMC_Mohyuddin
+1107,EBMT_CIBMTR_LWP_lymphoma_PTCy_haplo_vs_MUD,1,1,272,Mussetti,2023,Y,NR
+1108,JSTCT_TRUMP_AML_ALL_MDS_CML_haploDonorAge,1,1,273,Nagayama T,2025,Y,NR
+1109,JSTCT_TRUMP2_MDS_haploPTCy_vs_MUD,1,1,289,Nakaya Y,2024,Y,NR
+1111,MDACC_ER_SCT_older_alloHCT,1,1,292,Ngo-Huang,2023,Y,Possible partial overlap with MDACC PTCy-era cohorts 1090/1091 during 2015-2018 era for the PTCy-treated subset (~46/64 ER-SCT and ~36/140 controls received PTCy)
+1113,JSTCT_TRUMP2_NHL_PTCyHaplo_uCBT,1,1,296,Nishikubo M,2024,Y,1064 (JDCHCT TRUMP2 broader cohort); 1070 (JSTCT TRUMP adult ALL)
+1114,SanRaffaele_Milan_HHV6_Noviello,1,1,297,Noviello M,2023,Y,potentially overlaps with SanRaffaele cohort 1036 (Mikulska/Greco MAP PTCy) at 2015 boundary
+1118,IPC_Marseille_Pagliardini_younger,1,1,302,Pagliardini,2019,Y,cohort_1029_Blaise_older; cohort_1041_IPC_MUD_PBSC
+1119,PrincessMargaret_Toronto_older_alloHCT,1,1,304,Pasic I,2020,partial,cohort_1013_studies_TBD
+1121,EBMT_TCWP_10_10_MUD_PTCy_ATG,1,1,307,Penack O,2024,Y,"309 (Penack 2023 ASH abstract, conference precursor)"
+1123,CIBMTR_immune_reconstitution_AMLALLMDS,1,1,311,Perales MA,2025,Y,NR
+1124,Pinana_Valencia_2hosp_CARV_registry,1,1,312,Pinana JL,2025,Y,1038;1057
+1126,SantPau_Barcelona_TBI_MAC_AL_MDS,1,1,320,Redondo S,2023,Y,1048_institutional
+1130,FredHutch_lateCMV_PET_LET,1,1,328,Sadowska-Klasa A,2024,Y,Ueda Oshima 2023 BloodAdv subset; Boeckh 2003 Blood prior era
+1132,PMH_Toronto_Salas_older_adults,1,1,334,Salas MQ,2022,Y,PEND
+1133,EBMT_CMWP_MSD_MDS,1,1,336,Salas,2024,Y,"Salas 2023 ASH abstract (Blood 142 Suppl 4938-4940) - same cohort, excluded conference abstract. Possible partial center-level overlap with Chalandon 2024 (EBMT CMWP UD MDS, cohort 1035), Forcade 2022 (EBMT CMWP MDS TCD), Robin 2019 (MSD ATG MF)."
+1134,PrincessMargaret_Toronto_MUD_PBSC,1,1,337,Salas MQ,2024,Y,PMH cohorts 1013/1042/1043/1044/1119 (partial institutional overlap)
+1135,CIBMTR_HaploPTCy_vs_MUDconv_GvHD,1,1,340,Saliba RM,2022,Y,NR
+1136,PUC_Chile_RIC_AMLMDS,1,1,341,Salinas J,2024,Y,Sarmiento_2020_HematolTransfusCellTher_ref9
+1137,PMH_Toronto_HC_2015_2021,1,1,346,Santos Carreira,2023,Y,PMH cohorts 1013/1042/1043/1044 institutional overlap
+1139,SBTMO_CIBMTR_Brazil_acute_leukemia,1,1,352,Seber A,2025,Y,NR
+1144,Basel_USB_9of10_MMUD,1,1,363,Soltermann Y,2019,Y,NR
+1147,GITMO_Italian_6center_BNHL_alloHSCT,1,1,374,Tarella C,2025,Y,NR
+1157,JSTCT_TRUMP_AML_CR1_UCBT_vs_haploPTCy,1,1,399,Yanada M,2026,Y,"studies using JSTCT/JDCHCT TRUMP registry (cohorts 1064, 1070, 1103, 1108, 1109, 1113)"
+1158,Guangzhou_First_PH_SAA_mPTCy_vs_GCSFATG,1,1,401,Wu L,2025,Y,Wu 2023 (Transplant Cell Ther) and Chen 2024 (Transplant Cell Ther) prospective single-arm reports of the mPTCy subset
+1168,SantPau_Barcelona_PTCy_alloSCT_allDonors,1,1,426,Garcia-Cadenas Irene,2021,Y,"133,134,320,321"
+Chorao_Portuguese_single_center,NA,1,1,101,Chorao,2026,partial,100

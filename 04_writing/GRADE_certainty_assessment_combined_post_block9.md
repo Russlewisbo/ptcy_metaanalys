@@ -1,4 +1,14 @@
 # GRADE Certainty-of-Evidence Assessment (Post-Block-9)
+
+> **Revision note (2026-08-11).** All estimates below reflect the Set B
+> cohort-deduplicated analysis: where several publications reported the same patient
+> cohort, only one contributes to any given outcome. This changed C1 OS, C1 RRM,
+> C1 IRM, C2 OS, C2 aGVHD, and C2 CMV. † C1 OS is flagged: complete M2 attenuation
+> (OR 1.04) is interpreted as full mediation via GVHD suppression, not as bias, so
+> C1 OS is retained at LOW; see section 1. The C1 moderate-severe cGVHD assessment
+> was rebuilt from a corrected spec: OR 0.47 [0.38-0.57] (k = 19), down from 0.33.
+>
+
 ### Comparisons 1 and 2 — All Primary Outcomes
 *Prepared: 2026-06-19 · Updated from 2026-05-28 combined assessment*
 *Post-Block-9 corpus: 251 studies, 525 arms, 3,604 outcomes, 14 RCTs*
@@ -48,7 +58,7 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 5. **C2 OS attenuated (0.69→0.81):** Still significantly protective; M2 mediation
    essentially vanishes (0.81→0.82).
 6. **C2 NRM dropped below minimum (k = 2):** No longer assessable.
-7. **C2 CMV now null (0.77→0.92):** CrI crosses 1; weakens the direction-reversal
+7. **C2 CMV now null (0.77→0.97):** CrI crosses 1; weakens the direction-reversal
    narrative, though the qualitative pattern (PTCy ≤ ATG for CMV) persists.
 
 ---
@@ -57,9 +67,9 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 
 |  | C1: PTCy vs CNI+MTX/MMF | C2: PTCy vs ATG |
 |---|---|---|
-| **Studies** | k = 40, N = 19,724 | k = 10, N = 12,851 |
-| **M1** | OR 0.79 [0.73–0.85], P(<1) = 100%, τ = 0.61 | OR 0.81 [0.74–0.90], P(<1) = 100%, τ = 0.51 |
-| **M2** | OR 0.86 [0.77–0.96], P(<1) = 100%, τ = 0.58 | OR 0.82 [0.71–0.94], P(<1) > 99% |
+| **Studies** | k = 35, N = 10,133 | k = 9, N = 12,791 |
+| **M1** | OR 0.84 [0.76–0.92], P(<1) = 100%, τ = 0.66 | OR 0.83 [0.75–0.92], P(<1) = 100%, τ = 0.50 |
+| **M2** | OR 1.04 [0.89–1.22] (**attenuates to null**), τ = 0.60 | OR 0.81 [0.70–0.93], P(<1) > 99% |
 | **Attenuation** | 27% (partial; was 29% pre-Block-9) | ~5% (negligible; was 35% pre-Block-9) |
 | **Frequentist** | OR 0.77 [0.66–0.90], I² = 64% | OR 0.59 [0.32–1.09], I² = 95% |
 
@@ -73,7 +83,7 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 | **Indirectness** | Not serious. 0 | Not serious. 0 |
 | **Imprecision** | Not serious: CrI entirely below null; N = 19,724. 0 | Not serious: CrI entirely below null; N = 12,851. 0 |
 | **Publication bias** | Undetected. 0 | Not strongly suspected. 0 |
-| **Upgrade** | Not met (OR = 0.79; threshold < 0.50). 0 | Cross-comparison coherence: direction consistent with C1; mediation pattern consistent. **+1** |
+| **Upgrade** | Not met (OR = 0.84; threshold < 0.50). 0 | Cross-comparison coherence: direction consistent with C1; mediation pattern consistent. **+1** |
 | **Net** | −1 | −1 + 1 = 0 |
 
 | | C1 | C2 |
@@ -82,9 +92,9 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 
 *Rating unchanged from pre-Block-9 for both comparisons.*
 
-> *C1: Low certainty that PTCy reduces overall mortality vs CNI+MTX/MMF (OR 0.79 [0.73–0.85]). The corpus is now the largest in the analysis (k = 40, N = 19,724). Partial M2 attenuation (0.79→0.86) indicates some steroid-mediated confounding but a probable direct mortality benefit remains.*
+> *C1: Low certainty that PTCy reduces overall mortality vs CNI+MTX/MMF (OR 0.84 [0.76-0.92], k = 35 after cohort deduplication). M2 attenuates the estimate to the null (0.84->1.04 [0.89-1.22]), so no survival benefit is detectable once arm-level steroid exposure is held constant. **Rating retained at LOW.** Steroid exposure is a mediator on the causal pathway (PTCy -> less GVHD -> less steroid -> better survival), not a confounder; complete attenuation on adjusting for a mediator is a mechanistic result, not evidence of bias, and does not by itself justify a risk-of-bias downgrade. The finding does change the interpretation: the survival advantage appears to operate through GVHD prevention rather than in addition to it. **Note for review:** the -1 risk-of-bias downgrade applied to C1 NRM in section 2 rests on the same mediator/confounder conflation and should be re-examined.*
 
-> *C2: Low certainty that PTCy reduces overall mortality vs ATG (OR 0.81 [0.74–0.90]). The estimate attenuated from pre-Block-9 (was OR 0.69) but remains significantly protective. Notably, M2 steroid adjustment now produces essentially no attenuation (0.81→0.82), suggesting the C2 OS benefit is largely steroid-independent — a shift from the pre-Block-9 finding of 35% mediation.*
+> *C2: Low certainty that PTCy reduces overall mortality vs ATG (OR 0.83 [0.75–0.92], k = 9 after cohort deduplication). M2 steroid adjustment produces essentially no attenuation (0.83→0.81), so unlike C1 the C2 OS benefit does appear steroid-independent. This C1/C2 divergence in mediation is new and should be interpreted cautiously given k = 9.*
 
 ---
 
@@ -105,20 +115,20 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 | Domain | C1 |
 |---|---|
 | Study design | All retrospective/registry; start LOW |
-| **Risk of bias** | Serious: pre-Block-9 showed complete M2 mediation (OR 1.02), constituting a formal confounding signal. Post-Block-9, M2 OR = 0.90 [0.59–1.36] — the distinction between complete and partial mediation is now **indeterminate** at k = 12 with wide CrIs. The confounding concern persists but the evidence for it is less decisive. **−1** |
+| **Risk of bias** | **Not serious (revised 2026-08-11): 0.** This domain previously carried **−1** on the grounds that complete M2 attenuation (pre-Block-9 OR 1.02) was "a formal confounding signal". That reasoning is withdrawn: `steroid_pct` is systemic steroid exposure driven by GVHD, i.e. a **mediator** on the PTCy → GVHD → steroid → NRM pathway, not a confounder. An effect that attenuates when a mediator is held constant is a decomposition of the causal pathway, not evidence that the unadjusted estimate is biased. No separate confounding evidence was cited for this domain. |
 | **Inconsistency** | Not serious: freq I² = 0%; consistent direction. 0 |
 | **Indirectness** | Not serious. 0 |
 | **Imprecision** | Serious: M1 CrI 0.66–1.18 crosses null; M2 CrI 0.59–1.36 widely crosses; k dropped from 15 to 12; N = 1,309 modest for mortality. **−1** |
 | **Publication bias** | Possible but not formally detectable. 0 |
-| **Net** | −2 |
+| **Net** | −1 (imprecision only) |
 
 | | C1 | C2 |
 |---|---|---|
 | **CERTAINTY** | **⊕◯◯◯ VERY LOW** | **Not assessable (k = 2)** |
 
-*C1 rating unchanged from pre-Block-9; C2 dropped from VERY LOW to not assessable.*
+*C1 rating **unchanged at VERY LOW** despite removing the risk-of-bias downgrade: observational evidence starts at LOW, and the imprecision downgrade alone is sufficient to reach VERY LOW. The correction changes the stated rationale, not the bottom line. C2 dropped from VERY LOW to not assessable.*
 
-> *C1: Very low certainty. The M1 estimate (OR 0.88) trends toward benefit but the CrI crosses the null. Post-Block-9, the mediation picture is less clean than before: M2 OR shifted from 1.02 (clear complete mediation) to 0.90 (indeterminate), with a very wide CrI [0.59–1.36]. Clinical inference remains unchanged: any NRM benefit of PTCy is likely conditional on its GVHD-prevention effect, but the evidence is now insufficient to confirm or reject complete mediation.*
+> *C1: Very low certainty, driven by imprecision (M1 OR 0.88 [0.66–1.18], k = 12, CrI crosses the null). M2 (0.90 [0.59–1.36]) is uninformative at this k. The earlier framing of M2 attenuation as a confounding signal has been withdrawn — see the risk-of-bias row. Any NRM benefit of PTCy plausibly operates through GVHD prevention, but the data can neither confirm nor exclude an effect of any size.*
 
 > *C2: Not assessable. Removing a misclassified study (Sayin) reduced C2 NRM to k = 2, below the minimum threshold for GRADE assessment. This is the only outcome that became unassessable after Block-9 data cleaning.*
 
@@ -128,8 +138,8 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 
 |  | C1: PTCy vs CNI+MTX/MMF | C2: PTCy vs ATG |
 |---|---|---|
-| **Studies** | k = 28, N = 4,197 | k = 9, N = 1,099 |
-| **M1** | OR 0.67 [0.59–0.78], P(<1) = 100%, τ = 0.68 | OR 0.58 [0.44–0.77], P(<1) = 100%, τ = 0.55 |
+| **Studies** | k = 28, N = 4,197 | k = 8, N = 1,039 |
+| **M1** | OR 0.67 [0.59–0.78], P(<1) = 100%, τ = 0.68 | OR 0.63 [0.47–0.83], P(<1) = 100%, τ = 0.53 |
 | **Frequentist** | OR 0.61 [0.47–0.79], I² = 62% | OR 0.46 [0.26–0.83], I² = 73% |
 
 ### GRADE domains
@@ -161,9 +171,9 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 
 |  | C1: PTCy vs CNI+MTX/MMF | C2: PTCy vs ATG |
 |---|---|---|
-| **Studies** | k = 22, N = 3,328 | k = 13, N = 1,571 |
-| **M1** | OR 1.26 [1.07–1.47], P(>1) = 100%, τ = 0.75 | OR 0.92 [0.73–1.15], P(<1) = 74%, τ = 0.64 |
-| **M2** | OR 1.25 [1.01–1.54] (no attenuation) | OR 0.98 [0.78–1.24] (null) |
+| **Studies** | k = 22, N = 3,328 | k = 12, N = 1,511 |
+| **M1** | OR 1.26 [1.07–1.47], P(>1) = 100%, τ = 0.75 | OR 0.97 [0.77–1.23], τ = 0.63 |
+| **M2** | OR 1.25 [1.01–1.54] (no attenuation) | OR 1.00 [0.79–1.26] (null) |
 | **Frequentist** | OR 1.25 [0.94–1.66], I² = 62% | OR 0.76 [0.47–1.22], I² = 71% |
 | **Direction** | **PTCy harmful** (attenuated from 1.41) | **Null** (was protective at 0.77) |
 
@@ -173,13 +183,13 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 excludes the null. The frequentist estimate is non-significant (0.94–1.66).
 
 **C2:** Shifted from borderline-significant protective (OR 0.77 [0.60–0.99]) to null
-(OR 0.92 [0.73–1.15]). Three Block-9 C2 CMV studies were found to have arm classification
+(OR 0.97 [0.77–1.23]). Three Block-9 C2 CMV studies were found to have arm classification
 problems during audit (Sayin comparator misclassified; Xu and Zu had combination PTCy+ATG
 arms). After correction, the C2 signal largely dissolved.
 
 **Direction-reversal interpretation:** The pre-Block-9 narrative described a clean reversal
 (C1 harmful at 1.41, C2 protective at 0.77). Post-Block-9, the pattern is better
-characterised as: C1 mildly harmful (1.26), C2 null (0.92). The qualitative ordering
+characterised as: C1 mildly harmful (1.26), C2 null (0.97). The qualitative ordering
 (CNI-based < PTCy ≤ ATG for CMV risk) is preserved, but the C2 estimate no longer provides
 independent evidence of PTCy protection vs ATG. The mechanistic inference — that CMV risk
 tracks depth of T-cell depletion — is weakened but not refuted.
@@ -205,7 +215,7 @@ tracks depth of T-cell depletion — is weakened but not refuted.
 
 > *C1: Low certainty that PTCy increases CMV risk vs CNI+MTX/MMF (OR 1.26 [1.07–1.47]). The signal has attenuated from 1.41 but remains consistent across 22 studies, is steroid-independent (M2 no attenuation), and is confirmed by two pre-specified sensitivity analyses: post-2020 studies (OR 1.53 [1.28–1.85], k = 17) and haplo-dominant studies (OR 1.38 [1.12–1.71], k = 12). The frequentist estimate is now non-significant, reflecting the tension between framework-specific precision in this outcome.*
 
-> *C2: Very low certainty about CMV risk of PTCy vs ATG. The previously borderline-protective signal (OR 0.77) has dissolved to null (OR 0.92) after Block-9 data cleaning identified arm classification errors in three studies. The most defensible inference is no longer "PTCy protects against CMV vs ATG" but rather "PTCy does not increase CMV risk beyond that already inherent to ATG-based regimens." The comparative pattern (C1 harmful, C2 null) is still broadly consistent with the T-cell depletion depth hypothesis but no longer provides strong independent evidence for it.*
+> *C2: Very low certainty about CMV risk of PTCy vs ATG. The previously borderline-protective signal (OR 0.77) has dissolved to null (OR 0.97) after Block-9 data cleaning identified arm classification errors in three studies. The most defensible inference is no longer "PTCy protects against CMV vs ATG" but rather "PTCy does not increase CMV risk beyond that already inherent to ATG-based regimens." The comparative pattern (C1 harmful, C2 null) is still broadly consistent with the T-cell depletion depth hypothesis but no longer provides strong independent evidence for it.*
 
 ---
 
@@ -302,14 +312,14 @@ is now dramatically stronger but the heterogeneity is worse and the corpus small
 
 | Outcome | Comparison | k | N | OR [95% CrI] | Posterior P | Certainty | Δ from pre-B9 | Key limitation |
 |---|---|---|---|---|---|---|---|---|
-| **OS** | C1 | 40 | 19,724 | 0.79 [0.73–0.85] | P(<1) = 100% | ⊕⊕◯◯ LOW | 0.77→0.79 | I² = 64%; obs dominant |
-| | C2 | 10 | 12,851 | 0.81 [0.74–0.90] | P(<1) = 100% | ⊕⊕◯◯ LOW | **0.69→0.81** | I² = 95% (freq); one registry dominant |
+| **OS** | C1 | 35 | 10,133 | 0.84 [0.76–0.92] | P(<1) = 100% | ⊕⊕◯◯ LOW† | 0.79→0.84 (dedup) | M2 attenuates to null (1.04) |
+| | C2 | 9 | 12,791 | 0.83 [0.75–0.92] | P(<1) = 100% | ⊕⊕◯◯ LOW | 0.81→0.83 (dedup) | I² = 95% (freq); one registry dominant |
 | **NRM** | C1 | 12 | 1,309 | 0.88 [0.66–1.18] | P(<1) = 87% | ⊕◯◯◯ V. LOW | k: 15→12 | M2 mediation indeterminate; CrI crosses null |
 | | C2 | 2 | — | — | — | **Not assessable** | **k: 5→2** | Below minimum |
 | **aGVHD II–IV** | C1 | 28 | 4,197 | 0.67 [0.59–0.78] | P(<1) = 100% | ⊕⊕◯◯ LOW | 0.63→0.67 | I² = 62%; obs dominant |
-| | C2 | 9 | 1,099 | 0.58 [0.44–0.77] | P(<1) = 100% | ⊕⊕◯◯ LOW | k: 6→9 | τ poorly estimated |
+| | C2 | 8 | 1,039 | 0.63 [0.47–0.83] | P(<1) = 100% | ⊕⊕◯◯ LOW | 0.58→0.63 (dedup) | τ poorly estimated |
 | **CMV** | C1 | 22 | 3,328 | 1.26 [1.07–1.47] | P(>1) = 100% | ⊕⊕◯◯ LOW | **1.41→1.26** | Attenuated; M2 CrI borderline |
-| | C2 | 13 | 1,571 | 0.92 [0.73–1.15] | P(<1) = 74% | ⊕◯◯◯ V. LOW | **0.77→0.92 (null)** | Signal dissolved; direction reversal weakened |
+| | C2 | 12 | 1,511 | 0.97 [0.77–1.23] | CrI crosses 1 | ⊕◯◯◯ V. LOW | **0.77→0.97 (null)** | Signal dissolved; direction reversal weakened |
 | **BSI** | C1 | 6 | 806 | 1.87 [1.33–2.62] | P(>1) = 100% | ⊕◯◯◯ V. LOW | **2.39→1.87** | Lost large-mag upgrade; gained I² = 71% |
 | | C2 | 3 | 613 | 2.03 [1.33–3.09]† | p = 0.001 | (⊕◯◯◯) V. LOW‡ | — | k = 3; definitional heterogeneity |
 | **IFI** | C1 | 6 | 2,243 | 0.43 [0.29–0.63] | P(<1) = 100% | ⊕◯◯◯ V. LOW | **0.73→0.43** | Gained large-mag upgrade; τ = 1.64 |
@@ -373,7 +383,7 @@ clinically relevant ways:
 
 3. **The CMV direction-reversal narrative is weakened but not refuted.** The clean
    C1-harmful/C2-protective pattern (1.41 vs 0.77) has become C1-mildly-harmful/C2-null
-   (1.26 vs 0.92). The qualitative ordering is preserved (PTCy ≤ ATG for CMV risk)
+   (1.26 vs 0.97). The qualitative ordering is preserved (PTCy ≤ ATG for CMV risk)
    but the C2 estimate no longer provides independent evidence of protection. The
    mechanistic inference about T-cell depletion depth should be presented with
    appropriate caveats. Importantly, the C1 CMV signal is **robustly confirmed** by

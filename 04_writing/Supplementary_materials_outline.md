@@ -161,19 +161,48 @@ Full justification text for each study assessment.
 *Source: `05_website/diagnostics.qmd`, model objects in `03_models/post_block9/`*
 
 ### S8. Forest Plots (All Outcomes × All Comparisons)
-**Status: ready to generate (website forest plots page renders these)**
+**Status: built and wired into `save_fig()` (PNG/PDF/SVG) — all panels generated from
+`Manuscript_LancetHaem_draft.qmd`, which is the single source of truth for figure files**
 
-Study-level forest plots showing individual study ORs with 95% CIs
-(frequentist REML) for each outcome × comparison combination:
+Study-level forest plots showing individual study ORs with 95% CIs, one panel per
+comparison. Two pooling styles are used:
 
-- C1: OS, NRM, aGVHD, cGVHD (mod-severe), CMV, BSI, IFI, RRM, BK virus, IRM (10 plots)
-- C2: OS, NRM, aGVHD, CMV, RRM, BK virus, IRM (7 plots)
-- C3: OS, NRM, aGVHD, cGVHD (4 plots)
+- **Bayesian pooled** (`forest_study_bayes()`): the pooled row is the M1 posterior
+  median and 95% CrI, with the full posterior density of the pooled OR drawn above
+  the row. Used where an M1 fit exists and the estimate is quoted in the main text.
+- **Frequentist REML** (`forest_study()`): the pooled row is the metafor
+  random-effects diamond, with I², τ, and the heterogeneity Q-test p-value in the
+  caption. Used for the S8a concordance checks and the remaining secondary outcomes.
 
-Each plot includes events/N for PTCy and comparator groups per study,
-pooled RE estimate, I², τ, and heterogeneity Q-test p-value.
+Individual study markers are raw per-study ORs (Wald 95% CI from event counts) in
+both styles; M1 has no per-study random slope, so studies have no own posterior.
 
-*Source: `05_website/forest-plots.qmd`, `03_models/post_block9/data_*.csv`*
+#### Figure list
+
+| Panel | Outcome | Comparisons | Pooling style | Chunk label | File stem (`04_writing/figures/`) |
+|-------|---------|-------------|---------------|-------------|-----------------------------------|
+| S8a-i | Overall survival | C1 + C2 | Frequentist REML | `fig-forest-os-freq` | `FigureS8a_OS_forest_frequentist` |
+| S8a-ii | CMV any reactivation | C1 + C2 | Frequentist REML | `fig-forest-cmv-freq` | `FigureS8a_CMV_forest_frequentist` |
+| S8b | Acute GVHD grade II–IV | C1 + C2 | Frequentist REML | `fig-forest-agvhd` | `FigureS8b_aGVHD_forest` |
+| S8c | Non-relapse mortality | C1 + C2 | Frequentist REML | `fig-forest-nrm` | `FigureS8c_NRM_forest` |
+| S8d | Relapse-related mortality | C1 + C2 | Frequentist REML | `fig-forest-rrm` | `FigureS8d_RRM_forest` |
+| S8e | Chronic GVHD, moderate–severe | C1 + C2 | Frequentist REML | `fig-forest-cgvhd` | `FigureS8e_cGVHD_forest` |
+| S8f | Bloodstream infection | C1 | Bayesian pooled | `fig-forest-bsi` | `FigureS8f_BSI_forest` |
+| S8g | Invasive fungal infection | C1 | Bayesian pooled | `fig-forest-ifi` | `FigureS8g_IFI_forest` |
+| S8h | BK virus reactivation | C1 + C2 | Bayesian pooled | `fig-forest-bk` | `FigureS8h_BK_forest` |
+| S8i | Infection-related mortality | C1 + C2 | Frequentist REML | `fig-forest-irm` | `FigureS8i_IRM_forest` |
+| S8j | Within-PTCy variants (OS, NRM, aGVHD, cGVHD) | C3 | Frequentist REML | `fig-forest-c3` | `FigureS8j_C3_forest` |
+
+Each stem exists as `.png` (screen), `.pdf` (Lancet-preferred editable vector), and
+`.svg` (editing/web). Main-text Figures 2–4 (OS, CMV, and the combined BSI/IFI/BK
+infection panel) use the same Bayesian style and are not duplicated here.
+
+**Outstanding:** Lancet requires events/N for both groups to be visible on forest
+plots; the current panels show only ORs with CIs, with events/N held in Table S4b.
+This needs resolving before submission.
+
+*Source: chunks `fig-forest-*` in `04_writing/Manuscript_LancetHaem_draft.qmd`;
+data in `03_models/post_block9/data_*.csv`; models in `03_models/post_block9/m1_*.rds`*
 
 ### S9. Sensitivity and Subgroup Analyses
 **Status: partially available**
@@ -220,7 +249,7 @@ cross-comparison coherence assessment.
 *Source: `04_writing/GRADE_certainty_assessment_combined_post_block9.md`*
 
 ### S12. Cohort Overlap Map
-**Status: needs formatting**
+**Status: drafted — `Appendix_S12_cohort_overlap.md`, `Table_S12a_cohort_overlap_map.csv` (90 studies in 25 multi-study cohorts), `Table_S12b_partial_overlap_studies.csv`. Audit found 14 cohorts violating the unique-primary rule, 5 dangling cohort references, and same-cohort double counting in 9 fitted models — all unresolved**
 
 Table showing the cohort structure: which studies share patient populations
 (e.g., EBMT ALWP cohort 1024 with 15+ publications, CIBMTR cohorts, JSTCT

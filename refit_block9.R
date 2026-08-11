@@ -220,7 +220,23 @@ specs <- list(
   list(slug="c1_bk",       cat="other_infection",              sub="BK_hemorrhagic_cystitis",
        tp="D+100",       fb=c("D+180","D+365_1yr"),           cmp=1, m2=FALSE),
   list(slug="c2_bk",       cat="other_infection",              sub="BK_hemorrhagic_cystitis",
-       tp="D+100",       fb=c("D+180","D+365_1yr"),           cmp=2, m2=FALSE)
+       tp="D+100",       fb=c("D+180","D+365_1yr"),           cmp=2, m2=FALSE),
+
+  # 2026-08-11 - specs added so every Table 2 dataset comes from this (filtered,
+  # audited) pipeline. Previously data_c1_irm.csv, data_c2_irm.csv,
+  # data_c1_cgvhd_ms.csv, data_c2_cgvhd_ms.csv and data_c1_cgvhd_any.csv were built
+  # outside this script; two contained studies with primary_for_cohort = "N", which
+  # build_analytic() would have excluded.
+  list(slug="c1_irm",      cat="infection_related_mortality",  sub="IRM_any_cause_infectious",
+       tp="end_of_followup", fb=c("D+365_1yr","D+730_2yr","D+180","D+100"), cmp=1, m2=FALSE),
+  list(slug="c2_irm",      cat="infection_related_mortality",  sub="IRM_any_cause_infectious",
+       tp="end_of_followup", fb=c("D+365_1yr","D+730_2yr","D+180","D+100"), cmp=2, m2=FALSE),
+  list(slug="c1_cgvhd_ms", cat="cGVHD",                        sub="moderate_severe_NIH",
+       tp="D+365_1yr",   fb=c("D+730_2yr","end_of_followup"), cmp=1, m2=FALSE),
+  list(slug="c2_cgvhd_ms", cat="cGVHD",                        sub="moderate_severe_NIH",
+       tp="D+365_1yr",   fb=c("D+730_2yr","end_of_followup"), cmp=2, m2=FALSE),
+  list(slug="c1_cgvhd_any",cat="cGVHD",                        sub="any_NIH",
+       tp="D+365_1yr",   fb=c("D+730_2yr","end_of_followup"), cmp=1, m2=FALSE)
 )
 
 # ---------------------------------------------------------------------------

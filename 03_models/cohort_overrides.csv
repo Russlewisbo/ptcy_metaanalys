@@ -1,0 +1,12 @@
+cohort_id,outcome_key,study_id,status,basis
+1001,ifi_any,8,confirmed,"cohorts.primary_publication_overrides structured field 'IFI_any:8' (Papanicolaou 2024)"
+1001,ifi_mold,8,confirmed,"cohorts.primary_publication_overrides structured field 'IFI_mold:8'"
+1001,ifi_yeast,8,confirmed,"cohorts.primary_publication_overrides structured field 'IFI_yeast:8'"
+1001,*,4,confirmed,"cohort primary_publication_study_id = 4 (Goldsmith 2021); primary for CMV per PROJECT_STATUS_summary.md"
+1002,*,2,confirmed,"Two reports of one RCT (BMT CTN 1703). Bolanos-Meade 2023 is cohort primary; Abedin 2025 is flagged primary_for_cohort = N and should not be eligible at all."
+1003,bsi,9,confirmed,"cohorts.primary_publication_overrides: 'BSI outcomes: study_id 9 (Salas 2022 BSI)'"
+1003,*,338,proposed,"If study 9 is BSI-primary, the non-BSI outcomes should come from another Salas publication. Needs sign-off: cohort 1003 has >=3 studies (9, 335, 338) and no study flagged Y."
+1023,*,49,proposed,"BLOCK_1_extraction_summary: study 49 is the broadest 3-arm comparison and wins primary; 50 and 51 cover subsets. NOTE: 49 is absent from data_c1_rrm.csv, which instead contains 50 and 51 (both N=118, identical size) - unresolved."
+1024,*,52,proposed,"cohorts.primary_publication_study_id = 52 (Baron 2024). Applying this strictly discards 4 EBMT ALWP publications covering different donor strata - see cohort split note below."
+1047,cmv,122,proposed,"BLOCK_3_extraction_summary: Dybko 2023 (122) is the CMV paper of the PALG trio; 123 = MUD benefits, 124 = MMUD subset. Datasets currently contain 122 and 124."
+1047,*,123,unresolved,"BLOCK_3 assigns 123 to MUD-benefit outcomes, but 123 does not appear in any fitted C2 dataset; 122 and 124 do. Requires adjudication before use."

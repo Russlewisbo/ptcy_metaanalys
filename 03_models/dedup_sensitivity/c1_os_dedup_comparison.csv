@@ -1,0 +1,4 @@
+set,k,OR,lo,hi,CrI_width,tau,P_OR_lt_1,max_rhat
+A: as-is (all 5 EBMT + 2 Salas),40,0.788,0.728,0.854,0.127,0.606,1,1.0049
+B: strict one-per-cohort,35,0.852,0.776,0.938,0.162,0.656,0.9995,1.0044
+C: donor-strata-aware,37,0.814,0.745,0.888,0.143,0.638,1,1.006
