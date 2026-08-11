@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a5b552e87c74dd04829b5f4f964f0516.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c3b612d78ebf2c911bb5b2c28edb8189.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -248,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>PTCy eliminates alloreactive T cells during the critical window of allorecognition, reducing acute GVHD grade II–IV across both comparisons. This propagates downstream:</p>
 <ul>
 <li><strong>NRM</strong> benefit shows steroid mediation in both comparisons</li>
-<li><strong>OS</strong> benefit is only partially mediated, suggesting an additional direct contribution — most plausibly graft-versus-leukaemia preservation</li>
+<li><strong>OS</strong> benefit is not separable from GVHD suppression: after steroid adjustment the estimate crosses the null (M2 OR 1.04 [0.89–1.22]). The previously claimed direct contribution did not survive cohort deduplication</li>
 </ul>
 </section>
 <section id="pathway-2-t-cell-lymphodepletion-unintended" class="level3">
@@ -400,8 +403,8 @@ Figure&nbsp;3: C2 primary vs sensitivity (expanded arm inclusion). CMV converges
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p><strong>CMV converges to null</strong> (primary OR 0.98 → sensitivity 1). When PTCy arms also use ATG, both sides of the comparison have deep T-cell depletion. CMV rates equalise — exactly as the hierarchy predicts. If the C1 CMV excess were an intrinsic PTCy property (rather than a relative depletion effect), adding ATG to the PTCy arm should have made things worse, not better.</p></li>
-<li><p><strong>aGVHD attenuates</strong> (primary 0.58 → sensitivity 0.78). Adding ATG to the PTCy arm reduces the differential in alloreactive T-cell depletion between arms, narrowing the GVHD advantage. This is the GVHD-pathway analogue of the CMV convergence.</p></li>
-<li><p><strong>OS strengthens</strong> (primary 0.81 → sensitivity 0.74). PTCy+ATG combinations appear to improve survival more than ATG alone, possibly through redundant GVHD suppression from both agents. This may explain why the aGVHD and CMV effects attenuate (both arms are deeply immunosuppressed) while survival still improves.</p></li>
+<li><p><strong>aGVHD attenuates</strong> (primary 0.63 → sensitivity 0.78). Adding ATG to the PTCy arm reduces the differential in alloreactive T-cell depletion between arms, narrowing the GVHD advantage. This is the GVHD-pathway analogue of the CMV convergence.</p></li>
+<li><p><strong>OS strengthens</strong> (primary 0.83 → sensitivity 0.74). PTCy+ATG combinations appear to improve survival more than ATG alone, possibly through redundant GVHD suppression from both agents. This may explain why the aGVHD and CMV effects attenuate (both arms are deeply immunosuppressed) while survival still improves.</p></li>
 </ol>
 </div>
 </div>
@@ -538,14 +541,14 @@ Figure&nbsp;4: C1 CMV effect stratified by comparator-arm ATG use. When the comp
 </section>
 <section id="sec-disc-cgvhd" class="level2">
 <h2 class="anchored" data-anchor-id="sec-disc-cgvhd">Chronic GVHD: The Dominant Treatment Effect</h2>
-<p>The C1 moderate-severe chronic GVHD OR of 0.33 [0.29–0.36] is the single largest treatment effect in this meta-analysis, substantially exceeding the aGVHD effect (OR 0.67). This magnitude — a two-thirds reduction — is clinically transformative given that moderate-severe cGVHD is the leading cause of late morbidity and long-term immunosuppression dependence after allogeneic HCT.</p>
-<p>The C1-vs-C2 attenuation (OR 0.33 → 0.79) mirrors the aGVHD pattern (0.67 → 0.58) and is mechanistically coherent: ATG also depletes alloreactive T cells, narrowing the differential. However, PTCy retains a residual cGVHD advantage even against ATG (90% posterior probability of OR &lt; 1), suggesting PTCy may target the chronic alloimmune process through a partially distinct mechanism — possibly the selective elimination of alloreactive T cells that are actively dividing during the early post-transplant window, which are disproportionately represented among the long-lived T-cell clones that drive chronic GVHD.</p>
+<p>The C1 moderate-severe chronic GVHD OR of 0.47 [0.38–0.57] is among the largest treatment effects in this meta-analysis, exceeding the aGVHD effect (OR 0.67). This magnitude — roughly a halving — is clinically important given that moderate-severe cGVHD is the leading cause of late morbidity and long-term immunosuppression dependence after allogeneic HCT.</p>
+<p>The C1-vs-C2 attenuation (OR 0.47 → 0.79) mirrors the aGVHD pattern (0.67 → 0.63) and is mechanistically coherent: ATG also depletes alloreactive T cells, narrowing the differential. However, PTCy retains a residual cGVHD advantage even against ATG (90% posterior probability of OR &lt; 1), suggesting PTCy may target the chronic alloimmune process through a partially distinct mechanism — possibly the selective elimination of alloreactive T cells that are actively dividing during the early post-transplant window, which are disproportionately represented among the long-lived T-cell clones that drive chronic GVHD.</p>
 </section>
 <section id="sec-disc-irm" class="level2">
 <h2 class="anchored" data-anchor-id="sec-disc-irm">Infection-Related Mortality: The Risk-Benefit Resolution</h2>
 <p>The IRM analysis is arguably the most clinically important finding in this report because it resolves the central risk-benefit question: <em>do the excess infections with PTCy translate into excess deaths?</em></p>
-<p>The answer is nuanced. In C2 (vs ATG), both the Bayesian (OR 0.90 [0.74–1.09]) and frequentist (OR 0.81 [0.66–1.00]) models agree: PTCy does not increase infection-related mortality relative to ATG. In C1 (vs CNI+MTX), the models diverge: the Bayesian binomial model finds elevated IRM (OR 1.35 [1.16–1.57]) while the frequentist RE model finds null (OR 1.01 [0.70–1.45]). The divergence is driven by two large CIBMTR studies (Battipaglia 2019, Mulroney 2021) that contribute disproportionately to the Bayesian estimate.</p>
-<p>The clinically relevant interpretation is that even under the more pessimistic Bayesian estimate, the IRM increase (OR 1.35) is far smaller than the corresponding infection rate increases (CMV OR 1.26, BSI OR 1.87, BK virus OR 2.48). This disconnect between infection incidence and infection mortality suggests that PTCy-associated infections are, as a class, manageable with contemporary antimicrobial prophylaxis and pre-emptive therapy. The net survival effect remains strongly favourable (OS OR 0.79).</p>
+<p>The answer is nuanced. In C2 (vs ATG), both the Bayesian (OR 0.90 [0.74–1.09]) and frequentist (OR 0.81 [0.66–1.00]) models agree: PTCy does not increase infection-related mortality relative to ATG. In C1 (vs CNI+MTX), the two models now agree after cohort deduplication: the Bayesian estimate is OR 1.19 [1.00–1.43] and the frequentist RE model gives OR 1.03 [0.72–1.46]. Both are compatible with no increase. The previously reported Bayesian–frequentist divergence (1.35 vs 1.01) was driven by repeated EBMT ALWP publications entering the model as independent studies.</p>
+<p>The clinically relevant interpretation is that even under the more pessimistic Bayesian estimate, the IRM increase (OR 1.19) is far smaller than the corresponding infection rate increases (CMV OR 1.26, BSI OR 1.87, BK virus OR 2.48). This disconnect between infection incidence and infection mortality suggests that PTCy-associated infections are, as a class, manageable with contemporary antimicrobial prophylaxis and pre-emptive therapy. The net survival effect remains favourable (OS OR 0.84).</p>
 </section>
 <section id="sec-disc-practical" class="level2">
 <h2 class="anchored" data-anchor-id="sec-disc-practical">Practical Implications</h2>
@@ -568,13 +571,13 @@ Figure&nbsp;4: C1 CMV effect stratified by comparator-arm ATG use. When the comp
 <tbody>
 <tr class="odd">
 <td><strong>cGVHD</strong></td>
-<td>OR 0.33 (largest effect)</td>
+<td>OR 0.47</td>
 <td>Long-term IS tapering, QoL</td>
 <td>PTCy profoundly reduces late morbidity</td>
 </tr>
 <tr class="even">
 <td><strong>OS / RRM</strong></td>
-<td>OR 0.79 / 0.84</td>
+<td>OR 0.84 / 0.86</td>
 <td>Relapse prevention</td>
 <td>GVL preserved; dual survival benefit</td>
 </tr>
@@ -732,16 +735,16 @@ Figure&nbsp;4: C1 CMV effect stratified by comparator-arm ATG use. When the comp
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -1131,7 +1134,7 @@ Figure&nbsp;4: C1 CMV effect stratified by comparator-arm ATG use. When the comp
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>PTCy eliminates alloreactive T cells during the critical window of allorecognition, reducing acute GVHD grade II–IV across both comparisons. This propagates downstream:</span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**NRM** benefit shows steroid mediation in both comparisons</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**OS** benefit is only partially mediated, suggesting an additional direct contribution — most plausibly graft-versus-leukaemia preservation</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**OS** benefit is not separable from GVHD suppression: after steroid adjustment the estimate crosses the null (M2 OR 1.04 <span class="co">[</span><span class="ot">0.89–1.22</span><span class="co">]</span>). The previously claimed direct contribution did not survive cohort deduplication</span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pathway 2: T-Cell Lymphodepletion (Unintended)</span></span>
 <span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
@@ -1247,9 +1250,9 @@ Figure&nbsp;4: C1 CMV effect stratified by comparator-arm ATG use. When the comp
 <span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**CMV converges to null** (primary OR <span class="in">`r round(or_c2_cmv$or, 2)`</span> → sensitivity <span class="in">`r if(!is.null(post_c2_sens_cmv)) round(median(exp(post_c2_sens_cmv$b_ptcy_binary)), 2) else "—"`</span>). When PTCy arms also use ATG, both sides of the comparison have deep T-cell depletion. CMV rates equalise — exactly as the hierarchy predicts. If the C1 CMV excess were an intrinsic PTCy property (rather than a relative depletion effect), adding ATG to the PTCy arm should have made things worse, not better.</span>
 <span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**aGVHD attenuates** (primary 0.58 → sensitivity <span class="in">`r if(!is.null(post_c2_sens_agvhd)) round(median(exp(post_c2_sens_agvhd$b_ptcy_binary)), 2) else "—"`</span>). Adding ATG to the PTCy arm reduces the differential in alloreactive T-cell depletion between arms, narrowing the GVHD advantage. This is the GVHD-pathway analogue of the CMV convergence.</span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**aGVHD attenuates** (primary 0.63 → sensitivity <span class="in">`r if(!is.null(post_c2_sens_agvhd)) round(median(exp(post_c2_sens_agvhd$b_ptcy_binary)), 2) else "—"`</span>). Adding ATG to the PTCy arm reduces the differential in alloreactive T-cell depletion between arms, narrowing the GVHD advantage. This is the GVHD-pathway analogue of the CMV convergence.</span>
 <span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**OS strengthens** (primary 0.81 → sensitivity <span class="in">`r if(!is.null(post_c2_sens_os)) round(median(exp(post_c2_sens_os$b_ptcy_binary)), 2) else "—"`</span>). PTCy+ATG combinations appear to improve survival more than ATG alone, possibly through redundant GVHD suppression from both agents. This may explain why the aGVHD and CMV effects attenuate (both arms are deeply immunosuppressed) while survival still improves.</span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**OS strengthens** (primary 0.83 → sensitivity <span class="in">`r if(!is.null(post_c2_sens_os)) round(median(exp(post_c2_sens_os$b_ptcy_binary)), 2) else "—"`</span>). PTCy+ATG combinations appear to improve survival more than ATG alone, possibly through redundant GVHD suppression from both agents. This may explain why the aGVHD and CMV effects attenuate (both arms are deeply immunosuppressed) while survival still improves.</span>
 <span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a><span class="fu">### Synthesis</span></span>
@@ -1354,17 +1357,17 @@ Figure&nbsp;4: C1 CMV effect stratified by comparator-arm ATG use. When the comp
 <span id="cb5-268"><a href="#cb5-268" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a><span class="fu">## Chronic GVHD: The Dominant Treatment Effect {#sec-disc-cgvhd}</span></span>
 <span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a>The C1 moderate-severe chronic GVHD OR of 0.33 <span class="co">[</span><span class="ot">0.29–0.36</span><span class="co">]</span> is the single largest treatment effect in this meta-analysis, substantially exceeding the aGVHD effect (OR 0.67). This magnitude — a two-thirds reduction — is clinically transformative given that moderate-severe cGVHD is the leading cause of late morbidity and long-term immunosuppression dependence after allogeneic HCT.</span>
+<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a>The C1 moderate-severe chronic GVHD OR of 0.47 <span class="co">[</span><span class="ot">0.38–0.57</span><span class="co">]</span> is among the largest treatment effects in this meta-analysis, exceeding the aGVHD effect (OR 0.67). This magnitude — roughly a halving — is clinically important given that moderate-severe cGVHD is the leading cause of late morbidity and long-term immunosuppression dependence after allogeneic HCT.</span>
 <span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a>The C1-vs-C2 attenuation (OR 0.33 → 0.79) mirrors the aGVHD pattern (0.67 → 0.58) and is mechanistically coherent: ATG also depletes alloreactive T cells, narrowing the differential. However, PTCy retains a residual cGVHD advantage even against ATG (90% posterior probability of OR &lt; 1), suggesting PTCy may target the chronic alloimmune process through a partially distinct mechanism — possibly the selective elimination of alloreactive T cells that are actively dividing during the early post-transplant window, which are disproportionately represented among the long-lived T-cell clones that drive chronic GVHD.</span>
+<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a>The C1-vs-C2 attenuation (OR 0.47 → 0.79) mirrors the aGVHD pattern (0.67 → 0.63) and is mechanistically coherent: ATG also depletes alloreactive T cells, narrowing the differential. However, PTCy retains a residual cGVHD advantage even against ATG (90% posterior probability of OR &lt; 1), suggesting PTCy may target the chronic alloimmune process through a partially distinct mechanism — possibly the selective elimination of alloreactive T cells that are actively dividing during the early post-transplant window, which are disproportionately represented among the long-lived T-cell clones that drive chronic GVHD.</span>
 <span id="cb5-274"><a href="#cb5-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-275"><a href="#cb5-275" aria-hidden="true" tabindex="-1"></a><span class="fu">## Infection-Related Mortality: The Risk-Benefit Resolution {#sec-disc-irm}</span></span>
 <span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-277"><a href="#cb5-277" aria-hidden="true" tabindex="-1"></a>The IRM analysis is arguably the most clinically important finding in this report because it resolves the central risk-benefit question: *do the excess infections with PTCy translate into excess deaths?*</span>
 <span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a>The answer is nuanced. In C2 (vs ATG), both the Bayesian (OR 0.90 <span class="co">[</span><span class="ot">0.74–1.09</span><span class="co">]</span>) and frequentist (OR 0.81 <span class="co">[</span><span class="ot">0.66–1.00</span><span class="co">]</span>) models agree: PTCy does not increase infection-related mortality relative to ATG. In C1 (vs CNI+MTX), the models diverge: the Bayesian binomial model finds elevated IRM (OR 1.35 <span class="co">[</span><span class="ot">1.16–1.57</span><span class="co">]</span>) while the frequentist RE model finds null (OR 1.01 <span class="co">[</span><span class="ot">0.70–1.45</span><span class="co">]</span>). The divergence is driven by two large CIBMTR studies (Battipaglia 2019, Mulroney 2021) that contribute disproportionately to the Bayesian estimate.</span>
+<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a>The answer is nuanced. In C2 (vs ATG), both the Bayesian (OR 0.90 <span class="co">[</span><span class="ot">0.74–1.09</span><span class="co">]</span>) and frequentist (OR 0.81 <span class="co">[</span><span class="ot">0.66–1.00</span><span class="co">]</span>) models agree: PTCy does not increase infection-related mortality relative to ATG. In C1 (vs CNI+MTX), the two models now agree after cohort deduplication: the Bayesian estimate is OR 1.19 <span class="co">[</span><span class="ot">1.00–1.43</span><span class="co">]</span> and the frequentist RE model gives OR 1.03 <span class="co">[</span><span class="ot">0.72–1.46</span><span class="co">]</span>. Both are compatible with no increase. The previously reported Bayesian–frequentist divergence (1.35 vs 1.01) was driven by repeated EBMT ALWP publications entering the model as independent studies.</span>
 <span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a>The clinically relevant interpretation is that even under the more pessimistic Bayesian estimate, the IRM increase (OR 1.35) is far smaller than the corresponding infection rate increases (CMV OR 1.26, BSI OR 1.87, BK virus OR 2.48). This disconnect between infection incidence and infection mortality suggests that PTCy-associated infections are, as a class, manageable with contemporary antimicrobial prophylaxis and pre-emptive therapy. The net survival effect remains strongly favourable (OS OR 0.79).</span>
+<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a>The clinically relevant interpretation is that even under the more pessimistic Bayesian estimate, the IRM increase (OR 1.19) is far smaller than the corresponding infection rate increases (CMV OR 1.26, BSI OR 1.87, BK virus OR 2.48). This disconnect between infection incidence and infection mortality suggests that PTCy-associated infections are, as a class, manageable with contemporary antimicrobial prophylaxis and pre-emptive therapy. The net survival effect remains favourable (OS OR 0.84).</span>
 <span id="cb5-282"><a href="#cb5-282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-283"><a href="#cb5-283" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Implications {#sec-disc-practical}</span></span>
 <span id="cb5-284"><a href="#cb5-284" aria-hidden="true" tabindex="-1"></a></span>
@@ -1372,8 +1375,8 @@ Figure&nbsp;4: C1 CMV effect stratified by comparator-arm ATG use. When the comp
 <span id="cb5-286"><a href="#cb5-286" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-287"><a href="#cb5-287" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Domain <span class="pp">|</span> Finding <span class="pp">|</span> Intervention target <span class="pp">|</span> Rationale <span class="pp">|</span></span>
 <span id="cb5-288"><a href="#cb5-288" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|---|</span></span>
-<span id="cb5-289"><a href="#cb5-289" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **cGVHD** <span class="pp">|</span> OR 0.33 (largest effect) <span class="pp">|</span> Long-term IS tapering, QoL <span class="pp">|</span> PTCy profoundly reduces late morbidity <span class="pp">|</span></span>
-<span id="cb5-290"><a href="#cb5-290" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **OS / RRM** <span class="pp">|</span> OR 0.79 / 0.84 <span class="pp">|</span> Relapse prevention <span class="pp">|</span> GVL preserved; dual survival benefit <span class="pp">|</span></span>
+<span id="cb5-289"><a href="#cb5-289" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **cGVHD** <span class="pp">|</span> OR 0.47 <span class="pp">|</span> Long-term IS tapering, QoL <span class="pp">|</span> PTCy profoundly reduces late morbidity <span class="pp">|</span></span>
+<span id="cb5-290"><a href="#cb5-290" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **OS / RRM** <span class="pp">|</span> OR 0.84 / 0.86 <span class="pp">|</span> Relapse prevention <span class="pp">|</span> GVL preserved; dual survival benefit <span class="pp">|</span></span>
 <span id="cb5-291"><a href="#cb5-291" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **CMV / BSI / BK** <span class="pp">|</span> Rates elevated <span class="pp">|</span> T-cell reconstitution, antimicrobial prophylaxis <span class="pp">|</span> Infections manageable; IRM not clearly increased <span class="pp">|</span></span>
 <span id="cb5-292"><a href="#cb5-292" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **NRM** <span class="pp">|</span> Mediation uncertain <span class="pp">|</span> GVHD control + steroid minimisation <span class="pp">|</span> Indirect pathway; evidence weaker post-Block-9 <span class="pp">|</span></span>
 <span id="cb5-293"><a href="#cb5-293" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **aGVHD** <span class="pp">|</span> OR 0.67 <span class="pp">|</span> GVHD prevention <span class="pp">|</span> Consistent across comparators <span class="pp">|</span></span>

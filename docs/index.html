@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -75,10 +78,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a5b552e87c74dd04829b5f4f964f0516.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c3b612d78ebf2c911bb5b2c28edb8189.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,7 +114,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 
 </head>
@@ -250,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Background.</strong> Post-transplant cyclophosphamide (PTCy) has become widely adopted for GVHD prophylaxis in allogeneic haematopoietic cell transplantation, yet comprehensive quantitative evidence synthesis across survival, GVHD, and infection outcomes — and across comparator regimens — has been lacking.</p>
 <p><strong>Methods.</strong> We conducted a Bayesian random-effects meta-analysis of 251 studies (14 RCTs) comparing PTCy to (1) CNI+MTX/MMF-based regimens (Comparison 1), (2) ATG-based regimens (Comparison 2), and (3) within-PTCy regimen variants (Comparison 3). Ten outcomes were analysed: OS, NRM, relapse-related mortality (RRM), acute GVHD grade II–IV, chronic GVHD moderate-severe (NIH), CMV reactivation, BK virus, BSI, IFI, and infection-related mortality (IRM). Steroid-mediation models (M2) tested whether GVHD-driven steroid exposure confounded observed effects.</p>
 <p><strong>Results.</strong> PTCy was associated with improved OS (C1: OR 0.79 [0.73–0.85]; C2: OR 0.82 [0.71–0.94]), reduced aGVHD (C1: OR 0.67; C2: OR 0.58), and a substantial reduction in moderate-severe chronic GVHD (C1: OR 0.33 — the largest treatment effect). RRM was reduced in both comparisons (C1: OR 0.83; C2: OR 0.79), supporting preserved GVL activity. CMV reactivation was increased vs CNI+MTX/MMF (OR 1.26 [1.07–1.47]) but near-null vs ATG, consistent with a T-cell depletion depth gradient. BK virus (C1: OR 2.48) and BSI (C1: OR 1.87) were elevated regardless of comparator. Despite elevated infection rates, infection-related mortality was not increased (C1: OR 1.35, Bayesian–frequentist discordant; C2: OR 0.9). Within-PTCy regimen variants (C3) showed no significant differences.</p>
-<p><strong>Conclusions.</strong> PTCy provides consistent survival, GVHD, and anti-relapse advantages regardless of comparator. Chronic GVHD reduction is the largest treatment effect (OR 0.33). Infection rates are elevated but infection-related mortality is not clearly increased, suggesting the infectious cost is manageable. GRADE certainty is LOW for OS, aGVHD, and RRM; VERY LOW for other outcomes.</p>
+<p><strong>Conclusions.</strong> PTCy provides consistent survival, GVHD, and anti-relapse advantages regardless of comparator. Chronic GVHD reduction is among the largest treatment effects (OR 0.47). Infection rates are elevated but infection-related mortality is not clearly increased, suggesting the infectious cost is manageable. GRADE certainty is LOW for OS, aGVHD, and RRM; VERY LOW for other outcomes.</p>
 </div>
 </div>
 </div>
@@ -328,7 +333,7 @@ Figure&nbsp;1: Bayesian meta-analysis — PTCy effect across outcomes and compar
 <section id="key-findings" class="level3">
 <h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
 <div class="key-finding">
-<p><strong>1. Chronic GVHD — the largest treatment effect.</strong> PTCy reduced moderate-severe chronic GVHD by two-thirds vs CNI+MTX (C1 OR 0.33 [95% CrI 0.29–0.36], k = 21). This is the largest treatment effect in the analysis — substantially exceeding acute GVHD (OR 0.67) — with direct implications for long-term quality of life and immunosuppression duration. The effect attenuates vs ATG (C2 OR 0.79), consistent with ATG also providing cGVHD prophylaxis.</p>
+<p><strong>1. Chronic GVHD — the largest treatment effect.</strong> PTCy roughly halved moderate-severe chronic GVHD vs CNI+MTX (C1 OR 0.33 [95% CrI 0.29–0.36], k = 19). This is among the largest treatment effects in the analysis — exceeding acute GVHD (OR 0.67) — with direct implications for long-term quality of life and immunosuppression duration. The effect attenuates vs ATG (C2 OR 0.79), consistent with ATG also providing cGVHD prophylaxis.</p>
 </div>
 <div class="key-finding">
 <p><strong>2. Survival and acute GVHD benefit.</strong> PTCy was associated with reduced overall mortality (C1 OR 0.79; C2 OR 0.82) and acute GVHD grade II–IV (C1 OR 0.67; C2 OR 0.58) in both comparisons. Effects were consistent across comparators.</p>
@@ -551,8 +556,8 @@ Table&nbsp;1: Summary of primary outcomes across both comparisons.
 <h3 class="anchored" data-anchor-id="mechanistic-framework">Mechanistic Framework</h3>
 <p>The findings resolve into a framework built on three separable consequences of PTCy:</p>
 <ol type="1">
-<li><p><strong>GVHD suppression pathway</strong> (intended): PTCy eliminates alloreactive T cells → reduced aGVHD (OR 0.67) and profoundly reduced cGVHD (OR 0.33) → less steroid exposure → lower NRM → improved OS. Chronic GVHD is the most affected outcome, consistent with PTCy’s early alloreactive depletion having an outsized impact on chronic alloimmune processes.</p></li>
-<li><p><strong>GVL preservation pathway</strong> (intended): PTCy → reduced relapse-related mortality (C1 OR 0.84; C2 OR 0.79), steroid-independent. This explains the residual OS advantage after GVHD/steroid adjustment.</p></li>
+<li><p><strong>GVHD suppression pathway</strong> (intended): PTCy eliminates alloreactive T cells → reduced aGVHD (OR 0.67) and cGVHD (OR 0.47) → less steroid exposure → lower NRM → improved OS. Chronic GVHD is the most affected outcome, consistent with PTCy’s early alloreactive depletion having an outsized impact on chronic alloimmune processes.</p></li>
+<li><p><strong>GVL preservation pathway</strong> (intended): PTCy → reduced relapse-related mortality (C1 OR 0.86; C2 OR 0.79), steroid-independent. Note that after cohort deduplication the OS advantage is <strong>not</strong> separable from GVHD suppression (M2 OR 1.04), so this pathway is no longer evidence of a residual direct survival benefit.</p></li>
 <li><p><strong>T-cell lymphodepletion pathway</strong> (unintended): PTCy depletes pathogen-specific T cells during engraftment → elevated CMV, BSI, and BK virus. The CMV depletion gradient (CNI &lt; PTCy ≈ ATG) confirms this is a relative depth-of-depletion effect. BK virus has an additional urothelial toxicity component. Critically, the elevated infection <em>rates</em> do not translate clearly into elevated infection-related <em>mortality</em>, suggesting the infectious cost is clinically manageable.</p></li>
 </ol>
 <div class="cell" data-fig-width="9" data-layout-align="default">
@@ -563,19 +568,19 @@ Table&nbsp;1: Summary of primary outcomes across both comparisons.
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    PTCy --&gt; B["↓ Pathogen-specific\nT cells"]</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    PTCy --&gt; U["Urothelial\ntoxicity"]</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    A --&gt; C["↓↓ cGVHD\nOR 0.33"]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    A --&gt; C["↓↓ cGVHD\nOR 0.47"]</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    A --&gt; C2["↓ aGVHD\nOR 0.67"]</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    A --&gt; R["↓ RRM\nOR 0.84"]</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    C --&gt; D["↓ Steroid\nexposure"]</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    C2 --&gt; D</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    D --&gt; E["↓ NRM"]</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    D --&gt; F["↓ OS\nOR 0.79"]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    D --&gt; F["↓ OS\nOR 0.84"]</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    R --&gt; F</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    B --&gt; G["↑ CMV vs CNI\nOR 1.26"]</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    B --&gt; H["≈ CMV vs ATG\nOR 0.92"]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    B --&gt; H["≈ CMV vs ATG\nOR 0.97"]</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    B --&gt; I["↑ BSI\nOR 1.87"]</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    B --&gt; K["IRM ≈ null\nOR 1.01–1.35"]</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    B --&gt; K["IRM ≈ null\nOR 1.03–1.19"]</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    B --&gt; J["↑ BK Virus"]</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    U --&gt; J["↑ BK Virus\nOR 2.48"]</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
@@ -601,19 +606,19 @@ Table&nbsp;1: Summary of primary outcomes across both comparisons.
     PTCy --&gt; B["↓ Pathogen-specific\nT cells"]
     PTCy --&gt; U["Urothelial\ntoxicity"]
 
-    A --&gt; C["↓↓ cGVHD\nOR 0.33"]
+    A --&gt; C["↓↓ cGVHD\nOR 0.47"]
     A --&gt; C2["↓ aGVHD\nOR 0.67"]
     A --&gt; R["↓ RRM\nOR 0.84"]
     C --&gt; D["↓ Steroid\nexposure"]
     C2 --&gt; D
     D --&gt; E["↓ NRM"]
-    D --&gt; F["↓ OS\nOR 0.79"]
+    D --&gt; F["↓ OS\nOR 0.84"]
     R --&gt; F
 
     B --&gt; G["↑ CMV vs CNI\nOR 1.26"]
-    B --&gt; H["≈ CMV vs ATG\nOR 0.92"]
+    B --&gt; H["≈ CMV vs ATG\nOR 0.97"]
     B --&gt; I["↑ BSI\nOR 1.87"]
-    B --&gt; K["IRM ≈ null\nOR 1.01–1.35"]
+    B --&gt; K["IRM ≈ null\nOR 1.03–1.19"]
     B --&gt; J["↑ BK Virus"]
     U --&gt; J["↑ BK Virus\nOR 2.48"]
 
@@ -646,7 +651,7 @@ Figure&nbsp;2: Three-pathway mechanistic framework for PTCy effects.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Post-Block-9 Update (2026-06-01)
+<span class="screen-reader-only">Tip</span>Post-Block-9 Update (2026-08-11)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -753,16 +758,16 @@ Figure&nbsp;2: Three-pathway mechanistic framework for PTCy effects.
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -1206,7 +1211,7 @@ Figure&nbsp;2: Three-pathway mechanistic framework for PTCy effects.
 <span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>**Results.** PTCy was associated with improved OS (C1: OR <span class="in">`r fmt_or(or_os$or, or_os$lo, or_os$hi)`</span>; C2: OR <span class="in">`r fmt_or(or_c2_os$or, or_c2_os$lo, or_c2_os$hi)`</span>), reduced aGVHD (C1: OR <span class="in">`r round(or_agvhd$or, 2)`</span>; C2: OR <span class="in">`r round(or_c2_agvhd$or, 2)`</span>), and a substantial reduction in moderate-severe chronic GVHD (C1: OR <span class="in">`r round(or_cgvhd$or, 2)`</span> — the largest treatment effect). RRM was reduced in both comparisons (C1: OR <span class="in">`r round(or_rrm$or, 2)`</span>; C2: OR <span class="in">`r round(or_c2_rrm$or, 2)`</span>), supporting preserved GVL activity. CMV reactivation was increased vs CNI+MTX/MMF (OR <span class="in">`r fmt_or(or_cmv$or, or_cmv$lo, or_cmv$hi)`</span>) but near-null vs ATG, consistent with a T-cell depletion depth gradient. BK virus (C1: OR <span class="in">`r round(or_bk$or, 2)`</span>) and BSI (C1: OR <span class="in">`r round(or_bsi$or, 2)`</span>) were elevated regardless of comparator. Despite elevated infection rates, infection-related mortality was not increased (C1: OR <span class="in">`r round(or_irm$or, 2)`</span>, Bayesian–frequentist discordant; C2: OR <span class="in">`r round(or_c2_irm$or, 2)`</span>). Within-PTCy regimen variants (C3) showed no significant differences.</span>
 <span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>**Conclusions.** PTCy provides consistent survival, GVHD, and anti-relapse advantages regardless of comparator. Chronic GVHD reduction is the largest treatment effect (OR 0.33). Infection rates are elevated but infection-related mortality is not clearly increased, suggesting the infectious cost is manageable. GRADE certainty is LOW for OS, aGVHD, and RRM; VERY LOW for other outcomes.</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>**Conclusions.** PTCy provides consistent survival, GVHD, and anti-relapse advantages regardless of comparator. Chronic GVHD reduction is among the largest treatment effects (OR 0.47). Infection rates are elevated but infection-related mortality is not clearly increased, suggesting the infectious cost is manageable. GRADE certainty is LOW for OS, aGVHD, and RRM; VERY LOW for other outcomes.</span>
 <span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>---</span>
@@ -1274,7 +1279,7 @@ Figure&nbsp;2: Three-pathway mechanistic framework for PTCy effects.
 <span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key Findings</span></span>
 <span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>::: {.key-finding}</span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>**1. Chronic GVHD — the largest treatment effect.** PTCy reduced moderate-severe chronic GVHD by two-thirds vs CNI+MTX (C1 OR <span class="in">`r round(or_cgvhd$or, 2)`</span> <span class="co">[</span><span class="ot">95% CrI `r round(or_cgvhd$lo, 2)`–`r round(or_cgvhd$hi, 2)`</span><span class="co">]</span>, k = 21). This is the largest treatment effect in the analysis — substantially exceeding acute GVHD (OR <span class="in">`r round(or_agvhd$or, 2)`</span>) — with direct implications for long-term quality of life and immunosuppression duration. The effect attenuates vs ATG (C2 OR <span class="in">`r round(or_c2_cgvhd$or, 2)`</span>), consistent with ATG also providing cGVHD prophylaxis.</span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>**1. Chronic GVHD — the largest treatment effect.** PTCy roughly halved moderate-severe chronic GVHD vs CNI+MTX (C1 OR <span class="in">`r round(or_cgvhd$or, 2)`</span> <span class="co">[</span><span class="ot">95% CrI `r round(or_cgvhd$lo, 2)`–`r round(or_cgvhd$hi, 2)`</span><span class="co">]</span>, k = 19). This is among the largest treatment effects in the analysis — exceeding acute GVHD (OR <span class="in">`r round(or_agvhd$or, 2)`</span>) — with direct implications for long-term quality of life and immunosuppression duration. The effect attenuates vs ATG (C2 OR <span class="in">`r round(or_c2_cgvhd$or, 2)`</span>), consistent with ATG also providing cGVHD prophylaxis.</span>
 <span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a>::: {.key-finding}</span>
@@ -1377,9 +1382,9 @@ Figure&nbsp;2: Three-pathway mechanistic framework for PTCy effects.
 <span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a>The findings resolve into a framework built on three separable consequences of PTCy:</span>
 <span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**GVHD suppression pathway** (intended): PTCy eliminates alloreactive T cells → reduced aGVHD (OR 0.67) and profoundly reduced cGVHD (OR 0.33) → less steroid exposure → lower NRM → improved OS. Chronic GVHD is the most affected outcome, consistent with PTCy's early alloreactive depletion having an outsized impact on chronic alloimmune processes.</span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**GVHD suppression pathway** (intended): PTCy eliminates alloreactive T cells → reduced aGVHD (OR 0.67) and cGVHD (OR 0.47) → less steroid exposure → lower NRM → improved OS. Chronic GVHD is the most affected outcome, consistent with PTCy's early alloreactive depletion having an outsized impact on chronic alloimmune processes.</span>
 <span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**GVL preservation pathway** (intended): PTCy → reduced relapse-related mortality (C1 OR 0.84; C2 OR 0.79), steroid-independent. This explains the residual OS advantage after GVHD/steroid adjustment.</span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**GVL preservation pathway** (intended): PTCy → reduced relapse-related mortality (C1 OR 0.86; C2 OR 0.79), steroid-independent. Note that after cohort deduplication the OS advantage is **not** separable from GVHD suppression (M2 OR 1.04), so this pathway is no longer evidence of a residual direct survival benefit.</span>
 <span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**T-cell lymphodepletion pathway** (unintended): PTCy depletes pathogen-specific T cells during engraftment → elevated CMV, BSI, and BK virus. The CMV depletion gradient (CNI &lt; PTCy ≈ ATG) confirms this is a relative depth-of-depletion effect. BK virus has an additional urothelial toxicity component. Critically, the elevated infection *rates* do not translate clearly into elevated infection-related *mortality*, suggesting the infectious cost is clinically manageable.</span>
 <span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a></span>
@@ -1393,19 +1398,19 @@ Figure&nbsp;2: Three-pathway mechanistic framework for PTCy effects.
 <span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a>    PTCy --&gt; B[<span class="ot">"</span><span class="st">↓ Pathogen-specific</span><span class="ch">\n</span><span class="st">T cells</span><span class="ot">"</span>]</span>
 <span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a>    PTCy --&gt; U[<span class="ot">"</span><span class="st">Urothelial</span><span class="ch">\n</span><span class="st">toxicity</span><span class="ot">"</span>]</span>
 <span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a>    A --&gt; C[<span class="ot">"</span><span class="st">↓↓ cGVHD</span><span class="ch">\n</span><span class="st">OR 0.33</span><span class="ot">"</span>]</span>
+<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a>    A --&gt; C[<span class="ot">"</span><span class="st">↓↓ cGVHD</span><span class="ch">\n</span><span class="st">OR 0.47</span><span class="ot">"</span>]</span>
 <span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a>    A --&gt; C2[<span class="ot">"</span><span class="st">↓ aGVHD</span><span class="ch">\n</span><span class="st">OR 0.67</span><span class="ot">"</span>]</span>
 <span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a>    A --&gt; R[<span class="ot">"</span><span class="st">↓ RRM</span><span class="ch">\n</span><span class="st">OR 0.84</span><span class="ot">"</span>]</span>
 <span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a>    C --&gt; D[<span class="ot">"</span><span class="st">↓ Steroid</span><span class="ch">\n</span><span class="st">exposure</span><span class="ot">"</span>]</span>
 <span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a>    C2 --&gt; D</span>
 <span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a>    D --&gt; E[<span class="ot">"</span><span class="st">↓ NRM</span><span class="ot">"</span>]</span>
-<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a>    D --&gt; F[<span class="ot">"</span><span class="st">↓ OS</span><span class="ch">\n</span><span class="st">OR 0.79</span><span class="ot">"</span>]</span>
+<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a>    D --&gt; F[<span class="ot">"</span><span class="st">↓ OS</span><span class="ch">\n</span><span class="st">OR 0.84</span><span class="ot">"</span>]</span>
 <span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a>    R --&gt; F</span>
 <span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a>    B --&gt; G[<span class="ot">"</span><span class="st">↑ CMV vs CNI</span><span class="ch">\n</span><span class="st">OR 1.26</span><span class="ot">"</span>]</span>
-<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a>    B --&gt; H[<span class="ot">"</span><span class="st">≈ CMV vs ATG</span><span class="ch">\n</span><span class="st">OR 0.92</span><span class="ot">"</span>]</span>
+<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a>    B --&gt; H[<span class="ot">"</span><span class="st">≈ CMV vs ATG</span><span class="ch">\n</span><span class="st">OR 0.97</span><span class="ot">"</span>]</span>
 <span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a>    B --&gt; I[<span class="ot">"</span><span class="st">↑ BSI</span><span class="ch">\n</span><span class="st">OR 1.87</span><span class="ot">"</span>]</span>
-<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a>    B --&gt; K[<span class="ot">"</span><span class="st">IRM ≈ null</span><span class="ch">\n</span><span class="st">OR 1.01–1.35</span><span class="ot">"</span>]</span>
+<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a>    B --&gt; K[<span class="ot">"</span><span class="st">IRM ≈ null</span><span class="ch">\n</span><span class="st">OR 1.03–1.19</span><span class="ot">"</span>]</span>
 <span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a>    B --&gt; J[<span class="ot">"</span><span class="st">↑ BK Virus</span><span class="ot">"</span>]</span>
 <span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a>    U --&gt; J[<span class="ot">"</span><span class="st">↑ BK Virus</span><span class="ch">\n</span><span class="st">OR 2.48</span><span class="ot">"</span>]</span>
 <span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a></span>

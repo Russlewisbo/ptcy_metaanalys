@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a5b552e87c74dd04829b5f4f964f0516.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c3b612d78ebf2c911bb5b2c28edb8189.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 
 </head>
@@ -707,17 +712,17 @@ Table&nbsp;2: RoBMA publication bias assessment. P(effect) is the model-averaged
 <summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Outcome, <span class="sc">~</span>Comparison, <span class="sc">~</span><span class="st">`</span><span class="at">Bayes OR</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">Freq OR</span><span class="st">`</span>, <span class="sc">~</span>I2, <span class="sc">~</span>Concordance,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C1"</span>, <span class="st">"0.79 [0.73-0.85]"</span>, <span class="st">"0.77 [0.66-0.90]"</span>, <span class="st">"64%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C2"</span>, <span class="st">"0.81 [0.74-0.90]"</span>, <span class="st">"0.59 [0.32-1.09]"</span>, <span class="st">"95%"</span>, <span class="st">"Divergent*"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C1"</span>, <span class="st">"0.84 [0.76-0.92]"</span>, <span class="st">"0.79 [0.65-0.94]"</span>, <span class="st">"64%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C2"</span>, <span class="st">"0.83 [0.75-0.92]"</span>, <span class="st">"0.73 [0.44-1.21]"</span>, <span class="st">"93%"</span>, <span class="st">"Divergent*"</span>,</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,  <span class="st">"C1"</span>, <span class="st">"0.88 [0.66-1.18]"</span>, <span class="st">"0.91 [0.68-1.23]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good"</span>,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,  <span class="st">"C2"</span>, <span class="st">"0.63 [0.30-1.31]"</span>, <span class="st">"0.63 [0.30-1.34]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good (k=3)"</span>,</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.67 [0.59-0.78]"</span>, <span class="st">"0.61 [0.47-0.79]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.58 [0.44-0.77]"</span>, <span class="st">"0.46 [0.26-0.83]"</span>, <span class="st">"73%"</span>, <span class="st">"Moderate"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.63 [0.47-0.83]"</span>, <span class="st">"0.51 [0.28-0.94]"</span>, <span class="st">"74%"</span>, <span class="st">"Moderate"</span>,</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C1"</span>, <span class="st">"1.26 [1.07-1.47]"</span>, <span class="st">"1.25 [0.94-1.66]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.92 [0.73-1.15]"</span>, <span class="st">"0.76 [0.47-1.22]"</span>, <span class="st">"71%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C1"</span>, <span class="st">"1.35 [1.16-1.57]"</span>, <span class="st">"1.01 [0.70-1.45]"</span>, <span class="st">"70%"</span>, <span class="st">"Divergent**"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.97 [0.77-1.23]"</span>, <span class="st">"0.83 [0.51-1.33]"</span>, <span class="st">"69%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C1"</span>, <span class="st">"1.19 [1.00-1.43]"</span>, <span class="st">"1.03 [0.72-1.46]"</span>, <span class="st">"57%"</span>, <span class="st">"Concordant"</span>,</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C2"</span>, <span class="st">"0.90 [0.74-1.09]"</span>, <span class="st">"0.81 [0.66-1.00]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.33 [0.29-0.36]"</span>, <span class="st">"0.44 [0.29-0.67]"</span>, <span class="st">"80%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.47 [0.38-0.57]"</span>, <span class="st">"0.42 [0.28-0.61]"</span>, <span class="st">"58%"</span>, <span class="st">"Good"</span>,</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.79 [0.55-1.14]"</span>, <span class="st">"0.77 [0.40-1.45]"</span>, <span class="st">"60%"</span>, <span class="st">"Good"</span></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>)) <span class="sc">|&gt;</span></span>
@@ -747,17 +752,17 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
 <tr class="odd">
 <td style="text-align: left;">OS</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: center;">0.79 [0.73-0.85]</td>
-<td style="text-align: center;">0.77 [0.66-0.90]</td>
+<td style="text-align: center;">0.84 [0.76-0.92]</td>
+<td style="text-align: center;">0.79 [0.65-0.94]</td>
 <td style="text-align: center;">64%</td>
 <td style="text-align: center;">Good</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">OS</td>
 <td style="text-align: center;">C2</td>
-<td style="text-align: center;">0.81 [0.74-0.90]</td>
-<td style="text-align: center;">0.59 [0.32-1.09]</td>
-<td style="text-align: center;">95%</td>
+<td style="text-align: center;">0.83 [0.75-0.92]</td>
+<td style="text-align: center;">0.73 [0.44-1.21]</td>
+<td style="text-align: center;">93%</td>
 <td style="text-align: center;">Divergent*</td>
 </tr>
 <tr class="odd">
@@ -787,9 +792,9 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
 <tr class="even">
 <td style="text-align: left;">aGVHD</td>
 <td style="text-align: center;">C2</td>
-<td style="text-align: center;">0.58 [0.44-0.77]</td>
-<td style="text-align: center;">0.46 [0.26-0.83]</td>
-<td style="text-align: center;">73%</td>
+<td style="text-align: center;">0.63 [0.47-0.83]</td>
+<td style="text-align: center;">0.51 [0.28-0.94]</td>
+<td style="text-align: center;">74%</td>
 <td style="text-align: center;">Moderate</td>
 </tr>
 <tr class="odd">
@@ -803,18 +808,18 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
 <tr class="even">
 <td style="text-align: left;">CMV</td>
 <td style="text-align: center;">C2</td>
-<td style="text-align: center;">0.92 [0.73-1.15]</td>
-<td style="text-align: center;">0.76 [0.47-1.22]</td>
-<td style="text-align: center;">71%</td>
+<td style="text-align: center;">0.97 [0.77-1.23]</td>
+<td style="text-align: center;">0.83 [0.51-1.33]</td>
+<td style="text-align: center;">69%</td>
 <td style="text-align: center;">Good</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">IRM</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: center;">1.35 [1.16-1.57]</td>
-<td style="text-align: center;">1.01 [0.70-1.45]</td>
-<td style="text-align: center;">70%</td>
-<td style="text-align: center;">Divergent**</td>
+<td style="text-align: center;">1.19 [1.00-1.43]</td>
+<td style="text-align: center;">1.03 [0.72-1.46]</td>
+<td style="text-align: center;">57%</td>
+<td style="text-align: center;">Concordant</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IRM</td>
@@ -827,9 +832,9 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
 <tr class="odd">
 <td style="text-align: left;">cGVHD</td>
 <td style="text-align: center;">C1</td>
-<td style="text-align: center;">0.33 [0.29-0.36]</td>
-<td style="text-align: center;">0.44 [0.29-0.67]</td>
-<td style="text-align: center;">80%</td>
+<td style="text-align: center;">0.47 [0.38-0.57]</td>
+<td style="text-align: center;">0.42 [0.28-0.61]</td>
+<td style="text-align: center;">58%</td>
 <td style="text-align: center;">Good</td>
 </tr>
 <tr class="even">
@@ -964,16 +969,16 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -1683,17 +1688,17 @@ Table&nbsp;3: Bayesian vs frequentist estimates across both comparisons. Agreeme
 <span id="cb8-373"><a href="#cb8-373" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-374"><a href="#cb8-374" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb8-375"><a href="#cb8-375" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Outcome, <span class="sc">~</span>Comparison, <span class="sc">~</span><span class="st">`</span><span class="at">Bayes OR</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">Freq OR</span><span class="st">`</span>, <span class="sc">~</span>I2, <span class="sc">~</span>Concordance,</span>
-<span id="cb8-376"><a href="#cb8-376" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C1"</span>, <span class="st">"0.79 [0.73-0.85]"</span>, <span class="st">"0.77 [0.66-0.90]"</span>, <span class="st">"64%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb8-377"><a href="#cb8-377" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C2"</span>, <span class="st">"0.81 [0.74-0.90]"</span>, <span class="st">"0.59 [0.32-1.09]"</span>, <span class="st">"95%"</span>, <span class="st">"Divergent*"</span>,</span>
+<span id="cb8-376"><a href="#cb8-376" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C1"</span>, <span class="st">"0.84 [0.76-0.92]"</span>, <span class="st">"0.79 [0.65-0.94]"</span>, <span class="st">"64%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb8-377"><a href="#cb8-377" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OS"</span>,   <span class="st">"C2"</span>, <span class="st">"0.83 [0.75-0.92]"</span>, <span class="st">"0.73 [0.44-1.21]"</span>, <span class="st">"93%"</span>, <span class="st">"Divergent*"</span>,</span>
 <span id="cb8-378"><a href="#cb8-378" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,  <span class="st">"C1"</span>, <span class="st">"0.88 [0.66-1.18]"</span>, <span class="st">"0.91 [0.68-1.23]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good"</span>,</span>
 <span id="cb8-379"><a href="#cb8-379" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NRM"</span>,  <span class="st">"C2"</span>, <span class="st">"0.63 [0.30-1.31]"</span>, <span class="st">"0.63 [0.30-1.34]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good (k=3)"</span>,</span>
 <span id="cb8-380"><a href="#cb8-380" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.67 [0.59-0.78]"</span>, <span class="st">"0.61 [0.47-0.79]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb8-381"><a href="#cb8-381" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.58 [0.44-0.77]"</span>, <span class="st">"0.46 [0.26-0.83]"</span>, <span class="st">"73%"</span>, <span class="st">"Moderate"</span>,</span>
+<span id="cb8-381"><a href="#cb8-381" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.63 [0.47-0.83]"</span>, <span class="st">"0.51 [0.28-0.94]"</span>, <span class="st">"74%"</span>, <span class="st">"Moderate"</span>,</span>
 <span id="cb8-382"><a href="#cb8-382" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C1"</span>, <span class="st">"1.26 [1.07-1.47]"</span>, <span class="st">"1.25 [0.94-1.66]"</span>, <span class="st">"62%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb8-383"><a href="#cb8-383" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.92 [0.73-1.15]"</span>, <span class="st">"0.76 [0.47-1.22]"</span>, <span class="st">"71%"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb8-384"><a href="#cb8-384" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C1"</span>, <span class="st">"1.35 [1.16-1.57]"</span>, <span class="st">"1.01 [0.70-1.45]"</span>, <span class="st">"70%"</span>, <span class="st">"Divergent**"</span>,</span>
+<span id="cb8-383"><a href="#cb8-383" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CMV"</span>,  <span class="st">"C2"</span>, <span class="st">"0.97 [0.77-1.23]"</span>, <span class="st">"0.83 [0.51-1.33]"</span>, <span class="st">"69%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb8-384"><a href="#cb8-384" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C1"</span>, <span class="st">"1.19 [1.00-1.43]"</span>, <span class="st">"1.03 [0.72-1.46]"</span>, <span class="st">"57%"</span>, <span class="st">"Concordant"</span>,</span>
 <span id="cb8-385"><a href="#cb8-385" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IRM"</span>,  <span class="st">"C2"</span>, <span class="st">"0.90 [0.74-1.09]"</span>, <span class="st">"0.81 [0.66-1.00]"</span>, <span class="st">"0%"</span>,  <span class="st">"Good"</span>,</span>
-<span id="cb8-386"><a href="#cb8-386" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.33 [0.29-0.36]"</span>, <span class="st">"0.44 [0.29-0.67]"</span>, <span class="st">"80%"</span>, <span class="st">"Good"</span>,</span>
+<span id="cb8-386"><a href="#cb8-386" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C1"</span>, <span class="st">"0.47 [0.38-0.57]"</span>, <span class="st">"0.42 [0.28-0.61]"</span>, <span class="st">"58%"</span>, <span class="st">"Good"</span>,</span>
 <span id="cb8-387"><a href="#cb8-387" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cGVHD"</span>,<span class="st">"C2"</span>, <span class="st">"0.79 [0.55-1.14]"</span>, <span class="st">"0.77 [0.40-1.45]"</span>, <span class="st">"60%"</span>, <span class="st">"Good"</span></span>
 <span id="cb8-388"><a href="#cb8-388" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb8-389"><a href="#cb8-389" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>)) <span class="sc">|&gt;</span></span>

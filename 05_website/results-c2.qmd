@@ -45,11 +45,11 @@ tibble(
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   labs(x = "log-OR (PTCy vs ATG)", y = "Posterior density",
        title = "Overall Survival — Comparison 2",
-       subtitle = "k = 10, N = 12,851 · M1 OR 0.81 → M2 OR 0.82 (minimal attenuation)") +
+       subtitle = "k = 9, N = 12,791 · M1 OR 0.83 → M2 OR 0.81 (minimal attenuation)") +
   theme_jama()
 ```
 
-**M1:** OR 0.81 (95% CrI 0.74–0.90), P(OR < 1) = 100%, τ = 0.51. Consistent OS advantage for PTCy over ATG, though attenuated from the pre-Block-9 estimate (0.69).
+**M1:** OR 0.83 (95% CrI 0.75–0.92), P(OR < 1) = 100%, τ = 0.50, k = 9. Consistent OS advantage for PTCy over ATG, though attenuated from the pre-Block-9 estimate (0.69).
 
 **M2:** OR 0.82 (95% CrI 0.71–0.94), minimal log-OR attenuation (~6%). Unlike the pre-Block-9 analysis (35% attenuation), steroid adjustment barely changes the estimate, suggesting that the OS benefit in C2 operates largely through non-GVHD pathways.
 
@@ -64,7 +64,7 @@ The pre-Block-9 C2 NRM (k = 5, OR 0.65 [0.43–0.97]) was nominally significant.
 
 ## Acute GVHD Grade II–IV {#sec-c2-agvhd}
 
-**M1:** OR 0.58 (95% CrI 0.44–0.77), P(OR < 1) > 99%, τ = 0.55, k = 9. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.
+**M1:** OR 0.63 (95% CrI 0.47–0.83), P(OR < 1) > 99%, τ = 0.53, k = 8. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.
 
 ## Chronic GVHD Moderate-Severe {#sec-c2-cgvhd}
 
@@ -85,7 +85,7 @@ if (!is.null(post_c2_cgvhd)) {
 }
 ```
 
-**M1:** OR 0.79 (95% CrI 0.55–1.14), P(OR < 1) = 90%, k = 6, τ = 0.89. Directionally protective but CrI crosses null. The C2 cGVHD effect (OR 0.79) is substantially weaker than C1 (OR 0.33), consistent with ATG also providing significant cGVHD prophylaxis through T-cell depletion — the differential between PTCy and ATG for chronic GVHD is smaller than between PTCy and CNI+MTX.
+**M1:** OR 0.79 (95% CrI 0.55–1.14), P(OR < 1) = 90%, k = 6, τ = 0.89. Directionally protective but CrI crosses null. The C2 cGVHD effect (OR 0.79) is weaker than C1 (OR 0.47), consistent with ATG also providing significant cGVHD prophylaxis through T-cell depletion — the differential between PTCy and ATG for chronic GVHD is smaller than between PTCy and CNI+MTX.
 
 ## CMV Reactivation — The Direction Reversal {#sec-c2-cmv}
 
@@ -110,13 +110,13 @@ tibble(
   scale_colour_manual(values = c("C1: vs CNI+MTX" = jama_navy, "C2: vs ATG" = jama_steel)) +
   labs(x = "log-OR (PTCy vs comparator)", y = "Posterior density",
        title = "CMV Reactivation — Direction Reversal Across Comparisons",
-       subtitle = "C1 OR 1.26 [1.07\u20131.47] vs C2 OR 0.92 [0.73\u20131.15]") +
+       subtitle = "C1 OR 1.26 [1.07\u20131.47] vs C2 OR 0.97 [0.77\u20131.23]") +
   theme_jama()
 ```
 
 ::: {.callout-note}
 ## CMV: From Direction Reversal to Depletion Gradient
-In the pre-Block-9 analysis, a qualitative direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77 [0.60–0.99]). With the expanded post-Block-9 corpus (C1 k = 22, C2 k = 13), C1 CMV remains harmful (OR 1.26 [1.07–1.47]) but C2 CMV has shifted to near-null (OR 0.92 [0.73–1.15]). The evidence now supports a **depletion gradient** (C1 harmful → C2 near-null → C2-sensitivity null) rather than a binary reversal. See [Discussion](discussion.qmd) for the full three-point gradient interpretation.
+In the pre-Block-9 analysis, a qualitative direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77 [0.60–0.99]). With the expanded post-Block-9 corpus (C1 k = 22, C2 k = 12), C1 CMV remains harmful (OR 1.26 [1.07–1.47]) but C2 CMV is null (OR 0.97 [0.77–1.23]). The evidence now supports a **depletion gradient** (C1 harmful → C2 near-null → C2-sensitivity null) rather than a binary reversal. See [Discussion](discussion.qmd) for the full three-point gradient interpretation.
 :::
 
 ## BSI Descriptive Supplement {#sec-c2-bsi}
@@ -185,7 +185,7 @@ if (!is.null(post_c2_rrm)) {
 }
 ```
 
-**M1:** OR 0.79 (95% CrI 0.69–0.89), P(OR < 1) > 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.84) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.
+**M1:** OR 0.79 (95% CrI 0.69–0.89), P(OR < 1) > 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.86) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.
 
 ## BK Virus Reactivation {#sec-c2-bk}
 
@@ -232,7 +232,7 @@ if (!is.null(post_c2_irm)) {
 
 ::: {.callout-note}
 ## IRM Across Comparisons
-The C1/C2 IRM pattern mirrors the CMV depletion gradient: IRM is modestly elevated vs CNI+MTX (Bayesian OR 1.35) but *reduced* vs ATG (OR 0.90). This is consistent with ATG causing greater T-cell depletion–related mortality than PTCy. The C1 Bayesian–frequentist divergence warrants caution, but the overall picture suggests PTCy's infection cost is offset by ATG's even greater immune compromise.
+The C1/C2 IRM pattern mirrors the CMV depletion gradient: IRM is not significantly elevated vs CNI+MTX (Bayesian OR 1.19 [1.00–1.43]) but *reduced* vs ATG (OR 0.90). This is consistent with ATG causing greater T-cell depletion–related mortality than PTCy. The C1 Bayesian–frequentist divergence warrants caution, but the overall picture suggests PTCy's infection cost is offset by ATG's even greater immune compromise.
 :::
 
 ## Cross-Comparison Summary {#sec-c2-summary}

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a5b552e87c74dd04829b5f4f964f0516.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c3b612d78ebf2c911bb5b2c28edb8189.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -263,8 +266,8 @@ Figure&nbsp;1: Posterior density for the PTCy log-OR on overall survival (Compar
 </div>
 </div>
 </div>
-<p><strong>M1 (Direct effect):</strong> OR 0.79 (95% CrI 0.73–0.85), P(OR &lt; 1) = 100%, τ = 0.61. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</p>
-<p><strong>M2 (Steroid-adjusted):</strong> Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.79 to 0.86 (95% CrI 0.77–0.96), a 36% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.</p>
+<p><strong>M1 (Direct effect):</strong> OR 0.84 (95% CrI 0.76–0.92), P(OR &lt; 1) = 100%, τ = 0.66. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</p>
+<p><strong>M2 (Steroid-adjusted):</strong> Adjusting for arm-level systemic steroid exposure abolishes the association (OR 1.04, 95% CrI 0.89–1.22, k = 28). No steroid-independent survival benefit is detectable: the OS advantage is not separable from GVHD suppression. The earlier claim of a residual direct benefit (M2 OR 0.86) was an artifact of same-cohort double counting and has been withdrawn.</p>
 </section>
 <section id="sec-c1-nrm" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c1-nrm">Non-Relapse Mortality</h2>
@@ -367,7 +370,7 @@ Figure&nbsp;2: Posterior density for the PTCy log-OR on non-relapse mortality. M
 <img src="results-c1_files/figure-html/fig-c1-mediation-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-c1-mediation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Comparison of M1→M2 attenuation for OS and NRM. For OS, 71% of the log-OR survives steroid adjustment (partial mediation). For NRM, 0% survives (complete mediation). This contrast defines the causal pathway.
+Figure&nbsp;3: Comparison of M1→M2 attenuation for OS and NRM. After cohort deduplication neither outcome retains a steroid-independent effect: for OS the adjusted estimate crosses the null (M2 OR 1.04), and for NRM it is uninformative at k = 12.
 </figcaption>
 </figure>
 </div>
@@ -420,7 +423,7 @@ Figure&nbsp;4: Posterior density for the PTCy effect on aGVHD grade II–IV. Thi
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Moderate-severe"</span> <span class="ot">=</span> jama_navy, <span class="st">"Any NIH grade"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Chronic GVHD — Posterior Distributions"</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"Mod-sev: k = 21, N = 12,493 · Any: k = 8, N = 1,732"</span>) <span class="sc">+</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"Mod-sev: k = 19, N = 2,840 · Any: k = 8, N = 1,732"</span>) <span class="sc">+</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_jama</span>()</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -437,7 +440,7 @@ Figure&nbsp;5: Posterior densities for the PTCy effect on chronic GVHD. Moderate
 </div>
 </div>
 </div>
-<p><strong>Moderate-severe NIH cGVHD (k = 21):</strong> OR 0.33 (95% CrI 0.29–0.36), P(OR &lt; 1) = 100%, τ = 0.71. The <strong>largest treatment effect in the entire analysis</strong> — PTCy reduces moderate-severe chronic GVHD by approximately two-thirds compared to CNI+MTX/MMF. The CrI is narrow and entirely below null, reflecting the large k and consistent direction across studies.</p>
+<p><strong>Moderate-severe NIH cGVHD (k = 19):</strong> OR 0.47 (95% CrI 0.38–0.57), P(OR &lt; 1) = 100%, τ = 0.77. PTCy roughly halves moderate-severe chronic GVHD versus CNI+MTX/MMF. This estimate replaces a previously reported OR of 0.33, which came from a dataset built outside the audited pipeline and included two studies ineligible under the cohort-selection rule; their removal accounts for the entire shift.</p>
 <p><strong>Any-NIH cGVHD (k = 8):</strong> OR 0.23 (95% CrI 0.18–0.30), P(OR &lt; 1) = 100%, τ = 0.52. An even larger effect when including all grades, though k is smaller. The lower OR likely reflects the inclusion of mild cGVHD, which PTCy prevents almost completely.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -449,7 +452,7 @@ Figure&nbsp;5: Posterior densities for the PTCy effect on chronic GVHD. Moderate
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Chronic GVHD is the most profoundly affected outcome in the entire analysis. The moderate-severe cGVHD OR of 0.33 is substantially larger than the aGVHD effect (OR 0.67), consistent with PTCy’s mechanism: alloreactive T-cell depletion during the early post-transplant window has an outsized impact on the chronic alloimmune processes that drive cGVHD. This has direct implications for long-term quality of life, immunosuppression duration, and late NRM.</p>
+<p>Chronic GVHD is the most profoundly affected outcome in the entire analysis. The moderate-severe cGVHD OR of 0.47 is larger than the aGVHD effect (OR 0.67), consistent with PTCy’s mechanism: alloreactive T-cell depletion during the early post-transplant window has an outsized impact on the chronic alloimmune processes that drive cGVHD. This has direct implications for long-term quality of life, immunosuppression duration, and late NRM.</p>
 </div>
 </div>
 </section>
@@ -553,7 +556,7 @@ Figure&nbsp;7: Posterior densities for BSI (any pathogen) and IFI (any). BSI sho
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relapse-Related Mortality — Posterior Distributions"</span>,</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 38, N = 19,225"</span>) <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 34, N = 11,121"</span>) <span class="sc">+</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -570,7 +573,7 @@ Figure&nbsp;8: Posterior density for the PTCy effect on relapse-related mortalit
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.84 (95% CrI 0.76–0.93), P(OR &lt; 1) &gt; 99%, k = 38. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.</p>
+<p><strong>M1:</strong> OR 0.86 (95% CrI 0.77–0.97), P(OR &lt; 1) &gt; 99%, k = 34. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.</p>
 <p><strong>M2 (steroid-adjusted):</strong> OR 0.83 (95% CrI 0.73–0.93). No attenuation after steroid adjustment — confirming that the RRM benefit operates through a GVHD-independent pathway, most plausibly GVL preservation. This contrasts with OS (partially mediated) and NRM (uncertain mediation), and helps decompose the residual OS benefit that survives steroid adjustment.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -642,7 +645,7 @@ Figure&nbsp;9: Posterior density for the PTCy effect on BK virus reactivation (C
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Infection-Related Mortality — Posterior Distribution"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"k = 16, N = 8,214 · Bayesian OR 1.35 [1.16\u20131.57]"</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"k = 13, N = 5,504 · Bayesian OR 1.19 [1.00\u20131.43]"</span>) <span class="sc">+</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_jama</span>()</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -659,7 +662,7 @@ Figure&nbsp;10: Posterior density for the PTCy effect on infection-related morta
 </div>
 </div>
 </div>
-<p><strong>Bayesian M1:</strong> OR 1.35 (95% CrI 1.16–1.57), P(OR &gt; 1) = 100%, k = 16, τ = 0.84. The Bayesian binomial model finds elevated infection-related mortality with PTCy.</p>
+<p><strong>Bayesian M1:</strong> OR 1.19 (95% CrI 1.00–1.43), k = 13, τ = 0.82. After cohort deduplication the credible interval touches the null, so infection-related mortality is <strong>no longer significantly elevated</strong> with PTCy (previously OR 1.35 [1.16–1.57], k = 16).</p>
 <p><strong>Frequentist RE:</strong> OR 1.01 (95% CI 0.70–1.45), I² = 70%. The frequentist random-effects model finds a null effect.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -856,16 +859,16 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -1289,9 +1292,9 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>**M1 (Direct effect):** OR 0.79 (95% CrI 0.73–0.85), P(OR &lt; 1) = 100%, τ = 0.61. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>**M1 (Direct effect):** OR 0.84 (95% CrI 0.76–0.92), P(OR &lt; 1) = 100%, τ = 0.66. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.</span>
 <span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.79 to 0.86 (95% CrI 0.77–0.96), a 36% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.</span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure abolishes the association (OR 1.04, 95% CrI 0.89–1.22, k = 28). No steroid-independent survival benefit is detectable: the OS advantage is not separable from GVHD suppression. The earlier claim of a residual direct benefit (M2 OR 0.86) was an artifact of same-cohort double counting and has been withdrawn.</span>
 <span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## Non-Relapse Mortality {#sec-c1-nrm}</span></span>
 <span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a></span>
@@ -1328,7 +1331,7 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-c1-mediation</span></span>
-<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Comparison of M1→M2 attenuation for OS and NRM. For OS, 71% of the log-OR survives steroid adjustment (partial mediation). For NRM, 0% survives (complete mediation). This contrast defines the causal pathway."</span></span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Comparison of M1→M2 attenuation for OS and NRM. After cohort deduplication neither outcome retains a steroid-independent effect: for OS the adjusted estimate crosses the null (M2 OR 1.04), and for NRM it is uninformative at k = 12."</span></span>
 <span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
 <span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>med_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
@@ -1411,18 +1414,18 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-201"><a href="#cb12-201" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Moderate-severe"</span> <span class="ot">=</span> jama_navy, <span class="st">"Any NIH grade"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb12-202"><a href="#cb12-202" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb12-203"><a href="#cb12-203" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Chronic GVHD — Posterior Distributions"</span>,</span>
-<span id="cb12-204"><a href="#cb12-204" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"Mod-sev: k = 21, N = 12,493 · Any: k = 8, N = 1,732"</span>) <span class="sc">+</span></span>
+<span id="cb12-204"><a href="#cb12-204" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"Mod-sev: k = 19, N = 2,840 · Any: k = 8, N = 1,732"</span>) <span class="sc">+</span></span>
 <span id="cb12-205"><a href="#cb12-205" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_jama</span>()</span>
 <span id="cb12-206"><a href="#cb12-206" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb12-207"><a href="#cb12-207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-208"><a href="#cb12-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-209"><a href="#cb12-209" aria-hidden="true" tabindex="-1"></a>**Moderate-severe NIH cGVHD (k = 21):** OR 0.33 (95% CrI 0.29–0.36), P(OR &lt; 1) = 100%, τ = 0.71. The **largest treatment effect in the entire analysis** — PTCy reduces moderate-severe chronic GVHD by approximately two-thirds compared to CNI+MTX/MMF. The CrI is narrow and entirely below null, reflecting the large k and consistent direction across studies.</span>
+<span id="cb12-209"><a href="#cb12-209" aria-hidden="true" tabindex="-1"></a>**Moderate-severe NIH cGVHD (k = 19):** OR 0.47 (95% CrI 0.38–0.57), P(OR &lt; 1) = 100%, τ = 0.77. PTCy roughly halves moderate-severe chronic GVHD versus CNI+MTX/MMF. This estimate replaces a previously reported OR of 0.33, which came from a dataset built outside the audited pipeline and included two studies ineligible under the cohort-selection rule; their removal accounts for the entire shift.</span>
 <span id="cb12-210"><a href="#cb12-210" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-211"><a href="#cb12-211" aria-hidden="true" tabindex="-1"></a>**Any-NIH cGVHD (k = 8):** OR 0.23 (95% CrI 0.18–0.30), P(OR &lt; 1) = 100%, τ = 0.52. An even larger effect when including all grades, though k is smaller. The lower OR likely reflects the inclusion of mild cGVHD, which PTCy prevents almost completely.</span>
 <span id="cb12-212"><a href="#cb12-212" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-213"><a href="#cb12-213" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
 <span id="cb12-214"><a href="#cb12-214" aria-hidden="true" tabindex="-1"></a><span class="fu">## cGVHD: The Strongest PTCy Effect</span></span>
-<span id="cb12-215"><a href="#cb12-215" aria-hidden="true" tabindex="-1"></a>Chronic GVHD is the most profoundly affected outcome in the entire analysis. The moderate-severe cGVHD OR of 0.33 is substantially larger than the aGVHD effect (OR 0.67), consistent with PTCy's mechanism: alloreactive T-cell depletion during the early post-transplant window has an outsized impact on the chronic alloimmune processes that drive cGVHD. This has direct implications for long-term quality of life, immunosuppression duration, and late NRM.</span>
+<span id="cb12-215"><a href="#cb12-215" aria-hidden="true" tabindex="-1"></a>Chronic GVHD is the most profoundly affected outcome in the entire analysis. The moderate-severe cGVHD OR of 0.47 is larger than the aGVHD effect (OR 0.67), consistent with PTCy's mechanism: alloreactive T-cell depletion during the early post-transplant window has an outsized impact on the chronic alloimmune processes that drive cGVHD. This has direct implications for long-term quality of life, immunosuppression duration, and late NRM.</span>
 <span id="cb12-216"><a href="#cb12-216" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb12-217"><a href="#cb12-217" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-218"><a href="#cb12-218" aria-hidden="true" tabindex="-1"></a><span class="fu">## CMV Any-Reactivation {#sec-c1-cmv}</span></span>
@@ -1510,12 +1513,12 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-306"><a href="#cb12-306" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb12-307"><a href="#cb12-307" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb12-308"><a href="#cb12-308" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relapse-Related Mortality — Posterior Distributions"</span>,</span>
-<span id="cb12-309"><a href="#cb12-309" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 38, N = 19,225"</span>) <span class="sc">+</span></span>
+<span id="cb12-309"><a href="#cb12-309" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 34, N = 11,121"</span>) <span class="sc">+</span></span>
 <span id="cb12-310"><a href="#cb12-310" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb12-311"><a href="#cb12-311" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb12-312"><a href="#cb12-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-313"><a href="#cb12-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-314"><a href="#cb12-314" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.84 (95% CrI 0.76–0.93), P(OR &lt; 1) &gt; 99%, k = 38. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.</span>
+<span id="cb12-314"><a href="#cb12-314" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.86 (95% CrI 0.77–0.97), P(OR &lt; 1) &gt; 99%, k = 34. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.</span>
 <span id="cb12-315"><a href="#cb12-315" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-316"><a href="#cb12-316" aria-hidden="true" tabindex="-1"></a>**M2 (steroid-adjusted):** OR 0.83 (95% CrI 0.73–0.93). No attenuation after steroid adjustment — confirming that the RRM benefit operates through a GVHD-independent pathway, most plausibly GVL preservation. This contrasts with OS (partially mediated) and NRM (uncertain mediation), and helps decompose the residual OS benefit that survives steroid adjustment.</span>
 <span id="cb12-317"><a href="#cb12-317" aria-hidden="true" tabindex="-1"></a></span>
@@ -1565,12 +1568,12 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-365"><a href="#cb12-365" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> jama_grey) <span class="sc">+</span></span>
 <span id="cb12-366"><a href="#cb12-366" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs CNI+MTX/MMF)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb12-367"><a href="#cb12-367" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Infection-Related Mortality — Posterior Distribution"</span>,</span>
-<span id="cb12-368"><a href="#cb12-368" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"k = 16, N = 8,214 · Bayesian OR 1.35 [1.16\u20131.57]"</span>) <span class="sc">+</span></span>
+<span id="cb12-368"><a href="#cb12-368" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"k = 13, N = 5,504 · Bayesian OR 1.19 [1.00\u20131.43]"</span>) <span class="sc">+</span></span>
 <span id="cb12-369"><a href="#cb12-369" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_jama</span>()</span>
 <span id="cb12-370"><a href="#cb12-370" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb12-371"><a href="#cb12-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-372"><a href="#cb12-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-373"><a href="#cb12-373" aria-hidden="true" tabindex="-1"></a>**Bayesian M1:** OR 1.35 (95% CrI 1.16–1.57), P(OR &gt; 1) = 100%, k = 16, τ = 0.84. The Bayesian binomial model finds elevated infection-related mortality with PTCy.</span>
+<span id="cb12-373"><a href="#cb12-373" aria-hidden="true" tabindex="-1"></a>**Bayesian M1:** OR 1.19 (95% CrI 1.00–1.43), k = 13, τ = 0.82. After cohort deduplication the credible interval touches the null, so infection-related mortality is **no longer significantly elevated** with PTCy (previously OR 1.35 <span class="co">[</span><span class="ot">1.16–1.57</span><span class="co">]</span>, k = 16).</span>
 <span id="cb12-374"><a href="#cb12-374" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-375"><a href="#cb12-375" aria-hidden="true" tabindex="-1"></a>**Frequentist RE:** OR 1.01 (95% CI 0.70–1.45), I² = 70%. The frequentist random-effects model finds a null effect.</span>
 <span id="cb12-376"><a href="#cb12-376" aria-hidden="true" tabindex="-1"></a></span>

@@ -67,9 +67,9 @@ tibble(
   theme_jama()
 ```
 
-**M1 (Direct effect):** OR 0.79 (95% CrI 0.73–0.85), P(OR < 1) = 100%, τ = 0.61. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.
+**M1 (Direct effect):** OR 0.84 (95% CrI 0.76–0.92), P(OR < 1) = 100%, τ = 0.66. The posterior is entirely below the null, indicating a consistent mortality reduction with PTCy.
 
-**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure attenuated the OR from 0.79 to 0.86 (95% CrI 0.77–0.96), a 36% reduction in the log-OR. The residual benefit after adjustment indicates GVHD mediation does not fully explain the OS advantage.
+**M2 (Steroid-adjusted):** Adjusting for arm-level systemic steroid exposure abolishes the association (OR 1.04, 95% CrI 0.89–1.22, k = 28). No steroid-independent survival benefit is detectable: the OS advantage is not separable from GVHD suppression. The earlier claim of a residual direct benefit (M2 OR 0.86) was an artifact of same-cohort double counting and has been withdrawn.
 
 ## Non-Relapse Mortality {#sec-c1-nrm}
 
@@ -106,7 +106,7 @@ The pre-Block-9 M1→M2 shift (OR 0.86 → 1.02) was the strongest mediation fin
 
 ```{r}
 #| label: fig-c1-mediation
-#| fig-cap: "Comparison of M1→M2 attenuation for OS and NRM. For OS, 71% of the log-OR survives steroid adjustment (partial mediation). For NRM, 0% survives (complete mediation). This contrast defines the causal pathway."
+#| fig-cap: "Comparison of M1→M2 attenuation for OS and NRM. After cohort deduplication neither outcome retains a steroid-independent effect: for OS the adjusted estimate crosses the null (M2 OR 1.04), and for NRM it is uninformative at k = 12."
 #| fig-height: 5
 
 med_data <- tibble(
@@ -189,18 +189,18 @@ if (nrow(cgvhd_draws) > 0) {
     scale_colour_manual(values = c("Moderate-severe" = jama_navy, "Any NIH grade" = jama_steel)) +
     labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
          title = "Chronic GVHD — Posterior Distributions",
-         subtitle = "Mod-sev: k = 21, N = 12,493 · Any: k = 8, N = 1,732") +
+         subtitle = "Mod-sev: k = 19, N = 2,840 · Any: k = 8, N = 1,732") +
     theme_jama()
 }
 ```
 
-**Moderate-severe NIH cGVHD (k = 21):** OR 0.33 (95% CrI 0.29–0.36), P(OR < 1) = 100%, τ = 0.71. The **largest treatment effect in the entire analysis** — PTCy reduces moderate-severe chronic GVHD by approximately two-thirds compared to CNI+MTX/MMF. The CrI is narrow and entirely below null, reflecting the large k and consistent direction across studies.
+**Moderate-severe NIH cGVHD (k = 19):** OR 0.47 (95% CrI 0.38–0.57), P(OR < 1) = 100%, τ = 0.77. PTCy roughly halves moderate-severe chronic GVHD versus CNI+MTX/MMF. This estimate replaces a previously reported OR of 0.33, which came from a dataset built outside the audited pipeline and included two studies ineligible under the cohort-selection rule; their removal accounts for the entire shift.
 
 **Any-NIH cGVHD (k = 8):** OR 0.23 (95% CrI 0.18–0.30), P(OR < 1) = 100%, τ = 0.52. An even larger effect when including all grades, though k is smaller. The lower OR likely reflects the inclusion of mild cGVHD, which PTCy prevents almost completely.
 
 ::: {.callout-note}
 ## cGVHD: The Strongest PTCy Effect
-Chronic GVHD is the most profoundly affected outcome in the entire analysis. The moderate-severe cGVHD OR of 0.33 is substantially larger than the aGVHD effect (OR 0.67), consistent with PTCy's mechanism: alloreactive T-cell depletion during the early post-transplant window has an outsized impact on the chronic alloimmune processes that drive cGVHD. This has direct implications for long-term quality of life, immunosuppression duration, and late NRM.
+Chronic GVHD is the most profoundly affected outcome in the entire analysis. The moderate-severe cGVHD OR of 0.47 is larger than the aGVHD effect (OR 0.67), consistent with PTCy's mechanism: alloreactive T-cell depletion during the early post-transplant window has an outsized impact on the chronic alloimmune processes that drive cGVHD. This has direct implications for long-term quality of life, immunosuppression duration, and late NRM.
 :::
 
 ## CMV Any-Reactivation {#sec-c1-cmv}
@@ -288,12 +288,12 @@ rrm_draws |>
   scale_colour_manual(values = c("M1" = jama_navy, "M2" = jama_steel)) +
   labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
        title = "Relapse-Related Mortality — Posterior Distributions",
-       subtitle = "k = 38, N = 19,225") +
+       subtitle = "k = 34, N = 11,121") +
   theme_jama()
 }
 ```
 
-**M1:** OR 0.84 (95% CrI 0.76–0.93), P(OR < 1) > 99%, k = 38. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.
+**M1:** OR 0.86 (95% CrI 0.77–0.97), P(OR < 1) > 99%, k = 34. PTCy is associated with reduced relapse-related mortality, consistent with preserved graft-versus-leukaemia (GVL) activity. This is the first meta-analytic estimate of this outcome.
 
 **M2 (steroid-adjusted):** OR 0.83 (95% CrI 0.73–0.93). No attenuation after steroid adjustment — confirming that the RRM benefit operates through a GVHD-independent pathway, most plausibly GVL preservation. This contrasts with OS (partially mediated) and NRM (uncertain mediation), and helps decompose the residual OS benefit that survives steroid adjustment.
 
@@ -343,12 +343,12 @@ if (!is.null(post_irm)) {
     geom_vline(xintercept = 0, linetype = "dashed", colour = jama_grey) +
     labs(x = "log-OR (PTCy vs CNI+MTX/MMF)", y = "Posterior density",
          title = "Infection-Related Mortality — Posterior Distribution",
-         subtitle = "k = 16, N = 8,214 · Bayesian OR 1.35 [1.16\u20131.57]") +
+         subtitle = "k = 13, N = 5,504 · Bayesian OR 1.19 [1.00\u20131.43]") +
     theme_jama()
 }
 ```
 
-**Bayesian M1:** OR 1.35 (95% CrI 1.16–1.57), P(OR > 1) = 100%, k = 16, τ = 0.84. The Bayesian binomial model finds elevated infection-related mortality with PTCy.
+**Bayesian M1:** OR 1.19 (95% CrI 1.00–1.43), k = 13, τ = 0.82. After cohort deduplication the credible interval touches the null, so infection-related mortality is **no longer significantly elevated** with PTCy (previously OR 1.35 [1.16–1.57], k = 16).
 
 **Frequentist RE:** OR 1.01 (95% CI 0.70–1.45), I² = 70%. The frequentist random-effects model finds a null effect.
 

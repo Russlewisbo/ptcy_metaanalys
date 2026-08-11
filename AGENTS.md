@@ -1,6 +1,6 @@
 # PTCy Meta-Analysis — Project Memory
 
-**Last updated:** 2026-06-19 (evening)
+**Last updated:** 2026-08-11 (evening)
 **Lead:** R. Lewis (UniPD) · **Co-reviewer:** BMT program director (verification pending)
 
 ---
@@ -16,11 +16,13 @@ outcomes with a GVHD-mediation model (steroid exposure as mediator).
 ## Current Phase
 
 **Phase 4 (verification):** Self-audit done; BMT director spot-check NOT started.
-**Phase 5 (analysis):** Post-Block-9 Bayesian refit COMPLETE (19 primary models + 2 CMV sensitivity + IFI LOO).
-**Phase 6 (writing):** Supplementary materials drafting in progress.
-**Website:** Quarto site renders cleanly (11 pages, last built 2026-06-19).
-**Writing:** Draft sections + supplementary appendices in `04_writing/`.
-
+**Phase 5 (analysis):** **Set B (cohort-deduplicated) adopted 2026-08-11** and propagated.
+An audit found same-cohort double counting in 9 of 29 analytic datasets; models were
+refitted with one publication per cohort per outcome. Two previously reported claims did
+not survive (see Key Model Results).
+**Phase 6 (writing):** Manuscript text, Table 2, GRADE, and all figures updated to Set B.
+`Manuscript_LancetHaem_draft.qmd` renders cleanly to HTML (verified 2026-08-11).
+**Website:** `05_website/` NOT yet updated for Set B - still shows pre-deduplication numbers.
 ---
 
 ## Database (Post-Block-9)
@@ -129,12 +131,12 @@ narrative weakened (C2 was 0.77, now null at 0.97).
 
 ---
 
-## GRADE Certainty (Post-Block-9)
+## GRADE Certainty (Set B, revised 2026-08-11)
 
 | Outcome | C1 | C2 |
 |---------|----|----|
 | OS      | LOW (retained; M2 attenuation = mediation, not bias) | LOW |
-| NRM     | VERY LOW | Not assessable (k=2) |
+| NRM     | VERY LOW (imprecision only; RoB downgrade withdrawn) | Not assessable (k=2) |
 | aGVHD   | LOW | LOW |
 | CMV     | LOW (robustness upgrade confirmed) | VERY LOW |
 | BSI     | VERY LOW (lost large-mag upgrade) | VERY LOW (informal) |
@@ -152,14 +154,14 @@ File: `04_writing/GRADE_certainty_assessment_combined_post_block9.md`
 | S2 | PRISMA 2020 flow diagram | Numbers complete; needs editable format |
 | S3 | Excluded studies (n=214) | **DONE** — all labels recovered |
 | S4 | Study/arm characteristics | **DONE** — cross-checked |
-| S5 | Risk of bias figures | Not started |
+| S5 | Risk of bias figures | **DONE** (S5a-c); S5d/S5e pending |
 | S6 | Model specification | Ready to draft |
 | S7 | MCMC diagnostics | Partially available |
-| S8 | Forest plots | Available from website |
-| S9 | Sensitivity analyses | Partially available |
+| S8 | Forest plots | **DONE** - S8a-S8j as png/pdf/svg in `04_writing/figures/` |
+| S9 | Sensitivity analyses | S9a-d pending; **S9e DRAFTED** (`Appendix_S9e_frequentist_concordance.md`) |
 | S10 | Publication bias (RoBMA) | Models exist, interpretation pending |
 | S11 | GRADE evidence profiles | **DONE** |
-| S12 | Cohort overlap map | Not started |
+| S12 | Cohort overlap map | **DONE** - `Appendix_S12_cohort_overlap.md` + Tables S12a/b/c |
 | S13 | PROSPERO protocol | Exists as docx |
 | S14 | PRISMA 2020 checklist | Not started |
 
@@ -241,9 +243,12 @@ outcomes <- read_csv("02_extraction/outcomes.csv")
 cohorts  <- read_csv("02_extraction/cohorts.csv")
 rob      <- read_csv("02_extraction/rob.csv")
 
-# Post-Block-9 posteriors (example)
-post_c1_os <- readRDS("03_models/post_block9/post_c1_os.rds")
-or_draws   <- exp(post_c1_os$b_ptcy_binary)
+# Set B models (ADOPTED). set_b/ is a PARTIAL overlay - prefer it, fall back to post_block9.
+resolve <- function(f) if (file.exists(file.path("03_models/set_b", f)))
+  file.path("03_models/set_b", f) else file.path("03_models/post_block9", f)
+m1_c1_os <- readRDS(resolve("m1_c1_os.rds"))   # k=35 Set B
+or_draws <- exp(posterior::as_draws_df(m1_c1_os)$b_ptcy_binary)
+# Table 2: 03_models/set_b/Table2_setB.csv  (NOT Table2_post_block9.csv)
 
 # CMV sensitivity posteriors
 post_cmv_post2020 <- readRDS("03_models/post_block9/post_m1_post2020.rds")
@@ -273,7 +278,7 @@ PTCy column is `b_eventsn_ptcy_binary`.
 
 ## Locked Decisions
 
-- `primary_for_cohort = partial` allowed for outcome-specific publications
+- `primary_for_cohort = partial` allowed for outcome-specific publications **(SUPERSEDED 2026-08-11:** the flag is still used, but the dataset builder is now outcome-aware - a cohort may contribute only one publication per outcome, resolved via `03_models/cohort_overrides.csv`. See `build_analytic_outcome_aware.R`.**)**
 - Conference abstracts excluded entirely
 - Subgroup outcomes extracted opportunistically (no author contact)
 - Cohort labels added as papers encountered

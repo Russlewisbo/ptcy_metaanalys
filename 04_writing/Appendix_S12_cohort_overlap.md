@@ -251,6 +251,66 @@ rather than choosing arbitrarily.
    primary (49).
 3. Cohort 1003 has at least three publications (9, 335, 338) and no study flagged `Y`.
 
+## S12.8 Attempted donor-stratum split of cohort 1024
+
+Section S12.5 showed that cohort 1024 behaves as a registry umbrella rather than a
+single patient population, and recommended splitting it into donor-stratum sub-cohorts
+so that a strata-aware analysis (Set C) could be justified. That split was attempted on
+2026-08-11 and **could not be completed**. The evidence is in
+`03_models/cohort_1024_subcohorts_PROPOSED.csv`.
+
+Assigning each of the 31 publications a donor stratum from its arm-level data gives:
+
+| Donor stratum | Publications | Cleanly assignable |
+|---|---|---|
+| haplo | 9 | yes |
+| MUD | 6 | yes |
+| MMUD | 3 | yes |
+| MSD | 2 | yes |
+| haplo+MUD | 3 | no |
+| MMUD+UCB | 2 | no |
+| haplo+MSD | 2 | no |
+| haplo+MMUD, haplo+MMUD+MUD, haplo+MMUD+MSD+MUD, haplo+UCB | 1 each | no |
+
+**20 of 31 publications sit in a single donor stratum; 11 span two or more.** A
+multi-stratum publication cannot be placed in a disjoint sub-cohort: a haplo+MUD paper
+shares patients with both the haplo and the MUD sub-cohort by construction. Enrollment
+windows also overlap almost completely across strata (2005-2022). Splitting would
+therefore produce sub-cohorts that are not mutually exclusive, replacing one visible
+double-counting problem with a less visible one.
+
+The failure is decisive for the outcome it was meant to fix. Of the five publications
+contributing to the C1 overall-survival model, only two are cleanly assignable:
+
+| Study | Publication | Donor strata | Sub-cohort |
+|---|---|---|---|
+| 287 | Nagler 2022 | MSD | `1024_MSD` |
+| 281 | Nagler 2024 | MUD | `1024_MUD` |
+| 118 | Dholaria 2021 | MMUD + UCB | unassignable |
+| 52 | Baron 2024 | MMUD + UCB | unassignable |
+| 325 | Ruggeri 2022 | haplo + UCB | unassignable |
+
+The three unassignable publications are precisely the three that created the problem in
+the first place: each carries an umbilical-cord comparator arm drawn from the same
+registry and era, so their control patients are shared regardless of how their PTCy arms
+are labelled. A donor-stratum split addresses the PTCy side and leaves the comparator
+side untouched.
+
+**Consequence: Set C is not enabled, and Set B remains the adopted analysis.** Set C as
+fitted earlier (k = 37, OR 0.81 [0.75-0.89]) retains two publications with overlapping
+cord-blood control arms and should be treated as an exploratory sensitivity analysis,
+not as a defensible primary analysis.
+
+Resolving this properly requires information the extraction database does not contain -
+patient-level or at least centre-and-date-level detail sufficient to establish whether
+the cord-blood control arms overlap, which in practice means contacting the EBMT ALWP.
+Until then, one publication per cohort per outcome (Set B) is the conservative choice.
+
+Note also that `02_extraction/*.csv` is exported from the Excel workbook by
+`export_to_csv.R`; the proposed mapping is deliberately kept as a separate file rather
+than written into `cohorts.csv`, which would be overwritten on the next export and would
+desynchronise the CSVs from the workbook.
+
 ## Outstanding
 
 1. Adjudicate cohort 1024: split the EBMT ALWP umbrella into donor-stratum cohorts,

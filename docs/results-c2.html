@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a5b552e87c74dd04829b5f4f964f0516.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c3b612d78ebf2c911bb5b2c28edb8189.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -247,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs ATG)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Overall Survival — Comparison 2"</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 10, N = 12,851 · M1 OR 0.81 → M2 OR 0.82 (minimal attenuation)"</span>) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 9, N = 12,791 · M1 OR 0.83 → M2 OR 0.81 (minimal attenuation)"</span>) <span class="sc">+</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -263,7 +266,7 @@ Figure&nbsp;1: OS posterior densities for Comparison 2. M2 steroid adjustment at
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.81 (95% CrI 0.74–0.90), P(OR &lt; 1) = 100%, τ = 0.51. Consistent OS advantage for PTCy over ATG, though attenuated from the pre-Block-9 estimate (0.69).</p>
+<p><strong>M1:</strong> OR 0.83 (95% CrI 0.75–0.92), P(OR &lt; 1) = 100%, τ = 0.50, k = 9. Consistent OS advantage for PTCy over ATG, though attenuated from the pre-Block-9 estimate (0.69).</p>
 <p><strong>M2:</strong> OR 0.82 (95% CrI 0.71–0.94), minimal log-OR attenuation (~6%). Unlike the pre-Block-9 analysis (35% attenuation), steroid adjustment barely changes the estimate, suggesting that the OS benefit in C2 operates largely through non-GVHD pathways.</p>
 </section>
 <section id="sec-c2-nrm" class="level2">
@@ -285,7 +288,7 @@ Figure&nbsp;1: OS posterior densities for Comparison 2. M2 steroid adjustment at
 </section>
 <section id="sec-c2-agvhd" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c2-agvhd">Acute GVHD Grade II–IV</h2>
-<p><strong>M1:</strong> OR 0.58 (95% CrI 0.44–0.77), P(OR &lt; 1) &gt; 99%, τ = 0.55, k = 9. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.</p>
+<p><strong>M1:</strong> OR 0.63 (95% CrI 0.47–0.83), P(OR &lt; 1) &gt; 99%, τ = 0.53, k = 8. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.</p>
 </section>
 <section id="sec-c2-cgvhd" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c2-cgvhd">Chronic GVHD Moderate-Severe</h2>
@@ -316,7 +319,7 @@ Figure&nbsp;2: Posterior density for the PTCy effect on moderate-severe chronic 
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.79 (95% CrI 0.55–1.14), P(OR &lt; 1) = 90%, k = 6, τ = 0.89. Directionally protective but CrI crosses null. The C2 cGVHD effect (OR 0.79) is substantially weaker than C1 (OR 0.33), consistent with ATG also providing significant cGVHD prophylaxis through T-cell depletion — the differential between PTCy and ATG for chronic GVHD is smaller than between PTCy and CNI+MTX.</p>
+<p><strong>M1:</strong> OR 0.79 (95% CrI 0.55–1.14), P(OR &lt; 1) = 90%, k = 6, τ = 0.89. Directionally protective but CrI crosses null. The C2 cGVHD effect (OR 0.79) is weaker than C1 (OR 0.47), consistent with ATG also providing significant cGVHD prophylaxis through T-cell depletion — the differential between PTCy and ATG for chronic GVHD is smaller than between PTCy and CNI+MTX.</p>
 </section>
 <section id="sec-c2-cmv" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c2-cmv">CMV Reactivation — The Direction Reversal</h2>
@@ -339,7 +342,7 @@ Figure&nbsp;2: Posterior density for the PTCy effect on moderate-severe chronic 
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"C1: vs CNI+MTX"</span> <span class="ot">=</span> jama_navy, <span class="st">"C2: vs ATG"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs comparator)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"CMV Reactivation — Direction Reversal Across Comparisons"</span>,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"C1 OR 1.26 [1.07\u20131.47] vs C2 OR 0.92 [0.73\u20131.15]"</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"C1 OR 1.26 [1.07\u20131.47] vs C2 OR 0.97 [0.77\u20131.23]"</span>) <span class="sc">+</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -365,7 +368,7 @@ Figure&nbsp;3: CMV posterior densities across comparisons. In C1 (navy), PTCy in
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the pre-Block-9 analysis, a qualitative direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77 [0.60–0.99]). With the expanded post-Block-9 corpus (C1 k = 22, C2 k = 13), C1 CMV remains harmful (OR 1.26 [1.07–1.47]) but C2 CMV has shifted to near-null (OR 0.92 [0.73–1.15]). The evidence now supports a <strong>depletion gradient</strong> (C1 harmful → C2 near-null → C2-sensitivity null) rather than a binary reversal. See <a href="./discussion.html">Discussion</a> for the full three-point gradient interpretation.</p>
+<p>In the pre-Block-9 analysis, a qualitative direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77 [0.60–0.99]). With the expanded post-Block-9 corpus (C1 k = 22, C2 k = 12), C1 CMV remains harmful (OR 1.26 [1.07–1.47]) but C2 CMV is null (OR 0.97 [0.77–1.23]). The evidence now supports a <strong>depletion gradient</strong> (C1 harmful → C2 near-null → C2-sensitivity null) rather than a binary reversal. See <a href="./discussion.html">Discussion</a> for the full three-point gradient interpretation.</p>
 </div>
 </div>
 </section>
@@ -454,7 +457,7 @@ Figure&nbsp;5: Posterior density for the PTCy effect on relapse-related mortalit
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.79 (95% CrI 0.69–0.89), P(OR &lt; 1) &gt; 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.84) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.</p>
+<p><strong>M1:</strong> OR 0.79 (95% CrI 0.69–0.89), P(OR &lt; 1) &gt; 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.86) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.</p>
 </section>
 <section id="sec-c2-bk" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c2-bk">BK Virus Reactivation</h2>
@@ -527,7 +530,7 @@ Figure&nbsp;7: Posterior density for the PTCy effect on infection-related mortal
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The C1/C2 IRM pattern mirrors the CMV depletion gradient: IRM is modestly elevated vs CNI+MTX (Bayesian OR 1.35) but <em>reduced</em> vs ATG (OR 0.90). This is consistent with ATG causing greater T-cell depletion–related mortality than PTCy. The C1 Bayesian–frequentist divergence warrants caution, but the overall picture suggests PTCy’s infection cost is offset by ATG’s even greater immune compromise.</p>
+<p>The C1/C2 IRM pattern mirrors the CMV depletion gradient: IRM is not significantly elevated vs CNI+MTX (Bayesian OR 1.19 [1.00–1.43]) but <em>reduced</em> vs ATG (OR 0.90). This is consistent with ATG causing greater T-cell depletion–related mortality than PTCy. The C1 Bayesian–frequentist divergence warrants caution, but the overall picture suggests PTCy’s infection cost is offset by ATG’s even greater immune compromise.</p>
 </div>
 </div>
 </section>
@@ -723,16 +726,16 @@ Figure&nbsp;8: Combined forest plot comparing Comparison 1 (left) and Comparison
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -1134,11 +1137,11 @@ Figure&nbsp;8: Combined forest plot comparing Comparison 1 (left) and Comparison
 <span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"M1"</span> <span class="ot">=</span> jama_navy, <span class="st">"M2"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs ATG)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Overall Survival — Comparison 2"</span>,</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 10, N = 12,851 · M1 OR 0.81 → M2 OR 0.82 (minimal attenuation)"</span>) <span class="sc">+</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"k = 9, N = 12,791 · M1 OR 0.83 → M2 OR 0.81 (minimal attenuation)"</span>) <span class="sc">+</span></span>
 <span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.81 (95% CrI 0.74–0.90), P(OR &lt; 1) = 100%, τ = 0.51. Consistent OS advantage for PTCy over ATG, though attenuated from the pre-Block-9 estimate (0.69).</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.83 (95% CrI 0.75–0.92), P(OR &lt; 1) = 100%, τ = 0.50, k = 9. Consistent OS advantage for PTCy over ATG, though attenuated from the pre-Block-9 estimate (0.69).</span>
 <span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>**M2:** OR 0.82 (95% CrI 0.71–0.94), minimal log-OR attenuation (~6%). Unlike the pre-Block-9 analysis (35% attenuation), steroid adjustment barely changes the estimate, suggesting that the OS benefit in C2 operates largely through non-GVHD pathways.</span>
 <span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a></span>
@@ -1153,7 +1156,7 @@ Figure&nbsp;8: Combined forest plot comparing Comparison 1 (left) and Comparison
 <span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Acute GVHD Grade II–IV {#sec-c2-agvhd}</span></span>
 <span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.58 (95% CrI 0.44–0.77), P(OR &lt; 1) &gt; 99%, τ = 0.55, k = 9. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.63 (95% CrI 0.47–0.83), P(OR &lt; 1) &gt; 99%, τ = 0.53, k = 8. Concordant with C1 (OR 0.67), confirming aGVHD benefit is comparator-independent.</span>
 <span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Chronic GVHD Moderate-Severe {#sec-c2-cgvhd}</span></span>
 <span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
@@ -1174,7 +1177,7 @@ Figure&nbsp;8: Combined forest plot comparing Comparison 1 (left) and Comparison
 <span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.79 (95% CrI 0.55–1.14), P(OR &lt; 1) = 90%, k = 6, τ = 0.89. Directionally protective but CrI crosses null. The C2 cGVHD effect (OR 0.79) is substantially weaker than C1 (OR 0.33), consistent with ATG also providing significant cGVHD prophylaxis through T-cell depletion — the differential between PTCy and ATG for chronic GVHD is smaller than between PTCy and CNI+MTX.</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.79 (95% CrI 0.55–1.14), P(OR &lt; 1) = 90%, k = 6, τ = 0.89. Directionally protective but CrI crosses null. The C2 cGVHD effect (OR 0.79) is weaker than C1 (OR 0.47), consistent with ATG also providing significant cGVHD prophylaxis through T-cell depletion — the differential between PTCy and ATG for chronic GVHD is smaller than between PTCy and CNI+MTX.</span>
 <span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## CMV Reactivation — The Direction Reversal {#sec-c2-cmv}</span></span>
 <span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a></span>
@@ -1199,13 +1202,13 @@ Figure&nbsp;8: Combined forest plot comparing Comparison 1 (left) and Comparison
 <span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"C1: vs CNI+MTX"</span> <span class="ot">=</span> jama_navy, <span class="st">"C2: vs ATG"</span> <span class="ot">=</span> jama_steel)) <span class="sc">+</span></span>
 <span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log-OR (PTCy vs comparator)"</span>, <span class="at">y =</span> <span class="st">"Posterior density"</span>,</span>
 <span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"CMV Reactivation — Direction Reversal Across Comparisons"</span>,</span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"C1 OR 1.26 [1.07\u20131.47] vs C2 OR 0.92 [0.73\u20131.15]"</span>) <span class="sc">+</span></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"C1 OR 1.26 [1.07\u20131.47] vs C2 OR 0.97 [0.77\u20131.23]"</span>) <span class="sc">+</span></span>
 <span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
 <span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## CMV: From Direction Reversal to Depletion Gradient</span></span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>In the pre-Block-9 analysis, a qualitative direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77 <span class="co">[</span><span class="ot">0.60–0.99</span><span class="co">]</span>). With the expanded post-Block-9 corpus (C1 k = 22, C2 k = 13), C1 CMV remains harmful (OR 1.26 <span class="co">[</span><span class="ot">1.07–1.47</span><span class="co">]</span>) but C2 CMV has shifted to near-null (OR 0.92 <span class="co">[</span><span class="ot">0.73–1.15</span><span class="co">]</span>). The evidence now supports a **depletion gradient** (C1 harmful → C2 near-null → C2-sensitivity null) rather than a binary reversal. See <span class="co">[</span><span class="ot">Discussion</span><span class="co">](discussion.qmd)</span> for the full three-point gradient interpretation.</span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>In the pre-Block-9 analysis, a qualitative direction reversal was observed (C1 OR 1.41 vs C2 OR 0.77 <span class="co">[</span><span class="ot">0.60–0.99</span><span class="co">]</span>). With the expanded post-Block-9 corpus (C1 k = 22, C2 k = 12), C1 CMV remains harmful (OR 1.26 <span class="co">[</span><span class="ot">1.07–1.47</span><span class="co">]</span>) but C2 CMV is null (OR 0.97 <span class="co">[</span><span class="ot">0.77–1.23</span><span class="co">]</span>). The evidence now supports a **depletion gradient** (C1 harmful → C2 near-null → C2-sensitivity null) rather than a binary reversal. See <span class="co">[</span><span class="ot">Discussion</span><span class="co">](discussion.qmd)</span> for the full three-point gradient interpretation.</span>
 <span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## BSI Descriptive Supplement {#sec-c2-bsi}</span></span>
@@ -1274,7 +1277,7 @@ Figure&nbsp;8: Combined forest plot comparing Comparison 1 (left) and Comparison
 <span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.79 (95% CrI 0.69–0.89), P(OR &lt; 1) &gt; 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.84) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.</span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.79 (95% CrI 0.69–0.89), P(OR &lt; 1) &gt; 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.86) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.</span>
 <span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a><span class="fu">## BK Virus Reactivation {#sec-c2-bk}</span></span>
 <span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a></span>
@@ -1321,7 +1324,7 @@ Figure&nbsp;8: Combined forest plot comparing Comparison 1 (left) and Comparison
 <span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
 <span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a><span class="fu">## IRM Across Comparisons</span></span>
-<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a>The C1/C2 IRM pattern mirrors the CMV depletion gradient: IRM is modestly elevated vs CNI+MTX (Bayesian OR 1.35) but *reduced* vs ATG (OR 0.90). This is consistent with ATG causing greater T-cell depletion–related mortality than PTCy. The C1 Bayesian–frequentist divergence warrants caution, but the overall picture suggests PTCy's infection cost is offset by ATG's even greater immune compromise.</span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a>The C1/C2 IRM pattern mirrors the CMV depletion gradient: IRM is not significantly elevated vs CNI+MTX (Bayesian OR 1.19 <span class="co">[</span><span class="ot">1.00–1.43</span><span class="co">]</span>) but *reduced* vs ATG (OR 0.90). This is consistent with ATG causing greater T-cell depletion–related mortality than PTCy. The C1 Bayesian–frequentist divergence warrants caution, but the overall picture suggests PTCy's infection cost is offset by ATG's even greater immune compromise.</span>
 <span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cross-Comparison Summary {#sec-c2-summary}</span></span>

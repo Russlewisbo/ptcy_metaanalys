@@ -71,7 +71,11 @@ theme_jama <- function(base_size = 11) {
 theme_set(theme_jama())
 
 # ── Data paths (relative to 05_website/) ──
-# Post-Block-9 models take priority if they exist
+# Precedence: set_b (ADOPTED, cohort-deduplicated) > post_block9 > pre-Block-9.
+# set_b/ is a PARTIAL overlay holding only the outcomes affected by deduplication
+# (c1_os, c1_rrm, c1_irm, c1_cgvhd_ms, c2_os, c2_agvhd, c2_cmv + C2 sensitivity
+# variants); everything else still resolves to post_block9.
+setb_dir        <- "../03_models/set_b"
 post_block9_dir <- "../03_models/post_block9"
 model_dir <- if (dir.exists(post_block9_dir) && length(list.files(post_block9_dir, "post_.*\\.rds$")) > 0) {
   post_block9_dir
@@ -80,19 +84,31 @@ model_dir <- if (dir.exists(post_block9_dir) && length(list.files(post_block9_di
 }
 extract_dir <- "../02_extraction"
 
-# ── Helper: load model posteriors (checks post_block9 first) ──
-load_post <- function(file) {
-  pb9 <- file.path(post_block9_dir, file)
-  pre <- file.path("../03_models", file)
-  if (file.exists(pb9)) readRDS(pb9) else readRDS(pre)
+# ── Helper: resolve a file across the three model directories ──
+resolve_model_file <- function(file) {
+  for (d in c(setb_dir, post_block9_dir, "../03_models")) {
+    f <- file.path(d, file)
+    if (file.exists(f)) return(f)
+  }
+  file.path(post_block9_dir, file)
 }
 
+# ── Helper: load model posteriors ──
+# NB: set_b/ stores fitted brmsfit objects, not cached post_*.rds draw frames, so
+# for deduplicated outcomes take draws from the m1_*.rds object via load_model().
+load_post <- function(file) readRDS(resolve_model_file(file))
+
 # ── Helper: load brms model object ──
-load_model <- function(file) {
-  pb9 <- file.path(post_block9_dir, file)
-  pre <- file.path("../03_models", file)
-  if (file.exists(pb9)) readRDS(pb9) else readRDS(pre)
+load_model <- function(file) readRDS(resolve_model_file(file))
+
+# ── Helper: load an analytic dataset (Set B where available) ──
+load_data <- function(file) {
+  f <- resolve_model_file(file)
+  if (file.exists(f)) read.csv(f) else NULL
 }
+
+# ── Current Table 2 (Set B) ──
+table2 <- read.csv(resolve_model_file("Table2_setB.csv"))
 
 # ── Helper: find ptcy_binary column (handles both old mi() and new naming) ──
 ptcy_col <- function(post) {

@@ -601,7 +601,7 @@ The central conceptual contribution of this analysis is the resolution of appare
 
 The C2 analysis provides a critical test. If CMV excess were an intrinsic property of cyclophosphamide, it should persist regardless of comparator. Instead, PTCy shows no CMV excess versus ATG (C2 OR 0·97), consistent with infection risk tracking the relative depth of T-cell depletion between arms. This establishes a T-cell depletion hierarchy (CNI-based < PTCy < ATG) that reframes PTCy-associated infections as a class effect of T-cell-depleting prophylaxis rather than a drug-specific limitation.
 
-Several limitations warrant discussion. The evidence base is predominantly observational, and no outcome exceeded LOW certainty under GRADE assessment. The steroid-mediation analysis uses arm-level rather than individual-patient data. Infection outcome definitions varied across studies. The IFI signal (OR 0·43) probably reflects confounding by antifungal prophylaxis practices rather than a direct PTCy effect. The C2 CMV estimate attenuated substantially after identification of arm classification errors, highlighting the fragility of comparative estimates in observational meta-analyses.
+Several limitations warrant discussion. The evidence base is predominantly observational, and no outcome exceeded LOW certainty under GRADE assessment. The steroid-mediation analysis uses arm-level rather than individual-patient data. Infection outcome definitions varied across studies. The IFI signal (OR 0·43) probably reflects confounding by antifungal prophylaxis practices rather than a direct PTCy effect. The C2 CMV estimate attenuated substantially after identification of arm classification errors, highlighting the fragility of comparative estimates in observational meta-analyses. Finally, the infection estimates are less robust to model choice than the survival and GVHD estimates: in frequentist random-effects concordance checks (metafor, REML), the confidence intervals for CMV (1·25 [0·94–1·66]), BSI (1·29 [0·61–2·73]) and IFI (0·60 [0·21–1·74]) all cross the null, although the direction of effect is unchanged in every case (appendix p XX). These are small-k, high-heterogeneity outcomes in which the Bayesian model's partial pooling across studies yields materially narrower intervals; the infection findings should therefore be read as directionally consistent but quantitatively model-dependent.
 
 In conclusion, PTCy improves overall survival and reduces GVHD across comparator platforms. Its infection costs are attributable to the depth of T-cell depletion — a mechanistic property shared with ATG — and are best addressed through strategies targeting immune reconstitution.
 
@@ -1019,6 +1019,32 @@ $$u_s \sim N(0, \tau^2)$$
 | Between-study SD (τ) | Student-t(3, 0, 1) |
 
 MCMC: 4 chains × 4000 iterations (1000 warmup), adapt_delta = 0·95.
+
+### Appendix S12: Cohort overlap map
+
+```{r}
+#| label: fig-cohort-overlap
+#| fig-cap: "Appendix Figure S12: Cohort overlap map. Number of publications contributing to the database from each registry cohort that is represented by more than one publication (n = 25 cohorts). The x-axis is on a log10 scale to keep the EBMT ALWP cluster (31 publications) visible alongside the smaller multi-publication cohorts; bar labels give the true counts. These are the cohorts for which the outcome-aware deduplication rule (one publication per cohort per outcome; Set B) prevents the same patients from entering a model more than once."
+#| fig-height: 7
+
+s12a <- read.csv(file.path(writing_dir, "Table_S12a_cohort_overlap_map.csv"))
+
+fig_cohort_overlap <- s12a |>
+  count(cohort_id, cohort_label, name = "n_pubs") |>
+  mutate(cohort_label = fct_reorder(cohort_label, n_pubs)) |>
+  ggplot(aes(x = n_pubs, y = cohort_label)) +
+  geom_col(fill = jama_navy) +
+  geom_text(aes(label = n_pubs), hjust = -0.4, size = 2.8, colour = jama_black) +
+  scale_x_log10(breaks = c(2, 3, 5, 10, 20, 31),
+                expand = expansion(mult = c(0, 0.08))) +
+  labs(x = "Number of publications (log scale)", y = NULL,
+       title = "Cohort overlap map",
+       subtitle = "Publications per registry cohort (n = 25 multi-publication cohorts)") +
+  theme_jama(base_size = 10) +
+  theme(panel.grid.major.y = element_blank())
+save_fig(fig_cohort_overlap, "FigureS12_cohort_overlap_map", width = 8, height = 7)
+fig_cohort_overlap
+```
 
 ---
 

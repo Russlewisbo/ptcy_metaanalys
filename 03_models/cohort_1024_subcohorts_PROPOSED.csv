@@ -1,0 +1,32 @@
+cohort_id,study_id,first_author,pub_year,donor_strata,n_strata,spans_multiple,proposed_subcohort,note
+1024,60,Battipaglia G,2019,MMUD,1,FALSE,1024_MMUD,Single donor stratum - cleanly assignable
+1024,305,Paviglianiti A,2024,MMUD,1,FALSE,1024_MMUD,Single donor stratum - cleanly assignable
+1024,384,Vydra,2026,MMUD,1,FALSE,1024_MMUD,Single donor stratum - cleanly assignable
+1024,61,Battipaglia G,2020,MSD,1,FALSE,1024_MSD,Single donor stratum - cleanly assignable
+1024,287,Nagler A,2022,MSD,1,FALSE,1024_MSD,Single donor stratum - cleanly assignable
+1024,78,Brissot,2020,MUD,1,FALSE,1024_MUD,Single donor stratum - cleanly assignable
+1024,151,Giebel S,2023,MUD,1,FALSE,1024_MUD,Single donor stratum - cleanly assignable
+1024,278,Nagler A,2023,MUD,1,FALSE,1024_MUD,Single donor stratum - cleanly assignable
+1024,79,Brissot E,2024,MUD,1,FALSE,1024_MUD,Single donor stratum - cleanly assignable
+1024,280,Nagler A,2024,MUD,1,FALSE,1024_MUD,Single donor stratum - cleanly assignable
+1024,281,Nagler A,2024,MUD,1,FALSE,1024_MUD,Single donor stratum - cleanly assignable
+1024,221,Lorentino F,2017,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,324,Ruggeri A,2017,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,343,Santoro,2017,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,217,Li Z,2018,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,345,Santoro N,2019,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,277,Nagler A,2021,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,62,Battipaglia G,2022,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,279,Nagler A,2023,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,63,Bazarbachi,2024,haplo,1,FALSE,1024_haplo,Single donor stratum - cleanly assignable
+1024,118,Dholaria,2021,MMUD+UCB,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,52,Baron F,2024,MMUD+UCB,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,282,Nagler A,2024,haplo+MMUD,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,383,Villalba M,2026,haplo+MMUD+MSD+MUD,4,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,77,Brissot E,2019,haplo+MMUD+MUD,3,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,57,Battipaglia,2019,haplo+MSD,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,276,Nagler A,2021,haplo+MSD,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,344,Santoro,2018,haplo+MUD,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,232,Al Malki,2020,haplo+MUD,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,323,Ru Y,2025,haplo+MUD,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction
+1024,325,Ruggeri A,2022,haplo+UCB,2,TRUE,NA,Spans >1 donor stratum - cannot be assigned to a disjoint sub-cohort; overlaps the single-stratum sub-cohorts by construction

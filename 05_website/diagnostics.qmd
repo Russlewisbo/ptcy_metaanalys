@@ -124,7 +124,7 @@ All models show R̂ ≤ 1.005 (threshold: 1.01) and zero divergent transitions. 
 
 ```{r}
 #| label: fig-diag-trace-os
-#| fig-cap: "Trace plots for the PTCy coefficient (b_ptcy_binary) in the OS M1 model (C1, k = 40). All four chains mix well with no visible trends or sticky regions."
+#| fig-cap: "Trace plots for the PTCy coefficient (b_ptcy_binary) in the OS M1 model (C1, k = 35). All four chains mix well with no visible trends or sticky regions."
 #| fig-height: 4
 
 m1_os <- load_model("m1_c1_os.rds")

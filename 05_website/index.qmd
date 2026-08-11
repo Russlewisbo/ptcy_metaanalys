@@ -87,7 +87,7 @@ n_rcts    <- sum(studies_df$study_design == "RCT", na.rm = TRUE)
 
 **Results.** PTCy was associated with improved OS (C1: OR `r fmt_or(or_os$or, or_os$lo, or_os$hi)`; C2: OR `r fmt_or(or_c2_os$or, or_c2_os$lo, or_c2_os$hi)`), reduced aGVHD (C1: OR `r round(or_agvhd$or, 2)`; C2: OR `r round(or_c2_agvhd$or, 2)`), and a substantial reduction in moderate-severe chronic GVHD (C1: OR `r round(or_cgvhd$or, 2)` — the largest treatment effect). RRM was reduced in both comparisons (C1: OR `r round(or_rrm$or, 2)`; C2: OR `r round(or_c2_rrm$or, 2)`), supporting preserved GVL activity. CMV reactivation was increased vs CNI+MTX/MMF (OR `r fmt_or(or_cmv$or, or_cmv$lo, or_cmv$hi)`) but near-null vs ATG, consistent with a T-cell depletion depth gradient. BK virus (C1: OR `r round(or_bk$or, 2)`) and BSI (C1: OR `r round(or_bsi$or, 2)`) were elevated regardless of comparator. Despite elevated infection rates, infection-related mortality was not increased (C1: OR `r round(or_irm$or, 2)`, Bayesian–frequentist discordant; C2: OR `r round(or_c2_irm$or, 2)`). Within-PTCy regimen variants (C3) showed no significant differences.
 
-**Conclusions.** PTCy provides consistent survival, GVHD, and anti-relapse advantages regardless of comparator. Chronic GVHD reduction is the largest treatment effect (OR 0.33). Infection rates are elevated but infection-related mortality is not clearly increased, suggesting the infectious cost is manageable. GRADE certainty is LOW for OS, aGVHD, and RRM; VERY LOW for other outcomes.
+**Conclusions.** PTCy provides consistent survival, GVHD, and anti-relapse advantages regardless of comparator. Chronic GVHD reduction is among the largest treatment effects (OR 0.47). Infection rates are elevated but infection-related mortality is not clearly increased, suggesting the infectious cost is manageable. GRADE certainty is LOW for OS, aGVHD, and RRM; VERY LOW for other outcomes.
 :::
 
 ---
@@ -155,7 +155,7 @@ ggplot(pd, aes(x = or, y = y_pos, shape = model, fill = model)) +
 ### Key Findings
 
 ::: {.key-finding}
-**1. Chronic GVHD — the largest treatment effect.** PTCy reduced moderate-severe chronic GVHD by two-thirds vs CNI+MTX (C1 OR `r round(or_cgvhd$or, 2)` [95% CrI `r round(or_cgvhd$lo, 2)`–`r round(or_cgvhd$hi, 2)`], k = 21). This is the largest treatment effect in the analysis — substantially exceeding acute GVHD (OR `r round(or_agvhd$or, 2)`) — with direct implications for long-term quality of life and immunosuppression duration. The effect attenuates vs ATG (C2 OR `r round(or_c2_cgvhd$or, 2)`), consistent with ATG also providing cGVHD prophylaxis.
+**1. Chronic GVHD — the largest treatment effect.** PTCy roughly halved moderate-severe chronic GVHD vs CNI+MTX (C1 OR `r round(or_cgvhd$or, 2)` [95% CrI `r round(or_cgvhd$lo, 2)`–`r round(or_cgvhd$hi, 2)`], k = 19). This is among the largest treatment effects in the analysis — exceeding acute GVHD (OR `r round(or_agvhd$or, 2)`) — with direct implications for long-term quality of life and immunosuppression duration. The effect attenuates vs ATG (C2 OR `r round(or_c2_cgvhd$or, 2)`), consistent with ATG also providing cGVHD prophylaxis.
 :::
 
 ::: {.key-finding}
@@ -258,9 +258,9 @@ summary_tbl |>
 
 The findings resolve into a framework built on three separable consequences of PTCy:
 
-1. **GVHD suppression pathway** (intended): PTCy eliminates alloreactive T cells → reduced aGVHD (OR 0.67) and profoundly reduced cGVHD (OR 0.33) → less steroid exposure → lower NRM → improved OS. Chronic GVHD is the most affected outcome, consistent with PTCy's early alloreactive depletion having an outsized impact on chronic alloimmune processes.
+1. **GVHD suppression pathway** (intended): PTCy eliminates alloreactive T cells → reduced aGVHD (OR 0.67) and cGVHD (OR 0.47) → less steroid exposure → lower NRM → improved OS. Chronic GVHD is the most affected outcome, consistent with PTCy's early alloreactive depletion having an outsized impact on chronic alloimmune processes.
 
-2. **GVL preservation pathway** (intended): PTCy → reduced relapse-related mortality (C1 OR 0.84; C2 OR 0.79), steroid-independent. This explains the residual OS advantage after GVHD/steroid adjustment.
+2. **GVL preservation pathway** (intended): PTCy → reduced relapse-related mortality (C1 OR 0.86; C2 OR 0.79), steroid-independent. Note that after cohort deduplication the OS advantage is **not** separable from GVHD suppression (M2 OR 1.04), so this pathway is no longer evidence of a residual direct survival benefit.
 
 3. **T-cell lymphodepletion pathway** (unintended): PTCy depletes pathogen-specific T cells during engraftment → elevated CMV, BSI, and BK virus. The CMV depletion gradient (CNI < PTCy ≈ ATG) confirms this is a relative depth-of-depletion effect. BK virus has an additional urothelial toxicity component. Critically, the elevated infection *rates* do not translate clearly into elevated infection-related *mortality*, suggesting the infectious cost is clinically manageable.
 
@@ -274,19 +274,19 @@ flowchart LR
     PTCy --> B["↓ Pathogen-specific\nT cells"]
     PTCy --> U["Urothelial\ntoxicity"]
 
-    A --> C["↓↓ cGVHD\nOR 0.33"]
+    A --> C["↓↓ cGVHD\nOR 0.47"]
     A --> C2["↓ aGVHD\nOR 0.67"]
     A --> R["↓ RRM\nOR 0.84"]
     C --> D["↓ Steroid\nexposure"]
     C2 --> D
     D --> E["↓ NRM"]
-    D --> F["↓ OS\nOR 0.79"]
+    D --> F["↓ OS\nOR 0.84"]
     R --> F
 
     B --> G["↑ CMV vs CNI\nOR 1.26"]
-    B --> H["≈ CMV vs ATG\nOR 0.92"]
+    B --> H["≈ CMV vs ATG\nOR 0.97"]
     B --> I["↑ BSI\nOR 1.87"]
-    B --> K["IRM ≈ null\nOR 1.01–1.35"]
+    B --> K["IRM ≈ null\nOR 1.03–1.19"]
     B --> J["↑ BK Virus"]
     U --> J["↑ BK Virus\nOR 2.48"]
 

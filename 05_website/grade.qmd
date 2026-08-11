@@ -22,23 +22,23 @@ GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapte
 
 tibble::tribble(
   ~Outcome, ~Comp, ~k, ~N, ~`OR [95% CrI]`, ~Certainty, ~`Key Limitation`,
-  "OS",            "C1", 40, 19724, "0.79 [0.73\u20130.85]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 64%; obs only",
-  "OS",            "C2", 10, 12851, "0.81 [0.74\u20130.90]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 95% (freq); attenuated from pre-B9",
+  "OS",            "C1", 35, 10133, "0.84 [0.76\u20130.92]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 64%; obs only",
+  "OS",            "C2",  9, 12791, "0.83 [0.75\u20130.92]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 95% (freq); attenuated from pre-B9",
   "NRM",           "C1", 12,  1309, "0.88 [0.66\u20131.18]", "\u2295\u2296\u2296\u2296 V.LOW",     "Complete M2 mediation; CrI crosses null",
   "NRM",           "C2", NA,    NA, "\u2014 (k = 2)",         "\u2014",                              "Below minimum k for modelling",
   "aGVHD II\u2013IV", "C1", 28,  4197, "0.67 [0.59\u20130.78]", "\u2295\u2296\u2296\u2296 V.LOW", "Egger p = 0.04; T&F adj OR 0.83",
-  "aGVHD II\u2013IV", "C2",  9,  1099, "0.58 [0.44\u20130.77]", "\u2295\u2295\u2296\u2296 LOW",   "I\u00B2 = 73%; k = 9",
+  "aGVHD II\u2013IV", "C2",  8,  1039, "0.63 [0.47\u20130.83]", "\u2295\u2295\u2296\u2296 LOW",   "I\u00B2 = 73%; k = 9",
   "CMV",           "C1", 22,  3328, "1.26 [1.07\u20131.47]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 62%; obs only",
-  "CMV",           "C2", 13,  1571, "0.92 [0.73\u20131.15]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; sensitivity convergence",
+  "CMV",           "C2", 12,  1511, "0.97 [0.77\u20131.23]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; sensitivity convergence",
   "BSI",           "C1",  6,   806, "1.87 [1.33\u20132.62]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 6; freq CrI crosses null",
   "IFI",           "C1",  6,  2243, "0.43 [0.29\u20130.63]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.64; extreme heterogeneity",
-  "cGVHD mod-sev", "C1", 21, 12493, "0.33 [0.29\u20130.36]", "\u2295\u2295\u2296\u2296 LOW",       "Largest effect; I\u00B2 = 80%",
+  "cGVHD mod-sev", "C1", 19,  2840, "0.47 [0.38\u20130.57]", "\u2295\u2295\u2296\u2296 LOW",       "Largest effect; I\u00B2 = 80%",
   "cGVHD mod-sev", "C2",  6,   905, "0.79 [0.55\u20131.14]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; k = 6",
-  "RRM",           "C1", 38, 19225, "0.84 [0.76\u20130.93]", "\u2295\u2295\u2296\u2296 LOW",       "Consistent; no steroid mediation",
+  "RRM",           "C1", 34, 11121, "0.86 [0.77\u20130.97]", "\u2295\u2295\u2296\u2296 LOW",       "Consistent; no steroid mediation",
   "RRM",           "C2", 10, 17182, "0.79 [0.69\u20130.89]", "\u2295\u2295\u2296\u2296 LOW",       "\u03c4 = 0.16; highly consistent",
   "BK Virus",      "C1", 11,  1333, "2.48 [1.82\u20133.38]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.06; dual mechanism",
   "BK Virus",      "C2",  3,   313, "2.44 [1.40\u20134.26]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 3; hypothesis-generating",
-  "IRM",           "C1", 16,  8214, "1.35 [1.16\u20131.57]", "\u2295\u2296\u2296\u2296 V.LOW",     "Bayes-freq divergence; CIBMTR-driven",
+  "IRM",           "C1", 13,  5504, "1.19 [1.00\u20131.43]", "\u2295\u2296\u2296\u2296 V.LOW",     "Bayes-freq divergence; CIBMTR-driven",
   "IRM",           "C2",  7, 13346, "0.90 [0.74\u20131.09]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; k = 7"
 ) |>
   kable(align = c("l","c","r","r","c","c","l")) |>
@@ -46,7 +46,7 @@ tibble::tribble(
 ```
 
 ::: {.callout-note appearance="simple"}
-**Changes from pre-Block-9.** C2 NRM can no longer be graded (k = 2 after arm classification corrections). C2 CMV moved from borderline significant (OR 0.77 [0.60–0.99]) to null-crossing (OR 0.92 [0.73–1.15]). C2 BSI removed (k = 3 Mantel-Haenszel estimate was not formally gradeable). All C1 outcomes stable in direction and certainty.
+**Changes from pre-Block-9.** C2 NRM can no longer be graded (k = 2 after arm classification corrections). C2 CMV moved from borderline significant (OR 0.77 [0.60–0.99]) to null-crossing (OR 0.97 [0.77–1.23]). C2 BSI removed (k = 3 Mantel-Haenszel estimate was not formally gradeable). All C1 outcomes stable in direction and certainty.
 :::
 
 ## Domain-Level Assessments {#sec-grade-domains}
@@ -73,7 +73,7 @@ tibble::tribble(
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
 ```
 
-The C2 OS sensitivity (expanded arm inclusion, k = 21) strengthened the effect from OR 0.81 to 0.74 [0.66–0.83], supporting the upgrade for cross-comparison coherence.
+The C2 OS sensitivity (expanded arm inclusion, k = 21) strengthened the effect from OR 0.83 to 0.76 [0.68–0.85], supporting the upgrade for cross-comparison coherence.
 
 ### Non-Relapse Mortality
 
@@ -120,7 +120,7 @@ tibble::tribble(
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE)
 ```
 
-C1 aGVHD shows significant funnel plot asymmetry (Egger's p = 0.041), with small studies disproportionately favouring PTCy. Trim-and-fill imputes 8 studies, shifting the frequentist OR from 0.61 to 0.83 [0.61–1.13]. The Bayesian estimate (OR 0.67 [0.59–0.78]) is less susceptible to small-study effects due to shrinkage but does not fully address selective publication. C1 aGVHD is accordingly downgraded to **VERY LOW**. The C2 aGVHD estimate (OR 0.58, k = 9) is too small for formal bias assessment but remains consistent.
+C1 aGVHD shows significant funnel plot asymmetry (Egger's p = 0.041), with small studies disproportionately favouring PTCy. Trim-and-fill imputes 8 studies, shifting the frequentist OR from 0.61 to 0.83 [0.61–1.13]. The Bayesian estimate (OR 0.67 [0.59–0.78]) is less susceptible to small-study effects due to shrinkage but does not fully address selective publication. C1 aGVHD is accordingly downgraded to **VERY LOW**. The C2 aGVHD estimate (OR 0.63, k = 8) is too small for formal bias assessment but remains consistent.
 
 ### CMV Reactivation
 
@@ -146,7 +146,7 @@ tibble::tribble(
 ::: {.callout-important}
 ## CMV: From Direction Reversal to Depletion Gradient
 
-The pre-Block-9 analysis reported a qualitative direction reversal: PTCy increased CMV vs CNI+MTX (OR 1.41) but decreased it vs ATG (OR 0.77 [0.60–0.99]). In the post-Block-9 corpus, C2 CMV has shifted to OR 0.92 [0.73–1.15], and the CrI crosses null. The binary reversal is no longer statistically credible.
+The pre-Block-9 analysis reported a qualitative direction reversal: PTCy increased CMV vs CNI+MTX (OR 1.41) but decreased it vs ATG (OR 0.77 [0.60–0.99]). In the post-Block-9 corpus, C2 CMV has shifted to OR 0.97 [0.77–1.23], and the CrI crosses null. The binary reversal is no longer statistically credible.
 
 However, the **C2 sensitivity analysis** provides a different — and arguably stronger — form of evidence. When PTCy+ATG combination arms are reclassified as "PTCy-side" (k = 22), the CMV estimate converges to OR 1.00 [0.85–1.18]. This convergence is predicted by the depletion hierarchy: when both arms have deep T-cell depletion, CMV rates should equalise.
 
@@ -155,7 +155,7 @@ The three estimates trace a gradient:
 | Analysis | Arms compared | OR | Interpretation |
 |---|---|---|---|
 | C1 primary | PTCy vs CNI | 1.26 | PTCy depletes more → more CMV |
-| C2 primary | PTCy vs ATG | 0.92 | Near-parity; slight PTCy advantage |
+| C2 primary | PTCy vs ATG | 0.97 | Near-parity; slight PTCy advantage |
 | C2 sensitivity | PTCy+ATG vs ATG | 1.00 | Equal depletion → equal CMV |
 
 This gradient is more consistent with the depletion hierarchy than the pre-Block-9 binary reversal. The mechanistic conclusion — that CMV risk tracks T-cell depletion depth, not any PTCy-specific property — carries **LOW certainty** when assessed across the full evidence pattern, despite the individual C2 estimate being VERY LOW.
@@ -184,6 +184,15 @@ tibble::tribble(
 BSI: The Bayesian OR of 1.87 [1.33–2.62] suggests elevated risk, but the frequentist estimate (OR 1.29 [0.61–2.73]) crosses null substantially. Both k = 6. The Bayesian shrinkage prior and the frequentist random-effects model disagree, reducing confidence.
 
 IFI: The post-Block-9 estimate (OR 0.43 [0.29–0.63]) is substantially stronger than pre-Block-9 (0.73 [0.53–1.00]), but τ = 1.64 indicates extreme between-study heterogeneity. The frequentist CrI (0.21–1.74) again crosses null. With only k = 6 studies and this level of heterogeneity, the strong protective signal should be interpreted cautiously.
+
+::: {.callout-warning}
+## Publication-bias analyses are pre-deduplication
+
+The Egger, trim-and-fill and RoBMA results in this section were computed before the
+Set B cohort deduplication and have not been regenerated. They should be read as
+indicative only; the C1 OS funnel in particular included five EBMT ALWP publications
+that are now represented by one.
+:::
 
 ## Publication Bias {#sec-grade-pubbias}
 
@@ -217,7 +226,7 @@ C1 OS shows borderline concern: 7 studies imputed with adjusted OR touching null
 
 Across both comparisons, certainty does not exceed LOW — a predictable consequence of an almost entirely observational evidence base.
 
-**The most robust findings** are C1 OS (OR 0.79, k = 40, LOW certainty) and C1 moderate-severe cGVHD (OR 0.33, k = 21, LOW certainty). Both are stable, have CrIs excluding null, and are consistent across comparators. C1 cGVHD is the largest treatment effect in the analysis. C1 RRM (OR 0.84, k = 38, LOW certainty) is similarly robust and steroid-independent, supporting preserved GVL activity. **Cross-comparison coherence** remains the strongest methodological asset.
+**The most robust findings** are C1 OS (OR 0.84, k = 35, LOW certainty) and C1 moderate-severe cGVHD (OR 0.47, k = 19, LOW certainty). Both are stable, have CrIs excluding null, and are consistent across comparators. C1 cGVHD is the largest treatment effect in the analysis. C1 RRM (OR 0.86, k = 34, LOW certainty) is similarly robust and steroid-independent, supporting preserved GVL activity. **Cross-comparison coherence** remains the strongest methodological asset.
 
 **Chronic GVHD is arguably the most clinically important finding.** The OR of 0.33 for moderate-severe cGVHD translates to a two-thirds reduction in the leading cause of late post-transplant morbidity. Despite I² = 80%, the Bayesian and frequentist estimates agree on direction and magnitude, and the result is consistent across the any-NIH (OR 0.23) and moderate-severe (OR 0.33) subsets.
 

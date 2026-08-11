@@ -1,4 +1,128 @@
-# PTCy meta-analysis — extraction status snapshot
+# PTCy meta-analysis — status
+
+**Date:** 2026-08-11 (evening) · **Lead:** R. Lewis (UniPD)
+**Project memory:** `AGENTS.md` (read this first) · **Historical snapshot:** bottom of this file
+
+---
+
+## TL;DR
+
+- **Set B (cohort-deduplicated) is now the adopted analysis.** An audit found that
+  several publications from the same patient cohort were entering the same model as
+  independent studies. Fixed; models refitted; manuscript, Table 2, GRADE and figures
+  all propagated.
+- **Two previously reported claims did not survive** and are rewritten in the draft.
+- **The manuscript renders cleanly.** Text, Table 2 and figures are mutually consistent.
+- **The website has NOT been updated** and still shows pre-deduplication numbers.
+- **The one open scientific decision** is whether to split cohort 1024 (EBMT ALWP).
+
+---
+
+## What changed this session
+
+### 1. The cohort double-counting audit
+
+`build_analytic()` filtered on `primary_for_cohort %in% c("Y", "partial")`, but that
+filter is not outcome-aware, so every `partial` publication from a cohort was retained
+for every outcome. Same-cohort double counting was present in **9 of 29** analytic
+datasets; the primary C1 OS model drew 5 of its 40 studies from EBMT ALWP alone.
+
+Fix: an override registry (`03_models/cohort_overrides.csv`) plus an outcome-aware
+resolver (`build_analytic_outcome_aware.R`). It defaults to `strategy = "flag"` (changes
+nothing) and refuses to choose where no confirmed override exists.
+
+### 2. Results that changed
+
+| Outcome | Published | Set B | Consequence |
+|---|---|---|---|
+| C1 OS M1 | k40, 0.79 [0.73-0.85] | k35, **0.84 [0.76-0.92]** | headline number |
+| C1 OS M2 | 0.86 [0.77-0.96] | k28, **1.04 [0.89-1.22]** | **mediation claim withdrawn** |
+| C1 IRM | k16, 1.35 [1.16-1.57] | k13, **1.19 [1.00-1.43]** | **no longer significant** |
+| C1 cGVHD mod-sev | k21, 0.33 [0.29-0.37] | k19, **0.47 [0.38-0.57]** | 2 ineligible studies removed |
+| C1 RRM | k38, 0.84 | k34, 0.87 [0.77-0.97] | holds |
+| C2 OS | k10, 0.81 | k9, 0.83 [0.75-0.92] | holds |
+| C2 aGVHD | k9, 0.58 | k8, 0.63 [0.47-0.83] | holds |
+| C2 CMV | k13, 0.92 | k12, 0.97 [0.77-1.23] | null either way |
+
+Unaffected: C1 NRM, aGVHD, CMV, BSI, IFI, BK, all of C3, C2 RRM/BK/IRM. **The paper's
+novel contribution - the infection findings and the CMV comparator asymmetry - is intact.**
+
+### 3. The mediation finding was an artifact
+
+The draft claimed the OS benefit was "only partially mediated" with a "residual direct
+benefit". Under Set B, M2 attenuates to 1.04 [0.89-1.22] - no steroid-independent
+survival benefit is detectable. The residual benefit was duplicated patients. Text
+rewritten in the abstract, Research in Context, Results and Discussion.
+
+### 4. Pipeline defects found and fixed
+
+- `refit_block9.R` had **no specs** for `c1_irm`, `c2_irm`, `c1_cgvhd_ms`, `c2_cgvhd_ms`,
+  `c1_cgvhd_any` - those datasets were built outside the audited pipeline and two
+  contained studies flagged `primary_for_cohort = "N"`. Specs added (24 total); file parses.
+- Table 2's `pack_rows()` section headings were **mislabelled** (hardcoded 1-8/9-14/15-23
+  never matched row order). Now derived from the data: 1-12 survival, 13-18 GVHD, 19-29 infection.
+
+### 5. GRADE
+
+- **C1 OS retained at LOW.** Complete M2 attenuation is full mediation, not bias:
+  `steroid_pct` is a mediator on the PTCy -> GVHD -> steroid -> death pathway.
+- **C1 NRM risk-of-bias downgrade withdrawn** for the same reason. Rating stays VERY LOW
+  because imprecision alone is sufficient; only the rationale changed.
+
+### 6. New artifacts
+
+| Path | Content |
+|---|---|
+| `03_models/set_b/` | Adopted models + datasets + `Table2_setB.csv` (partial overlay) |
+| `03_models/dedup_sensitivity/` | Set A/B/C comparison fits for C1 OS |
+| `03_models/cohort_overrides.csv` | Cohort x outcome -> primary study registry |
+| `build_analytic_outcome_aware.R` | Outcome-aware deduplication module |
+| `04_writing/Appendix_S12_cohort_overlap.md` | Cohort overlap map + audit (+ Tables S12a/b/c) |
+| `04_writing/Appendix_S9e_frequentist_concordance.md` | Frequentist REML concordance |
+| `04_writing/figures/FigureS8b-j`, `S9b` | Supplementary forest plots (png/pdf/svg) |
+
+---
+
+## Open items, in priority order
+
+1. **Cohort 1024 (EBMT ALWP) is over-lumped.** Its 5 OS publications are different donor
+   strata (MMUD, MSD, haplo, mixed) with reused cord-blood control arms. Set B keeps one;
+   splitting into donor-stratum sub-cohorts would let Set C (k=37, OR 0.81) be used instead.
+2. **Frequentist concordance is imperfect.** For C1 CMV, C1 BSI, C1 IFI, C2 OS and C2 RRM
+   the Bayesian CrI excludes 1 but the REML CI does not. Direction agrees in all cases.
+   Consider disclosing in limitations - see Appendix S9e.
+3. **Website (`05_website/`) still shows pre-deduplication numbers.**
+4. **RoBMA / publication-bias models are pre-deduplication.**
+5. Cohort 1023 RRM duplicate (studies 50 vs 51, identical n) unresolved.
+6. 5 dangling `cohort_id`s, 2 missing `primary_for_cohort`, 10 cohorts with no `Y`,
+   4 cohorts with two `Y`.
+7. BMT director second-pass verification still not started.
+8. Remaining supplement sections: S1, S2, S5d/e, S6, S7, S9a-d, S10, S13, S14.
+
+---
+
+## How to resume
+
+```r
+# Set B is a PARTIAL overlay - prefer it, fall back to post_block9
+resolve <- function(f) if (file.exists(file.path("03_models/set_b", f)))
+  file.path("03_models/set_b", f) else file.path("03_models/post_block9", f)
+
+t2 <- readr::read_csv("03_models/set_b/Table2_setB.csv")   # current Table 2
+source("build_analytic_outcome_aware.R")                   # outcome-aware dedup
+```
+
+Render: `cd 04_writing && quarto render Manuscript_LancetHaem_draft.qmd --to html`
+(~4 min; executes all chunks, rewrites `figures/`).
+
+---
+---
+
+# Historical snapshot below (2026-05-26, extraction phase)
+
+*Retained for the per-block extraction history. Superseded by the above and by AGENTS.md.*
+
+# PTCy meta-analysis — HISTORICAL extraction status snapshot
 
 **Date:** 2026-05-26
 **Lead:** R. Lewis (UniPD) · **Co-reviewer:** BMT program director (verification pending)
