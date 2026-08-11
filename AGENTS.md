@@ -1,6 +1,6 @@
 # PTCy Meta-Analysis — Project Memory
 
-**Last updated:** 2026-08-11 (evening)
+**Last updated:** 2026-08-11 (late evening)
 **Lead:** R. Lewis (UniPD) · **Co-reviewer:** BMT program director (verification pending)
 
 ---
@@ -154,9 +154,9 @@ File: `04_writing/GRADE_certainty_assessment_combined_post_block9.md`
 | S2 | PRISMA 2020 flow diagram | Numbers complete; needs editable format |
 | S3 | Excluded studies (n=214) | **DONE** — all labels recovered |
 | S4 | Study/arm characteristics | **DONE** — cross-checked |
-| S5 | Risk of bias figures | **DONE** (S5a-c); S5d/S5e pending |
+| S5 | Risk of bias figures | **DONE** (S5a-c); standalone SVGs S5a/S5b in `04_writing/` |
 | S6 | Model specification | Ready to draft |
-| S7 | MCMC diagnostics | Partially available |
+| S7 | MCMC diagnostics | **DONE** — `Appendix_S7_MCMC_diagnostics.qmd` + SVGs S7b/S7c/S7d-i/S7d-ii |
 | S8 | Forest plots | **DONE** - S8a-S8j as png/pdf/svg in `04_writing/figures/` |
 | S9 | Sensitivity analyses | S9a-d pending; **S9e DRAFTED** (`Appendix_S9e_frequentist_concordance.md`) |
 | S10 | Publication bias (RoBMA) | Models exist, interpretation pending |
@@ -286,6 +286,33 @@ PTCy column is `b_eventsn_ptcy_binary`.
 - Back-calculate steroid % from aGVHD II–IV when not directly reported
 - Alphabetical 50-paper extraction blocks
 - `steroid_exposure_duration_days_median` dropped (0% reporting)
+
+---
+
+## Session 2026-08-11 (evening): Figures & Fixes
+
+**New files in `04_writing/`:**
+- `Figure_S5a_ROBINS-I_summary.svg` — ROBINS-I stacked bar (n=227; 9×5.8 in)
+- `Figure_S5b_RoB2_traffic_light.svg` — RoB 2 tile grid (n=14 RCTs; 7.5×6.2 in)
+- `Figure_S7b_trace_plots.svg`, `Figure_S7c_tau_posteriors.svg`,
+  `Figure_S7d-i_PPC_C1.svg`, `Figure_S7d-ii_PPC_C2.svg`
+- `Appendix_S7_MCMC_diagnostics.qmd` — self-contained S7 section
+  (Table S7a convergence, S7b traces, S7c τ ridges, S7d PPCs)
+
+**Data corrections discovered:**
+- ROBINS-I overall judgments are **150 serious / 71 moderate** (the earlier
+  "150 moderate, 71 serious" phrasing was reversed).
+- Post-Block-9 τ medians: IFI 1.53, BSI 0.88, OS 0.57 (AGENTS.md table values
+  1.64/0.96/0.61 are from an earlier fit).
+
+**Path fixes in `Manuscript_LancetHaem_draft.qmd` setup chunk:**
+`model_dir`/`extract_dir`/`writing_dir` now adaptively resolve for both
+interactive console (project root) and `quarto render` (04_writing/).
+Same pattern used in `Appendix_S7_MCMC_diagnostics.qmd`.
+
+**Git:** local main hard-reset to origin/main @ ca8a2c4 (2026-08-11); the
+stale rendered HTML was discarded. Verify qmd path fixes survived the reset
+before next render.
 
 ---
 
