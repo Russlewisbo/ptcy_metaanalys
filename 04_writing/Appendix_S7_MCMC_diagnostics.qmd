@@ -219,6 +219,7 @@ tr_cmv_tau <- bayesplot::mcmc_trace(m_cmv, pars = "sd_study_id__Intercept") +
 
 (tr_os_b | tr_cmv_b) / (tr_os_tau | tr_cmv_tau) +
   plot_annotation(
+    tag_levels = "A", tag_suffix = ".",
     caption = "Vertical axis: parameter value. Horizontal axis: post-warmup iteration (1–3,000 per chain). Colours distinguish the four independent chains.",
     theme = theme(plot.caption = element_text(size = 8, colour = "grey50", hjust = 0))
   )
@@ -312,6 +313,7 @@ plots_c1 <- imap(ppc_panels_c1, ppc_prop_scatter)
 (plots_c1[[1]] | plots_c1[[2]] | plots_c1[[3]]) /
 (plots_c1[[4]] | plots_c1[[5]] | plots_c1[[6]]) +
   plot_annotation(
+    tag_levels = "A", tag_suffix = ".",
     caption = "PPC: posterior predictive check. 500 draws per model. Proportions = events / N per arm.",
     theme = theme(plot.caption = element_text(size = 8, colour = "grey50", hjust = 0),
                   plot.background = element_rect(fill = "white", colour = NA))
@@ -336,6 +338,7 @@ plots_c2 <- imap(ppc_panels_c2, ppc_prop_scatter)
 
 (plots_c2[[1]] | plots_c2[[2]] | plots_c2[[3]]) +
   plot_annotation(
+    tag_levels = "A", tag_suffix = ".",
     caption = "PPC: posterior predictive check. 500 draws per model.",
     theme = theme(plot.caption = element_text(size = 8, colour = "grey50", hjust = 0),
                   plot.background = element_rect(fill = "white", colour = NA))

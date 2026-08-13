@@ -460,7 +460,8 @@ Of 227 observational studies assessed with ROBINS-I, 150 (66%) were at moderate 
 p1 <- forest_study_bayes(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF", bayes_os_c1)
 p2 <- forest_study_bayes(c2_os, studies_df, "Overall Survival", "C2: PTCy vs ATG", bayes_os_c2)
 
-fig2 <- p1 / p2 + plot_layout(heights = c(4, 1.2))
+fig2 <- p1 / p2 + plot_layout(heights = c(4, 1.2)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(fig2, "Figure2_OS_forest", width = 8, height = 14)
 fig2
 ```
@@ -477,7 +478,8 @@ PTCy was associated with improved OS (k=35, OR 0·84 [95% CrI 0·76–0·92]; P(
 p1 <- forest_study(c1_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C2: PTCy vs ATG")
 
-fig_agvhd <- p1 / p2 + plot_layout(heights = c(3, 1.2))
+fig_agvhd <- p1 / p2 + plot_layout(heights = c(3, 1.2)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(fig_agvhd, "FigureS8b_aGVHD_forest", width = 8, height = 12)
 fig_agvhd
 ```
@@ -494,7 +496,8 @@ Acute GVHD grade II–IV was substantially reduced (k=28, OR 0·67 [0·59–0·7
 p1 <- forest_study_bayes(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_cmv_c1)
 p2 <- forest_study_bayes(c2_cmv, studies_df, "CMV Any Reactivation", "C2: PTCy vs ATG", bayes_cmv_c2)
 
-fig3 <- p1 / p2 + plot_layout(heights = c(2.5, 1.5))
+fig3 <- p1 / p2 + plot_layout(heights = c(2.5, 1.5)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(fig3, "Figure3_CMV_forest", width = 8, height = 12)
 fig3
 ```
@@ -510,7 +513,8 @@ p1 <- forest_study_bayes(c1_bsi, studies_df, "Bloodstream Infection", "C1: PTCy 
 p2 <- forest_study_bayes(c1_ifi, studies_df, "Invasive Fungal Infection", "C1: PTCy vs CNI+MTX/MMF", bayes_ifi_c1)
 p3 <- forest_study_bayes(c1_bk, studies_df, "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_bk_c1)
 
-fig4 <- p1 / p2 / p3 + plot_layout(heights = c(2, 2, 3))
+fig4 <- p1 / p2 / p3 + plot_layout(heights = c(2, 2, 3)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(fig4, "Figure4_infections_forest", width = 8, height = 12)
 fig4
 ```
@@ -757,7 +761,8 @@ kable(robins_wide) |>
 #| fig-cap: "Appendix Figure: Forest plots — overall survival (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 2 as a sensitivity/concordance check."
 #| fig-height: 14
 
-p1 <- forest_study(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF")
+figS8a_os <- p1 / p2 + plot_layout(heights = c(4, 1.2)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_os, studies_df, "Overall Survival", "C2: PTCy vs ATG")
 
 figS8a_os <- p1 / p2 + plot_layout(heights = c(4, 1.2))
@@ -770,7 +775,8 @@ figS8a_os
 #| fig-cap: "Appendix Figure: Forest plots — CMV any-reactivation (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 3 as a sensitivity/concordance check."
 #| fig-height: 12
 
-p1 <- forest_study(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF")
+figS8a_cmv <- p1 / p2 + plot_layout(heights = c(2.5, 1.5)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")on", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_cmv, studies_df, "CMV Any Reactivation", "C2: PTCy vs ATG")
 
 figS8a_cmv <- p1 / p2 + plot_layout(heights = c(2.5, 1.5))
@@ -785,8 +791,9 @@ figS8a_cmv
 
 c1_nrm <- load_data("data_c1_nrm.csv")
 c2_nrm <- load_data("data_c2_nrm.csv")
-
-p1 <- forest_study(c1_nrm, studies_df, "Non-Relapse Mortality", "C1: PTCy vs CNI+MTX/MMF")
+  p2 <- forest_study(c2_nrm, studies_df, "Non-Relapse Mortality", "C2: PTCy vs ATG")
+  p1 / p2 + plot_layout(heights = c(2, 1)) +
+    plot_annotation(tag_levels = "A", tag_suffix = ".")n-Relapse Mortality", "C1: PTCy vs CNI+MTX/MMF")
 
 fig_nrm <- if (!is.null(c2_nrm) && nrow(c2_nrm) >= 3) {
   p2 <- forest_study(c2_nrm, studies_df, "Non-Relapse Mortality", "C2: PTCy vs ATG")
@@ -805,7 +812,8 @@ fig_nrm
 
 c1_rrm <- load_data("data_c1_rrm.csv")
 c2_rrm <- load_data("data_c2_rrm.csv")
-
+fig_rrm <- p1 / p2 + plot_layout(heights = c(4, 1.2)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 p1 <- forest_study(c1_rrm, studies_df, "Relapse-Related Mortality", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_rrm, studies_df, "Relapse-Related Mortality", "C2: PTCy vs ATG")
 
@@ -821,7 +829,8 @@ fig_rrm
 
 c1_cgvhd_ms <- load_data("data_c1_cgvhd_ms.csv")
 c2_cgvhd_ms <- load_data("data_c2_cgvhd_ms.csv")
-
+fig_cgvhd <- p1 / p2 + plot_layout(heights = c(2.5, 1)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 p1 <- forest_study(c1_cgvhd_ms, studies_df, "Chronic GVHD Moderate\u2013Severe", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_cgvhd_ms, studies_df, "Chronic GVHD Moderate\u2013Severe", "C2: PTCy vs ATG")
 
@@ -859,8 +868,9 @@ fig_ifi
 
 c1_bk <- load_data("data_c1_bk.csv")
 c2_bk <- load_data("data_c2_bk.csv")
-
-p1 <- forest_study_bayes(c1_bk, studies_df, "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_bk_c1)
+  p2 <- forest_study_bayes(c2_bk, studies_df, "BK Virus Reactivation", "C2: PTCy vs ATG", bayes_bk_c2)
+  p1 / p2 + plot_layout(heights = c(2, 1)) +
+    plot_annotation(tag_levels = "A", tag_suffix = "."), "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_bk_c1)
 
 fig_bk <- if (!is.null(c2_bk) && nrow(c2_bk) >= 3) {
   p2 <- forest_study_bayes(c2_bk, studies_df, "BK Virus Reactivation", "C2: PTCy vs ATG", bayes_bk_c2)
@@ -879,7 +889,8 @@ fig_bk
 
 c1_irm <- load_data("data_c1_irm.csv")
 c2_irm <- load_data("data_c2_irm.csv")
-
+fig_irm <- p1 / p2 + plot_layout(heights = c(2, 1)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 p1 <- forest_study(c1_irm, studies_df, "Infection-Related Mortality", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_irm, studies_df, "Infection-Related Mortality", "C2: PTCy vs ATG")
 
@@ -899,11 +910,13 @@ c3_agvhd <- load_data("data_c3_agvhd.csv")
 c3_cgvhd <- load_data("data_c3_cgvhd.csv")
 
 p1 <- forest_study(c3_os, studies_df, "Overall Survival", "C3: Within-PTCy Variants")
-p2 <- forest_study(c3_nrm, studies_df, "Non-Relapse Mortality", "C3: Within-PTCy Variants")
-p3 <- forest_study(c3_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C3: Within-PTCy Variants")
-
-fig_c3 <- if (!is.null(c3_cgvhd) && nrow(c3_cgvhd) >= 3) {
   p4 <- forest_study(c3_cgvhd, studies_df, "Chronic GVHD", "C3: Within-PTCy Variants")
+  (p1 | p2) / (p3 | p4) +
+    plot_annotation(tag_levels = "A", tag_suffix = ".")
+} else {
+  p1 / p2 / p3 +
+    plot_annotation(tag_levels = "A", tag_suffix = ".")
+} p4 <- forest_study(c3_cgvhd, studies_df, "Chronic GVHD", "C3: Within-PTCy Variants")
   (p1 | p2) / (p3 | p4)
 } else {
   p1 / p2 / p3
