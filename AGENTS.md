@@ -343,6 +343,20 @@ is canonical. Root cause was `save_fig()` calling `dir.create("figures")` with a
 relative path, so renders from the project root created a second tree. Now anchored
 to `writing_dir`.
 
+**Manuscript corruption repaired.** Commit `5b3e75e` ("revision") attempted to add
+`plot_annotation(tag_levels = "A", tag_suffix = ".")` to figure composition lines in
+`Manuscript_LancetHaem_draft.qmd`. Of its 13 hunks, 4 applied correctly (Figures 2, 3,
+4, S8b) and **9 landed on the wrong line**, overwriting `p1 <- forest_study(...)`
+assignments. This left unbalanced quotes (e.g. `tag_suffix = ".")on", "C1: ...")`) that
+broke `parse_all`, halting every render at `[fig-forest-os-freq]`. Three of the nine
+(rrm, cgvhd, irm) were syntactically valid but composed stale `p1`/`p2` from the
+previous chunk before being silently overwritten, so they never received the tag
+annotation. All nine repaired 2026-08-14 from `git show 5b3e75e^`; verified by
+`knitr::purl()` + `parse()` (199 expressions) and a full HTML render.
+
+- **PDF output is broken for an unrelated reason:** `fmtutil-sys --all` fails while
+  installing `multirow.sty`. Use `--to html` until the TeX install is repaired.
+
 **Git.** `.RDataTmp{,1,2}` (89 MB) and the 23 MB rendered draft HTML untracked and
 added to `.gitignore`; files kept on disk. Identity set globally to
 `Russell Lewis <Russlewisbo@users.noreply.github.com>`; `pull.ff = only`.

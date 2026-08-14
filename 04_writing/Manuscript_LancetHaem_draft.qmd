@@ -766,11 +766,11 @@ kable(robins_wide) |>
 #| fig-cap: "Appendix Figure: Forest plots — overall survival (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 2 as a sensitivity/concordance check."
 #| fig-height: 14
 
-figS8a_os <- p1 / p2 + plot_layout(heights = c(4, 1.2)) +
-  plot_annotation(tag_levels = "A", tag_suffix = ".")", "C1: PTCy vs CNI+MTX/MMF")
+p1 <- forest_study(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_os, studies_df, "Overall Survival", "C2: PTCy vs ATG")
 
-figS8a_os <- p1 / p2 + plot_layout(heights = c(4, 1.2))
+figS8a_os <- p1 / p2 + plot_layout(heights = c(4, 1.2)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(figS8a_os, "FigureS8a_OS_forest_frequentist", width = 8, height = 14)
 figS8a_os
 ```
@@ -780,11 +780,11 @@ figS8a_os
 #| fig-cap: "Appendix Figure: Forest plots — CMV any-reactivation (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 3 as a sensitivity/concordance check."
 #| fig-height: 12
 
-figS8a_cmv <- p1 / p2 + plot_layout(heights = c(2.5, 1.5)) +
-  plot_annotation(tag_levels = "A", tag_suffix = ".")on", "C1: PTCy vs CNI+MTX/MMF")
+p1 <- forest_study(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_cmv, studies_df, "CMV Any Reactivation", "C2: PTCy vs ATG")
 
-figS8a_cmv <- p1 / p2 + plot_layout(heights = c(2.5, 1.5))
+figS8a_cmv <- p1 / p2 + plot_layout(heights = c(2.5, 1.5)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(figS8a_cmv, "FigureS8a_CMV_forest_frequentist", width = 8, height = 12)
 figS8a_cmv
 ```
@@ -796,13 +796,13 @@ figS8a_cmv
 
 c1_nrm <- load_data("data_c1_nrm.csv")
 c2_nrm <- load_data("data_c2_nrm.csv")
-  p2 <- forest_study(c2_nrm, studies_df, "Non-Relapse Mortality", "C2: PTCy vs ATG")
-  p1 / p2 + plot_layout(heights = c(2, 1)) +
-    plot_annotation(tag_levels = "A", tag_suffix = ".")n-Relapse Mortality", "C1: PTCy vs CNI+MTX/MMF")
+
+p1 <- forest_study(c1_nrm, studies_df, "Non-Relapse Mortality", "C1: PTCy vs CNI+MTX/MMF")
 
 fig_nrm <- if (!is.null(c2_nrm) && nrow(c2_nrm) >= 3) {
   p2 <- forest_study(c2_nrm, studies_df, "Non-Relapse Mortality", "C2: PTCy vs ATG")
-  p1 / p2 + plot_layout(heights = c(2, 1))
+  p1 / p2 + plot_layout(heights = c(2, 1)) +
+    plot_annotation(tag_levels = "A", tag_suffix = ".")
 } else {
   p1
 }
@@ -817,12 +817,12 @@ fig_nrm
 
 c1_rrm <- load_data("data_c1_rrm.csv")
 c2_rrm <- load_data("data_c2_rrm.csv")
-fig_rrm <- p1 / p2 + plot_layout(heights = c(4, 1.2)) +
-  plot_annotation(tag_levels = "A", tag_suffix = ".")
+
 p1 <- forest_study(c1_rrm, studies_df, "Relapse-Related Mortality", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_rrm, studies_df, "Relapse-Related Mortality", "C2: PTCy vs ATG")
 
-fig_rrm <- p1 / p2 + plot_layout(heights = c(4, 1.2))
+fig_rrm <- p1 / p2 + plot_layout(heights = c(4, 1.2)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(fig_rrm, "FigureS8d_RRM_forest", width = 8, height = 14)
 fig_rrm
 ```
@@ -834,12 +834,12 @@ fig_rrm
 
 c1_cgvhd_ms <- load_data("data_c1_cgvhd_ms.csv")
 c2_cgvhd_ms <- load_data("data_c2_cgvhd_ms.csv")
-fig_cgvhd <- p1 / p2 + plot_layout(heights = c(2.5, 1)) +
-  plot_annotation(tag_levels = "A", tag_suffix = ".")
+
 p1 <- forest_study(c1_cgvhd_ms, studies_df, "Chronic GVHD Moderate\u2013Severe", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_cgvhd_ms, studies_df, "Chronic GVHD Moderate\u2013Severe", "C2: PTCy vs ATG")
 
-fig_cgvhd <- p1 / p2 + plot_layout(heights = c(2.5, 1))
+fig_cgvhd <- p1 / p2 + plot_layout(heights = c(2.5, 1)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(fig_cgvhd, "FigureS8e_cGVHD_forest", width = 8, height = 12)
 fig_cgvhd
 ```
@@ -873,13 +873,13 @@ fig_ifi
 
 c1_bk <- load_data("data_c1_bk.csv")
 c2_bk <- load_data("data_c2_bk.csv")
-  p2 <- forest_study_bayes(c2_bk, studies_df, "BK Virus Reactivation", "C2: PTCy vs ATG", bayes_bk_c2)
-  p1 / p2 + plot_layout(heights = c(2, 1)) +
-    plot_annotation(tag_levels = "A", tag_suffix = "."), "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_bk_c1)
+
+p1 <- forest_study_bayes(c1_bk, studies_df, "BK Virus Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_bk_c1)
 
 fig_bk <- if (!is.null(c2_bk) && nrow(c2_bk) >= 3) {
   p2 <- forest_study_bayes(c2_bk, studies_df, "BK Virus Reactivation", "C2: PTCy vs ATG", bayes_bk_c2)
-  p1 / p2 + plot_layout(heights = c(2, 1))
+  p1 / p2 + plot_layout(heights = c(2, 1)) +
+    plot_annotation(tag_levels = "A", tag_suffix = ".")
 } else {
   p1
 }
@@ -894,12 +894,12 @@ fig_bk
 
 c1_irm <- load_data("data_c1_irm.csv")
 c2_irm <- load_data("data_c2_irm.csv")
-fig_irm <- p1 / p2 + plot_layout(heights = c(2, 1)) +
-  plot_annotation(tag_levels = "A", tag_suffix = ".")
+
 p1 <- forest_study(c1_irm, studies_df, "Infection-Related Mortality", "C1: PTCy vs CNI+MTX/MMF")
 p2 <- forest_study(c2_irm, studies_df, "Infection-Related Mortality", "C2: PTCy vs ATG")
 
-fig_irm <- p1 / p2 + plot_layout(heights = c(2, 1))
+fig_irm <- p1 / p2 + plot_layout(heights = c(2, 1)) +
+  plot_annotation(tag_levels = "A", tag_suffix = ".")
 save_fig(fig_irm, "FigureS8i_IRM_forest", width = 8, height = 12)
 fig_irm
 ```
@@ -915,16 +915,16 @@ c3_agvhd <- load_data("data_c3_agvhd.csv")
 c3_cgvhd <- load_data("data_c3_cgvhd.csv")
 
 p1 <- forest_study(c3_os, studies_df, "Overall Survival", "C3: Within-PTCy Variants")
+p2 <- forest_study(c3_nrm, studies_df, "Non-Relapse Mortality", "C3: Within-PTCy Variants")
+p3 <- forest_study(c3_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C3: Within-PTCy Variants")
+
+fig_c3 <- if (!is.null(c3_cgvhd) && nrow(c3_cgvhd) >= 3) {
   p4 <- forest_study(c3_cgvhd, studies_df, "Chronic GVHD", "C3: Within-PTCy Variants")
   (p1 | p2) / (p3 | p4) +
     plot_annotation(tag_levels = "A", tag_suffix = ".")
 } else {
   p1 / p2 / p3 +
     plot_annotation(tag_levels = "A", tag_suffix = ".")
-} p4 <- forest_study(c3_cgvhd, studies_df, "Chronic GVHD", "C3: Within-PTCy Variants")
-  (p1 | p2) / (p3 | p4)
-} else {
-  p1 / p2 / p3
 }
 save_fig(fig_c3, "FigureS8j_C3_forest", width = 12, height = 12)
 fig_c3

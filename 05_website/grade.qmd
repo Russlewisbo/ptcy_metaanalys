@@ -63,7 +63,7 @@ tibble::tribble(
   ~Domain, ~C1, ~C2,
   "Study design", "39 retro/registry + 1 RCT; start LOW", "All retro/registry; start LOW",
   "Risk of bias", "No downgrade (effect survives M2)", "No downgrade (M2 OR 0.82 still protective)",
-  "Inconsistency", "\u22121 (I\u00B2 = 64%; \u03c4 = 0.61)", "\u22121 (I\u00B2 = 93%; one registry dominant)",
+  "Inconsistency", "\u22121 (I\u00B2 = 64%; \u03c4 = 0.66)", "\u22121 (I\u00B2 = 93%; one registry dominant)",
   "Indirectness", "0", "0",
   "Imprecision", "0 (CrI excludes null; N = 19,724)", "0 (CrI excludes null; N = 12,851)",
   "Pub. bias", "0", "0",

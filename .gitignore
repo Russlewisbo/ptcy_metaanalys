@@ -36,7 +36,10 @@ paperpile-files*
 # Quarto/knitr intermediates and rendered manuscript output
 *.knit.md
 *.utf8.md
+*.rmarkdown
 04_writing/Manuscript_LancetHaem_draft.html
+04_writing/Manuscript_LancetHaem_draft.tex
+04_writing/Manuscript_LancetHaem_draft.log
 
 # OS metadata
 .DS_Store
