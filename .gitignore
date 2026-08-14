@@ -30,6 +30,14 @@ paperpile-files*
 # Old Quarto output location (now using repo-root docs/)
 05_website/docs/
 
+# R crash-recovery temp files (accidentally committed pre-2026-08-14)
+.RDataTmp*
+
+# Quarto/knitr intermediates and rendered manuscript output
+*.knit.md
+*.utf8.md
+04_writing/Manuscript_LancetHaem_draft.html
+
 # OS metadata
 .DS_Store
 Thumbs.db
