@@ -270,6 +270,24 @@ Protocol registration details and any deviations from registered protocol.
 
 Completed PRISMA 2020 checklist with page/section references for each item.
 
+### S15. Data Collection Form
+**Status: DRAFTED — `Appendix_S15_data_collection_form.docx` (Word, ready to insert)**
+
+Blank extraction instrument covering all 220 fields, grouped by the four nested
+levels of the database (publication → registry cohort → treatment arm → outcome
+record, plus the subgroup and risk-of-bias forms). Satisfies PRISMA 2020 item 10
+(data items). Coded fields list the permitted responses actually used in the
+database; the deprecated `steroid_exposure_duration_days_median` and the
+back-calculation rule for `systemic_steroid_for_gvhd_exposure_pct` are documented
+in place.
+
+**Field definitions were drafted from field names and schema v1.2 and require
+author verification before submission.**
+
+*Source: `04_writing/Appendix_S15_data_collection_form.qmd`; field inventory
+(level, type, permitted values, completeness) in `04_writing/Table_S15_data_items.csv`,
+generated from `02_extraction/*.csv`*
+
 ---
 
 ## PRISMA 2020 Flow Diagram (Draft)

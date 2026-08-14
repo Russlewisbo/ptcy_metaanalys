@@ -1,0 +1,344 @@
+---
+title: "Appendix S15: Data collection form"
+subtitle: "Post-transplant cyclophosphamide as graft-versus-host disease prophylaxis after allogeneic haematopoietic stem-cell transplantation: a systematic review and Bayesian meta-analysis"
+format:
+  docx:
+    toc: true
+    toc-depth: 2
+---
+
+<!-- NOTE TO AUTHORS: field names, permitted responses and completeness figures are
+     generated from the extraction database (02_extraction/*.csv, 220 fields).
+     The Definition / instruction column was DRAFTED from field names and the v1.2
+     schema; it requires author verification before publication. -->
+
+## Purpose and structure
+
+Data were extracted into a structured relational form with four nested levels. One
+published report generates one Level 1 record, and may contribute several Level 3
+records (one per treatment arm) and many Level 4 records (one per outcome,
+definition and timepoint). Level 2 exists to identify reports that draw on the same
+underlying patient cohort, so that the same patients cannot enter a single model
+more than once.
+
+| Level | Unit of observation | One record per | Fields |
+|---|---|---|---|
+| 1 | Publication | published report | 32 |
+| 2 | Registry cohort | underlying patient cohort | 10 |
+| 3 | Treatment arm | arm within a report | 93 |
+| 4 | Outcome record | outcome × definition × timepoint × arm | 34 |
+| 4b | Outcome subgroup record | stratum within an outcome record | 37 |
+
+## Coding conventions
+
+| Code | Meaning |
+|---|---|
+| `Y` / `N` | Present / absent |
+| `NR` | Not reported in the source publication |
+| `UNCL` | Mentioned but insufficiently specified to classify |
+| `mixed` | The arm pools more than one category (e.g. two donor types) |
+
+Percentages are recorded on a 0–100 scale to one decimal place; counts are
+integers; dates are ISO (YYYY-MM-DD). Values are never imputed at extraction:
+where a datum is absent, `NR` is recorded and the missingness is handled at the
+analysis stage. Event counts are required for meta-analysis and are never
+back-calculated from cumulative incidence; the single exception to the
+no-derivation rule is documented at Level 3 (systemic steroid exposure) and is
+flagged in `extraction_notes`.
+
+## Level 1 — Publication
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `study_id` | Unique internal identifier for the report | Integer |
+| `cohort_id` | Link to the Level 2 cohort this report draws on | Integer |
+| `first_author` | Surname and initials of first author | Free text |
+| `pub_year` | Year of publication | YYYY |
+| `journal` | Journal name | Free text |
+| `doi` | Digital object identifier | Free text |
+| `pmid` | PubMed identifier | Integer |
+| `paperpile_filename` | Filename of the archived PDF | Free text |
+| `title` | Full article title | Free text |
+| `country` | Country of the reporting centre(s) | Free text |
+| `region` | Geographic region | `EU` / `Asia` / `Africa` / `Oceania` / `SA` / `multinational` |
+| `study_design` | Design of the source study | `RCT` / `prospective_cohort` / `retrospective_cohort` / `registry` / `single_arm_descriptive` |
+| `single_or_multicenter` | Number of contributing centres | `single` / `multi` / `registry` |
+| `n_centers` | Count of contributing centres | Integer |
+| `enrollment_start_year` | First year of patient accrual | YYYY |
+| `enrollment_end_year` | Last year of patient accrual | YYYY |
+| `era_category` | Accrual era, used as a proxy for supportive-care practice | `pre_2018` / `post_2018` / `mixed` |
+| `follow_up_median_months` | Median follow-up duration | Numeric |
+| `follow_up_min_months` | Minimum follow-up reported | Numeric |
+| `follow_up_max_months` | Maximum follow-up reported | Numeric |
+| `primary_for_cohort` | Whether this report is the designated source for its cohort | `Y` / `N` / `partial` |
+| `cohort_overlap_status` | Relationship to other reports of the same cohort | `none` / `overlap_subset_of` / `overlap_superset_of` / `partial_overlap` |
+| `overlap_with_study_ids` | Reports with which patients are shared | Comma-separated integers |
+| `language` | Publication language | `English` / `translation_obtained` |
+| `full_text_obtainable` | Whether full text was retrieved | `Y` / `N` |
+| `author_contact_attempted` | Whether authors were contacted for missing data | `Y` / `N` |
+| `author_response_received` | Whether authors replied | `Y` / `N` |
+| `extractor_initials` | Reviewer performing extraction | Initials |
+| `verifier_initials` | Reviewer performing verification | Initials |
+| `extraction_date` | Date of extraction | YYYY-MM-DD |
+| `verification_date` | Date of second-reviewer check | YYYY-MM-DD |
+| `extraction_notes` | Free-text audit trail, including any derivation applied | Free text |
+
+## Level 2 — Registry cohort
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `cohort_id` | Unique cohort identifier | Integer |
+| `cohort_label` | Short name (e.g. registry and working party) | Free text |
+| `cohort_description` | Patient population and how it was assembled | Free text |
+| `registry_or_source` | Data source type | `CIBMTR` / `EBMT` / `JSHCT` / `national_registry` / `multicenter_collaboration` / `single_center` |
+| `enrollment_start_year` | First year of cohort accrual | YYYY |
+| `enrollment_end_year` | Last year of cohort accrual | YYYY |
+| `total_unique_patients` | Distinct patients in the cohort, if stated | Integer |
+| `primary_publication_study_id` | Report designated as the cohort's primary source | Integer |
+| `primary_publication_overrides` | Outcome-specific exceptions to that designation | Free text |
+| `overlap_notes` | Basis for the overlap judgement | Free text |
+
+## Level 3 — Treatment arm
+
+### Arm identification
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `arm_id` | Unique arm identifier | Integer |
+| `study_id` | Parent publication | Integer |
+| `arm_label_in_paper` | Arm name as printed in the source | Free text |
+| `arm_role` | Role of the arm in this review | `PTCy_arm` / `comparator_arm` |
+| `comparison_1_eligible` | Eligible for PTCy vs calcineurin inhibitor with methotrexate or mycophenolate | `Y` / `N` |
+| `comparison_2_eligible` | Eligible for PTCy vs antithymocyte globulin | `Y` / `N` |
+| `comparison_3_eligible` | Eligible for within-PTCy regimen comparison | `Y` / `N` |
+| `n_patients` | Patients analysed in the arm | Integer |
+
+### Demographics
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `pct_male` | Proportion male | ___ % |
+| `age_median_years` | Median age at transplant | Numeric |
+| `age_iqr_low` | Lower quartile of age | Numeric |
+| `age_iqr_high` | Upper quartile of age | Numeric |
+| `age_range_min` | Minimum age | Numeric |
+| `age_range_max` | Maximum age | Numeric |
+| `age_mean_years` | Mean age, if median not reported | Numeric |
+| `age_sd_years` | Standard deviation of age | Numeric |
+
+### Underlying disease
+
+Record the percentage of the arm in each category; categories should sum to
+approximately 100%.
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `disease_aml_pct` | Acute myeloid leukaemia | ___ % |
+| `disease_all_pct` | Acute lymphoblastic leukaemia | ___ % |
+| `disease_mds_pct` | Myelodysplastic syndrome | ___ % |
+| `disease_mpn_pct` | Myeloproliferative neoplasm | ___ % |
+| `disease_cml_pct` | Chronic myeloid leukaemia | ___ % |
+| `disease_lymphoma_pct` | Lymphoma | ___ % |
+| `disease_mm_pct` | Multiple myeloma | ___ % |
+| `disease_cll_pct` | Chronic lymphocytic leukaemia | ___ % |
+| `disease_saa_pct` | Severe aplastic anaemia | ___ % |
+| `disease_other_pct` | Any other indication | ___ % |
+
+### Disease risk
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `disease_risk_high_pct` | High-risk stratum | ___ % |
+| `disease_risk_intermediate_pct` | Intermediate-risk stratum | ___ % |
+| `disease_risk_low_pct` | Low-risk stratum | ___ % |
+| `disease_risk_classifier_used` | Instrument used to assign risk | `DRI` / `refined_DRI` / `EBMT_risk_score` / `investigator_defined` |
+
+### Donor type
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `donor_msd_pct` | Matched sibling donor | ___ % |
+| `donor_mud_pct` | Matched unrelated donor | ___ % |
+| `donor_mmud_pct` | Mismatched unrelated donor | ___ % |
+| `donor_haplo_pct` | Haploidentical donor | ___ % |
+| `donor_ucb_pct` | Umbilical cord blood | ___ % |
+| `donor_predominant` | Most frequent donor type in the arm | `MSD` / `MUD` / `MMUD` / `haplo` / `UCB` / `mixed` |
+
+### Graft source
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `graft_pbsc_pct` | Peripheral blood stem cells | ___ % |
+| `graft_bm_pct` | Bone marrow | ___ % |
+| `graft_ucb_pct` | Cord blood | ___ % |
+| `graft_predominant` | Most frequent graft source | `PBSC` / `BM` / `UCB` / `mixed` |
+
+### Conditioning
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `conditioning_mac_pct` | Myeloablative conditioning | ___ % |
+| `conditioning_ric_pct` | Reduced-intensity conditioning | ___ % |
+| `conditioning_nma_pct` | Non-myeloablative conditioning | ___ % |
+| `conditioning_classification_scheme` | Scheme used to assign intensity | `CIBMTR` / `EBMT` / `investigator_defined` |
+| `conditioning_predominant` | Most frequent intensity in the arm | `MAC` / `RIC` / `NMA` / `mixed` |
+| `tbi_used_pct` | Received total body irradiation | ___ % |
+
+### HLA matching
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `hla_10_10_pct` | 10/10 allele-matched | ___ % |
+| `hla_9_10_pct` | 9/10 matched | ___ % |
+| `hla_8_10_or_lower_pct` | 8/10 or lower | ___ % |
+| `hla_haplo_pct` | Haploidentical match grade | ___ % |
+
+### Cytomegalovirus serostatus
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `cmv_recipient_pos_pct` | Recipient seropositive | ___ % |
+| `cmv_donor_pos_pct` | Donor seropositive | ___ % |
+| `cmv_DposRpos_pct` | Donor positive, recipient positive | ___ % |
+| `cmv_DposRneg_pct` | Donor positive, recipient negative | ___ % |
+| `cmv_DnegRpos_pct` | Donor negative, recipient positive | ___ % |
+| `cmv_DnegRneg_pct` | Donor negative, recipient negative | ___ % |
+| `cmv_serostatus_reporting` | Granularity of serostatus reporting | `R_only` / `DR_combinations` |
+
+### Post-transplant cyclophosphamide regimen
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `ptcy_used` | Whether the arm received PTCy | `Y` / `N` / `mixed` |
+| `ptcy_dose_mg_kg_per_dose` | Dose per administration | Numeric (mg/kg) |
+| `ptcy_n_doses` | Number of administrations | `1` / `2` / `mixed` |
+| `ptcy_days_post_transplant` | Days of administration relative to graft infusion | Free text (e.g. `+3, +4`) |
+| `ptcy_total_dose_mg_kg` | Cumulative dose | Numeric (mg/kg) |
+| `ptcy_dose_category` | Standardised dose grouping | `standard_50x2` / `reduced_25x2` / `reduced_40x2` / `reduced_other` / `single_dose` / `other` / `mixed` |
+
+### Other graft-versus-host disease prophylaxis
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `cni_used` | Calcineurin inhibitor given | `Y` / `N` / `mixed` |
+| `cni_agent` | Which calcineurin inhibitor | `tacrolimus` / `cyclosporine` / `other` / `mixed` |
+| `cni_target_trough_ng_ml_range` | Target trough concentration | Free text |
+| `mmf_used` | Mycophenolate mofetil given | `Y` / `N` / `UNCL` / `mixed` |
+| `mmf_total_daily_dose_mg` | Total daily dose | Numeric (mg) |
+| `mtx_used` | Methotrexate given | `Y` / `N` / `mixed` |
+| `mtx_schedule` | Days of methotrexate administration | Free text |
+| `mtx_total_dose_mg_m2` | Cumulative dose | Free text (units as reported) |
+| `sirolimus_used` | Sirolimus given | `Y` / `N` / `mixed` |
+| `abatacept_used` | Abatacept given | `Y` / `N` |
+| `other_immunosuppressant_used` | Any further agent given | `Y` / `N` / `mixed` |
+| `other_immunosuppressant_description` | Which agent and schedule | Free text |
+
+### Antithymocyte globulin
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `atg_used` | Antithymocyte globulin given | `Y` / `N` / `UNCL` / `mixed` |
+| `atg_agent` | Preparation used | `rabbit_thymoglobulin` / `rabbit_grafalon_ATLG` / `horse_ATGAM` / `other` / `mixed` |
+| `atg_total_dose_mg_kg` | Cumulative dose | Numeric (mg/kg) |
+| `atg_dose_category` | Standardised dose grouping | `low_le_4.5_rabbit` / `standard_4.5_to_10_rabbit` / `high_gt_10_rabbit_ATLG` / `horse` / `mixed` |
+| `atg_timing` | Timing relative to transplant | `pre_transplant` / `peri_transplant` / `post_transplant` |
+
+### Anti-infective prophylaxis and monitoring
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `letermovir_use` | Letermovir prophylaxis | `all_patients` / `select_high_risk` / `none` / `era_proxy_only` / `mixed_spans_era` |
+| `letermovir_era_proxy` | Era used to infer letermovir availability | `pre_2018` / `post_2018` / `mixed_spans_era` |
+| `antifungal_prophylaxis_agent` | Primary antifungal agent | `fluconazole` / `posaconazole` / `voriconazole` / `micafungin` / `echinocandin_other` / `mixed` |
+| `antifungal_mold_active` | Whether that agent is mould-active | `Y` / `N` / `UNCL` / `mixed` |
+| `antifungal_duration_target` | Intended duration of prophylaxis | Free text |
+| `antibacterial_prophylaxis_agent` | Antibacterial prophylaxis | `fluoroquinolone` / `TMP_SMX_only` / `none` / `other` |
+| `pjp_prophylaxis_agent` | *Pneumocystis jirovecii* prophylaxis | `TMP_SMX` / `mixed` |
+| `cmv_monitoring_method` | Surveillance assay | `PCR_qPCR` / `mixed` |
+| `cmv_monitoring_frequency_per_week` | Surveillance frequency | Numeric (per week) |
+| `cmv_preemptive_threshold` | Viral-load trigger for pre-emptive therapy | Free text |
+
+### Graft-versus-host disease treatment (mediator variables)
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `systemic_steroid_for_gvhd_exposure_pct` | Proportion receiving systemic corticosteroids for GVHD. If not reported directly but grade II–IV acute GVHD cumulative incidence at day +100 is, record that value as a documented lower-bound proxy and note `back_calculated_from_aGVHD_II_IV` in `extraction_notes` | ___ % |
+| `steroid_exposure_duration_days_median` | **Deprecated at schema v1.2 — do not populate.** Retained for backward compatibility; record `NR` | `NR` |
+| `second_line_gvhd_therapy_exposure_pct` | Proportion receiving second-line GVHD therapy | ___ % |
+
+## Level 4 — Outcome record
+
+One record per arm × outcome × definition × timepoint.
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `outcome_id` | Unique outcome-record identifier | Integer |
+| `arm_id` | Parent arm | Integer |
+| `study_id` | Parent publication | Integer |
+| `cohort_id` | Parent cohort | Integer |
+| `outcome_category` | Outcome domain (e.g. acute GVHD, CMV, bloodstream infection, survival) | Free text, controlled |
+| `outcome_subtype` | Specific definition within the domain (e.g. grade II–IV) | Free text, controlled |
+| `timepoint` | Assessment timepoint as reported | `D+30` / `D+100` / `D+180` / `D+365_1yr` / `D+730_2yr` / `D+1095_3yr` / `end_of_followup` |
+| `timepoint_days_numeric` | Timepoint expressed in days | Integer |
+| `is_primary_timepoint` | Flags the timepoint carried into the primary analysis | `Y` / `N` |
+| `is_primary_definition` | Flags the definition carried into the primary analysis | `Y` / `N` |
+| `denominator_n` | Patients at risk for this outcome | Integer |
+| `event_count` | Number of events. Required for meta-analysis; never derived from cumulative incidence | Integer |
+| `proportion_reported_pct` | Crude proportion as printed | ___ % |
+| `cumulative_incidence_pct` | Cumulative incidence as printed | ___ % |
+| `ci_lower_pct` | Lower confidence bound | ___ % |
+| `ci_upper_pct` | Upper confidence bound | ___ % |
+| `ci_method` | Estimator used | `Kaplan_Meier` / `Gray_CIF` / `Aalen_Johansen` / `crude_proportion` |
+| `competing_risks_handled` | Whether competing risks were accounted for | `Y_CIF` / `N_KM_or_crude` |
+| `hr_value` | Hazard ratio, where reported | Numeric |
+| `hr_ci_lower` | Lower bound of the hazard ratio | Numeric |
+| `hr_ci_upper` | Upper bound of the hazard ratio | Numeric |
+| `hr_comparator_arm_id` | Arm serving as the reference | Integer |
+| `hr_adjusted` | Whether the hazard ratio is adjusted | `adjusted` / `unadjusted` |
+| `incidence_rate_value` | Incidence rate, where reported | Numeric |
+| `incidence_rate_unit` | Rate denominator | `per_1000_pt_days` / `other` |
+| `person_time_total` | Total person-time observed | Numeric |
+| `person_time_unit` | Person-time unit | `patient_days` |
+| `median_time_to_event_days` | Median time to the event | Numeric |
+| `ascertainment_method` | How the outcome was detected | `routine_screening` / `active_surveillance` / `clinical_only` / `mixed` |
+| `screening_frequency_per_week` | Screening frequency where applicable | Numeric (per week) |
+| `definition_text` | Verbatim outcome definition from the source | Free text |
+| `data_source` | Location of the datum in the report | `table` / `narrative_text` / `figure_text` / `figure_KM_curve` / `derived` / `computed_from_other_fields` |
+| `data_quality_flag` | Provenance of the recorded value | `direct` / `derived` / `back_calculated` / `estimated_from_figure` / `computed_from_other_fields` |
+| `extraction_notes` | Audit trail for this record | Free text |
+
+### Level 4b — Outcome subgroup record
+
+Subgroup strata were extracted opportunistically where reported. These records
+carry every Level 4 field, plus:
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `parent_outcome_id` | Level 4 record this stratum belongs to | Integer |
+| `moderator_variable` | Variable defining the stratum (e.g. donor type, pathogen) | Free text |
+| `moderator_value` | Level of that variable for this record | Free text |
+
+## Risk-of-bias assessment form
+
+One record per report per tool. ROBINS-I was applied to non-randomised studies
+and RoB 2 to randomised trials; RoB 2 populates domains 1–5 only.
+
+| Field | Definition / instruction | Response |
+|---|---|---|
+| `rob_id` | Unique assessment identifier | Integer |
+| `study_id` | Report assessed | Integer |
+| `reviewer` | Assessor initials | Initials |
+| `rob_tool` | Instrument applied | `ROBINS-I` / `RoB2` |
+| `d1` | ROBINS-I: confounding. RoB 2: randomisation process | Judgement (below) |
+| `d2` | ROBINS-I: selection of participants. RoB 2: deviations from intended intervention | Judgement |
+| `d3` | ROBINS-I: classification of interventions. RoB 2: missing outcome data | Judgement |
+| `d4` | ROBINS-I: deviations from intended interventions. RoB 2: measurement of the outcome | Judgement |
+| `d5` | ROBINS-I: missing data. RoB 2: selection of the reported result | Judgement |
+| `d6` | ROBINS-I: measurement of outcomes | Judgement |
+| `d7` | ROBINS-I: selection of the reported result | Judgement |
+| `overall_judgement` | Overall risk of bias for the report | Judgement |
+| `justification_text` | Free-text rationale supporting the judgement | Free text |
+| `assessment_date` | Date of assessment | YYYY-MM-DD |
+
+Permitted judgements: ROBINS-I — `low`, `moderate`, `serious`, `critical`, `NI`
+(no information); RoB 2 — `low`, `some_concerns`, `high`.
