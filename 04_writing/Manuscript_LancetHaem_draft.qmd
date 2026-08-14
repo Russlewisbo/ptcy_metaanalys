@@ -85,6 +85,8 @@ m1_c1_bsi <- readRDS(resolve_model_file("m1_c1_bsi.rds"))
 m1_c1_ifi <- readRDS(resolve_model_file("m1_c1_ifi_any.rds"))
 m1_c1_bk  <- readRDS(resolve_model_file("m1_c1_bk.rds"))
 m1_c2_bk  <- readRDS(resolve_model_file("m1_c2_bk.rds"))
+m1_c1_agvhd <- readRDS(resolve_model_file("m1_c1_agvhd.rds"))
+m1_c2_agvhd <- readRDS(resolve_model_file("m1_c2_agvhd.rds"))
 
 bayes_pooled <- function(model) {
   d <- as_draws_df(model)
@@ -103,6 +105,8 @@ bayes_bsi_c1 <- bayes_pooled(m1_c1_bsi)
 bayes_ifi_c1 <- bayes_pooled(m1_c1_ifi)
 bayes_bk_c1  <- bayes_pooled(m1_c1_bk)
 bayes_bk_c2  <- bayes_pooled(m1_c2_bk)
+bayes_agvhd_c1 <- bayes_pooled(m1_c1_agvhd)
+bayes_agvhd_c2 <- bayes_pooled(m1_c2_agvhd)
 
 # Corrected CMV sensitivity primary estimate (true M1, not the mislabelled cache)
 post_cmv_primary <- as_draws_df(m1_c1_cmv)
@@ -353,7 +357,7 @@ Where several publications reported on the same patient cohort, only one was all
 
 ```{r}
 #| label: fig-prisma
-#| fig-cap: "Figure 1: Study selection (PRISMA 2020 flow diagram)"
+#| fig-cap: "Study selection (PRISMA 2020 flow diagram). Records identified from EMBASE, PubMed and SCOPUS, with counts screened, sought, assessed at full text and included; reasons for full-text exclusion are listed in the appendix. Studies with extractable event counts contributed to the meta-analysis. A study contributing to more than one comparison is counted in each, so the per-comparison counts sum to more than the total number of studies meta-analysed."
 #| fig-height: 8
 
 # PRISMA flow rendered as a structured ggplot
@@ -459,7 +463,7 @@ Of 227 observational studies assessed with ROBINS-I, 150 (66%) were at moderate 
 
 ```{r}
 #| label: fig-forest-os
-#| fig-cap: "Figure 2: Forest plots — overall survival (Bayesian pooled estimate, with posterior density shown above the pooled row)"
+#| fig-cap: "Overall survival. **A**, Comparison 1: PTCy versus a calcineurin inhibitor with methotrexate or mycophenolate mofetil. **B**, Comparison 2: PTCy versus antithymocyte globulin. Circles with horizontal lines are study-level odds ratios (OR) for death with 95% CIs, ordered by effect size; diamonds are pooled posterior median ORs with 95% credible intervals from the Bayesian random-effects model (M1), and the shaded curve above each diamond is the full posterior distribution of the pooled OR. An OR below 1 favours PTCy; the dashed line marks no difference and the x-axis is on a log scale. Number of studies (k), total patients (N) and between-study heterogeneity (τ, posterior median) are annotated in each panel; zero cells received a 0·5 continuity correction."
 #| fig-height: 14
 
 p1 <- forest_study_bayes(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF", bayes_os_c1)
@@ -477,11 +481,11 @@ PTCy was associated with improved OS (k=35, OR 0·84 [95% CrI 0·76–0·92]; P(
 
 ```{r}
 #| label: fig-forest-agvhd
-#| fig-cap: "Acute GVHD grade II–IV forest plots"
+#| fig-cap: "Grade II–IV acute graft-versus-host disease. **A**, Comparison 1: PTCy versus a calcineurin inhibitor with methotrexate or mycophenolate mofetil. **B**, Comparison 2: PTCy versus antithymocyte globulin. Circles with horizontal lines are study-level odds ratios (OR) with 95% CIs, ordered by effect size; diamonds are pooled posterior median ORs with 95% credible intervals from the Bayesian random-effects model (M1), and the shaded curve above each diamond is the full posterior distribution of the pooled OR. An OR below 1 favours PTCy; the dashed line marks no difference and the x-axis is on a log scale. Number of studies (k), total patients (N) and between-study heterogeneity (τ, posterior median) are annotated in each panel; zero cells received a 0·5 continuity correction."
 #| fig-height: 12
 
-p1 <- forest_study(c1_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C1: PTCy vs CNI+MTX/MMF")
-p2 <- forest_study(c2_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C2: PTCy vs ATG")
+p1 <- forest_study_bayes(c1_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C1: PTCy vs CNI+MTX/MMF", bayes_agvhd_c1)
+p2 <- forest_study_bayes(c2_agvhd, studies_df, "Acute GVHD Grade II\u2013IV", "C2: PTCy vs ATG", bayes_agvhd_c2)
 
 fig_agvhd <- p1 / p2 + plot_layout(heights = c(3, 1.2)) +
   plot_annotation(tag_levels = "A", tag_suffix = ".")
@@ -495,7 +499,7 @@ Acute GVHD grade II–IV was substantially reduced (k=28, OR 0·67 [0·59–0·7
 
 ```{r}
 #| label: fig-forest-cmv
-#| fig-cap: "Figure 3: Forest plots — CMV any-reactivation (Bayesian pooled estimate, with posterior density shown above the pooled row)"
+#| fig-cap: "Cytomegalovirus reactivation (any, by local surveillance threshold). **A**, Comparison 1: PTCy versus a calcineurin inhibitor with methotrexate or mycophenolate mofetil. **B**, Comparison 2: PTCy versus antithymocyte globulin. Circles with horizontal lines are study-level odds ratios (OR) with 95% CIs, ordered by effect size; diamonds are pooled posterior median ORs with 95% credible intervals from the Bayesian random-effects model (M1), and the shaded curve above each diamond is the full posterior distribution of the pooled OR. An OR above 1 indicates more reactivation with PTCy; the dashed line marks no difference and the x-axis is on a log scale. The contrast between panels — excess reactivation against calcineurin-inhibitor prophylaxis but no difference against antithymocyte globulin — is the basis for the depletion-gradient interpretation in the Discussion. Number of studies (k), total patients (N) and between-study heterogeneity (τ, posterior median) are annotated in each panel."
 #| fig-height: 12
 
 p1 <- forest_study_bayes(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF", bayes_cmv_c1)
@@ -507,11 +511,11 @@ save_fig(fig3, "Figure3_CMV_forest", width = 8, height = 12)
 fig3
 ```
 
-CMV reactivation was increased in C1 (k=22, OR 1·26 [1·07–1·47]; @fig-forest-cmv). This effect was steroid-independent (M2 OR 1·25 [1·01–1·54]) and strengthened in sensitivity analyses (appendix p XX). BSI was elevated (k=6, OR 1·87 [1·33–2·62]), BK virus reactivation showed the largest infection effect (k=11, OR 2·48 [1·82–3·38]), and IFI was reduced (k=6, OR 0·43 [0·29–0·63]), though with extreme heterogeneity (τ=1·64) (@fig-forest-infections). Infection-related mortality was not significantly increased (k=13, OR 1·19 [1·00–1·43]).
+CMV reactivation was increased in C1 (k=22, OR 1·26 [1·07–1·47]; @fig-forest-cmv). This effect was steroid-independent (M2 OR 1·25 [1·01–1·54]) and strengthened in sensitivity analyses (appendix p XX). BSI was elevated (k=6, OR 1·87 [1·33–2·62]), BK virus reactivation showed the largest infection effect (k=11, OR 2·48 [1·82–3·38]), and IFI was reduced (k=6, OR 0·43 [0·29–0·63]), though with extreme heterogeneity (τ=1·53) (@fig-forest-infections). Infection-related mortality was not significantly increased (k=13, OR 1·19 [1·00–1·43]).
 
 ```{r}
 #| label: fig-forest-infections
-#| fig-cap: "Figure 4: Forest plots — bacterial, fungal, and BK viral infection risk (Comparison 1, Bayesian pooled estimates, with posterior density shown above each pooled row)"
+#| fig-cap: "Bacterial, fungal and BK viral infection in Comparison 1 (PTCy versus a calcineurin inhibitor with methotrexate or mycophenolate mofetil). **A**, bloodstream infection, any pathogen. **B**, invasive fungal infection, any. **C**, BK virus reactivation. Circles with horizontal lines are study-level odds ratios (OR) with 95% CIs, ordered by effect size; diamonds are pooled posterior median ORs with 95% credible intervals from the Bayesian random-effects model (M1), and the shaded curve above each diamond is the full posterior distribution of the pooled OR. An OR above 1 indicates more events with PTCy; the dashed line marks no difference and the x-axis is on a log scale. Number of studies (k), total patients (N) and between-study heterogeneity (τ, posterior median) are annotated in each panel; all three estimates rest on few studies, and the fungal estimate carries the highest heterogeneity of any outcome in the analysis, so both warrant cautious interpretation."
 #| fig-height: 12
 
 p1 <- forest_study_bayes(c1_bsi, studies_df, "Bloodstream Infection", "C1: PTCy vs CNI+MTX/MMF", bayes_bsi_c1)
