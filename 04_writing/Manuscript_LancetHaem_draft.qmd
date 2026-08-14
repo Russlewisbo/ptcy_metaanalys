@@ -111,11 +111,16 @@ post_cmv_primary <- as_draws_df(m1_c1_cmv)
 # Every numbered/appendix figure is also saved to figures/ in three formats
 # (PNG for quick viewing, PDF for print/LaTeX, SVG for editing/web) so the
 # manuscript render is the single source of truth for all standalone files.
+# Anchored to writing_dir so figures always land in 04_writing/figures/ regardless
+# of whether the render runs from the project root or from 04_writing/. A bare
+# "figures" path previously created a duplicate tree at the repo root.
+fig_dir <- file.path(writing_dir, "figures")
+
 save_fig <- function(plot, name, width, height, dpi = 300) {
-  dir.create("figures", showWarnings = FALSE)
-  ggsave(file.path("figures", paste0(name, ".png")), plot, width = width, height = height, dpi = dpi, bg = "white")
-  ggsave(file.path("figures", paste0(name, ".pdf")), plot, width = width, height = height)
-  ggsave(file.path("figures", paste0(name, ".svg")), plot, width = width, height = height)
+  dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE)
+  ggsave(file.path(fig_dir, paste0(name, ".png")), plot, width = width, height = height, dpi = dpi, bg = "white")
+  ggsave(file.path(fig_dir, paste0(name, ".pdf")), plot, width = width, height = height)
+  ggsave(file.path(fig_dir, paste0(name, ".svg")), plot, width = width, height = height)
 }
 
 # ── Load IFI LOO ──
