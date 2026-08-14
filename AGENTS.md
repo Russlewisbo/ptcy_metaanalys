@@ -352,16 +352,21 @@ Remote switched to SSH (`git@github.com:Russlewisbo/ptcy_metaanalys.git`).
 
 ## Pending Work
 
-### Blocked 2026-08-14
+### Resolved 2026-08-14
 
-1. **SSH key not registered** — `~/.ssh/id_ed25519` exists and is offered, but GitHub
-   rejects it (`Permission denied (publickey)`). Fingerprint
-   `SHA256:xIijo41xz1ijco0aS5Gok3f7qxr8HKcroYi5DCvOoSo` must be added at
-   github.com/settings/keys. **4 commits are unpushed** until this is fixed.
-2. **History purge deferred** — `git-filter-repo` installed at `~/.local/bin/`. Plan:
-   purge `.RDataTmp*` + the rendered HTML (~211 MB of 837 MB). Deliberately sequenced
-   *after* a successful push so the unpushed commits have a remote fallback. Requires
-   `push --force`; invalidates the co-reviewer's clone.
+1. **SSH auth working.** Key `SHA256:xIijo41xz1ijco0aS5Gok3f7qxr8HKcroYi5DCvOoSo`
+   registered on GitHub; `ssh -T git@github.com` greets `Russlewisbo`. Remote is SSH.
+2. **History purged.** `git-filter-repo` (at `~/.local/bin/`) removed `.RDataTmp{,1,2}`
+   and the rendered draft HTML from all 52 commits. `.git` 845 MB → **689 MB**.
+   Verified: HEAD tree hash unchanged (`b452991`), commit count unchanged, both files
+   still present on disk as ignored. Backup of the pre-rewrite `.git` at
+   `~/ptcy_git_backup_20260814_110059.git` — delete once you're confident.
+   - **All commit SHAs changed.** The co-reviewer must re-clone; `git pull` will fail
+     on their old clone. Current HEAD is `0130b12`.
+   - GitHub retains unreachable objects server-side until its own GC, so the repo size
+     shown on github.com may lag. Contact GitHub Support to force it if it matters.
+   - Remaining `.git` bulk is legitimate: `03_models/**/*.rds` brms fits (~22 MB for
+     `m1_c1_os.rds` alone across versions). Do not purge these.
 
 
 ### Set B follow-ups (2026-08-11)
