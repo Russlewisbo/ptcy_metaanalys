@@ -676,8 +676,7 @@ robins_long <- robins |>
 #### Appendix S5a: Risk of bias traffic-light plot (ROBINS-I, per study)
 
 ```{r}
-#| label: fig-rob-traffic
-#| fig-cap: "Appendix Figure S5a: ROBINS-I risk-of-bias traffic-light plot (n = 227 observational studies). One row per study, grouped by overall judgement (critical, serious, no information, moderate, low, top to bottom) and alphabetically within each group; columns D1–D7 are the seven ROBINS-I domains (confounding, selection, classification, deviations, missing data, measurement, reporting); the rightmost column is the overall judgement."
+#| label: app-rob-traffic
 #| fig-height: 30
 
 traffic_long <- robins |>
@@ -733,11 +732,12 @@ save_fig(fig_rob_traffic, "FigureS5a_ROBINS_traffic_light", width = 8, height = 
 fig_rob_traffic
 ```
 
+**Appendix Figure S5a.** ROBINS-I risk-of-bias traffic-light plot (n = 227 observational studies). One row per study, grouped by overall judgement (critical, serious, no information, moderate, low, top to bottom) and alphabetically within each group; columns D1–D7 are the seven ROBINS-I domains (confounding, selection, classification, deviations, missing data, measurement, reporting); the rightmost column is the overall judgement.
+
 #### Appendix S5b: Risk of bias domain-level summary (ROBINS-I)
 
 ```{r}
-#| label: fig-rob-summary
-#| fig-cap: "Appendix Figure S5b: ROBINS-I domain-level risk-of-bias summary (n = 227 observational studies)."
+#| label: app-rob-summary
 #| fig-height: 4
 
 fig_rob_summary <- ggplot(robins_long, aes(x = n, y = fct_rev(domain), fill = judgement)) +
@@ -752,6 +752,8 @@ fig_rob_summary <- ggplot(robins_long, aes(x = n, y = fct_rev(domain), fill = ju
 save_fig(fig_rob_summary, "FigureS5b_ROBINS_domain_summary", width = 8, height = 4)
 fig_rob_summary
 ```
+
+**Appendix Figure S5b.** ROBINS-I domain-level risk-of-bias summary (n = 227 observational studies).
 
 #### Appendix S5c: Risk of bias domain-level detail (table)
 
@@ -771,8 +773,7 @@ kable(robins_wide) |>
 #### Appendix S8a: Frequentist concordance checks — overall survival and CMV
 
 ```{r}
-#| label: fig-forest-os-freq
-#| fig-cap: "Appendix Figure S8a-i: Forest plots — overall survival (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 2 as a sensitivity/concordance check."
+#| label: app-forest-os-freq
 #| fig-height: 14
 
 p1 <- forest_study(c1_os, studies_df, "Overall Survival", "C1: PTCy vs CNI+MTX/MMF")
@@ -784,9 +785,10 @@ save_fig(figS8a_os, "FigureS8a_OS_forest_frequentist", width = 8, height = 14)
 figS8a_os
 ```
 
+**Appendix Figure S8a-i.** Forest plots — overall survival (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 2 as a sensitivity/concordance check.
+
 ```{r}
-#| label: fig-forest-cmv-freq
-#| fig-cap: "Appendix Figure S8a-ii: Forest plots — CMV any-reactivation (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 4 as a sensitivity/concordance check."
+#| label: app-forest-cmv-freq
 #| fig-height: 12
 
 p1 <- forest_study(c1_cmv, studies_df, "CMV Any Reactivation", "C1: PTCy vs CNI+MTX/MMF")
@@ -798,9 +800,10 @@ save_fig(figS8a_cmv, "FigureS8a_CMV_forest_frequentist", width = 8, height = 12)
 figS8a_cmv
 ```
 
+**Appendix Figure S8a-ii.** Forest plots — CMV any-reactivation (frequentist REML concordance check). Individual study odds ratios with 95% CIs and pooled frequentist random-effects estimate (metafor, REML), shown alongside the Bayesian estimate reported in Figure 4 as a sensitivity/concordance check.
+
 ```{r}
-#| label: fig-forest-nrm
-#| fig-cap: "Appendix Figure S8c: Non-relapse mortality. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2."
+#| label: app-forest-nrm
 #| fig-height: 9
 
 c1_nrm <- load_data("data_c1_nrm.csv")
@@ -819,9 +822,10 @@ save_fig(fig_nrm, "FigureS8c_NRM_forest", width = 8, height = 9)
 fig_nrm
 ```
 
+**Appendix Figure S8c.** Non-relapse mortality. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2.
+
 ```{r}
-#| label: fig-forest-rrm
-#| fig-cap: "Appendix Figure S8d: Relapse-related mortality. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2."
+#| label: app-forest-rrm
 #| fig-height: 14
 
 c1_rrm <- load_data("data_c1_rrm.csv")
@@ -836,9 +840,10 @@ save_fig(fig_rrm, "FigureS8d_RRM_forest", width = 8, height = 14)
 fig_rrm
 ```
 
+**Appendix Figure S8d.** Relapse-related mortality. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2.
+
 ```{r}
-#| label: fig-forest-cgvhd
-#| fig-cap: "Appendix Figure S8e: Moderate-to-severe chronic GVHD (NIH consensus criteria). **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2."
+#| label: app-forest-cgvhd
 #| fig-height: 12
 
 c1_cgvhd_ms <- load_data("data_c1_cgvhd_ms.csv")
@@ -853,9 +858,10 @@ save_fig(fig_cgvhd, "FigureS8e_cGVHD_forest", width = 8, height = 12)
 fig_cgvhd
 ```
 
+**Appendix Figure S8e.** Moderate-to-severe chronic GVHD (NIH consensus criteria). **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2.
+
 ```{r}
-#| label: fig-forest-bsi
-#| fig-cap: "Appendix Figure S8f: Bloodstream infection, any pathogen (Comparison 1). Plot elements as in Figure 5."
+#| label: app-forest-bsi
 #| fig-height: 5
 
 c1_bsi <- load_data("data_c1_bsi.csv")
@@ -864,9 +870,10 @@ save_fig(fig_bsi, "FigureS8f_BSI_forest", width = 8, height = 5)
 fig_bsi
 ```
 
+**Appendix Figure S8f.** Bloodstream infection, any pathogen (Comparison 1). Plot elements as in Figure 5.
+
 ```{r}
-#| label: fig-forest-ifi
-#| fig-cap: "Appendix Figure S8g: Invasive fungal infection, any (Comparison 1). Plot elements as in Figure 5. This estimate carries the highest between-study heterogeneity in the analysis and should be read with the leave-one-out analysis in Appendix Figure S9b."
+#| label: app-forest-ifi
 #| fig-height: 5
 
 c1_ifi <- load_data("data_c1_ifi_any.csv")
@@ -875,9 +882,10 @@ save_fig(fig_ifi, "FigureS8g_IFI_forest", width = 8, height = 5)
 fig_ifi
 ```
 
+**Appendix Figure S8g.** Invasive fungal infection, any (Comparison 1). Plot elements as in Figure 5. This estimate carries the highest between-study heterogeneity in the analysis and should be read with the leave-one-out analysis in Appendix Figure S9b.
+
 ```{r}
-#| label: fig-forest-bk
-#| fig-cap: "Appendix Figure S8h: BK virus reactivation. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 5."
+#| label: app-forest-bk
 #| fig-height: 8
 
 c1_bk <- load_data("data_c1_bk.csv")
@@ -896,9 +904,10 @@ save_fig(fig_bk, "FigureS8h_BK_forest", width = 8, height = 8)
 fig_bk
 ```
 
+**Appendix Figure S8h.** BK virus reactivation. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 5.
+
 ```{r}
-#| label: fig-forest-irm
-#| fig-cap: "Appendix Figure S8i: Infection-related mortality. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2."
+#| label: app-forest-irm
 #| fig-height: 12
 
 c1_irm <- load_data("data_c1_irm.csv")
@@ -913,9 +922,10 @@ save_fig(fig_irm, "FigureS8i_IRM_forest", width = 8, height = 12)
 fig_irm
 ```
 
+**Appendix Figure S8i.** Infection-related mortality. **A**, Comparison 1; **B**, Comparison 2. Plot elements as in Figure 2.
+
 ```{r}
-#| label: fig-forest-c3
-#| fig-cap: "Appendix Figure S8j: Comparison 3, within-PTCy regimen variants, all outcomes. **A**, overall survival; **B**, non-relapse mortality; **C**, grade II–IV acute GVHD; **D**, chronic GVHD (shown when at least three studies contribute). Plot elements as in Figure 2."
+#| label: app-forest-c3
 #| fig-height: 16
 
 c3_os    <- load_data("data_c3_os.csv")
@@ -939,11 +949,12 @@ save_fig(fig_c3, "FigureS8j_C3_forest", width = 12, height = 12)
 fig_c3
 ```
 
+**Appendix Figure S8j.** Comparison 3, within-PTCy regimen variants, all outcomes. **A**, overall survival; **B**, non-relapse mortality; **C**, grade II–IV acute GVHD; **D**, chronic GVHD (shown when at least three studies contribute). Plot elements as in Figure 2.
+
 ### Appendix S9a: CMV sensitivity analyses (Comparison 1)
 
 ```{r}
-#| label: fig-cmv-sensitivity
-#| fig-cap: "Appendix Figure S9a: CMV sensitivity analyses (Comparison 1). All three estimates use post-Block-9 data and the true M1 (primary) posterior. Both subgroup restrictions strengthen the signal."
+#| label: app-cmv-sensitivity
 #| fig-height: 4
 
 or_summary_from_post <- function(post, col = "b_ptcy_binary", label) {
@@ -977,11 +988,12 @@ save_fig(fig_cmv_sens, "FigureS9a_CMV_sensitivity", width = 8, height = 4)
 fig_cmv_sens
 ```
 
+**Appendix Figure S9a.** CMV sensitivity analyses (Comparison 1). All three estimates use post-Block-9 data and the true M1 (primary) posterior. Both subgroup restrictions strengthen the signal.
+
 ### Appendix S9: IFI leave-one-out analysis
 
 ```{r}
-#| label: fig-loo-ifi
-#| fig-cap: "Appendix Figure S9b: Leave-one-out analysis for invasive fungal infection (Comparison 1, frequentist REML). Each row omits one study; the pooled odds ratio and between-study heterogeneity are recomputed from the remainder. Haebe S 2023 is the dominant heterogeneity driver."
+#| label: app-loo-ifi
 #| fig-height: 4
 
 loo_plot <- loo_tbl |>
@@ -998,6 +1010,8 @@ fig_loo_ifi <- ggplot(loo_plot, aes(x = or_median, y = label)) +
 save_fig(fig_loo_ifi, "FigureS9b_IFI_leave_one_out", width = 8, height = 4)
 fig_loo_ifi
 ```
+
+**Appendix Figure S9b.** Leave-one-out analysis for invasive fungal infection (Comparison 1, frequentist REML). Each row omits one study; the pooled odds ratio and between-study heterogeneity are recomputed from the remainder. Haebe S 2023 is the dominant heterogeneity driver.
 
 ### Appendix S11: GRADE certainty summary
 
@@ -1050,8 +1064,7 @@ MCMC: 4 chains × 4000 iterations (1000 warmup), adapt_delta = 0·95.
 ### Appendix S12: Cohort overlap map
 
 ```{r}
-#| label: fig-cohort-overlap
-#| fig-cap: "Appendix Figure S12: Cohort overlap map. Number of publications contributing to the database from each registry cohort that is represented by more than one publication (n = 25 cohorts). The x-axis is on a log10 scale to keep the EBMT ALWP cluster (31 publications) visible alongside the smaller multi-publication cohorts; bar labels give the true counts. These are the cohorts for which the outcome-aware deduplication rule (one publication per cohort per outcome; Set B) prevents the same patients from entering a model more than once."
+#| label: app-cohort-overlap
 #| fig-height: 7
 
 s12a <- read.csv(file.path(writing_dir, "Table_S12a_cohort_overlap_map.csv"))
@@ -1072,6 +1085,8 @@ fig_cohort_overlap <- s12a |>
 save_fig(fig_cohort_overlap, "FigureS12_cohort_overlap_map", width = 8, height = 7)
 fig_cohort_overlap
 ```
+
+**Appendix Figure S12.** Cohort overlap map. Number of publications contributing to the database from each registry cohort that is represented by more than one publication (n = 25 cohorts). The x-axis is on a log10 scale to keep the EBMT ALWP cluster (31 publications) visible alongside the smaller multi-publication cohorts; bar labels give the true counts. These are the cohorts for which the outcome-aware deduplication rule (one publication per cohort per outcome; Set B) prevents the same patients from entering a model more than once.
 
 ---
 
