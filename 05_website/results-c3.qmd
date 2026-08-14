@@ -44,15 +44,15 @@ if (!is.null(post_c3_os)) {
 }
 ```
 
-**M1:** OR 1.11 (95% CrI 0.95–1.30), P(OR > 1) = 90%, τ = 0.92, k = 6. No significant OS difference between PTCy regimen variants. The wide τ indicates substantial heterogeneity, likely reflecting the diversity of within-PTCy comparisons (e.g., Tac/MMF vs sirolimus vs CNI-free).
+**M1:** OR 1.11 (95% CrI 0.95–1.30), P(OR > 1) = 90%, τ = 0.84, k = 6. No significant OS difference between PTCy regimen variants. The wide τ indicates substantial heterogeneity, likely reflecting the diversity of within-PTCy comparisons (e.g., Tac/MMF vs sirolimus vs CNI-free).
 
 ## Non-Relapse Mortality {#sec-c3-nrm}
 
-**M1:** OR 0.96 (95% CrI 0.74–1.24), k = 5, τ = 1.22. No signal; CrI spans null symmetrically.
+**M1:** OR 0.96 (95% CrI 0.74–1.24), k = 5, τ = 1.11. No signal; CrI spans null symmetrically.
 
 ## Acute GVHD Grade II–IV {#sec-c3-agvhd}
 
-**M1:** OR 1.00 (95% CrI 0.80–1.25), k = 7, τ = 0.82. No meaningful difference in aGVHD between PTCy-based regimen variants.
+**M1:** OR 1.00 (95% CrI 0.80–1.25), k = 7, τ = 0.75. No meaningful difference in aGVHD between PTCy-based regimen variants.
 
 ## Chronic GVHD {#sec-c3-cgvhd}
 
@@ -74,11 +74,11 @@ if (!is.null(post_c3_cgvhd)) {
 }
 ```
 
-**M1:** OR 0.67 (95% CrI 0.39–1.14), P(OR < 1) = 93%, k = 4, τ = 0.41. A suggestive but non-significant reduction in chronic GVHD. This is the only C3 outcome with a directional trend, but the small k and wide CrI preclude definitive interpretation.
+**M1:** OR 0.67 (95% CrI 0.39–1.14), P(OR < 1) = 93%, k = 4, τ = 0.31. A suggestive but non-significant reduction in chronic GVHD. This is the only C3 outcome with a directional trend, but the small k and wide CrI preclude definitive interpretation.
 
 ## Relapse-Related Mortality {#sec-c3-rrm}
 
-**M1:** OR 0.80 (95% CrI 0.50–1.27), k = 6, τ = 0.39. No significant difference in relapse-related mortality between PTCy variants.
+**M1:** OR 0.80 (95% CrI 0.50–1.27), k = 6, τ = 0.31. No significant difference in relapse-related mortality between PTCy variants.
 
 ## Summary {#sec-c3-summary}
 

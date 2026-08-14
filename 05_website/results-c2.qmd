@@ -185,7 +185,7 @@ if (!is.null(post_c2_rrm)) {
 }
 ```
 
-**M1:** OR 0.79 (95% CrI 0.69–0.89), P(OR < 1) > 99%, k = 10, τ = 0.16. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.86) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.16) is the lowest of any outcome, indicating minimal between-study heterogeneity.
+**M1:** OR 0.79 (95% CrI 0.69–0.89), P(OR < 1) > 99%, k = 10, τ = 0.14. A clear RRM advantage for PTCy over ATG, consistent with the C1 finding (OR 0.86) and supporting preserved GVL activity. Notably, the C2 RRM τ (0.14) is the lowest of any outcome, indicating minimal between-study heterogeneity.
 
 ## BK Virus Reactivation {#sec-c2-bk}
 

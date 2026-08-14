@@ -93,7 +93,7 @@ tibble(
   theme_jama()
 ```
 
-**M1:** OR 0.88 (95% CrI 0.66–1.18), P(OR < 1) = 83%, τ = 0.72. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.
+**M1:** OR 0.88 (95% CrI 0.66–1.18), P(OR < 1) = 83%, τ = 0.69. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.
 
 **M2:** OR 0.90 (95% CrI 0.59–1.36), P(OR < 1) = 60%. The M1→M2 shift is modest (0.88 → 0.90), with wide CrIs overlapping substantially. Unlike the pre-Block-9 analysis (where M2 crossed null at 1.02, suggesting complete mediation), the current data are **inconclusive regarding steroid mediation** of NRM — the point estimates barely differ, and the wide intervals accommodate both full mediation and no mediation.
 
@@ -168,7 +168,7 @@ tibble(log_or = post_agvhd$b_ptcy_binary) |>
   theme_jama()
 ```
 
-**M1:** OR 0.67 (95% CrI 0.59–0.78), P(OR < 1) = 100%, τ = 0.68. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.
+**M1:** OR 0.67 (95% CrI 0.59–0.78), P(OR < 1) = 100%, τ = 0.67. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.
 
 ## Chronic GVHD {#sec-c1-cgvhd}
 
@@ -234,7 +234,7 @@ cmv_draws |>
   theme_jama()
 ```
 
-**M1:** OR 1.26 (95% CrI 1.07–1.47), P(OR > 1) > 99%, τ = 0.74. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.
+**M1:** OR 1.26 (95% CrI 1.07–1.47), P(OR > 1) > 99%, τ = 0.73. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.
 
 **M2 (steroid-adjusted):** OR 1.25 (no attenuation). The CMV excess is steroid-independent, consistent with direct impairment of CMV-specific T-cell reconstitution rather than a downstream GVHD effect.
 
@@ -261,9 +261,9 @@ tibble(
   theme_jama()
 ```
 
-**BSI (k = 6):** OR 1.87 (95% CrI 1.33–2.62), τ = 0.96. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 [0.61–2.73]) crosses null, reflecting sensitivity to the REML τ² estimate.
+**BSI (k = 6):** OR 1.87 (95% CrI 1.33–2.62), τ = 0.88. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 [0.61–2.73]) crosses null, reflecting sensitivity to the REML τ² estimate.
 
-**IFI (k = 6):** OR 0.43 (95% CrI 0.29–0.63), P(OR < 1) > 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.64 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.
+**IFI (k = 6):** OR 0.43 (95% CrI 0.29–0.63), P(OR < 1) > 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.53 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.
 
 ## Relapse-Related Mortality {#sec-c1-rrm}
 
@@ -322,7 +322,7 @@ if (!is.null(post_bk)) {
 }
 ```
 
-**M1:** OR 2.48 (95% CrI 1.82–3.38), P(OR > 1) > 99%, k = 11, τ = 1.06. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.
+**M1:** OR 2.48 (95% CrI 1.82–3.38), P(OR > 1) > 99%, k = 11, τ = 1.00. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.
 
 ::: {.callout-important}
 ## BK Virus: Dual Mechanism

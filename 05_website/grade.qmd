@@ -31,12 +31,12 @@ tibble::tribble(
   "CMV",           "C1", 22,  3328, "1.26 [1.07\u20131.47]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 62%; obs only",
   "CMV",           "C2", 12,  1511, "0.97 [0.77\u20131.23]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; sensitivity convergence",
   "BSI",           "C1",  6,   806, "1.87 [1.33\u20132.62]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 6; freq CrI crosses null",
-  "IFI",           "C1",  6,  2243, "0.43 [0.29\u20130.63]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.64; extreme heterogeneity",
+  "IFI",           "C1",  6,  2243, "0.43 [0.29\u20130.63]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.53; extreme heterogeneity",
   "cGVHD mod-sev", "C1", 19,  2840, "0.47 [0.38\u20130.57]", "\u2295\u2295\u2296\u2296 LOW",       "Largest effect; I\u00B2 = 80%",
   "cGVHD mod-sev", "C2",  6,   905, "0.79 [0.55\u20131.14]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; k = 6",
   "RRM",           "C1", 34, 11121, "0.86 [0.77\u20130.97]", "\u2295\u2295\u2296\u2296 LOW",       "Consistent; no steroid mediation",
-  "RRM",           "C2", 10, 17182, "0.79 [0.69\u20130.89]", "\u2295\u2295\u2296\u2296 LOW",       "\u03c4 = 0.16; highly consistent",
-  "BK Virus",      "C1", 11,  1333, "2.48 [1.82\u20133.38]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.06; dual mechanism",
+  "RRM",           "C2", 10, 17182, "0.79 [0.69\u20130.89]", "\u2295\u2295\u2296\u2296 LOW",       "\u03c4 = 0.14; highly consistent",
+  "BK Virus",      "C1", 11,  1333, "2.48 [1.82\u20133.38]", "\u2295\u2296\u2296\u2296 V.LOW",     "\u03c4 = 1.00; dual mechanism",
   "BK Virus",      "C2",  3,   313, "2.44 [1.40\u20134.26]", "\u2295\u2296\u2296\u2296 V.LOW",     "k = 3; hypothesis-generating",
   "IRM",           "C1", 13,  5504, "1.19 [1.00\u20131.43]", "\u2295\u2296\u2296\u2296 V.LOW",     "Bayes-freq divergence; CIBMTR-driven",
   "IRM",           "C2",  7, 13346, "0.90 [0.74\u20131.09]", "\u2295\u2296\u2296\u2296 V.LOW",     "CrI crosses null; k = 7"
@@ -108,7 +108,7 @@ tibble::tribble(
   ~Domain, ~C1, ~C2,
   "Study design", "All retro/registry; start LOW", "All retro/registry; start LOW",
   "Risk of bias", "0 (ascertainment bias opposes effect)", "0 (same reasoning)",
-  "Inconsistency", "\u22121 (I\u00B2 = 62%; \u03c4 = 0.68)", "\u22121 (I\u00B2 = 73%; \u03c4 = 0.55)",
+  "Inconsistency", "\u22121 (I\u00B2 = 62%; \u03c4 = 0.67)", "\u22121 (I\u00B2 = 73%; \u03c4 = 0.53)",
   "Indirectness", "0", "0",
   "Imprecision", "0 (CrI excludes null; k = 28)", "0 (CrI excludes null; k = 9)",
   "Pub. bias", "\u22121 (Egger p = 0.041; T&F: 0.61 \u2192 0.83)", "0 (not assessable, k = 9)",
@@ -171,7 +171,7 @@ tibble::tribble(
   ~Domain, ~`C1 BSI`, ~`C1 IFI`,
   "Study design", "All retro/registry; start LOW", "All retro/registry; start LOW",
   "Risk of bias", "\u22121 (definitions heterogeneous)", "0",
-  "Inconsistency", "\u22121 (I\u00B2 = 71%; freq CrI crosses null)", "\u22121 (\u03c4 = 1.64; I\u00B2 = 80%)",
+  "Inconsistency", "\u22121 (I\u00B2 = 71%; freq CrI crosses null)", "\u22121 (\u03c4 = 1.53; I\u00B2 = 80%)",
   "Indirectness", "0", "0",
   "Imprecision", "0 (Bayes CrI excludes null)", "0 (CrI excludes null [0.29\u20130.63])",
   "Net", "\u22122", "\u22121",
@@ -183,7 +183,7 @@ tibble::tribble(
 
 BSI: The Bayesian OR of 1.87 [1.33–2.62] suggests elevated risk, but the frequentist estimate (OR 1.29 [0.61–2.73]) crosses null substantially. Both k = 6. The Bayesian shrinkage prior and the frequentist random-effects model disagree, reducing confidence.
 
-IFI: The post-Block-9 estimate (OR 0.43 [0.29–0.63]) is substantially stronger than pre-Block-9 (0.73 [0.53–1.00]), but τ = 1.64 indicates extreme between-study heterogeneity. The frequentist CrI (0.21–1.74) again crosses null. With only k = 6 studies and this level of heterogeneity, the strong protective signal should be interpreted cautiously.
+IFI: The post-Block-9 estimate (OR 0.43 [0.29–0.63]) is substantially stronger than pre-Block-9 (0.73 [0.53–1.00]), but τ = 1.53 indicates extreme between-study heterogeneity. The frequentist CrI (0.21–1.74) again crosses null. With only k = 6 studies and this level of heterogeneity, the strong protective signal should be interpreted cautiously.
 
 ::: {.callout-warning}
 ## Publication-bias analyses are pre-deduplication
@@ -239,7 +239,7 @@ Across both comparisons, certainty does not exceed LOW — a predictable consequ
 - **New outcomes added:** cGVHD moderate-severe (C1 LOW, C2 V.LOW), RRM (C1 LOW, C2 LOW), BK virus (V.LOW), IRM (V.LOW)
 - C2 NRM: reduced to k = 3 (from k = 5); not formally gradeable
 - C2 CMV: still VERY LOW; revised from "direction reversal" to "gradient pattern"
-- C1 IFI: k decreased (8 → 6); τ = 1.64 warrants extreme caution
+- C1 IFI: k decreased (8 → 6); τ = 1.53 warrants extreme caution
 - C1 IRM: Bayesian–frequentist divergence; rated VERY LOW
 - C1 NRM mediation: no longer shows clear complete mediation (M1→M2 shift minimal)
 :::
