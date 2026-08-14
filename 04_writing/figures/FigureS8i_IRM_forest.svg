@@ -154,7 +154,7 @@
 <text x='348.91' y='507.07' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
 <text x='141.74' y='58.85' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Liberation Sans";' textLength='211.94px' lengthAdjust='spacingAndGlyphs'>C1: PTCy vs CNI+MTX/MMF · k = 13, N = 5,504</text>
 <text x='141.74' y='41.74' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='158.70px' lengthAdjust='spacingAndGlyphs'>Infection-Related Mortality</text>
-<text x='141.74' y='524.18' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 57%, τ = 0.45, Q p = 0.007</text>
+<text x='32.38' y='524.18' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 57%, τ = 0.45, Q p = 0.007</text>
 <text x='26.15' y='30.37' text-anchor='middle' style='font-size: 13.20px;fill: #2D2D2D; font-family: "Liberation Sans";' textLength='12.45px' lengthAdjust='spacingAndGlyphs'>A.</text>
 </g>
 <defs>
@@ -221,7 +221,7 @@
 <text x='348.91' y='826.05' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
 <text x='141.74' y='583.94' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Liberation Sans";' textLength='162.03px' lengthAdjust='spacingAndGlyphs'>C2: PTCy vs ATG · k = 7, N = 13,346</text>
 <text x='141.74' y='566.83' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='158.70px' lengthAdjust='spacingAndGlyphs'>Infection-Related Mortality</text>
-<text x='141.74' y='843.16' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 39%, τ = 0.25, Q p = 0.105</text>
+<text x='32.38' y='843.16' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 39%, τ = 0.25, Q p = 0.105</text>
 <text x='26.15' y='555.46' text-anchor='middle' style='font-size: 13.20px;fill: #2D2D2D; font-family: "Liberation Sans";' textLength='12.45px' lengthAdjust='spacingAndGlyphs'>B.</text>
 </g>
 </g>

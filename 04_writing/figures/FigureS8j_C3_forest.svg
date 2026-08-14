@@ -129,7 +129,7 @@
 <text x='280.10' y='404.02' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
 <text x='137.79' y='58.85' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Liberation Sans";' textLength='191.17px' lengthAdjust='spacingAndGlyphs'>C3: Within-PTCy Variants · k = 6, N = 4,746</text>
 <text x='137.79' y='41.74' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='95.59px' lengthAdjust='spacingAndGlyphs'>Overall Survival</text>
-<text x='137.79' y='421.12' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 78%, τ = 0.45, Q p = 0.001</text>
+<text x='33.11' y='421.12' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 78%, τ = 0.45, Q p = 0.001</text>
 <text x='26.52' y='30.37' text-anchor='middle' style='font-size: 13.20px;fill: #2D2D2D; font-family: "Liberation Sans";' textLength='12.45px' lengthAdjust='spacingAndGlyphs'>A.</text>
 </g>
 <defs>
@@ -186,7 +186,7 @@
 <text x='701.77' y='404.02' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
 <text x='559.46' y='58.85' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Liberation Sans";' textLength='191.17px' lengthAdjust='spacingAndGlyphs'>C3: Within-PTCy Variants · k = 5, N = 2,529</text>
 <text x='559.46' y='41.74' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='133.44px' lengthAdjust='spacingAndGlyphs'>Non-Relapse Mortality</text>
-<text x='559.46' y='421.12' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 80%, τ = 0.95, Q p &lt; 0.001</text>
+<text x='454.78' y='421.12' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 80%, τ = 0.95, Q p &lt; 0.001</text>
 <text x='448.56' y='30.37' text-anchor='middle' style='font-size: 13.20px;fill: #2D2D2D; font-family: "Liberation Sans";' textLength='12.45px' lengthAdjust='spacingAndGlyphs'>B.</text>
 </g>
 <defs>
@@ -286,7 +286,7 @@
 <text x='279.91' y='826.05' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
 <text x='137.79' y='480.89' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Liberation Sans";' textLength='191.17px' lengthAdjust='spacingAndGlyphs'>C3: Within-PTCy Variants · k = 7, N = 2,450</text>
 <text x='137.79' y='463.78' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='144.72px' lengthAdjust='spacingAndGlyphs'>Acute GVHD Grade II–IV</text>
-<text x='137.79' y='843.16' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 77%, τ = 0.88, Q p &lt; 0.001</text>
+<text x='33.11' y='843.16' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='119.52px' lengthAdjust='spacingAndGlyphs'>I² = 77%, τ = 0.88, Q p &lt; 0.001</text>
 <text x='26.52' y='452.40' text-anchor='middle' style='font-size: 13.20px;fill: #2D2D2D; font-family: "Liberation Sans";' textLength='13.19px' lengthAdjust='spacingAndGlyphs'>C.</text>
 </g>
 <defs>
@@ -338,7 +338,7 @@
 <text x='701.95' y='826.05' text-anchor='middle' style='font-size: 10.45px;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='103.31px' lengthAdjust='spacingAndGlyphs'>Odds Ratio (log scale)</text>
 <text x='559.83' y='480.89' style='font-size: 9.90px;fill: #6B7D8D; font-family: "Liberation Sans";' textLength='182.92px' lengthAdjust='spacingAndGlyphs'>C3: Within-PTCy Variants · k = 4, N = 383</text>
 <text x='559.83' y='463.78' style='font-size: 12.65px; font-weight: bold;fill: #1A2A3A; font-family: "Liberation Sans";' textLength='87.78px' lengthAdjust='spacingAndGlyphs'>Chronic GVHD</text>
-<text x='559.83' y='843.16' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='118.86px' lengthAdjust='spacingAndGlyphs'>I² = 49%, τ = 0.68, Q p = 0.119</text>
+<text x='455.15' y='843.16' style='font-size: 8.80px;fill: #808080; font-family: "Liberation Sans";' textLength='118.86px' lengthAdjust='spacingAndGlyphs'>I² = 49%, τ = 0.68, Q p = 0.119</text>
 <text x='448.56' y='452.40' text-anchor='middle' style='font-size: 13.20px;fill: #2D2D2D; font-family: "Liberation Sans";' textLength='13.19px' lengthAdjust='spacingAndGlyphs'>D.</text>
 </g>
 </g>

@@ -183,7 +183,7 @@ both styles; M1 has no per-study random slope, so studies have no own posterior.
 |-------|---------|-------------|---------------|-------------|-----------------------------------|
 | S8a-i | Overall survival | C1 + C2 | Frequentist REML | `fig-forest-os-freq` | `FigureS8a_OS_forest_frequentist` |
 | S8a-ii | CMV any reactivation | C1 + C2 | Frequentist REML | `fig-forest-cmv-freq` | `FigureS8a_CMV_forest_frequentist` |
-| S8b | Acute GVHD grade II–IV | C1 + C2 | Frequentist REML | `fig-forest-agvhd` | `FigureS8b_aGVHD_forest` |
+| — | Acute GVHD grade II–IV | C1 + C2 | Bayesian M1 | `fig-forest-agvhd` | **promoted to main Figure 3** (`Figure3_aGVHD_forest`); S8b now vacant |
 | S8c | Non-relapse mortality | C1 + C2 | Frequentist REML | `fig-forest-nrm` | `FigureS8c_NRM_forest` |
 | S8d | Relapse-related mortality | C1 + C2 | Frequentist REML | `fig-forest-rrm` | `FigureS8d_RRM_forest` |
 | S8e | Chronic GVHD, moderate–severe | C1 + C2 | Frequentist REML | `fig-forest-cgvhd` | `FigureS8e_cGVHD_forest` |
