@@ -22,7 +22,9 @@ refitted with one publication per cohort per outcome. Two previously reported cl
 not survive (see Key Model Results).
 **Phase 6 (writing):** Manuscript text, Table 2, GRADE, and all figures updated to Set B.
 `Manuscript_LancetHaem_draft.qmd` renders cleanly to HTML (verified 2026-08-11).
-**Website:** `05_website/` NOT yet updated for Set B - still shows pre-deduplication numbers.
+**Website:** `05_website/` IS Set B-aware (`_common.R` resolves `set_b/` first and
+reads `Table2_setB.csv`). Audited 2026-08-14: the only stale hardcoded value was the
+cGVHD OR 0.33 in `grade.qmd` (now 0.47). Not yet re-rendered since these edits.
 ---
 
 ## Database (Post-Block-9)
@@ -302,8 +304,9 @@ PTCy column is `b_eventsn_ptcy_binary`.
 **Data corrections discovered:**
 - ROBINS-I overall judgments are **150 serious / 71 moderate** (the earlier
   "150 moderate, 71 serious" phrasing was reversed).
-- Post-Block-9 τ medians: IFI 1.53, BSI 0.88, OS 0.57 (AGENTS.md table values
-  1.64/0.96/0.61 are from an earlier fit).
+- Post-Block-9 τ medians: IFI 1.53, BSI 0.88 (**corrected 2026-08-14:** OS is
+  0.655, not 0.57). These were *not* "from an earlier fit" as previously recorded
+  — see the τ convention note under Session 2026-08-14.
 
 **Path fixes in `Manuscript_LancetHaem_draft.qmd` setup chunk:**
 `model_dir`/`extract_dir`/`writing_dir` now adaptively resolve for both
@@ -316,7 +319,50 @@ before next render.
 
 ---
 
+## Session 2026-08-14: Git hygiene + τ convention
+
+**τ convention (important).** `Table2_setB.csv` mixed two summary statistics: the
+15 rows marked `source = unchanged` stored τ as the posterior **mean**, while the
+14 Set B refit rows stored the **median**. Because τ posteriors are right-skewed,
+the means ran systematically higher. Verified against the fitted objects: **all ORs
+and CrIs matched exactly** — only τ differed, and every mismatch reproduced the
+mean to 3 dp. All 29 rows are now medians, matching `bayes_pooled()`/`or_summary()`.
+No OR, CrI, k, or GRADE rating changed.
+
+- Original preserved as `03_models/set_b/Table2_setB_pre_tau_standardisation.csv`
+- 18 hardcoded τ values updated across `grade.qmd`, `results-c1/c2/c3.qmd`
+- **τ values in the Key Model Results tables above still follow the old mean
+  convention.** `Table2_setB.csv` is authoritative; recompute from the fits.
+- `grade.qmd:64` has `I² = 64%; τ = 0.61` for C1 OS, which matches neither the mean
+  nor the median (0.655) — possibly a frequentist REML τ̂. Left untouched; verify.
+- `04_writing/` GRADE `.md` drafts and `Appendix_S9e` still carry mean-convention τ
+  (1.64 / 0.96). S9e is pre-deduplication anyway and due for regeneration.
+
+**Figures consolidated.** Root `figures/` (16 files, 6 stale) deleted; `04_writing/figures/`
+is canonical. Root cause was `save_fig()` calling `dir.create("figures")` with a
+relative path, so renders from the project root created a second tree. Now anchored
+to `writing_dir`.
+
+**Git.** `.RDataTmp{,1,2}` (89 MB) and the 23 MB rendered draft HTML untracked and
+added to `.gitignore`; files kept on disk. Identity set globally to
+`Russell Lewis <Russlewisbo@users.noreply.github.com>`; `pull.ff = only`.
+Remote switched to SSH (`git@github.com:Russlewisbo/ptcy_metaanalys.git`).
+**A password was exposed in terminal output on 2026-08-14 and must be rotated**
+(not present in git history — all refs checked).
+
 ## Pending Work
+
+### Blocked 2026-08-14
+
+1. **SSH key not registered** — `~/.ssh/id_ed25519` exists and is offered, but GitHub
+   rejects it (`Permission denied (publickey)`). Fingerprint
+   `SHA256:xIijo41xz1ijco0aS5Gok3f7qxr8HKcroYi5DCvOoSo` must be added at
+   github.com/settings/keys. **4 commits are unpushed** until this is fixed.
+2. **History purge deferred** — `git-filter-repo` installed at `~/.local/bin/`. Plan:
+   purge `.RDataTmp*` + the rendered HTML (~211 MB of 837 MB). Deliberately sequenced
+   *after* a successful push so the unpushed commits have a remote fallback. Requires
+   `push --force`; invalidates the co-reviewer's clone.
+
 
 ### Set B follow-ups (2026-08-11)
 
