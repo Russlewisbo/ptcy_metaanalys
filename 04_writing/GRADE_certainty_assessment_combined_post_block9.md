@@ -79,7 +79,7 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 |---|---|---|
 | Study design | Retrospective/registry + multiple RCTs; start LOW | All retrospective/registry; start LOW |
 | **Risk of bias** | Serious: selection bias plausible; M2 attenuation (0.79→0.86) confirms some confounding but effect survives. **No downgrade** | Serious: similar selection bias. M2 attenuation now negligible (0.81→0.82), suggesting less steroid-mediated confounding than pre-Block-9 estimated. **No downgrade** |
-| **Inconsistency** | Serious: I² = 64%, τ = 0.61. **−1** | Very serious: freq I² = 95%, driven by small extreme studies; Bayesian τ = 0.51 after regularisation. **−1** |
+| **Inconsistency** | Serious: I² = 64%, τ = 0.66. **−1** | Very serious: freq I² = 95%, driven by small extreme studies; Bayesian τ = 0.50 after regularisation. **−1** |
 | **Indirectness** | Not serious. 0 | Not serious. 0 |
 | **Imprecision** | Not serious: CrI entirely below null; N = 19,724. 0 | Not serious: CrI entirely below null; N = 12,851. 0 |
 | **Publication bias** | Undetected. 0 | Not strongly suspected. 0 |
@@ -103,8 +103,8 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 |  | C1: PTCy vs CNI+MTX/MMF | C2: PTCy vs ATG |
 |---|---|---|
 | **Studies** | k = 12, N = 1,309 | k = 2 **(below minimum)** |
-| **M1** | OR 0.88 [0.66–1.18], P(<1) = 87%, τ = 0.72 | — |
-| **M2** | OR 0.90 [0.59–1.36], P(<1) = 69%, τ = 0.60 | — |
+| **M1** | OR 0.88 [0.66–1.18], P(<1) = 87%, τ = 0.69 | — |
+| **M2** | OR 0.90 [0.59–1.36], P(<1) = 69%, τ = 0.56 | — |
 | **Attenuation** | Negligible (M1 0.88 → M2 0.90) | — |
 | **Frequentist** | OR 0.91 [0.68–1.23], I² = 0% | OR 0.63 [0.30–1.31], k = 3* |
 
@@ -139,7 +139,7 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 |  | C1: PTCy vs CNI+MTX/MMF | C2: PTCy vs ATG |
 |---|---|---|
 | **Studies** | k = 28, N = 4,197 | k = 8, N = 1,039 |
-| **M1** | OR 0.67 [0.59–0.78], P(<1) = 100%, τ = 0.68 | OR 0.63 [0.47–0.83], P(<1) = 100%, τ = 0.53 |
+| **M1** | OR 0.67 [0.59–0.78], P(<1) = 100%, τ = 0.67 | OR 0.63 [0.47–0.83], P(<1) = 100%, τ = 0.53 |
 | **Frequentist** | OR 0.61 [0.47–0.79], I² = 62% | OR 0.46 [0.26–0.83], I² = 73% |
 
 ### GRADE domains
@@ -148,7 +148,7 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 |---|---|---|
 | Study design | All retrospective/registry; start LOW | All retrospective/registry (+1 RCT Brissot 2024); start LOW |
 | **Risk of bias** | Serious: centre-dependent GVHD grading; possible under-diagnosis in PTCy arms. However, this bias would attenuate the effect (conservative). 0 | Same. 0 (bias direction opposes effect) |
-| **Inconsistency** | Serious: I² = 62%, τ = 0.68. **−1** | Serious: freq I² = 73%; Bayesian τ = 0.55. **−1** |
+| **Inconsistency** | Serious: I² = 62%, τ = 0.67. **−1** | Serious: freq I² = 73%; Bayesian τ = 0.53. **−1** |
 | **Indirectness** | Not serious. 0 | Not serious: all D+100, standard endpoint. 0 |
 | **Imprecision** | Not serious: CrI does not include 1; N = 4,197. 0 | Not serious: CrI 0.44–0.77 entirely below null; improved from pre-Block-9 (was 0.42–0.84). 0 |
 | **Publication bias** | Not strongly suspected. 0 | Not assessable at k = 9 (improved from k = 6). 0 |
@@ -172,7 +172,7 @@ The following shifts are GRADE-relevant and are flagged in the per-outcome secti
 |  | C1: PTCy vs CNI+MTX/MMF | C2: PTCy vs ATG |
 |---|---|---|
 | **Studies** | k = 22, N = 3,328 | k = 12, N = 1,511 |
-| **M1** | OR 1.26 [1.07–1.47], P(>1) = 100%, τ = 0.75 | OR 0.97 [0.77–1.23], τ = 0.63 |
+| **M1** | OR 1.26 [1.07–1.47], P(>1) = 100%, τ = 0.73 | OR 0.97 [0.77–1.23], τ = 0.63 |
 | **M2** | OR 1.25 [1.01–1.54] (no attenuation) | OR 1.00 [0.79–1.26] (null) |
 | **Frequentist** | OR 1.25 [0.94–1.66], I² = 62% | OR 0.76 [0.47–1.22], I² = 71% |
 | **Direction** | **PTCy harmful** (attenuated from 1.41) | **Null** (was protective at 0.77) |
@@ -200,7 +200,7 @@ tracks depth of T-cell depletion — is weakened but not refuted.
 |---|---|---|
 | Study design | All retrospective; start LOW | All retrospective; start LOW |
 | **Risk of bias** | Serious: CMV monitoring intensity varies; ascertainment bias possible. 0 (noted) | Serious: monitoring may differ between PTCy and ATG arms. 0 |
-| **Inconsistency** | Serious: I² = 62%, τ = 0.75. **−1** | Serious: freq I² = 71%, τ = 0.64. **−1** |
+| **Inconsistency** | Serious: I² = 62%, τ = 0.73. **−1** | Serious: freq I² = 71%, τ = 0.64. **−1** |
 | **Indirectness** | Not serious. 0 | Not serious. 0 |
 | **Imprecision** | Not serious: Bayesian CrI 1.07–1.47 excludes null. However, M2 CrI barely excludes null (1.01–1.54) and freq CrI crosses. 0 (borderline) | Serious: CrI 0.73–1.15 crosses null; M2 CrI also crosses; signal is null. **−1** |
 | **Publication bias** | Not strongly suspected. 0 | Not strongly suspected. 0 |
@@ -224,7 +224,7 @@ tracks depth of T-cell depletion — is weakened but not refuted.
 |  | C1: PTCy vs CNI+MTX/MMF | C2: PTCy vs ATG |
 |---|---|---|
 | **Studies** | k = 6, N = 806 | k = 3, N = 613 |
-| **Estimate** | Bayesian M1: OR 1.87 [1.33–2.62], τ = 0.96 | MH fixed-effect: OR 2.03 [1.33–3.09], I² = 69% |
+| **Estimate** | Bayesian M1: OR 1.87 [1.33–2.62], τ = 0.88 | MH fixed-effect: OR 2.03 [1.33–3.09], I² = 69% |
 | **Frequentist** | OR 1.29 [0.61–2.73], I² = 71% | (MH is the primary estimate) |
 
 ### ⚠ Major post-Block-9 changes (C1)
@@ -243,7 +243,7 @@ tracks depth of T-cell depletion — is weakened but not refuted.
 |---|---|---|
 | Study design | All retrospective; start LOW | All retrospective; start LOW |
 | **Risk of bias** | Very serious: 7 of 13 eligible studies had NR event counts; retained studies may over-represent high-BSI centres. **−1** | Very serious: definitional heterogeneity (any blood culture vs ICU/fatal only); donor-type confound in Meyer 2025. **−1** |
-| **Inconsistency** | **Serious (NEW): freq I² = 71%, τ = 0.96.** Previously I² = 0%; Block-9 additions introduced heterogeneity. **−1** | Serious: I² = 69% across 3 definitionally heterogeneous studies. **−1** |
+| **Inconsistency** | **Serious (NEW): freq I² = 71%, Bayesian τ = 0.88.** Previously I² = 0%; Block-9 additions introduced heterogeneity. **−1** | Serious: I² = 69% across 3 definitionally heterogeneous studies. **−1** |
 | **Indirectness** | Mild: BSI definitions varied. 0 | Captured under inconsistency. 0 |
 | **Imprecision** | Serious: k = 6; freq CrI crosses null (0.61–2.73); Bayesian prior influence at small k. **−1** | Very serious: k = 3; below conventional GRADE minimum. **−1** |
 | **Publication bias** | Suspected: small k. 0 | Not assessable. 0 |
@@ -269,7 +269,7 @@ is now weaker than pre-Block-9, even though the formal rating hits the same floo
 ## 6. Invasive Fungal Infection (IFI, any) — Comparison 1 Only
 
 **k = 6, N = 2,243**
-**M1: OR 0.43 [0.29–0.63], P(OR < 1) = 100% · τ = 1.64**
+**M1: OR 0.43 [0.29–0.63], P(OR < 1) = 100% · τ = 1.53**
 **Frequentist: OR 0.60 [0.21–1.74], I² = 80%**
 
 *No Comparison 2 data available (insufficient k).*
@@ -282,7 +282,7 @@ the null (0.29–0.63; was 0.53–1.00, touching null).
 
 A new GRADE-relevant consideration: **OR 0.43 meets the ≤ 0.50 large-magnitude upgrade
 threshold**, which was not met pre-Block-9 (OR 0.73). However, the extreme heterogeneity
-(τ = 1.64 — the highest in the entire analysis) and the Bayesian-frequentist divergence
+(τ = 1.53 — the highest in the entire analysis) and the Bayesian-frequentist divergence
 (Bayesian OR 0.43 vs freq OR 0.60 [0.21–1.74], non-significant) raise serious concerns
 about the reliability of the point estimate.
 
@@ -292,7 +292,7 @@ about the reliability of the point estimate.
 |---|---|---|
 | Study design | All retrospective; start LOW | — |
 | **Risk of bias** | Serious: IFI diagnosis protocol-dependent; PTCy arms may be under-investigated. 0 (bias would inflate apparent protection) |
-| **Inconsistency** | Very serious: τ = 1.64 (highest in entire analysis), I² = 80%. Previously driven by Yanada 2026 (zero events in 241 PTCy patients); the problem persists and may have worsened with study removal. **−2** |
+| **Inconsistency** | Very serious: τ = 1.53 (highest in entire analysis), I² = 80%. Previously driven by Yanada 2026 (zero events in 241 PTCy patients); the problem persists and may have worsened with study removal. **−2** |
 | **Indirectness** | Serious: antifungal prophylaxis regimens heterogeneous and non-randomly distributed between arms. **−1** |
 | **Imprecision** | Serious: k = 6 (dropped from 8); freq CrI widely crosses null (0.21–1.74); Bayesian-frequentist divergence. **−1** |
 | **Publication bias** | Possible at k = 6. 0 |
@@ -304,7 +304,7 @@ about the reliability of the point estimate.
 *Rating unchanged (VERY LOW floor) but the evidence profile has shifted: the point estimate
 is now dramatically stronger but the heterogeneity is worse and the corpus smaller.*
 
-> *Very low certainty. The posterior probability of IFI protection is now very high (P(OR < 1) = 100%), and the OR of 0.43 suggests a potentially large effect. However, the extreme heterogeneity (τ = 1.64) indicates that this estimate is not representative of any single clinical context — it reflects a mixture of zero-event contemporary cohorts (with aggressive mold prophylaxis) and older cohorts with higher baseline IFI rates. The most defensible clinical inference remains: PTCy does not appear to increase IFI risk, and IFI reduction may be achievable in centres with optimised antifungal prophylaxis, but the evidence base is too heterogeneous for a more specific recommendation.*
+> *Very low certainty. The posterior probability of IFI protection is now very high (P(OR < 1) = 100%), and the OR of 0.43 suggests a potentially large effect. However, the extreme heterogeneity (τ = 1.53) indicates that this estimate is not representative of any single clinical context — it reflects a mixture of zero-event contemporary cohorts (with aggressive mold prophylaxis) and older cohorts with higher baseline IFI rates. The most defensible clinical inference remains: PTCy does not appear to increase IFI risk, and IFI reduction may be achievable in centres with optimised antifungal prophylaxis, but the evidence base is too heterogeneous for a more specific recommendation.*
 
 ---
 
@@ -322,7 +322,7 @@ is now dramatically stronger but the heterogeneity is worse and the corpus small
 | | C2 | 12 | 1,511 | 0.97 [0.77–1.23] | CrI crosses 1 | ⊕◯◯◯ V. LOW | **0.77→0.97 (null)** | Signal dissolved; direction reversal weakened |
 | **BSI** | C1 | 6 | 806 | 1.87 [1.33–2.62] | P(>1) = 100% | ⊕◯◯◯ V. LOW | **2.39→1.87** | Lost large-mag upgrade; gained I² = 71% |
 | | C2 | 3 | 613 | 2.03 [1.33–3.09]† | p = 0.001 | (⊕◯◯◯) V. LOW‡ | — | k = 3; definitional heterogeneity |
-| **IFI** | C1 | 6 | 2,243 | 0.43 [0.29–0.63] | P(<1) = 100% | ⊕◯◯◯ V. LOW | **0.73→0.43** | Gained large-mag upgrade; τ = 1.64 |
+| **IFI** | C1 | 6 | 2,243 | 0.43 [0.29–0.63] | P(<1) = 100% | ⊕◯◯◯ V. LOW | **0.73→0.43** | Gained large-mag upgrade; τ = 1.53 |
 | | C2 | — | — | — | — | — | — | Insufficient data |
 
 †Mantel-Haenszel fixed-effect. ‡Informal rating.

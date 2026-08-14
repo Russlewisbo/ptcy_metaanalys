@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,13 +12,10 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -77,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c3b612d78ebf2c911bb5b2c28edb8189.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a5b552e87c74dd04829b5f4f964f0516.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -301,7 +298,7 @@ Figure&nbsp;2: Posterior density for the PTCy log-OR on non-relapse mortality. M
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.88 (95% CrI 0.66–1.18), P(OR &lt; 1) = 83%, τ = 0.72. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.</p>
+<p><strong>M1:</strong> OR 0.88 (95% CrI 0.66–1.18), P(OR &lt; 1) = 83%, τ = 0.69. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.</p>
 <p><strong>M2:</strong> OR 0.90 (95% CrI 0.59–1.36), P(OR &lt; 1) = 60%. The M1→M2 shift is modest (0.88 → 0.90), with wide CrIs overlapping substantially. Unlike the pre-Block-9 analysis (where M2 crossed null at 1.02, suggesting complete mediation), the current data are <strong>inconclusive regarding steroid mediation</strong> of NRM — the point estimates barely differ, and the wide intervals accommodate both full mediation and no mediation.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -404,7 +401,7 @@ Figure&nbsp;4: Posterior density for the PTCy effect on aGVHD grade II–IV. Thi
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 0.67 (95% CrI 0.59–0.78), P(OR &lt; 1) = 100%, τ = 0.68. The largest treatment effect across all outcomes, mechanistically expected given PTCy’s mode of action.</p>
+<p><strong>M1:</strong> OR 0.67 (95% CrI 0.59–0.78), P(OR &lt; 1) = 100%, τ = 0.67. The largest treatment effect across all outcomes, mechanistically expected given PTCy’s mode of action.</p>
 </section>
 <section id="sec-c1-cgvhd" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c1-cgvhd">Chronic GVHD</h2>
@@ -497,7 +494,7 @@ Figure&nbsp;6: Posterior densities for PTCy effect on CMV reactivation. M1 (dire
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 1.26 (95% CrI 1.07–1.47), P(OR &gt; 1) &gt; 99%, τ = 0.74. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.</p>
+<p><strong>M1:</strong> OR 1.26 (95% CrI 1.07–1.47), P(OR &gt; 1) &gt; 99%, τ = 0.73. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.</p>
 <p><strong>M2 (steroid-adjusted):</strong> OR 1.25 (no attenuation). The CMV excess is steroid-independent, consistent with direct impairment of CMV-specific T-cell reconstitution rather than a downstream GVHD effect.</p>
 </section>
 <section id="sec-c1-infections" class="level2">
@@ -533,8 +530,8 @@ Figure&nbsp;7: Posterior densities for BSI (any pathogen) and IFI (any). BSI sho
 </div>
 </div>
 </div>
-<p><strong>BSI (k = 6):</strong> OR 1.87 (95% CrI 1.33–2.62), τ = 0.96. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 [0.61–2.73]) crosses null, reflecting sensitivity to the REML τ² estimate.</p>
-<p><strong>IFI (k = 6):</strong> OR 0.43 (95% CrI 0.29–0.63), P(OR &lt; 1) &gt; 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.64 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.</p>
+<p><strong>BSI (k = 6):</strong> OR 1.87 (95% CrI 1.33–2.62), τ = 0.88. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 [0.61–2.73]) crosses null, reflecting sensitivity to the REML τ² estimate.</p>
+<p><strong>IFI (k = 6):</strong> OR 0.43 (95% CrI 0.29–0.63), P(OR &lt; 1) &gt; 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.53 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.</p>
 </section>
 <section id="sec-c1-rrm" class="level2">
 <h2 class="anchored" data-anchor-id="sec-c1-rrm">Relapse-Related Mortality</h2>
@@ -618,7 +615,7 @@ Figure&nbsp;9: Posterior density for the PTCy effect on BK virus reactivation (C
 </div>
 </div>
 </div>
-<p><strong>M1:</strong> OR 2.48 (95% CrI 1.82–3.38), P(OR &gt; 1) &gt; 99%, k = 11, τ = 1.06. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.</p>
+<p><strong>M1:</strong> OR 2.48 (95% CrI 1.82–3.38), P(OR &gt; 1) &gt; 99%, k = 11, τ = 1.00. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -859,16 +856,16 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
-        for (let i=0; i<cellDetails.length; i++) {
-          const details = cellDetails[i];
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -1318,7 +1315,7 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.88 (95% CrI 0.66–1.18), P(OR &lt; 1) = 83%, τ = 0.72. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.88 (95% CrI 0.66–1.18), P(OR &lt; 1) = 83%, τ = 0.69. Directionally favourable but CrI crosses null; k decreased from 15 (pre-Block-9) to 12 after arm reclassification.</span>
 <span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a>**M2:** OR 0.90 (95% CrI 0.59–1.36), P(OR &lt; 1) = 60%. The M1→M2 shift is modest (0.88 → 0.90), with wide CrIs overlapping substantially. Unlike the pre-Block-9 analysis (where M2 crossed null at 1.02, suggesting complete mediation), the current data are **inconclusive regarding steroid mediation** of NRM — the point estimates barely differ, and the wide intervals accommodate both full mediation and no mediation.</span>
 <span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a></span>
@@ -1393,7 +1390,7 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-178"><a href="#cb12-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-181"><a href="#cb12-181" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.67 (95% CrI 0.59–0.78), P(OR &lt; 1) = 100%, τ = 0.68. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.</span>
+<span id="cb12-181"><a href="#cb12-181" aria-hidden="true" tabindex="-1"></a>**M1:** OR 0.67 (95% CrI 0.59–0.78), P(OR &lt; 1) = 100%, τ = 0.67. The largest treatment effect across all outcomes, mechanistically expected given PTCy's mode of action.</span>
 <span id="cb12-182"><a href="#cb12-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## Chronic GVHD {#sec-c1-cgvhd}</span></span>
 <span id="cb12-184"><a href="#cb12-184" aria-hidden="true" tabindex="-1"></a></span>
@@ -1459,7 +1456,7 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-248"><a href="#cb12-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb12-249"><a href="#cb12-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-250"><a href="#cb12-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-251"><a href="#cb12-251" aria-hidden="true" tabindex="-1"></a>**M1:** OR 1.26 (95% CrI 1.07–1.47), P(OR &gt; 1) &gt; 99%, τ = 0.74. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.</span>
+<span id="cb12-251"><a href="#cb12-251" aria-hidden="true" tabindex="-1"></a>**M1:** OR 1.26 (95% CrI 1.07–1.47), P(OR &gt; 1) &gt; 99%, τ = 0.73. The estimate attenuated from the pre-Block-9 value (1.41) with the expanded corpus, but the CrI still excludes null.</span>
 <span id="cb12-252"><a href="#cb12-252" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-253"><a href="#cb12-253" aria-hidden="true" tabindex="-1"></a>**M2 (steroid-adjusted):** OR 1.25 (no attenuation). The CMV excess is steroid-independent, consistent with direct impairment of CMV-specific T-cell reconstitution rather than a downstream GVHD effect.</span>
 <span id="cb12-254"><a href="#cb12-254" aria-hidden="true" tabindex="-1"></a></span>
@@ -1486,9 +1483,9 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-277"><a href="#cb12-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_jama</span>()</span>
 <span id="cb12-278"><a href="#cb12-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-279"><a href="#cb12-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-280"><a href="#cb12-280" aria-hidden="true" tabindex="-1"></a>**BSI (k = 6):** OR 1.87 (95% CrI 1.33–2.62), τ = 0.96. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 <span class="co">[</span><span class="ot">0.61–2.73</span><span class="co">]</span>) crosses null, reflecting sensitivity to the REML τ² estimate.</span>
+<span id="cb12-280"><a href="#cb12-280" aria-hidden="true" tabindex="-1"></a>**BSI (k = 6):** OR 1.87 (95% CrI 1.33–2.62), τ = 0.88. Elevated risk, attenuated from the pre-Block-9 estimate (2.39) but CrI still excludes null. The frequentist estimate (OR 1.29 <span class="co">[</span><span class="ot">0.61–2.73</span><span class="co">]</span>) crosses null, reflecting sensitivity to the REML τ² estimate.</span>
 <span id="cb12-281"><a href="#cb12-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a>**IFI (k = 6):** OR 0.43 (95% CrI 0.29–0.63), P(OR &lt; 1) &gt; 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.64 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.</span>
+<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a>**IFI (k = 6):** OR 0.43 (95% CrI 0.29–0.63), P(OR &lt; 1) &gt; 99%. A strong apparent protective signal, substantially stronger than pre-Block-9 (0.73). However, τ = 1.53 indicates extreme heterogeneity and the frequentist CrI (0.21–1.74) crosses null. With k = 6 and this heterogeneity, the estimate should be interpreted cautiously.</span>
 <span id="cb12-283"><a href="#cb12-283" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-284"><a href="#cb12-284" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relapse-Related Mortality {#sec-c1-rrm}</span></span>
 <span id="cb12-285"><a href="#cb12-285" aria-hidden="true" tabindex="-1"></a></span>
@@ -1547,7 +1544,7 @@ Figure&nbsp;11: Summary forest plot for all Comparison 1 outcomes. Filled circle
 <span id="cb12-342"><a href="#cb12-342" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb12-343"><a href="#cb12-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-344"><a href="#cb12-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-345"><a href="#cb12-345" aria-hidden="true" tabindex="-1"></a>**M1:** OR 2.48 (95% CrI 1.82–3.38), P(OR &gt; 1) &gt; 99%, k = 11, τ = 1.06. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.</span>
+<span id="cb12-345"><a href="#cb12-345" aria-hidden="true" tabindex="-1"></a>**M1:** OR 2.48 (95% CrI 1.82–3.38), P(OR &gt; 1) &gt; 99%, k = 11, τ = 1.00. The largest infection-outcome effect in the analysis. BK virus reactivation (haemorrhagic cystitis) is substantially more common with PTCy, consistent with cyclophosphamide-induced urothelial damage compounded by impaired BK-specific T-cell surveillance.</span>
 <span id="cb12-346"><a href="#cb12-346" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-347"><a href="#cb12-347" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
 <span id="cb12-348"><a href="#cb12-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## BK Virus: Dual Mechanism</span></span>

@@ -9,7 +9,9 @@ source("_common.R")
 
 # Load Table2 for dynamic values
 t2 <- read_csv(file.path(model_dir, "Table2_post_block9.csv"), show_col_types = FALSE)
-freq <- read_csv(file.path(model_dir, "freq_results.csv"), show_col_types = FALSE)
+# Set B frequentist concordance results (23 outcomes). Columns differ from the
+# superseded post_block9/freq_results.csv: freq_lo/freq_hi/tau_freq/Q_p.
+freq <- read_csv(resolve_model_file("freq_results_setB.csv"), show_col_types = FALSE)
 ```
 
 GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapted for Bayesian meta-analyses of observational studies. Starting certainty for all outcomes is **LOW** (observational evidence). Post-Block-9 corpus: 251 studies (14 RCTs), 525 arms.
@@ -23,7 +25,7 @@ GRADE certainty was assessed per the GRADE Handbook (Schünemann et al.), adapte
 tibble::tribble(
   ~Outcome, ~Comp, ~k, ~N, ~`OR [95% CrI]`, ~Certainty, ~`Key Limitation`,
   "OS",            "C1", 35, 10133, "0.84 [0.76\u20130.92]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 64%; obs only",
-  "OS",            "C2",  9, 12791, "0.83 [0.75\u20130.92]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 95% (freq); attenuated from pre-B9",
+  "OS",            "C2",  9, 12791, "0.83 [0.75\u20130.92]", "\u2295\u2295\u2296\u2296 LOW",       "I\u00B2 = 93% (freq); attenuated from pre-B9",
   "NRM",           "C1", 12,  1309, "0.88 [0.66\u20131.18]", "\u2295\u2296\u2296\u2296 V.LOW",     "Complete M2 mediation; CrI crosses null",
   "NRM",           "C2", NA,    NA, "\u2014 (k = 2)",         "\u2014",                              "Below minimum k for modelling",
   "aGVHD II\u2013IV", "C1", 28,  4197, "0.67 [0.59\u20130.78]", "\u2295\u2296\u2296\u2296 V.LOW", "Egger p = 0.04; T&F adj OR 0.83",
@@ -61,7 +63,7 @@ tibble::tribble(
   ~Domain, ~C1, ~C2,
   "Study design", "39 retro/registry + 1 RCT; start LOW", "All retro/registry; start LOW",
   "Risk of bias", "No downgrade (effect survives M2)", "No downgrade (M2 OR 0.82 still protective)",
-  "Inconsistency", "\u22121 (I\u00B2 = 64%; \u03c4 = 0.61)", "\u22121 (I\u00B2 = 95%; one registry dominant)",
+  "Inconsistency", "\u22121 (I\u00B2 = 64%; \u03c4 = 0.61)", "\u22121 (I\u00B2 = 93%; one registry dominant)",
   "Indirectness", "0", "0",
   "Imprecision", "0 (CrI excludes null; N = 19,724)", "0 (CrI excludes null; N = 12,851)",
   "Pub. bias", "0", "0",
@@ -230,7 +232,7 @@ Across both comparisons, certainty does not exceed LOW — a predictable consequ
 
 **Chronic GVHD is arguably the most clinically important finding.** The OR of 0.47 for moderate-severe cGVHD translates to roughly a halving of the leading cause of late post-transplant morbidity. Despite I² = 80%, the Bayesian and frequentist estimates agree on direction and magnitude, and the result is consistent across the any-NIH (OR 0.23) and moderate-severe (OR 0.47) subsets. The previously reported OR of 0.33 came from a dataset built outside the audited pipeline that included two studies ineligible under the cohort-selection rule; see [Results C1](results-c1.qmd).
 
-**The infection–mortality disconnect is the key risk-benefit finding.** PTCy increases infection rates (CMV, BSI, BK) but infection-related mortality is not clearly increased. The C1 IRM Bayesian–frequentist divergence (OR 1.35 vs 1.01) warrants caution, but even the more pessimistic estimate represents a far smaller effect than the infection rate increases, suggesting infectious complications are clinically manageable.
+**The infection–mortality disconnect is the key risk-benefit finding.** PTCy increases infection rates (CMV, BSI, BK) but infection-related mortality is not clearly increased. The C1 IRM Bayesian–frequentist divergence (OR 1.19 vs 1.03) warrants caution, but even the more pessimistic estimate represents a far smaller effect than the infection rate increases, suggesting infectious complications are clinically manageable.
 
 **C2 NRM is no longer gradeable.** Arm classification corrections reduced k to 3. NRM steroid mediation is inconclusive in the post-Block-9 data.
 
