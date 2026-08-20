@@ -5,8 +5,9 @@
 .Ruserdata
 .posit/assistant
 
-# PDFs
+# PDFs (blanket rule; the figure PDFs are the Lancet print deliverable and are tracked)
 *.pdf
+!04_writing/figures/*.pdf
 
 # Paperpile / reference manager exports
 paperpile-files*
