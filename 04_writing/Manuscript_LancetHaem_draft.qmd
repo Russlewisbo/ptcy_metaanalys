@@ -13,6 +13,11 @@ format:
     fig-width: 7
     fig-height: 5
     fig-dpi: 300
+  docx:
+    reference-doc: custom-reference.docx
+    fig-width: 7
+    fig-height: 5
+    fig-dpi: 300
 execute:
   echo: false
   warning: false
